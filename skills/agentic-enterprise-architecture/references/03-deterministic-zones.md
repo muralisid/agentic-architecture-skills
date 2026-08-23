@@ -1,0 +1,205 @@
+# The four deterministic zones
+
+The four areas where an AI model may advise but never decide (access, money, safety actuation, formal records), what sits in each, and how to build the boundary.
+
+Source: https://www.agenticarchitectureskills.com/architecture/deterministic-zones (Markdown: https://www.agenticarchitectureskills.com/architecture/deterministic-zones.md)
+
+> **In plain terms.**
+>
+> Some decisions are too important to leave to an AI model: who gets access, whether money moves, whether equipment acts, and whether a formal record is true. In these four areas the model may draft, suggest, and flag, but a fixed rule or a named person makes the final call. Three of the four already work this way today, and this page shows how to keep them that way as agents arrive. The thing to remember: the model informs, it never decides.
+
+## The principle
+
+**Models may inform, never decide.** In four zones the decision is made by deterministic rules, meaning fixed rules that give the same answer every time, evaluated over verified credentials and written policies. Model output enters only as an advisory signal. This is not caution ahead of the technology. Three of the four zones already run machine-learning signals inside them today, and the decision rule stays deterministic. The boundary sits on the decision, not on the presence of a model.
+
+> **Why the boundary must be architectural**
+>
+> Instructions and data travel through a language model as the same kind of token, the small units of text a model reads. So the model cannot be trained into a reliable separation between instructions and content (Bhattarai and Vu, Feb 2026). Authorization that depends on model behaviour is therefore an exploit waiting to be discovered, not a control. The zones move the decision outside the model, where it can be evaluated, versioned, and audited like any other rule.
+
+**Figure: Four deterministic decision zones.** Models may prepare evidence, but the final authorization remains outside the model.
+
+Access, money, safety actuation, and formal records require deterministic enforcement.
+
+**What the diagram shows:** Four guarded zones for access control, movement of money, safety actuation, and formal regulatory records surrounding a probabilistic reasoning area. The map lists Access and entitlements, Movement of money, Safety actuation, Formal records, Probabilistic reasoning. The highlighted item is Probabilistic reasoning.
+
+Diagram: https\://www\.agenticarchitectureskills.com/figures/four-deterministic-zones.svg
+
+## The four zones at a glance
+
+**Access and entitlements (#access-and-entitlements)**
+
+Authorization is a rule over verified identity at a policy decision point the agent cannot bypass.
+
+**Movement of money (#movement-of-money)**
+
+Payments execute against scoped, revocable mandates validated by the rail, never by the agent.
+
+**Safety actuation (#safety-actuation)**
+
+The one zone where standards exclude machine learning from the function itself.
+
+**Formal regulatory records (#formal-regulatory-records)**
+
+Drafting with a model is permitted; attestation is a named human act on an immutable record.
+
+Each zone below follows the same shape: what sits inside it, where the line runs, and the steps that implement it. Each ends with the actions that stay off the table at any autonomy level, however much an agent is otherwise allowed to do on its own.
+
+## Access and entitlements
+
+**In short:** A fixed rule decides who gets access; the AI model can only add a warning signal, and the agent cannot skip the check.
+
+What sits inside: authorization decisions, entitlement grants and changes, role assignments, conditional-access outcomes, and approval of just-in-time elevation (temporary extra access). Identity platforms already feed machine-learned risk scores into this zone. The score informs; the deterministic conditional-access policy decides.
+
+| The line             | In this zone                                                                                                    |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |
+|  **Decides**         | A policy decision point evaluating policy-as-code over verified identity, in the tool-call path, failing closed |
+|  **Advises**         | Risk scores, anomaly signals, and any model output, entering as inputs to the rule                              |
+|  **The agent's job** | Request the action with its own identity and context; accept the decision as terminal                           |
+
+### How to implement it
+
+**Enumerate the consequential actions.** For every agent, list the tool calls that grant, change, or exercise access. This list is the zone's surface. Anything on it routes through the decision point.
+
+**Put the decision in the path, not in the prompt.** The policy decision point, the component that says yes or no to each action, sits behind [the gateway](https://www.agenticarchitectureskills.com/architecture/enforcement#tier-1-the-gateway), so no tool is reachable without a decision. An instruction in the prompt is advice; the gateway is enforcement.
+
+**Express policy as code.** Cedar-class engines give formally verified evaluation in under a millisecond; Open Policy Agent (OPA) handles richer joins, meaning rules that combine data from several sources. Policy-as-code is versioned and reviewed like any production change ([the policy decision point](https://www.agenticarchitectureskills.com/architecture/enforcement#tier-2-the-policy-decision-point)).
+
+**Fail closed and log every decision.** If the policy engine goes down, consequential actions stop rather than being waved through: the system fails closed. Each decision lands in the audit record that [the evidence posture](https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty#the-two-tier-evidence-posture) requires.
+
+**Test the bypass.** Have a red team attack the path with one specific goal: reach a tool without a policy decision. The identity mechanics behind this step, how an agent proves who it is, live on [the identity chain](https://www.agenticarchitectureskills.com/architecture/identity-chain).
+
+### What the agent may never do
+
+* &#x20;Grant, extend, or approve its own access, including its own elevation requests.
+* &#x20;Mint or modify entitlements for any identity, human or agent.
+* &#x20;Treat a deny as an obstacle to work around. A deny is final; the only appeal is to a human.
+
+## Movement of money
+
+**In short:** An agent can spend only within a signed, limited permission (a mandate) that the payment network checks and the agent cannot alter.
+
+What sits inside: payment execution, transfers, refunds, and procurement commitments. The convergent proof arrived in 2025 and 2026, when three networks built agentic payment stacks independently and landed on the same shape. Visa's Trusted Agent Protocol (Oct 2025) uses issuer-anchored delegation tokens scoped by amount, merchant, and category. Mastercard's Agent Pay (Apr 2025) uses agentic tokens bound to agent, merchant, and consent, revocable in real time. Google's Agent Payments Protocol (AP2, Sep 2025, more than 60 partners) uses cryptographically signed World Wide Web Consortium (W3C) Verifiable Credential mandates that carry hard constraints. All three are vendor artifacts. All three are deterministic authorization consuming probabilistic signals, meaning inputs that are a best guess rather than a fixed answer. Card networks already score every transaction with machine learning, and authorization stays rule-bound.
+
+| The line             | In this zone                                                                                                  |
+| -------------------- | ------------------------------------------------------------------------------------------------------------- |
+|  **Decides**         | The rail or issuer, validating a scoped mandate: amount cap, merchant or category scope, expiry, revocability |
+|  **Advises**         | Fraud and risk models scoring the transaction inside the network                                              |
+|  **The agent's job** | Assemble the purchase, present the mandate, stop at its edges                                                 |
+
+### How to implement it
+
+**Remove raw credentials from the agent.** An agent never holds card numbers or banking credentials. Each agent gets a scoped payment instrument tied to its identity, so revoking it is one act rather than a card reissue.
+
+**Make the mandate an artifact.** The amount cap, merchant or category scope, expiry, and revocation path are written down, signed, and stored before first use. The protocol details are on [the mandate-bound payment stack](https://www.agenticarchitectureskills.com/layers/r10-security-and-identity#the-mandate-bound-payment-stack).
+
+**Validate outside the agent.** The card issuer or the payment rail (the network that moves the money) checks the mandate deterministically. If your rail cannot, the deterministic check moves to your own payment service in front of it. The prompt on the agent's side is never the control.
+
+**Confirm intent upstream.** New payees and above-threshold amounts get a human confirmation before the mandate is exercised, at the autonomy level [the contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract) assigns. The caveat below is the reason this step survives even perfect gates.
+
+**Retain mandate logs as evidence.** Issuance, exercise, and revocation events are compliance records. They keep the same retention discipline as any payment audit trail. The customer-facing flow is covered under [agentic commerce](https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels#agentic-commerce).
+
+### What the agent may never do
+
+* &#x20;Exceed, rewrite, or re-scope a mandate, or issue one to itself.
+* &#x20;Split a payment to stay under a cap; limits on how often and how much it may pay over time (velocity limits) are part of the mandate.
+* &#x20;Pay a payee introduced by untrusted content. Payee changes are a human decision, because prompt injection, hidden instructions in content the agent reads, is the attack that works inside mandate bounds.
+
+## Safety actuation
+
+**In short:** Agents may read plant data and suggest actions, but they never touch the equipment; certified safety systems and human operators keep control.
+
+What sits inside: safety instrumented systems (certified equipment that shuts a process down safely), interlocks, protection layers, and any actuation whose failure harms people or plant. This is the only zone where the standards exclude machine learning from the function itself. IEC 61511, from the International Electrotechnical Commission, covers safety instrumented systems; ISO/IEC TR 5469:2024, a technical report from the international standards bodies, covers AI in functional safety. Joint guidance from six national cyber agencies (Dec 2025) says it plainly: AI should augment, not autonomously control, safety-critical actions. The same guidance says the ability to revert to manual or deterministic control must be preserved at all times.
+
+The honest counterexample is bounded and instructive. One vendor's reinforcement-learning controller holds direct closed-loop control at two named plants. It earned that with a small set of possible actions (a small action space) on a well-understood unit, and training against a high-fidelity simulator. It also had formal evaluation before commissioning, and the independent safety instrumented system stayed untouched underneath it. It is not a language model, and it changes nothing about this zone. For agents built on large language models (LLMs), control authority stays with humans and deterministic systems.
+
+| The line             | In this zone                                                                                    |
+| -------------------- | ----------------------------------------------------------------------------------------------- |
+|  **Decides**         | Operators, interlocks, and the safety instrumented system, exactly as the safety case certifies |
+|  **Advises**         | Agent analysis arriving through a validated presentation layer on the information path          |
+|  **The agent's job** | Read sanitized outbound data, propose and explain, with full attribution of every proposal      |
+
+### How to implement it
+
+**Map the protection layers.** The safety instrumented system (SIS), interlocks, and permit-to-work systems are declared out of agent reach in the architecture. The network enforces it, with one-way (unidirectional) or push-based paths that preserve operational technology (OT) segmentation ([the OT boundary](https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot#the-ot-boundary-four-principles)).
+
+**Keep the agent on the information path.** Sanitized OT data flows outbound to separate secured systems where the agent works; nothing flows back to actuation. Read paths go through a broker, never directly to plant systems. [CD-18](https://www.agenticarchitectureskills.com/decisions#cd-18) is the decision that weighed brokered read paths against one-way-only architectures: what the output can influence decides the control point.
+
+**Validate before display.** Agent output reaches operators through the alert channel only after a validation stage based on rules or a digital twin, a simulation of the plant ([the R05 validation loop](https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot#the-validation-loop)). Each proposal carries attribution of who or what proposed it.
+
+**Keep the safety case clean.** Agent output is never credited as an independent protection layer. The layer-of-protection accounting that certified the plant does not change because an agent now reads the historian, the plant's store of past measurements.
+
+**Retain the disable path.** The agent layer can be switched off without touching plant operation. The reversion drill is rehearsed like any other emergency procedure.
+
+### What the agent may never do
+
+* &#x20;Write to actuators, controllers, or the safety instrumented system, at any autonomy level.
+* &#x20;Acknowledge, shelve, or suppress alarms on an operator's behalf.
+* &#x20;Appear in the safety case as a protection layer or as justification for removing one.
+
+## Formal regulatory records
+
+**In short:** A model may draft a filing; a named person must check and sign it; the signed record is never quietly changed.
+
+What sits inside: regulatory filings, disclosures, books and records, safety cases, and any document a regulator or third party relies on. The subtlety of this zone is what the records regimes actually require. The two regimes are FINRA Notice 24-09 (from the Financial Industry Regulatory Authority) and the 2024 statement from the European Securities and Markets Authority (ESMA). They mandate accountability and immutable records, meaning records that cannot be altered. They do not mandate deterministic generation. Drafting with a model is permitted. Attestation, a named person formally confirming that the record is true, is a human act. The cautionary tale is public: AI-generated content with fabricated citations reached a government deliverable, and it cost a professional-services firm a partial refund and its reputation for care.
+
+| The line             | In this zone                                                                                        |
+| -------------------- | --------------------------------------------------------------------------------------------------- |
+|  **Decides**         | A named, accountable human attesting; an authorized system of record holding the immutable artifact |
+|  **Advises**         | Model drafts, summaries, and checks, each carrying provenance back to sources                       |
+|  **The agent's job** | Draft with citations that resolve, assemble evidence, flag gaps, and stop before the signature      |
+
+### How to implement it
+
+**Inventory the record-producing processes.** Filings, disclosures, regulated communications, and safety documentation, each mapped to the regime that governs it and the system of record that holds it.
+
+**Split drafting from attestation in the workflow.** The model drafts; a named human attests. The attestation step is a recorded act that cannot be delegated to the agent, and the structure of the workflow enforces that, not an instruction to the model.
+
+**Make drafts citable by construction.** Provenance, the record of where each piece of information came from, travels with every claim from source to sentence. Review then means following pointers rather than repeating the research ([provenance-carrying grounding](https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty#provenance-carrying-grounding-mechanically)).
+
+**Run a verification pass before anything leaves.** Citations must resolve and figures must trace to sources, and the check is a separate process from the drafting agent. This is the step whose absence produced the public failure.
+
+**Retain the full lineage immutably.** The agent's draft, the human's edits, the attestation, and the per-action logs are kept to the regime's retention rules. This lineage lives in the system of record, not in the agent's memory.
+
+### What the agent may never do
+
+* &#x20;File, submit, or transmit a formal record autonomously.
+* &#x20;Sign, certify, or attest, or generate a record of an attestation that did not happen.
+* &#x20;Alter or backdate a record after attestation; corrections are new records with their own accountability.
+
+## The caveat that keeps this honest
+
+Deterministic authorization bounds the blast radius, meaning how much damage one action can do. It does not protect intent formation, meaning the reasoning that led the agent to act. One of the three payment protocols was red-teamed successfully with prompt injection operating entirely **within** mandate bounds: the mandate held, and the agent still bought the wrong thing. The gate guarantees the damage cannot exceed the mandate. It says nothing about whether the mandate was exercised for the right reason.
+
+Two defences therefore remain necessary even with perfect gates in place. The first is upstream injection defence at the points where untrusted content enters the context, the model's working memory for the task. The second is human confirmation of intent for consequential choices inside the bounds. No gate substitutes for them. That is why the implementation steps above keep a confirmation step even where the rail is already deterministic.
+
+## Find the zones in your enterprise
+
+The four zones are the general case; your estate will have its own instances. Four questions locate them, and one yes is enough:
+
+* &#x20;Does a regulator or standard name this function, or rely on its records?
+* &#x20;Is the action irreversible, or is reversing it a legal or financial event in itself?
+* &#x20;Does the decision move money, change access, actuate equipment, or create a record a third party relies on?
+* &#x20;Is there certified or validated logic already making this decision today?
+
+**Sweep the tool inventory.** Classify every tool an agent can call against the four questions. The gateway's tool registry is the natural source of truth.
+
+**Write the zone register.** One page: the zoned functions, the deterministic decider for each, and the advisory role agents are permitted. Risk signs it, and every layer page in this guide assumes it exists.
+
+**Wire it into the controls.** Zoned actions map to gateway policy and to the required-controls column of [the autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract#the-controls-column-is-the-contract). That way the register is enforced, not aspirational.
+
+## Design consequences
+
+* The zone register is written and signed, not tribal knowledge. It is the document that lets your regulator and your board say yes to everything outside it.
+* A use case whose value depends on a model deciding inside a zone is reshaped (model informs, rule decides) or rejected. This rules out a class of demo that could never ship.
+* Everything outside the zones is negotiable and should be negotiated ambitiously; the zones are what make that ambition defensible.
+
+## Evidence and limits
+
+The zone framing itself is this guide's position, argued from convergent evidence rather than measured outcomes. The payment-stack details are vendor artifacts (Visa, Mastercard, Google): consistent in shape, but each self-described. The safety-zone exclusions are standards text (IEC 61511, ISO/IEC TR 5469:2024) and joint agency guidance, the strongest evidence class on this page. The records-zone reading rests on FINRA 24-09 and ESMA's 2024 statement, both of which mandate accountability rather than prescribing tooling. Interpretations are still moving, so re-verify against the current notices before relying on them for a filing. The intent-formation caveat rests on one published red-team study; treat it as an existence proof, not a rate. The measurements of how often attacks get past guardrails (AI-based filters), which justify deterministic gates over probabilistic filters, are on [the enforcement page](https://www.agenticarchitectureskills.com/architecture/enforcement#what-guardrails-are-for).
+
+**The research behind this page**
+
+* [Security and identity findings](https://www.agenticarchitectureskills.com/library/layers/r10-security-and-identity/findings)
+* [The identity and security model](https://www.agenticarchitectureskills.com/library/architecture/identity-security-model)
+* [Line of business and OT findings](https://www.agenticarchitectureskills.com/library/layers/r05-lob-and-ot/findings)
+* [Governance, risk and sovereignty findings](https://www.agenticarchitectureskills.com/library/layers/r11-governance-risk-sovereignty/findings)

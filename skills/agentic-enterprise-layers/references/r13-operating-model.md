@@ -1,0 +1,93 @@
+# Supervision load and oversight instrumentation
+
+How much human supervision agents really need, worked out from waiting times and peak load rather than headcount, and the measurements that prove oversight is happening.
+
+Source: https://www.agenticarchitectureskills.com/layers/r13-operating-model (Markdown: https://www.agenticarchitectureskills.com/layers/r13-operating-model.md)
+
+> **In plain terms.**
+>
+> This page is about the people who supervise AI agents. It covers how many items one person can realistically watch, how to plan for the busiest moments, and how to tell whether oversight is working. It matters because supervision that exists only on an organisation chart fails quietly, and the cost of that failure lands on the business. The one thing to remember: plan supervision around how long items wait for a decision, and make checking easy. As trust in an agent grows, expect people to step in more often, not less.
+
+## Target state
+
+**In short:** Supervision is designed like a queue with measured capacity, every agent has a named accountable person, and a monitor watches the monitors.
+
+Supervision is engineered as a queueing system, not asserted as a role. Every agent has a named accountable sponsor recorded on its identity. Its credentials are scoped, expire, and require a fresh approval cycle. Sponsorship transfers automatically on departure rather than lapsing. Supervision is integrated with the work rather than handed to a specialist function. Oversight is designed for prevention and legibility, with verification made cheap by construction rather than demanded by policy. Supervision load is measured and capped by queueing behaviour rather than by agent count. A monitoring layer watches the monitors: an algorithmic pass flags elevated-risk sessions before a human looks at anything.
+
+**Figure: Supervision as a queueing system.** Supervisory capacity is neglect time over interaction time plus wait time; load is budgeted as a burst rate per ten minutes, never a daily average.
+
+Alarms on alarms: an algorithmic monitor flags elevated-risk sessions before the human looks.
+
+**What the diagram shows:** Supervision architecture from agent fleet through algorithmic monitoring and the escalation queue to the supervisor, with wait time explicit in the capacity model and telemetry feeding back. The map contains Agent fleet; Algorithmic monitor: Flags elevated-risk sessions; alarms on alarms; Escalation queue: Wait time is the binding term; Supervisor: Capacity = NT / (IT + WT) + 1; Supervision telemetry: Intervention rate, escalation mix by trigger, wait per item. Its connections are fleet to monitor; monitor to queue; queue to supervisor; supervisor to telemetry; telemetry to monitor for tunes flagging. Important boundary: No credible published human-to-agent supervision ratio exists; burst bands replace ratios.
+
+Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-13-hero.svg
+
+| Component             | Responsibility                                        | Control it hosts                                     | Where it runs                                                                                              |
+| --------------------- | ----------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Sponsor record        | Bind each agent to an accountable human               | Automatic transfer on departure; credential expiry   | Identity platform ([R10](https://www.agenticarchitectureskills.com/layers/r10-security-and-identity))      |
+| Algorithmic monitor   | Flag elevated-risk sessions before human review       | Risk-ranked queue ordering                           | Observability plane ([R12](https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops)) |
+| Escalation queue      | Hold items awaiting a human decision                  | Wait time as the term that binds capacity            | Work management                                                                                            |
+| Supervision telemetry | Measure load, interventions, escalation mix, and wait | Evidence for the oversight gate at autonomy level A4 | Observability plane                                                                                        |
+| Verification surface  | Make checking cheap enough to actually happen         | Inline suggestions over long prose                   | The tool the reviewer already uses                                                                         |
+
+## Mechanisms
+
+### Capacity is a queueing calculation, and wait time is the term everyone drops
+
+**In short:** Capacity depends on how long items wait; ignoring wait time overstates it badly.
+
+Supervisory capacity follows the fan-out relation: neglect time divided by the sum of interaction time **and wait time**, plus one. The relation was measured across 2, 4, 6, and 8 supervised units. Interaction time stayed nearly flat (18.19 seconds to 15.74 seconds). Wait time grew roughly eightfold (8.71 seconds to 67.58 seconds). There was a statistically significant performance drop between four and six units, and at eight units each unit spent about half its time waiting. **Ignoring wait time overstates capacity by up to 67 percent, and by 36 percent even in exception-based designs.** Deliberate slack beats maximum fan-out: two operators each supervising five units outperformed one operator supervising ten, even carrying a 20 percent communication overhead.
+
+### Load is budgeted as a burst rate, never a daily average
+
+**In short:** Plan for the busiest ten minutes; a daily average hides the moments when people are overwhelmed.
+
+The only standards-embedded workload numbers come from alarm management, and they are written as burst rates, not daily averages. The steady-state bands per operator are as follows. Fewer than one item per ten minutes is very likely acceptable. One per five minutes is manageable. One per two minutes is likely over-demanding. More than one per minute is very likely unacceptable. In the first ten minutes after a major upset, more than one hundred items is described as excessive and very likely to lead the operator to abandon the system. The governing rule comes from the same standards body. A per-ten-minute rate cannot validly be converted into a per-hour or per-day figure. The per-day metric was removed from the standard precisely because averaging destroys its meaning. Any supervision target expressed as a daily average will be met on the dashboard and violated in every burst. Consequence-weighted domains regulate below one-to-one: nuclear control rooms are required to staff multiple licensed operators per unit, with a licensed operator present at the controls at all times.
+
+### The telemetry that makes oversight evidence rather than assertion
+
+**In short:** Measure four things about supervision itself, and check them against reality, because people misjudge their own speed.
+
+Instrument four things, and read the telemetry together. First, **intervention rate and trend**, understanding that a falling rate may be fatigue rather than improving reliability. Second, **escalation mix by trigger**, separating human-initiated from algorithm-triggered, because in the largest field deployment their outcomes differed materially. Third, **wait time per supervised item**, not agent count, because wait is what binds capacity. Fourth, **verification cost per review**, because that is the design lever. Add periodic blind checks, because self-report is unreliable in a specific and measured direction. In one study participants forecast being 24 percent faster, estimated afterwards that they had been 20 percent faster, and were measured 19 percent slower.
+
+### Verification cost is the lever; exhortation is not
+
+**In short:** People check agent output when checking is easy, not when told to, so design the easy check.
+
+One study covered roughly 55,000 agent-generated code-review comments in 342 repositories. The strongest predictor that a human acted on a comment was that it carried an **inline suggestion**. Long, complex comments were less likely to be acted on. Automation bias tracks verification complexity and cannot be prevented by training or instructions. Cognitive forcing functions (design features that make a person pause before accepting an answer) moved acceptance of wrong output from 0.64 to 0.48. The designs that worked best were rated most difficult, least preferred, and least trusted by the people using them. Design accordingly: make the correct check the cheapest available action, and expect the effective design to be unpopular.
+
+### Calibrated oversight, not a ratchet
+
+**In short:** As trust grows, people should step in more often while granting more standing freedom; fewer interventions is the warning sign.
+
+This is calibrated oversight: trust does not reduce supervision; it redistributes it. In measured deployments, auto-approval rose from roughly 20 percent to above 40 percent with experience. Interrupt rates rose from roughly 5 percent to roughly 9 percent over the same period. Rising interventions alongside expanding standing permission is the system working. Falling interventions alongside expanding autonomy is the pattern to investigate. Named accountability is not itself a control. In testing, a phished employee's prompt asked an agent to read cloud credentials and post them externally. It succeeded in 24 of 25 attempts, and the sponsor's name on the agent prevented none of them.
+
+## Design decisions
+
+* **Agents as workforce vs agents as tools** ([CD-22](https://www.agenticarchitectureskills.com/decisions#cd-22), whether to treat agents like staff members or like tools): keep the accountability, drop the personnel metaphor. The strongest field deployment achieves per-agent named accountability with no org-chart presence. Integrated supervisors outperformed specialists.
+* The oversight gate for autonomy levels A4 and A5 is this layer's output. A4 and A5 are the two highest levels of independent operation, defined on [the autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). The output is capacity calculated with wait time, expressed as a burst rate, and instrumented in production.
+
+## Cross-cutting concerns
+
+| #   | Concern                | Treatment at this layer                                                                                                |
+| --- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| C1  | Identity and access    | Named sponsor per agent with transfer on departure; scoped, expiring credentials; accountability distinct from control |
+| C2  | Observability          | Supervision load, intervention rates, escalation mix by trigger, wait time per item                                    |
+| C3  | Traceability and audit | Record of supervisory decisions and their rationale; consultation records where required                               |
+| C4  | Grounding              | Runbooks and escalation criteria as curated corpora; blind checks against self-report                                  |
+| C5  | Impersonation          | Clear signalling of what is agent-produced in internal work products                                                   |
+| C6  | Sovereignty            | Workforce data in supervision telemetry carries employment-law obligations                                             |
+| C7  | Privacy                | Supervisor performance data is worker data; monitoring the monitors carries its own duties                             |
+| C8  | Safety and oversight   | The whole layer: prevention and legibility, verification cheap by construction, rotation against erosion               |
+| C9  | Cost                   | Supervision labour counted in the unit economics; oversight workload is not free                                       |
+| C10 | Resilience             | Skill maintenance including deliberate unassisted practice; succession for sponsors                                    |
+
+## Evidence and limits
+
+The fan-out measurements, the alarm-standard bands, the code-review study, and the cognitive-forcing results are peer-reviewed or standards-published. The auto-approval and interrupt trends come from platform telemetry \[vendor]. **The central refusal**: no credible published human-to-agent supervision ratio exists from any source. A major vendor introduced the metric as a management concept and published no figure in either of two annual editions. Every number in circulation is an extrapolation. Several widely repeated figures were traced to untraceable or misquoted origins and are excluded from this guide entirely. Design to the burst-rate bands and your own measured wait times instead. Two items to re-verify. First, whether any credible measurement of agent-supervision capacity is published. Second, whether the 2026 finding holds that the vigilance decrement (the fall in attention over a long watch) is a bias shift rather than a sensitivity loss. If it holds, it would redirect interventions aimed at improving detection.
+
+**The research behind this page**
+
+* [Operating model findings](https://www.agenticarchitectureskills.com/library/layers/r13-operating-model/findings)
+* [Sources](https://www.agenticarchitectureskills.com/library/layers/r13-operating-model/sources)
+* [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart

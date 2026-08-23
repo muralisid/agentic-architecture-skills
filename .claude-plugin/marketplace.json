@@ -1,0 +1,23 @@
+{
+  "name": "agentic-architecture-skills",
+  "owner": {
+    "name": "Murali Sid",
+    "url": "https://www.agenticarchitectureskills.com"
+  },
+  "metadata": {
+    "description": "Agentic Architecture Skills",
+    "version": "2026.8.23"
+  },
+  "plugins": [
+    {
+      "name": "agentic-architecture-skills",
+      "source": {
+        "source": "github",
+        "repo": "muralisidfn7/agentic-architecture-skills"
+      },
+      "description": "The published architecture skills, one install for the whole catalogue.",
+      "version": "2026.8.23",
+      "category": "architecture"
+    }
+  ]
+}

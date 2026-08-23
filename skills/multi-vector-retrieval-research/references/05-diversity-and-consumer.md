@@ -1,0 +1,81 @@
+# Diversity, and who consumes the results
+
+Within a gated pool, harvesting the least similar tail buys sub-topic coverage about twice as cheaply as maximal marginal relevance and admits fewer answerless documents than a determinantal point process. The claim that the right amount of diversity depends on whether a model or a person reads the results did not survive a cross-family judge.
+
+Source: https://www.agenticarchitectureskills.com/research/diversity-and-consumer (Markdown: https://www.agenticarchitectureskills.com/research/diversity-and-consumer.md)
+
+> **In plain terms.**
+>
+> After a search finds candidates, something has to pick the ten that get passed on. Picking the ten most similar repeats the same point; picking deliberately different ones covers more ground but risks including things that do not answer the question. This page measures that trade for several selection rules, then tests the idea the programme was built around: that a model writing a summary wants more variety than a person reading a brief. The one thing to remember: the selection rule proposed here is an efficient one, and the idea that the rule should change with the reader has no evidence behind it yet.
+
+## The retrieval half: what each policy delivers
+
+**In short:** Coverage costs relevance. The harvest buys it cheaper than MMR and admits fewer distractors than a DPP.
+
+Ground truth comes from construction rather than from a model. Each of 120 queries is associated with several distinct facts, and each candidate document realises at most one of them, so the sub-topics a selection covers can be counted exactly; deriving sub-topics by clustering would have been circular, since one of the policies under test selects by cluster. Candidates are gated to the upper half by relevance first, as a first pass would do, a distractor pool of answerless documents is mixed in, and each policy then selects ten. S-recall counts the share of known sub-topics covered; nDCG\@10 measures relevance; the distractor rate counts answerless documents admitted.
+
+**Measured result: The coverage-relevance frontier of seven selection policies.** 120 constructed queries, budget of ten, seed 13. Up is more sub-topic coverage; right is more relevance.
+
+| Relevance (nDCG\@10) | Sub-topic coverage (S-recall) | Point               |
+| -------------------- | ----------------------------- | ------------------- |
+| 0.827                | 0.372                         | Relevance only      |
+| 0.802                | 0.405                         | MMR, lambda 0.7     |
+| 0.808                | 0.567                         | Harvest 20%         |
+| 0.774                | 0.545                         | Cluster round-robin |
+| 0.781                | 0.686                         | Harvest 40%         |
+| 0.729                | 0.686                         | MMR, lambda 0.3     |
+| 0.699                | 0.746                         | DPP                 |
+
+The two harvest settings sit above and to the right of the MMR and cluster policies at comparable coverage. The DPP reaches the most coverage and pays the most relevance for it.
+
+**Source:** Benchmark repository, results/e3\_diversity/metrics.json, commit 92c18cb (2026-08-22). Reproduced on a second machine to within 5e-8.
+
+| Policy                    | S-recall | Alpha-nDCG | nDCG\@10 | Distractor rate |
+| ------------------------- | -------- | ---------- | -------- | --------------- |
+| Relevance only            | 0.372    | 0.542      | 0.827    | 0.168           |
+| MMR, lambda 0.7           | 0.405    | 0.566      | 0.802    | 0.197           |
+| MMR, lambda 0.3           | 0.686    | 0.695      | 0.729    | 0.285           |
+| DPP                       | 0.746    | 0.706      | 0.699    | 0.328           |
+| Cluster round-robin       | 0.545    | 0.626      | 0.774    | 0.229           |
+| Harvest, 20 percent quota | 0.567    | 0.619      | 0.808    | 0.198           |
+| Harvest, 40 percent quota | 0.686    | 0.677      | 0.781    | 0.236           |
+
+Read along the rows: the 40 percent harvest and MMR at lambda 0.3 reach the same coverage (0.686), and the harvest pays 0.046 of relevance for it where MMR pays 0.098. The harvest also admits distractors at 0.236 against MMR's 0.285 and the DPP's 0.328. The mechanism is visible in the construction: MMR and the DPP diversify the whole list, so the top of the list drifts off relevance, while the harvest keeps a relevance head and spends only the tail. All coverage gains over relevance ranking are Holm-significant at p=0.0001; so are all the relevance costs.
+
+An earlier version of this experiment reported coverage as nearly free. It was wrong: an integer-division bug gave two distractors per task instead of forty, so nothing could be lost and every relevance metric sat at its ceiling. The corrected trade is the one above.
+
+## The consumer half: does the right amount depend on the reader?
+
+**In short:** Three judges, three answers that shrink to nothing as the judge moves away from the generator's model family.
+
+The same gated pool, the same query, and the same synthesis model were used throughout; only the selection policy and the consumer varied. For the machine consumer the selection is assembled as evidence for a model that must synthesise an account of everything the material covers. For the human consumer the same selection is rendered as a short brief for a person who will read it once and act on it. Sixty tasks, two policies (relevance, harvest) and two consumers give 240 generations. The prediction was an interaction, not a main effect: harvesting should raise coverage for the machine consumer by more than for the human one.
+
+Coverage of the known sub-topics in the generated text was scored by three judges: a model from the same family as the generator, a larger model from that family, and a model from a different family.
+
+**Measured result: The consumer interaction, as each judge measured it.** Harvest's coverage gain for the machine consumer minus its gain for the human consumer, 60 tasks, with 95 percent bootstrap intervals. A positive value supports the claim.
+
+| Interaction (machine gain minus human gain, judged coverage) | Interaction | 95% interval     |
+| ------------------------------------------------------------ | ----------- | ---------------- |
+| Same-family judge, small                                     | +0.071      | +0.022 to +0.125 |
+| Same-family judge, large                                     | +0.047      | -0.024 to +0.117 |
+| Cross-family judge                                           | +0.008      | -0.039 to +0.056 |
+
++0.071 (p=0.009), +0.047 (p=0.211), +0.008 (p=0.763). The estimate shrinks monotonically with distance from the generator's own family and vanishes at the cross-family judge, which is the signature of a judging artefact. Not disproved: all three point estimates are positive, and 60 tasks cannot resolve an effect this small. But no evidence may be cited for it.
+
+**Source:** Benchmark repository, results/e3b\_consumer, results/e3b\_consumer\_judge\_pro, results/e3b\_consumer\_judge\_azure (metrics.json), commit 92c18cb (2026-08-22).
+
+One finding from the same study needs no judge and survived every check. Counting words in the output that no selected document supports, harvesting reduces unsupported content: −0.067 for the human-facing brief (p=0.0018) and −0.048 for the machine-facing synthesis (p=0.067). A selection that covers more of the material gives the writer less reason to invent. This was not predicted, it is judge-independent, and it is the most defensible thing the consumer study produced.
+
+## What this establishes
+
+**Verdict: An efficient operator; an unsupported policy.**
+
+Within a gated pool, the outlier harvest is a more efficient way to buy sub-topic coverage than MMR or a DPP, and it produces better-grounded summaries. That half stands. The consumer-dependent flip, the claim that diversity should be conditioned on who reads the results, has no evidence that survives a cross-family judge and is withdrawn as a claim. A system that already has MMR or a DPP should set its quality-diversity balance per workload on measured coverage, not per consumer on this programme's say-so.
+
+\[Evidence status: Mixed evidence] The retrieval half is independently measured on constructed ground truth; the consumer half depends on model judges and is reported as unresolved.
+
+**The research behind this page**
+
+* Benchmark repository: `results/e3_diversity`, `results/e3b_consumer` and the two additional judge runs, commit 92c18cb, 2026-08-22.
+* Carbonell and Goldstein, MMR, SIGIR 1998; diverse multi-answer retrieval with determinantal point processes, COLING 2022; DIVA, NAACL 2025; the Distracting Effect, ACL 2025; The Power of Noise (SIGIR 2024) and its retraction (SIGIR 2026). All on the [reading list](https://www.agenticarchitectureskills.com/research/reading-list).
+* Alpha-nDCG, Clarke et al., SIGIR 2008, and sub-question coverage (Salesforce and Georgia Tech, Oct 2024) for why coverage has to be measured with coverage metrics rather than recall.

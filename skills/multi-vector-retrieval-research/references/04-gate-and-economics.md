@@ -1,0 +1,93 @@
+# The cheap gate and the bill
+
+A first pass built from embeddings alone separates on-purpose from off-purpose email at ROC-AUC 0.933, yet discards only a third of a corpus at high recall. The two-pass design is about two hundred times cheaper than reading every document with a model, but the advantage does not widen with corpus size.
+
+Source: https://www.agenticarchitectureskills.com/research/gate-and-economics (Markdown: https://www.agenticarchitectureskills.com/research/gate-and-economics.md)
+
+> **In plain terms.**
+>
+> A two-pass design runs a cheap filter over everything and spends the expensive model only on what survives, grouped into topics. This page tests both halves: whether the filter actually tells relevant from irrelevant, and how much money the design saves as the corpus grows. The one thing to remember: the filter works but removes less than people assume, and the big saving comes from paying per topic instead of per document, as a fixed multiple rather than a multiple that grows.
+
+## Does the gate discriminate?
+
+**In short:** Yes. Held-out ROC-AUC 0.933 on corporate email against unrelated Usenet posts, using nothing but embeddings and a handful of anchor phrases.
+
+On-purpose items are 4,000 messages from a public corporate email corpus (Enron); off-purpose items are 4,000 Usenet posts from unrelated newsgroups. Provenance gives exact labels at no annotation cost. Three anchor sets describe facets of the purpose, each item scores the mean of its best few similarities to each set, and the combination is fitted on one half and reported on the other. At the target recall of 0.95 the gate keeps 66 percent of the corpus and quarantines the rest; precision at that point is 0.71.
+
+| Measure                           | Value | Note                                                                                                 |
+| --------------------------------- | ----- | ---------------------------------------------------------------------------------------------------- |
+| Held-out ROC-AUC                  | 0.933 | PR-AUC 0.935. The first pass is a filter, not a sample.                                              |
+| Equal anchor weights              | 0.931 | Fitting the weights is worth 0.002. The discrimination comes from having several anchor sets at all. |
+| Deliberately irrelevant anchors   | 0.860 | Three sets of off-purpose phrases still reach 0.860, because the space is already separable.         |
+| Logistic regression, same vectors | 0.995 | A trivial supervised classifier on the raw embeddings beats the anchor gate by 0.062.                |
+
+Two qualifications matter more than the headline. Fitting the anchor weights is worth almost nothing: equal weights give 0.931 against 0.933. And the adversarial review ran a null control that the original design lacked. Three sets of deliberately irrelevant anchor phrases reach ROC-AUC 0.860, one purpose-specific set alone reaches 0.852, and plain logistic regression on the raw embeddings reaches 0.995. Most of the gate's discrimination comes from projecting onto a few directions of a space that is already separable, and a supervised classifier on the same vectors is better by a wide margin when labels exist.
+
+## How much does the gate remove?
+
+**In short:** At the recall a production filter must hold, about a third; at 0.99 recall, an eighth.
+
+**Measured result: Corpus discarded by the gate, by recall target.** Held-out half of the email-against-Usenet corpus. Precision at each point in the table view.
+
+| Category                     | Percent of corpus discarded |
+| ---------------------------- | --------------------------- |
+| Recall 0.80 (achieved 0.781) | 57.7                        |
+| Recall 0.90 (achieved 0.901) | 46.5                        |
+| Recall 0.95 (achieved 0.954) | 33.7                        |
+| Recall 0.98 (achieved 0.981) | 20.0                        |
+| Recall 0.99 (achieved 0.993) | 12.1                        |
+
+The economic case for a first pass is proportional to the fraction it removes. At recall 0.95 the gate removes a third; at 0.99, an eighth. It contributes a linear factor between one and two, bought directly with recall.
+
+**Source:** Benchmark repository, results/e2\_gate/metrics.json, commit 92c18cb (2026-08-22). On a second machine: ROC-AUC 0.936, 32.3 percent discarded at recall 0.95.
+
+A first pass is usually described as discarding most of a corpus. On this evidence it does not. The order-of-magnitude saving in a two-pass design comes from elsewhere: from attaching generative cost to the number of discovered topics rather than to the number of documents. Attributing the saving to the filter overstates the filter and understates the substitution. A caveat bounds the result from above: separating corporate email from Usenet is easier than separating on-purpose from off-purpose material inside one corpus, which is what a deployed gate faces. Failing here would have been disqualifying; passing here is necessary rather than sufficient.
+
+## The bill, measured rather than estimated
+
+**In short:** At comparable topic granularity the two-pass design costs roughly two hundred times less than sending every document to a model. The claim that the advantage widens with corpus size does not survive.
+
+Nothing here is a rule of thumb. Token counts come from a real tokenizer over the real corpus, the number of generative calls comes from actually running the gate and the clustering at each corpus size, so the topic count K is measured rather than assumed. Only the per-token prices are external: a published price table dated 2026-08-19, reported in the artifact so the reader can edit it. Encoder compute is priced at zero, which flatters the ratio, and is stated as such.
+
+The original run appeared to show a scaling law: topics grew as N to the power 0.52 and the cost advantage widened as N to the power 0.44. Re-running the economics with topic coverage reported alongside cost, at two clustering settings, reversed the direction of the finding.
+
+**Measured result: Cost advantage of the two-pass design against corpus size, at two topic granularities.** Ratio of full-model cost to two-pass cost, Enron, 500 to 20,000 messages. Coarse clustering (minimum cluster size 25) against useful granularity (minimum cluster size 10).
+
+| Messages in the corpus | Coarse clustering | Useful granularity |
+| ---------------------- | ----------------- | ------------------ |
+| 500                    | 325               | 216                |
+| 1,000                  | 586               | 861                |
+| 2,000                  | 1481              | 1505               |
+| 5,000                  | 947               | 418                |
+| 10,000                 | 1824              | 152                |
+| 20,000                 | 1841              | 204                |
+
+At coarse clustering the advantage grows (N to the power 0.44), because the clusters coarsen as the corpus grows: 14 topics over 10,000 messages, at 485 documents per topic, is not a summary of anything. At useful granularity topics grow faster than the corpus (N to the power 1.25) and the advantage shrinks (N to the power −0.27). What remains is a constant factor of roughly two hundred.
+
+**Source:** Benchmark repository, results/e2\_economics\_mcs25/metrics.json and results/e2\_economics\_mcs10/metrics.json, commit 92c18cb (2026-08-22). Prices as of 2026-08-19, editable in the artifact.
+
+| Messages | Topics, coarse | Coverage of survivors, coarse | Topics, fine | Coverage, fine | Documents per topic, fine |
+| -------- | -------------- | ----------------------------- | ------------ | -------------- | ------------------------- |
+| 500      | 2              | 49.6%                         | 3            | 54.0%          | 45                        |
+| 2,000    | 2              | 59.8%                         | 2            | 78.6%          | 393                       |
+| 5,000    | 7              | 97.6%                         | 16           | 97.1%          | 152                       |
+| 10,000   | 7              | 94.8%                         | 88           | 32.1%          | 18                        |
+| 20,000   | 14             | 67.9%                         | 132          | 26.3%          | 20                        |
+
+Coverage also exposes how coarse the coarse setting is, and how the exponents depend on the clustering hyperparameter rather than on the design: on a second machine, where the dimensionality reduction and density clustering produce different topic models, the fitted exponents moved again (0.27 and 0.71 at the original setting). The exponents are a clustering artefact. The constant factor is not.
+
+Two further caveats stand. The two designs produce different deliverables: a topic-level summary of a corpus is not a per-document understanding of it, so the ratio applies to topic discovery rather than to reading. And pricing local encoder compute at zero overstates the saving for anyone who pays for that compute by the hour.
+
+## What this establishes
+
+**Verdict: A real constant-factor saving, and a gate that quarantines rather than saves.**
+
+Processing discovered topics instead of documents is about two hundred times cheaper at comparable granularity, and that is the saving. The gate is worth building as a quarantine with a recall target, contributing a factor of one to two; it is not where the order of magnitude comes from, and when a labelled sample exists a supervised classifier on the same embeddings discriminates far better than hand-weighted anchors. The scaling law is withdrawn.
+
+\[Evidence status: Independently measured] Exact provenance labels, measured token counts, dated public prices.
+
+**The research behind this page**
+
+* Benchmark repository: `results/e2_gate`, `results/e2_economics`, `results/e2_economics_mcs10`, `results/e2_economics_mcs25`, commit 92c18cb, 2026-08-22.
+* The adversarial review of Sprint R1, 2026-08-20, for the null anchor control and the economics addendum.
+* TnT-LLM (KDD 2024), Databricks (Jul 2026, vendor) and Distilling Step-by-Step (ACL Findings 2023) for the published economics of letting a model design and classical machinery execute, on the [reading list](https://www.agenticarchitectureskills.com/research/reading-list).

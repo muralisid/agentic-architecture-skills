@@ -1,0 +1,19 @@
+{
+  "name": "agentic-architecture-skills",
+  "version": "2026.8.23",
+  "description": "Architecture skills for the agentic enterprise and for software that agents consume first, generated from agenticarchitectureskills.com.",
+  "author": {
+    "name": "Murali Sid",
+    "url": "https://www.agenticarchitectureskills.com"
+  },
+  "homepage": "https://www.agenticarchitectureskills.com/skills",
+  "repository": "https://github.com/muralisidfn7/agentic-architecture-skills",
+  "license": "CC-BY-SA-4.0",
+  "keywords": [
+    "architecture",
+    "agents",
+    "enterprise",
+    "mcp",
+    "governance"
+  ]
+}

@@ -1,0 +1,59 @@
+# Enforcement outside the model
+
+Why the rules that bind an agent are enforced outside the AI model, where those controls sit, what they cost, and the measured limits of softer filters.
+
+Source: https://www.agenticarchitectureskills.com/architecture/enforcement (Markdown: https://www.agenticarchitectureskills.com/architecture/enforcement.md)
+
+> **In plain terms.**
+>
+> An AI model can be talked into things, because the instructions it follows and the content it reads arrive through the same channel. So the rules that matter, such as who may access what and which actions need approval, are enforced by separate components that the model cannot argue with. This page shows the three places those controls live, and why AI-based filters are an early warning rather than the lock on the door. The one thing to remember: a rule the model merely reads is advice; a rule enforced outside the model is a control.
+
+## The premise
+
+**In short:** The model's behaviour can be manipulated through what it reads, so behaviour cannot be the foundation of a control.
+
+An agent's behaviour is the output of a model, and the model's inputs can manipulate it. That makes behaviour the wrong foundation for a control. A model processes commands and content as one undifferentiated stream of text (token-uniform processing), so training alone cannot teach it to keep the two apart. Without a control that sits outside the model, authorization turns into a hunt for the next exploit. EchoLeak proved the class. It is catalogued as CVE-2025-32711 (Common Vulnerabilities and Exposures) and scored 9.3 on the 10-point Common Vulnerability Scoring System (CVSS). It exfiltrated data, pulling it out of the organisation through a retrieval agent without the user clicking anything, working entirely in natural language. So enforcement lives outside the model, in three tiers.
+
+## Tier 1: the gateway
+
+**In short:** Every request an agent makes to a tool goes through one door, and that door does the checking.
+
+Every tool call passes through the gateway, the single door between agents and the systems they touch. The gateway applies an allowlist of permitted tools, exchanges the caller's identity (token exchange), and injects credentials. It also checks that each tool's description has not changed, applies rate limits, and records every call for audit. Approval rules may be held in the harness, the engineering shell around the model, because only the harness sees the whole loop. They are enforced at the gateway, because only the gateway cannot be talked out of them. Full detail is on [the R03 page](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric), which covers the integration fabric.
+
+## Tier 2: the policy decision point
+
+**In short:** A fixed-rules component says yes or no to every consequential action, about a thousand times faster than an AI filter.
+
+A deterministic policy decision point (PDP) sits in the tool-call path. It is the component that says yes or no to an action by checking rules against who is asking, and it is evaluated on every consequential action. Two engine families offer a real trade-off. Cedar-class engines answer in under a millisecond and are formally verified, but they are stateless. Open Policy Agent (OPA) class engines handle richer joins across data. Two complements apply where the workload warrants them. The first is deterministic information-flow control: FIDES, shipped in a major agent framework, scored zero policy-violating injections on the AgentDojo benchmark, against 20 to 152 without it. The second is formal output verification: Automated Reasoning checks, generally available (GA) since August 2025 \[vendor].
+
+The cost argument is decisive on its own. A policy-engine evaluation takes under a millisecond to a few milliseconds. A guardrail call that uses a large language model (LLM) takes around 1.5 seconds. That is a difference of roughly a thousand times (three orders of magnitude), paid on every action, forever.
+
+## Tier 3: promoted rules, landed outside the model
+
+**In short:** A rule an agent learns only counts once it has passed testing and been written into policy outside the model.
+
+Learned behaviour graduates into enforcement only through the learning flywheel gate. The rule must survive counterexamples (test cases built from real failures), pass eval regression (the standing test suite), and receive human approval. The promoted artifact then lands in policy-as-code, versioned and deployed independently of the model. A rule the model merely reads is still a soft rule. The ceiling on such rules is measured. A statement-by-statement analysis of real agent instruction files found roughly a quarter of statements enforceable by a fixed check as written. It found 74 percent depending on context that cannot be defined in advance. Formal work adds a second limit. Deterministic gates can enforce strictly less than edit automata, a more powerful class of enforcement monitor, so some rules about behaviour over time (renewal properties) stay out of reach. That ceiling is why tiers 1 and 2 exist.
+
+## What guardrails are for
+
+**In short:** AI-based filters are a useful early warning, but attackers get past them most of the time, so they decide nothing that matters.
+
+Guardrails are the advisory layer, never the boundary. In published tests, roughly 72 percent, 77 percent, and 72.5 percent of attacks got past three named commercial guardrail products, and up to 100 percent got past some configurations. The only configuration with a measured 0 percent bypass rate paid for it with 16.22 percent false positives and about 1.5 seconds of added latency (delay) per call. A guardrail can also be made to deny service, and that denial is itself exploitable. Guardrails retain genuine value for content policy, detection of personally identifiable information (PII), and telemetry, where a miss is tolerable. Their block rate is monitored in both directions: a spike signals an attack, a drop signals misconfiguration.
+
+## The map
+
+**In short:** Each kind of rule has one place where it is enforced, and a place where people wrongly assume it is.
+
+| What                                   | Where enforced                                                             | Where it is not                   |
+| -------------------------------------- | -------------------------------------------------------------------------- | --------------------------------- |
+| Tool access, credentials               | Gateway                                                                    | Prompt instructions               |
+| Authorization of consequential actions | PDP in the tool-call path                                                  | Model judgment, guardrails        |
+| Promoted behavioural rules             | Policy-as-code, out of model                                               | Instruction files the model reads |
+| Iteration count, cost, wall-clock time | Harness caps plus platform hard caps (429 too-many-requests on exhaustion) | Model self-restraint              |
+| Content policy, PII screening          | Guardrails, advisory                                                       | Anything consequential            |
+
+**The research behind this page**
+
+* [Security and identity findings](https://www.agenticarchitectureskills.com/library/layers/r10-security-and-identity/findings)
+* [Intelligence and learning findings](https://www.agenticarchitectureskills.com/library/layers/r06-intelligence-and-learning/findings)
+* [Integration fabric findings](https://www.agenticarchitectureskills.com/library/layers/r03-integration-fabric/findings)

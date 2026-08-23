@@ -1,0 +1,67 @@
+# Real prose: where purpose views lose
+
+On 5,183 human-judged scientific abstracts, purpose cards score below matched blind chunks, whether the card taxonomy is written by hand or designed by a model from the corpus and the training queries. The domain boundary of the method, measured.
+
+Source: https://www.agenticarchitectureskills.com/research/real-prose (Markdown: https://www.agenticarchitectureskills.com/research/real-prose.md)
+
+> **In plain terms.**
+>
+> The previous page used corpora where documents visibly have separate aspects and questions target one of them. This page uses scientific abstracts judged by people, where a question is usually about the finding as a whole. Here the purpose cards lose to plain chunks, and letting a model design the card taxonomy does not rescue them. The one thing to remember: purpose views are a tool for a particular shape of question, and outside that shape the simpler method is better.
+
+## The honest case
+
+**In short:** Real prose nobody wrote for the experiment, real labels, and queries about whole findings.
+
+SciFact carries 5,183 scientific abstracts and 300 claims with human relevance judgements, so no model labels anything. An abstract is genuinely multi-aspect, moving through background, method, result, and implication, and a claim usually concerns one of those parts. Unlike LIMIT the boundaries are not marked, so the card builder has to find them, and the taxonomy has to be designed and may be wrong. That is the situation the pattern is meant for.
+
+The arms are the same as before, all at document level with the same encoder: keyword search, one pooled vector, matched blind chunks (2.7 per document), purpose cards (2.8 per document) under a hand-written taxonomy of rhetorical roles, and the cards fused with keyword search by reciprocal rank.
+
+**Measured result: SciFact: purpose cards against matched chunks, on human judgements.** nDCG\@10 over 300 claims, seed 13. Card arms in the accent colour.
+
+| Category                                                  | nDCG\@10 |
+| --------------------------------------------------------- | -------- |
+| BM25 keyword search                                       | 0.662    |
+| Dense, pooled                                             | 0.645    |
+| Matched blind chunks (2.7 per document)                   | 0.667    |
+| Purpose cards, hand-written taxonomy (2.8 per document)   | 0.635    |
+| Purpose cards, model-designed taxonomy (2.5 per document) | 0.626    |
+| Cards fused with BM25                                     | 0.685    |
+
+The cards are the two lowest dense arms. The hybrid is the best arm, which is the keyword component doing real work on a corpus full of gene names, drug names, and measured quantities.
+
+**Source:** Benchmark repository, results/e1\_scifact\_matched/metrics.json and results/e1\_llm\_taxonomy\_scifact/metrics.json, commit 92c18cb (2026-08-22). Byte-identical on a second machine for the hand-written taxonomy; −0.044 against chunks (p=0.004) on the second machine for the model-designed one.
+
+Purpose cards score 0.635 against the matched chunks' 0.667: −0.032, 95 percent interval −0.057 to −0.008, p=0.0115, 70 losses to 36 wins with 194 ties. Equalising the embedding budget barely moved the gap, so capacity is not the explanation; the cards are genuinely worse here. Fusing cards with BM25 gives 0.685, +0.040 over the pooled vector (p=0.012), which is the best arm in the table and comes from the lexical side.
+
+## A construction defect, caught and corrected
+
+**In short:** The first SciFact result was catastrophic and wrong, because the cards kept less than half the text.
+
+The first version of this experiment reported −0.193 for the cards. That number was real and its cause was a defect: the card builder kept only the top two spans per aspect, so the cards covered 44.6 percent of each document against the chunks' 100 percent. A card set that holds less than half the text cannot be compared with one that holds all of it. That arm is retained in the artifact as `dense-multicard-lossy` (0.452) because it is a useful lesson: the coverage of the source text is a matched-control condition like any other, and it has to be measured before a result is believed. The corrected cards cover the whole document and score 0.635.
+
+## Can a model design a better taxonomy?
+
+**In short:** A taxonomy designed by a model from the corpus and the training claims ties the hand-written one and stays significantly below chunks.
+
+The conjecture, raised by the maintainer after the first result, was that the hand-written rhetorical taxonomy was exactly the misalignment the method warns against, and that a model shown the corpus and the query workload would design a better one. It was tested directly. One generative call, before any evaluation, showed the designer a sample of documents and 809 claims from the training split and asked for four to seven views with anchor phrases; the 300 test claims were never shown. The model proposed a sensible content taxonomy: molecular mechanisms, disease pathology, experimental methods, physiological systems, clinical outcomes. The same partitioning card builder then ran under it.
+
+The model-designed cards score 0.626: −0.009 against the hand-written taxonomy (p=0.48, a tie), −0.019 against the pooled vector (p=0.11), and −0.042 against matched chunks (95 percent interval −0.069 to −0.016, p=0.0018). Rerun on a second machine with a fixed hash seed, which changed the training sample the designer saw and therefore the taxonomy it wrote, the disposition held: −0.044 against chunks, p=0.004.
+
+## Why the cards lose here
+
+**In short:** A card boundary throws away evidence that a blind window happens to keep together, and if no card is the unit the query asks about, that loss buys nothing.
+
+The mechanism is the mirror image of the synthetic result. On the synthetic corpus a query targets one aspect, so splitting by aspect puts the whole answer in one card. A SciFact claim concerns a finding, and the evidence for a finding is spread across the method, the result, and the implication. A purpose boundary separates them; a blind window keeps whichever of them happen to be adjacent. Neither representation is the unit the query asks about, and the one that preserves more local context wins. No view taxonomy helps here, designed by a model or by hand, which marks the domain boundary of the method.
+
+**Verdict: Where purpose views lose, and the rule that follows.**
+
+On workloads whose queries concern whole findings rather than aspects, purpose cards score below matched chunks (−0.032 hand-written, −0.042 model-designed, both significant) and no taxonomy design closes the gap. The rule: purpose views have to beat matched chunks on your own query set before they earn their place, and keyword search stays in the loop regardless, because it produced the best arm.
+
+\[Evidence status: Independently measured] Human relevance judgements, no model labels, replicated on a second machine.
+
+**The research behind this page**
+
+* Benchmark repository: `results/e1_scifact_matched`, `results/e1_llm_taxonomy_scifact` (including the designed taxonomy in `llm_taxonomy.json`), commit 92c18cb, 2026-08-22.
+* BEIR, the benchmark family SciFact belongs to: Thakur et al., NeurIPS 2021. [https://arxiv.org/abs/2104.08663](https://arxiv.org/abs/2104.08663)
+* Weller et al., When do Generative Query and Document Expansions Fail?, EACL 2024, on derived-text indexing hurting strong retrievers. [https://arxiv.org/abs/2309.08541](https://arxiv.org/abs/2309.08541)
+* [The recommended approach](https://www.agenticarchitectureskills.com/research/recommended-approach) for how this boundary becomes a decision rule.
