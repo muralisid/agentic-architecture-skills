@@ -59,4 +59,4 @@ Diagram: https\://www\.agenticarchitectureskills.com/figures/memory-obligation-t
 * [The memory-pipeline architecture](https://www.agenticarchitectureskills.com/library/architecture/memory-pipeline-architecture)
 * [Agent data engineering findings](https://www.agenticarchitectureskills.com/library/layers/r14-agent-data-engineering/findings)
 * [Data platform findings](https://www.agenticarchitectureskills.com/library/layers/r02-data-platform/findings)
-* [The multi-card retrieval experiments](https://www.agenticarchitectureskills.com/research), the measured evidence behind the purpose-scoped curation step
+* [The multi-card retrieval experiments](https://www.agenticarchitectureskills.com/patterns), the measured evidence behind the purpose-scoped curation step

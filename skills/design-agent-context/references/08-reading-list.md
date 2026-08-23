@@ -2,7 +2,7 @@
 
 The published work read during the programme, grouped by the question it answers, with what each paper shows and how the experiments here relate to it: confirmed, contradicted, or bounded.
 
-Source: https://www.agenticarchitectureskills.com/research/reading-list (Markdown: https://www.agenticarchitectureskills.com/research/reading-list.md)
+Source: https://www.agenticarchitectureskills.com/patterns/reading-list (Markdown: https://www.agenticarchitectureskills.com/patterns/reading-list.md)
 
 > **In plain terms.**
 >
@@ -31,7 +31,7 @@ Source: https://www.agenticarchitectureskills.com/research/reading-list (Markdow
 | Weller et al., Promptriever, ICLR 2025. [https://arxiv.org/abs/2409.11136](https://arxiv.org/abs/2409.11136)                                                                                                                                                                          | Retrievers trained to follow instructions like language models                                                         | The strong baseline any objective-conditioning proposal must beat; deliberately deferred here because it would widen the negative |
 | Feng et al., GSTransform, 2025. [https://arxiv.org/abs/2505.24754](https://arxiv.org/abs/2505.24754)                                                                                                                                                                                  | Per-instruction embedding views without re-encoding the corpus                                                         | Delivers the embed-once economics the round-5 architecture aimed at, without the view-design step                                 |
 | Qidwai et al., CAMI, 2026. [https://arxiv.org/abs/2606.28365](https://arxiv.org/abs/2606.28365)                                                                                                                                                                                       | An agent proposes candidate enrichment indexes and selects a portfolio under a cost budget                             | Conditions index construction on the corpus and a budget, not on the objective; consistent with the negative here                 |
-| Microsoft Research, GraphRAG auto-tuning, 2024 (vendor). [https://www.microsoft.com/en-us/research/blog/graphrag-auto-tuning-provides-rapid-adaptation-to-new-domains/](https://www.microsoft.com/en-us/research/blog/graphrag-auto-tuning-provides-rapid-adaptation-to-new-domains/) | Extraction schema generated from roughly a one percent corpus sample                                                   | Corpus-derived design, the form that worked here                                                                                  |
+| Microsoft Research, GraphRAG auto-tuning, 2024 (vendor). [https://www.microsoft.com/en-us/patterns/blog/graphrag-auto-tuning-provides-rapid-adaptation-to-new-domains/](https://www.microsoft.com/en-us/patterns/blog/graphrag-auto-tuning-provides-rapid-adaptation-to-new-domains/) | Extraction schema generated from roughly a one percent corpus sample                                                   | Corpus-derived design, the form that worked here                                                                                  |
 
 ## The model designs; classical machinery executes
 

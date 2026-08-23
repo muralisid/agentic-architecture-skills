@@ -2,7 +2,7 @@
 
 A document about several things gets one embedding that is an average of all of them. The measurement of that loss, the control that separates more vectors from better-aligned vectors, and the stress test that shows how much of the gain is capacity.
 
-Source: https://www.agenticarchitectureskills.com/research/aspect-dilution (Markdown: https://www.agenticarchitectureskills.com/research/aspect-dilution.md)
+Source: https://www.agenticarchitectureskills.com/patterns/aspect-dilution (Markdown: https://www.agenticarchitectureskills.com/patterns/aspect-dilution.md)
 
 > **In plain terms.**
 >
@@ -75,7 +75,7 @@ Keyword search wins outright, because LIMIT queries name an exact attribute. The
 
 **Source:** Benchmark repository, results/e1\_limit/metrics.json, commit 92c18cb (2026-08-22). Byte-identical on a second machine.
 
-The first reading of this table attributed the 0.674 gain to alignment, because 30-word chunks gained only 0.076. An adversarial re-run, described on the [method page](https://www.agenticarchitectureskills.com/research/method-and-reversals), varied only the chunk granularity and found that nDCG\@10 is a smooth function of units per document.
+The first reading of this table attributed the 0.674 gain to alignment, because 30-word chunks gained only 0.076. An adversarial re-run, described on the [method page](https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design), varied only the chunk granularity and found that nDCG\@10 is a smooth function of units per document.
 
 **Measured result: Blind windows against units per document.** The same text, the same encoder, only the window width varied. Cards sit at 44 units per document.
 
@@ -97,7 +97,7 @@ Two things follow. Capacity is necessary and explains most of the LIMIT result; 
 
 **Verdict: Multi-vector, yes; purpose alignment, conditionally.**
 
-Several embeddings per document beat one on aspect-rich material, decisively and by any method of splitting. Purpose alignment adds a measurable extra (+0.188 at ten aspects, with fewer embeddings) when queries target one aspect and the anchors describe the aspects well. It adds nothing, and can subtract, when they do not, which is the finding on [real prose](https://www.agenticarchitectureskills.com/research/real-prose). The unconditional claim that alignment rather than count explains the gain is withdrawn.
+Several embeddings per document beat one on aspect-rich material, decisively and by any method of splitting. Purpose alignment adds a measurable extra (+0.188 at ten aspects, with fewer embeddings) when queries target one aspect and the anchors describe the aspects well. It adds nothing, and can subtract, when they do not, which is the finding on [real prose](https://www.agenticarchitectureskills.com/patterns/real-prose). The unconditional claim that alignment rather than count explains the gain is withdrawn.
 
 \[Evidence status: Independently measured] The synthetic and LIMIT results reproduced byte-for-byte or to floating-point precision across two machines and two processor architectures.
 
@@ -106,4 +106,4 @@ Several embeddings per document beat one on aspect-rich material, decisively and
 * Benchmark repository: `results/e0_dilution`, `results/e1_anchor_sensitivity`, `results/e1_limit`, commit 92c18cb, 2026-08-22.
 * Weller, Boratko, Naim, Lee, On the Theoretical Limitations of Embedding-Based Retrieval, arXiv:2508.21038, Aug 2025. [https://arxiv.org/abs/2508.21038](https://arxiv.org/abs/2508.21038)
 * The adversarial review of Sprint R1, 2026-08-20, whose chunk-granularity re-run produced the second chart.
-* [The papers behind the recommendation](https://www.agenticarchitectureskills.com/research/reading-list) for the multi-vector literature this sits in.
+* [The papers behind the recommendation](https://www.agenticarchitectureskills.com/patterns/reading-list) for the multi-vector literature this sits in.

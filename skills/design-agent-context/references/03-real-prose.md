@@ -2,7 +2,7 @@
 
 On 5,183 human-judged scientific abstracts, purpose cards score below matched blind chunks, whether the card taxonomy is written by hand or designed by a model from the corpus and the training queries. The domain boundary of the method, measured.
 
-Source: https://www.agenticarchitectureskills.com/research/real-prose (Markdown: https://www.agenticarchitectureskills.com/research/real-prose.md)
+Source: https://www.agenticarchitectureskills.com/patterns/real-prose (Markdown: https://www.agenticarchitectureskills.com/patterns/real-prose.md)
 
 > **In plain terms.**
 >
@@ -64,4 +64,4 @@ On workloads whose queries concern whole findings rather than aspects, purpose c
 * Benchmark repository: `results/e1_scifact_matched`, `results/e1_llm_taxonomy_scifact` (including the designed taxonomy in `llm_taxonomy.json`), commit 92c18cb, 2026-08-22.
 * BEIR, the benchmark family SciFact belongs to: Thakur et al., NeurIPS 2021. [https://arxiv.org/abs/2104.08663](https://arxiv.org/abs/2104.08663)
 * Weller et al., When do Generative Query and Document Expansions Fail?, EACL 2024, on derived-text indexing hurting strong retrievers. [https://arxiv.org/abs/2309.08541](https://arxiv.org/abs/2309.08541)
-* [The recommended approach](https://www.agenticarchitectureskills.com/research/recommended-approach) for how this boundary becomes a decision rule.
+* [The recommended approach](https://www.agenticarchitectureskills.com/patterns) for how this boundary becomes a decision rule.

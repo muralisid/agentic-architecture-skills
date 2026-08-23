@@ -2,7 +2,7 @@
 
 Within a gated pool, harvesting the least similar tail buys sub-topic coverage about twice as cheaply as maximal marginal relevance and admits fewer answerless documents than a determinantal point process. The claim that the right amount of diversity depends on whether a model or a person reads the results did not survive a cross-family judge.
 
-Source: https://www.agenticarchitectureskills.com/research/diversity-and-consumer (Markdown: https://www.agenticarchitectureskills.com/research/diversity-and-consumer.md)
+Source: https://www.agenticarchitectureskills.com/patterns/diversity-and-consumer (Markdown: https://www.agenticarchitectureskills.com/patterns/diversity-and-consumer.md)
 
 > **In plain terms.**
 >
@@ -77,5 +77,5 @@ Within a gated pool, the outlier harvest is a more efficient way to buy sub-topi
 **The research behind this page**
 
 * Benchmark repository: `results/e3_diversity`, `results/e3b_consumer` and the two additional judge runs, commit 92c18cb, 2026-08-22.
-* Carbonell and Goldstein, MMR, SIGIR 1998; diverse multi-answer retrieval with determinantal point processes, COLING 2022; DIVA, NAACL 2025; the Distracting Effect, ACL 2025; The Power of Noise (SIGIR 2024) and its retraction (SIGIR 2026). All on the [reading list](https://www.agenticarchitectureskills.com/research/reading-list).
+* Carbonell and Goldstein, MMR, SIGIR 1998; diverse multi-answer retrieval with determinantal point processes, COLING 2022; DIVA, NAACL 2025; the Distracting Effect, ACL 2025; The Power of Noise (SIGIR 2024) and its retraction (SIGIR 2026). All on the [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list).
 * Alpha-nDCG, Clarke et al., SIGIR 2008, and sub-question coverage (Salesforce and Georgia Tech, Oct 2024) for why coverage has to be measured with coverage metrics rather than recall.

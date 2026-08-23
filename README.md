@@ -12,12 +12,12 @@ Each skill is a `SKILL.md` plus the pages it needs as `references/`. They carry 
 | `choose-first-agent-use-cases` | task | enterprise | 2026.08.23 |
 | `govern-agent-tool-access` | task | enterprise | 2026.08.23 |
 | `design-agent-knowledge-pipeline` | task | both | 2026.08.23 |
+| `design-agent-context` | task | both | 2026.08.23 |
 | `build-agent-evals-and-evidence` | task | both | 2026.08.23 |
 | `size-agent-supervision-and-cost` | task | enterprise | 2026.08.23 |
 | `agentic-enterprise-architecture` | reference | enterprise | 2026.08.23 |
 | `agentic-enterprise-layers` | reference | enterprise | 2026.08.23 |
 | `agentic-architecture-decisions` | reference | both | 2026.08.23 |
-| `multi-vector-retrieval-research` | reference | both | 2026.08.23 |
 
 ## Install
 

@@ -2,7 +2,7 @@
 
 A first pass built from embeddings alone separates on-purpose from off-purpose email at ROC-AUC 0.933, yet discards only a third of a corpus at high recall. The two-pass design is about two hundred times cheaper than reading every document with a model, but the advantage does not widen with corpus size.
 
-Source: https://www.agenticarchitectureskills.com/research/gate-and-economics (Markdown: https://www.agenticarchitectureskills.com/research/gate-and-economics.md)
+Source: https://www.agenticarchitectureskills.com/patterns/gate-and-economics (Markdown: https://www.agenticarchitectureskills.com/patterns/gate-and-economics.md)
 
 > **In plain terms.**
 >
@@ -90,4 +90,4 @@ Processing discovered topics instead of documents is about two hundred times che
 
 * Benchmark repository: `results/e2_gate`, `results/e2_economics`, `results/e2_economics_mcs10`, `results/e2_economics_mcs25`, commit 92c18cb, 2026-08-22.
 * The adversarial review of Sprint R1, 2026-08-20, for the null anchor control and the economics addendum.
-* TnT-LLM (KDD 2024), Databricks (Jul 2026, vendor) and Distilling Step-by-Step (ACL Findings 2023) for the published economics of letting a model design and classical machinery execute, on the [reading list](https://www.agenticarchitectureskills.com/research/reading-list).
+* TnT-LLM (KDD 2024), Databricks (Jul 2026, vendor) and Distilling Step-by-Step (ACL Findings 2023) for the published economics of letting a model design and classical machinery execute, on the [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list).

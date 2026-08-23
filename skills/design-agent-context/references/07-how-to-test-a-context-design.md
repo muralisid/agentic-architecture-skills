@@ -1,8 +1,8 @@
-# How the programme was run, and how it caught its own errors
+# How to test a context design
 
-Three arms per experiment, a matched control, a ladder of corpora, decision rules fixed before results were read, an adversarial review that rejected the first sprint, and a second-machine replication that found two harness defects. Every headline reversed at least once; the causes are more useful than the results.
+The evidence behind pattern 9: three arms per experiment, a matched control, a ladder of corpora, rules fixed before any number is read, and an adversarial review. Five of our own headlines reversed at least once, and the two causes behind all five are the checks worth copying.
 
-Source: https://www.agenticarchitectureskills.com/research/method-and-reversals (Markdown: https://www.agenticarchitectureskills.com/research/method-and-reversals.md)
+Source: https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design (Markdown: https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design.md)
 
 > **In plain terms.**
 >
