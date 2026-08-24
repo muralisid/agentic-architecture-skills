@@ -17,7 +17,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **WHAT:** Separate **a fast instance-memory loop** from **a slow governed learning loop**. Production traces feed evals; failures become counterexamples; proposed changes are curated, tested, reviewed and promoted; rollout starts in shadow and canary stages; promoted hard rules land outside the model; dead rules can be demoted. Judges are calibrated, versioned and kept separate from the systems they grade.
 
-![Visual summary of the governed learning flywheel](/figures/architecture/learning-flywheel.webp)
+![Visual summary of the governed learning flywheel](/figures/architecture/learning-flywheel.jpg)
 
 ## Two loops, separated by governance
 

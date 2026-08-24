@@ -17,7 +17,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **WHAT:** Use one shared vocabulary for the whole guide. The glossary groups the language into six practical families (agents and autonomy, control and security, data and knowledge, learning and quality, running it day to day, and standards and regulation), with a plain-language definition available wherever a technical term appears.
 
-![Visual summary of the shared architecture vocabulary](/figures/architecture/plain-words.webp)
+![Visual summary of the shared architecture vocabulary](/figures/architecture/plain-words.jpg)
 
 If you read nothing else, read the six group headings below: agents and autonomy, control and security, data and knowledge, learning and quality, running it day to day, and standards and regulation. Together they are the vocabulary of the whole guide.
 

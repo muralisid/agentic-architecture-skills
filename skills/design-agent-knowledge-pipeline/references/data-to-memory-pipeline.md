@@ -17,7 +17,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **WHAT:** Govern the full nine-stage path from source to answer to memory: **parse with provenance, chunk and enrich, embed with versions, index with permissions, retrieve with refusal, cite by construction, quarantine durable memory, refresh from source changes, and erase in cascade**. Every derived artifact inherits the access, privacy, residency, classification and deletion duties of its sources.
 
-![Visual summary of the governed data-to-memory pipeline](/figures/architecture/data-to-memory.webp)
+![Visual summary of the governed data-to-memory pipeline](/figures/architecture/data-to-memory.jpg)
 
 ## The pipeline
 

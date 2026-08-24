@@ -17,7 +17,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **WHAT:** Map **ten cross-cutting concerns across all fourteen layers** and distinguish three roles for each: **Owned**, who defines and is accountable for the requirement; **Enforced**, where a violation is actually stopped; **Inherited**, where the property must pass through unchanged. Preserve the seven invariants across every layer and publish the six open gaps instead of hiding them.
 
-![Visual summary of the cross-cutting concern matrix](/figures/architecture/concern-matrix.webp)
+![Visual summary of the cross-cutting concern matrix](/figures/architecture/concern-matrix.jpg)
 
 ## How to read it
 
