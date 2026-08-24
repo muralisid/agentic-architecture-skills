@@ -29,7 +29,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 Where a pattern is marked measured, we ran it: five rounds on public corpora, with human relevance judgements where they exist, seeded and reproducible. Where it is marked published work, the evidence is someone else's and is cited. The [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list) has about thirty-five papers with what each shows.
 
-The code, the committed outputs and the per-query results are public at [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), under MIT for the code and CC BY-SA for everything else. You do not have to take any number here on trust: recompute it, or rerun the experiment. The programme's working documents are published with it, and [what we predicted and what happened](https://www.agenticarchitectureskills.com/patterns/what-we-got-wrong) is the scorecard for all eleven hypotheses, including the five that failed.
+The code, the committed outputs and the per-query results are public at [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), under MIT for the code and CC BY-SA for everything else. You do not have to take any number here on trust: recompute it, or rerun the experiment. The programme's working documents are published with it, and [what we got wrong](https://www.agenticarchitectureskills.com/patterns/what-we-got-wrong) is the scorecard for all eleven hypotheses, including the five that failed.
 
 ***
 
