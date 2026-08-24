@@ -4,7 +4,7 @@ The evidence behind pattern 9: three arms per experiment, a matched control, a l
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design (Markdown: https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design.md)
-Updated: 2026-08-23
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -69,4 +69,4 @@ With both fixes, the pure encoder and retrieval experiments reproduced byte-for-
 
 * The adversarial review of Sprint R1 against the benchmark repository at commit 1cec616, 2026-08-20, and its same-day economics addendum.
 * The programme's findings summary and worklog entries of 2026-08-20 to 2026-08-22, including the second-machine replication record.
-* Benchmark repository `results/replication-arm`, commit 92c18cb, 2026-08-22: the regenerated results that differ from the committed tree.
+* Benchmark repository `results/replication-arm`, commit 2b9c6ef, 2026-08-22: the regenerated results that differ from the committed tree.

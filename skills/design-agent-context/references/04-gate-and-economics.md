@@ -4,7 +4,7 @@ A first pass built from embeddings alone separates on-purpose from off-purpose e
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/gate-and-economics (Markdown: https://www.agenticarchitectureskills.com/patterns/gate-and-economics.md)
-Updated: 2026-08-23
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -42,7 +42,7 @@ Two qualifications matter more than the headline. Fitting the anchor weights is 
 
 The economic case for a first pass is proportional to the fraction it removes. At recall 0.95 the gate removes a third; at 0.99, an eighth. It contributes a linear factor between one and two, bought directly with recall.
 
-**Source:** Benchmark repository, results/e2\_gate/metrics.json, commit 92c18cb (2026-08-22). On a second machine: ROC-AUC 0.936, 32.3 percent discarded at recall 0.95.
+**Source:** Benchmark repository, results/e2\_gate/metrics.json, commit 2b9c6ef (2026-08-22). On a second machine: ROC-AUC 0.936, 32.3 percent discarded at recall 0.95.
 
 A first pass is usually described as discarding most of a corpus. On this evidence it does not. The order-of-magnitude saving in a two-pass design comes from elsewhere: from attaching generative cost to the number of discovered topics rather than to the number of documents. Attributing the saving to the filter overstates the filter and understates the substitution. A caveat bounds the result from above: separating corporate email from Usenet is easier than separating on-purpose from off-purpose material inside one corpus, which is what a deployed gate faces. Failing here would have been disqualifying; passing here is necessary rather than sufficient.
 
@@ -67,7 +67,7 @@ The original run appeared to show a scaling law: topics grew as N to the power 0
 
 At coarse clustering the advantage grows (N to the power 0.44), because the clusters coarsen as the corpus grows: 14 topics over 10,000 messages, at 485 documents per topic, is not a summary of anything. At useful granularity topics grow faster than the corpus (N to the power 1.25) and the advantage shrinks (N to the power −0.27). What remains is a constant factor of roughly two hundred.
 
-**Source:** Benchmark repository, results/e2\_economics\_mcs25/metrics.json and results/e2\_economics\_mcs10/metrics.json, commit 92c18cb (2026-08-22). Prices as of 2026-08-19, editable in the artifact.
+**Source:** Benchmark repository, results/e2\_economics\_mcs25/metrics.json and results/e2\_economics\_mcs10/metrics.json, commit 2b9c6ef (2026-08-22). Prices as of 2026-08-19, editable in the artifact.
 
 | Messages | Topics, coarse | Coverage of survivors, coarse | Topics, fine | Coverage, fine | Documents per topic, fine |
 | -------- | -------------- | ----------------------------- | ------------ | -------------- | ------------------------- |
@@ -91,6 +91,6 @@ Processing discovered topics instead of documents is about two hundred times che
 
 **The research behind this page**
 
-* Benchmark repository: `results/e2_gate`, `results/e2_economics`, `results/e2_economics_mcs10`, `results/e2_economics_mcs25`, commit 92c18cb, 2026-08-22.
+* Benchmark repository: `results/e2_gate`, `results/e2_economics`, `results/e2_economics_mcs10`, `results/e2_economics_mcs25`, commit 2b9c6ef, 2026-08-22.
 * The adversarial review of Sprint R1, 2026-08-20, for the null anchor control and the economics addendum.
 * TnT-LLM (KDD 2024), Databricks (Jul 2026, vendor) and Distilling Step-by-Step (ACL Findings 2023) for the published economics of letting a model design and classical machinery execute, on the [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list).

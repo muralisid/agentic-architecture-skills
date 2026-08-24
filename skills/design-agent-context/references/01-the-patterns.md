@@ -29,6 +29,8 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 Where a pattern is marked measured, we ran it: five rounds on public corpora, with human relevance judgements where they exist, seeded and reproducible. Where it is marked published work, the evidence is someone else's and is cited. The [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list) has about thirty-five papers with what each shows.
 
+The code, the committed outputs and the per-query results are public at [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), under MIT for the code and CC BY-SA for everything else. You do not have to take any number here on trust: recompute it, or rerun the experiment. The repository also carries the results that went against us, which are described plainly in [what we got wrong](https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design).
+
 ***
 
 ## 1. Give a document several vectors
@@ -148,6 +150,6 @@ The encoders were small, the corpora ran to twenty thousand documents, everythin
 **The research behind this page**
 
 * The experiment pages linked from each pattern, and the [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list)
-* The benchmark repository, commit 92c18cb, 2026-08-22: one metrics file and one per-query file per experiment
+* The [benchmark repository](https://github.com/muralisid/multicard-bench), commit 2b9c6ef, 2026-08-22: one metrics file and one per-query file per experiment. It is public, so every number on these pages can be recomputed from the per-query results rather than taken on trust
 * [Agent data engineering](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering) and [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory), where these patterns sit in the architecture
 * [CD-25](https://www.agenticarchitectureskills.com/decisions#cd-25) records the decision

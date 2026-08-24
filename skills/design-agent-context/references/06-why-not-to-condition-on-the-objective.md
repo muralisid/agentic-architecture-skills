@@ -4,7 +4,7 @@ The evidence behind pattern 4. Showing the view designer a sample of the corpus 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/why-not-to-condition-on-the-objective (Markdown: https://www.agenticarchitectureskills.com/patterns/why-not-to-condition-on-the-objective.md)
-Updated: 2026-08-23
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -41,7 +41,7 @@ The conditioning ladder varies only what the designer is shown. Every rung share
 
 Showing the designer the corpus is worth +0.224 over generic views (p=0.0001) and beats blind chunks. Adding the research objective costs −0.068 (p=0.002). The useful signal is the corpus, which is what published taxonomy-design systems already condition on.
 
-**Source:** Benchmark repository, results/e\_dyn/hdyn3/metrics.json, commit 92c18cb (2026-08-22). Byte-identical on a second machine.
+**Source:** Benchmark repository, results/e\_dyn/hdyn3/metrics.json, commit 2b9c6ef (2026-08-22). Byte-identical on a second machine.
 
 The cross-over test asks whether a taxonomy designed for objective A serves A's workload better than one designed for B, and vice versa. It found nothing: +0.020 (p=0.35) in one direction and −0.002 (p=0.92) in the other. Taxonomies designed under different objectives served each other's workloads indistinguishably. A sampler test in the same round, which stratified the designer's sample across discovered topics so that minority material could not vanish, did what it was designed to do (minority-topic coverage of the sample rose from 60 to 100 percent) and bought nothing in retrieval (−0.015, p=0.70); worse, it produced a significant gain on the balanced control corpus where the preregistration said the gap should vanish. An effect that appears where it should not and is absent where it should be is not the claimed mechanism.
 
@@ -82,7 +82,7 @@ The maintainer's argument for this round was that enterprises do not organise da
 
 Context plus metadata against sample only: −0.068, 95 percent interval −0.090 to −0.046, p=0.0001. Business context alone: −0.047 (p=0.0001). The narrow objective on top: a further −0.037 (p=0.018). The harm is monotone in the amount of context supplied.
 
-**Source:** Benchmark repository, results/e\_dyn3/round4.json, commit 92c18cb (2026-08-22). Replicated on a second machine with the same ordering.
+**Source:** Benchmark repository, results/e\_dyn3/round4.json, commit 2b9c6ef (2026-08-22). Replicated on a second machine with the same ordering.
 
 The taxonomies show why. From the corpus alone the designer derived six views that followed the data (fault logs, system maintenance, financial risk, legal compliance, logistics and supply, IT incidents). Given the business narrative it produced four elegant views organised around the business (commercial agreements, operations and logistics, finance reporting, risk and compliance). The business framing covers the corpus less well, and on a workload spanning six departments coverage is what matters. The taxonomies were genuinely different (mean pairwise similarity 0.833, so the convergence condition did not fire) and genuinely worse. The stopping rule fired and the programme ceased pursuing the conditioning claim in that form.
 
@@ -108,7 +108,7 @@ FollowIR supplies the real test: news collections where each query comes with an
 
 On Core17 the objective-selected views are the worst arm, 0.06 below the corpus-derived view set; a confirmation run with the fully validated card representation sharpened the gap rather than closing it. On News21 the instruction-prepended encoder is the best arm and every card arm is worst. Under the changed instructions the ordering is the same. The instruction-following score p-MRR is about zero for both instruction-aware arms: neither follows the instruction.
 
-**Source:** Benchmark repository, results/e\_dyn4/core17\_concat\_confirm.json, results/e\_dyn4/followir\_core17.json, results/e\_dyn4/followir\_summary.json, and the News21 run, commit 92c18cb (2026-08-22).
+**Source:** Benchmark repository, results/e\_dyn4/core17\_concat\_confirm.json, results/e\_dyn4/followir\_core17.json, results/e\_dyn4/followir\_summary.json, and the News21 run, commit 2b9c6ef (2026-08-22).
 
 Two caveats were recorded with the result, and both point the same way. The encoder is a weak instruction baseline; a retriever trained to follow instructions would widen the gap against the method, not narrow it. And the candidate pool depth and document length were capped for speed, identically across every arm. A third collection (Robust04) was not run once the direction was consistent across the synthetic test and two real collections; it would have added corroboration, not information.
 
@@ -122,7 +122,7 @@ Conditioning the view design on the goal, in any of five forms, does not improve
 
 **The research behind this page**
 
-* Benchmark repository: `results/e_dyn` (round 1), `results/e_dyn2` (rounds 2 and 3, pre- and post-repair), `results/e_dyn3` (round 4), `results/e_dyn4` (round 5), commit 92c18cb, 2026-08-22.
+* Benchmark repository: `results/e_dyn` (round 1), `results/e_dyn2` (rounds 2 and 3, pre- and post-repair), `results/e_dyn3` (round 4), `results/e_dyn4` (round 5), commit 2b9c6ef, 2026-08-22.
 * Weller et al., FollowIR, EMNLP 2024, for the collections and the p-MRR score. [https://arxiv.org/abs/2403.15246](https://arxiv.org/abs/2403.15246)
 * Promptriever (ICLR 2025), INSTRUCTOR (ACL Findings 2023), GSTransform (2025), CAMI (2026) and TnT-LLM (KDD 2024), the prior art that subsumes this idea, on the [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list).
 * [How the programme was run](https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design) for the preregistration, its waiver, and the cross-machine replication.

@@ -4,7 +4,7 @@ Within a gated pool, harvesting the least similar tail buys sub-topic coverage a
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/diversity-and-consumer (Markdown: https://www.agenticarchitectureskills.com/patterns/diversity-and-consumer.md)
-Updated: 2026-08-23
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -31,7 +31,7 @@ Ground truth comes from construction rather than from a model. Each of 120 queri
 
 The two harvest settings sit above and to the right of the MMR and cluster policies at comparable coverage. The DPP reaches the most coverage and pays the most relevance for it.
 
-**Source:** Benchmark repository, results/e3\_diversity/metrics.json, commit 92c18cb (2026-08-22). Reproduced on a second machine to within 5e-8.
+**Source:** Benchmark repository, results/e3\_diversity/metrics.json, commit 2b9c6ef (2026-08-22). Reproduced on a second machine to within 5e-8.
 
 | Policy                    | S-recall | Alpha-nDCG | nDCG\@10 | Distractor rate |
 | ------------------------- | -------- | ---------- | -------- | --------------- |
@@ -65,7 +65,7 @@ Coverage of the known sub-topics in the generated text was scored by three judge
 
 +0.071 (p=0.009), +0.047 (p=0.211), +0.008 (p=0.763). The estimate shrinks monotonically with distance from the generator's own family and vanishes at the cross-family judge, which is the signature of a judging artefact. Not disproved: all three point estimates are positive, and 60 tasks cannot resolve an effect this small. But no evidence may be cited for it.
 
-**Source:** Benchmark repository, results/e3b\_consumer, results/e3b\_consumer\_judge\_pro, results/e3b\_consumer\_judge\_azure (metrics.json), commit 92c18cb (2026-08-22).
+**Source:** Benchmark repository, results/e3b\_consumer, results/e3b\_consumer\_judge\_pro, results/e3b\_consumer\_judge\_azure (metrics.json), commit 2b9c6ef (2026-08-22).
 
 One finding from the same study needs no judge and survived every check. Counting words in the output that no selected document supports, harvesting reduces unsupported content: −0.067 for the human-facing brief (p=0.0018) and −0.048 for the machine-facing synthesis (p=0.067). A selection that covers more of the material gives the writer less reason to invent. This was not predicted, it is judge-independent, and it is the most defensible thing the consumer study produced.
 
@@ -79,6 +79,6 @@ Within a gated pool, the outlier harvest is a more efficient way to buy sub-topi
 
 **The research behind this page**
 
-* Benchmark repository: `results/e3_diversity`, `results/e3b_consumer` and the two additional judge runs, commit 92c18cb, 2026-08-22.
+* Benchmark repository: `results/e3_diversity`, `results/e3b_consumer` and the two additional judge runs, commit 2b9c6ef, 2026-08-22.
 * Carbonell and Goldstein, MMR, SIGIR 1998; diverse multi-answer retrieval with determinantal point processes, COLING 2022; DIVA, NAACL 2025; the Distracting Effect, ACL 2025; The Power of Noise (SIGIR 2024) and its retraction (SIGIR 2026). All on the [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list).
 * Alpha-nDCG, Clarke et al., SIGIR 2008, and sub-question coverage (Salesforce and Georgia Tech, Oct 2024) for why coverage has to be measured with coverage metrics rather than recall.
