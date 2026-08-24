@@ -4,7 +4,7 @@ Nine patterns for giving an agent the right context, each with the measurement t
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns (Markdown: https://www.agenticarchitectureskills.com/patterns.md)
-Updated: 2026-08-23
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -139,7 +139,7 @@ This is the pattern we learned the hard way: five headline results in this progr
 
 These nine come from one programme, on retrieval and context assembly. The intent is to keep adding: patterns from the harness work, worked examples with runnable code, and use-case walkthroughs that show a pattern applied end to end rather than stated. Where a pattern here rests on our measurement, it names the experiment; where it rests on published work, it names the paper. Both kinds will grow.
 
-If a pattern is missing that you needed, that is useful to know: the [skills repository](https://github.com/muralisidfn7/agentic-architecture-skills) takes issues.
+If a pattern is missing that you needed, that is useful to know: the [skills repository](https://github.com/muralisid/agentic-architecture-skills) takes issues.
 
 ## Limits of this evidence
 
