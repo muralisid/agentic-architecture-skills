@@ -19,7 +19,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **Evidence:** The embedding gate reaches ROC-AUC 0.933, but at about 0.95 recall it discards only a third of the corpus. The large saving comes from topic-level processing: roughly a two-hundred-times constant-factor reduction at comparable granularity, not from a saving that grows with corpus size.
 
-![Visual explanation of the cheap relevance gate and why the major cost saving comes from processing discovered topics.](/figures/patterns/gate-and-economics.png)
+![Visual explanation of the cheap relevance gate and why the major cost saving comes from processing discovered topics.](/figures/patterns/gate-and-economics.webp)
 
 ## Does the gate discriminate?
 

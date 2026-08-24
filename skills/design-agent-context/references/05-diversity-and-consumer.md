@@ -19,7 +19,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **Evidence:** A 40 percent harvest reaches the same measured sub-topic coverage as aggressive MMR while losing about half as much relevance and admitting fewer distractors. The separate claim that machines need more diversity than humans does not survive a cross-family judge and is not supported.
 
-![Visual comparison of relevance-only, MMR, DPP, and harvest policies inside a gated candidate pool.](/figures/patterns/diversity-and-consumer.png)
+![Visual comparison of relevance-only, MMR, DPP, and harvest policies inside a gated candidate pool.](/figures/patterns/diversity-and-consumer.webp)
 
 ## The retrieval half: what each policy delivers
 

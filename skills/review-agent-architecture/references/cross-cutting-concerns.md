@@ -4,12 +4,20 @@ Ten cross-cutting concerns against fourteen layers: who owns each, who enforces 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/concern-matrix (Markdown: https://www.agenticarchitectureskills.com/architecture/concern-matrix.md)
-Updated: 2026-08-21
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
 > Requirements such as knowing who did what, protecting personal data, and controlling cost apply to every part of the business that agents touch. No single team owns them end to end. This page shows, for each of those requirements, which part of the estate sets the rule and which part actually stops a violation. It also lists the gaps that nobody, anywhere, has fully solved yet. The thing to remember: most failures happen where a requirement is handed from one part of the system to another and quietly weakened on the way.
+
+## Why the concern matrix exists
+
+**WHY:** Identity, privacy, traceability, grounding, sovereignty, safety, cost and resilience do not belong to one layer. One part of the estate may own the rule while another must actually stop a violation. The silent failures happen during those hand-offs, when a requirement is inherited but weakened.
+
+**WHAT:** Map **ten cross-cutting concerns across all fourteen layers** and distinguish three roles for each: **Owned**, who defines and is accountable for the requirement; **Enforced**, where a violation is actually stopped; **Inherited**, where the property must pass through unchanged. Preserve the seven invariants across every layer and publish the six open gaps instead of hiding them.
+
+![Visual summary of the cross-cutting concern matrix](/figures/architecture/concern-matrix.webp)
 
 ## How to read it
 

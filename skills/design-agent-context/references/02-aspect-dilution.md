@@ -19,7 +19,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **Evidence:** On the controlled corpus, the pooled representation falls from 0.815 to 0.294 nDCG\@10 as documents grow from one aspect to ten, while multi-vector approaches remain above 0.63. On LIMIT, most of the improvement comes from having more searchable units; purpose alignment adds a smaller conditional gain.
 
-![Visual explanation of aspect dilution: one pooled vector loses specificity while multiple searchable units preserve aspects.](/figures/patterns/aspect-dilution.png)
+![Visual explanation of aspect dilution: one pooled vector loses specificity while multiple searchable units preserve aspects.](/figures/patterns/aspect-dilution.webp)
 
 ## The claim and the confound
 

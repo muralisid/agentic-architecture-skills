@@ -4,12 +4,20 @@ The four areas where an AI model may advise but never decide (access, money, saf
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/deterministic-zones (Markdown: https://www.agenticarchitectureskills.com/architecture/deterministic-zones.md)
-Updated: 2026-08-21
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
 > Some decisions are too important to leave to an AI model: who gets access, whether money moves, whether equipment acts, and whether a formal record is true. In these four areas the model may draft, suggest, and flag, but a fixed rule or a named person makes the final call. Three of the four already work this way today, and this page shows how to keep them that way as agents arrive. The thing to remember: the model informs, it never decides.
+
+## Why these four zones exist
+
+**WHY:** Some decisions change rights, move money, actuate physical equipment, or create records that other people and regulators rely on. A language model is probabilistic and its behaviour can be influenced by the content it reads. That makes the model useful as an adviser, but the wrong place for the final decision in these consequential areas.
+
+**WHAT:** Draw four explicit deterministic zones around **access and entitlements, movement of money, safety actuation, and formal regulatory records**. Inside each zone the agent may analyse, draft, recommend and flag. The final decision is made by fixed policy, a certified system, a payment rail, or a named accountable human. The agent cannot bypass that boundary.
+
+![Visual summary of the four deterministic zones](/figures/architecture/deterministic-zones.webp)
 
 ## The principle
 

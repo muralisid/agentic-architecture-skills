@@ -4,12 +4,20 @@ How agent behaviour improves over time without anyone losing control of it: test
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/learning-flywheel (Markdown: https://www.agenticarchitectureskills.com/architecture/learning-flywheel.md)
-Updated: 2026-08-21
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
 > Agents can get better at their work over time, but every change in behaviour is a change to a production system. This page describes the controlled loop that makes improvement safe. Collect evidence from real use, test a proposed change against known failures, and have a person approve it. Roll it out to a small share of traffic first, and pull it back if it stops passing. The one thing to remember: an agent that changes its own behaviour without passing through that gate has deployed a change nobody approved.
+
+## Why learning needs a deployment gate
+
+**WHY:** When an agent changes how it behaves, the production system has changed. Letting instance memory or automatically learned rules alter behaviour directly creates an unversioned deployment that nobody tested or approved. Improvement is valuable only if it remains reversible and measurable.
+
+**WHAT:** Separate **a fast instance-memory loop** from **a slow governed learning loop**. Production traces feed evals; failures become counterexamples; proposed changes are curated, tested, reviewed and promoted; rollout starts in shadow and canary stages; promoted hard rules land outside the model; dead rules can be demoted. Judges are calibrated, versioned and kept separate from the systems they grade.
+
+![Visual summary of the governed learning flywheel](/figures/architecture/learning-flywheel.webp)
 
 ## Two loops, separated by governance
 

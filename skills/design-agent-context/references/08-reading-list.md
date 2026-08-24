@@ -19,7 +19,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **Evidence:** The papers below cover multi-vector retrieval, instruction-conditioned retrieval, taxonomy design, topic-level processing, diversity, distractors and evaluation. Vendor evidence is labelled separately from peer-reviewed work.
 
-![Visual map of the independent literature supporting and bounding the context-pattern recommendations.](/figures/patterns/reading-list.png)
+![Visual map of the independent literature supporting and bounding the context-pattern recommendations.](/figures/patterns/reading-list.webp)
 
 ## Several vectors per document, and the unit of indexing
 

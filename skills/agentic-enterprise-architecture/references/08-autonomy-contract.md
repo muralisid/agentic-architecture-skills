@@ -4,12 +4,20 @@ How much an agent may do on its own, how it may learn, and the controls, readine
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/autonomy-contract (Markdown: https://www.agenticarchitectureskills.com/architecture/autonomy-contract.md)
-Updated: 2026-08-21
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
 > Every task an agent takes on sits at a chosen level of independence, from a person doing the work with help to the agent running unattended under policy. This page sets out those levels, the controls each one requires, the readiness a company must show before moving up, and how much human supervision each level really needs. The one thing to remember: a level you cannot supervise is a level you have not reached.
+
+## Why autonomy needs a contract
+
+**WHY:** "Autonomous" is not a useful architecture property by itself. A workload can only operate as independently as its weakest readiness area and the organisation's real ability to supervise bursts of exceptions. Raising autonomy without the controls, learning loop, evidence and oversight capacity behind it creates an operational gap rather than a capability.
+
+**WHAT:** Give every workload two explicit, reversible settings: **autonomy A0–A5** and **learning L0–L3**. Treat the required-controls column as the actual contract. Gate higher autonomy on six readiness dimensions, let the weakest dimension set the ceiling, require governed learning and proven oversight at A4+, and size supervision using burst-rate queueing capacity rather than daily averages.
+
+![Visual summary of the autonomy contract](/figures/architecture/autonomy-contract.webp)
 
 ## Two axes, applied per workload
 

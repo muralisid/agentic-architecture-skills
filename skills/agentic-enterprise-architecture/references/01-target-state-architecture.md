@@ -4,12 +4,20 @@ Seven planes across fourteen layers, two binding rules, and the two-estate reali
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture (Markdown: https://www.agenticarchitectureskills.com/architecture.md)
-Updated: 2026-08-21
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
 > This page is the one-page map of how a company runs AI agents safely at scale. It shows the parts of your business that agents touch, the new capabilities you build around them, and where the controls and the evidence live. The thing to remember: an instruction written to an AI model is a request, while a rule checked by a separate system is a control.
+
+## Why this architecture exists
+
+**WHY:** Agents do not live inside one AI model. They reach into identity, data, applications, tools, records, observability, governance and human workflows. If control stays inside the prompt, the agent can influence the rule that is supposed to constrain it. If evidence is collected by the agent itself, the system is asking the actor to certify its own behaviour. And if the design assumes every agent passes through one company gateway, vendor-embedded agents create an immediate blind spot.
+
+**WHAT:** Build the agentic enterprise as **seven planes across the fourteen layers you already own**: Execution, Action, Knowledge, Control, Improvement, Evidence and Human. Bind them with two non-negotiable rules: **enforcement lives outside execution**, and **evidence is collected through a channel the agent cannot influence**. Apply the same architecture to both the metered estate you control and the licensed estate that runs on vendor control planes.
+
+![Visual summary of the target-state architecture](/figures/architecture/index.webp)
 
 ## The whole thing, on one page
 

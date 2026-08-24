@@ -19,7 +19,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **Evidence:** On 5,183 SciFact abstracts with human relevance judgements, hand-written purpose cards score 0.635 and model-designed cards 0.626, both below matched chunks at 0.667. The best arm is the hybrid with keyword search at 0.685.
 
-![Visual explanation of why purpose views can lose on real prose and why matched blind chunks can preserve nearby evidence.](/figures/patterns/real-prose.png)
+![Visual explanation of why purpose views can lose on real prose and why matched blind chunks can preserve nearby evidence.](/figures/patterns/real-prose.webp)
 
 ## The honest case
 

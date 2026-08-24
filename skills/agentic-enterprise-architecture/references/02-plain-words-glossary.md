@@ -4,12 +4,20 @@ Every technical term in this guide, explained for anyone in the organisation, wi
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/plain-words (Markdown: https://www.agenticarchitectureskills.com/architecture/plain-words.md)
-Updated: 2026-08-21
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
 > This guide is written for the people who will build the architecture. It is meant to be read by everyone who will live with it: leaders approving it, managers whose teams will work alongside agents, and specialists in finance, risk, legal, and operations. Every page opens with a plain-terms summary like this one. Every technical word underlined with dots can be tapped or hovered for a one-line explanation. This page collects all of those explanations in one place.
+
+## Why the vocabulary matters
+
+**WHY:** Agent architecture crosses technology, risk, finance, legal, operations and leadership. If the same word means different things to different teams, controls become ambiguous and architecture decisions become difficult to challenge. A design that only specialists can read cannot become an operating model.
+
+**WHAT:** Use one shared vocabulary for the whole guide. The glossary groups the language into six practical families (agents and autonomy, control and security, data and knowledge, learning and quality, running it day to day, and standards and regulation), with a plain-language definition available wherever a technical term appears.
+
+![Visual summary of the shared architecture vocabulary](/figures/architecture/plain-words.webp)
 
 If you read nothing else, read the six group headings below: agents and autonomy, control and security, data and knowledge, learning and quality, running it day to day, and standards and regulation. Together they are the vocabulary of the whole guide.
 

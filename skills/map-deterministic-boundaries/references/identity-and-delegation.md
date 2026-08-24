@@ -4,12 +4,20 @@ How every action an agent takes stays traceable to the person who asked, at each
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/identity-chain (Markdown: https://www.agenticarchitectureskills.com/architecture/identity-chain.md)
-Updated: 2026-08-21
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
 > When an AI agent does something in a company system, someone must be able to say which person asked for it. This page describes the chain of checks that keeps that link intact at every step. The agent has its own registered identity, it borrows only the requesting person's permissions, and the business system records the action against that person. The one thing to remember: an agent should never be able to do anything its requesting user could not do themselves.
+
+## Why the identity chain exists
+
+**WHY:** An agent can cross several systems in one task. If identity is lost or replaced with a shared credential at any hop, you can no longer prove who requested the action, apply the user's real permissions, or revoke the agent cleanly. Accountability without enforceable identity is only a label.
+
+**WHAT:** Preserve one delegation chain end to end: **the agent has its own registered identity → the gateway exchanges the requesting user's identity → the system of record executes run-as-user → edge and sub-agent identities can only narrow the scope**. Keep a named sponsor on the agent identity, inject short-lived credentials at execution time, and maintain kill switches at several points.
+
+![Visual summary of the identity and delegation chain](/figures/architecture/identity-chain.webp)
 
 ## The chain
 

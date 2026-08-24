@@ -19,7 +19,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **Evidence:** Across five forms of objective conditioning, corpus-derived views are as good or better. Adding the objective costs 0.068 nDCG\@10 in round 1, added business/schema context hurts monotonically in round 4, and objective-selected views are the worst arm on the real FollowIR collections.
 
-![Visual comparison of corpus-derived views versus objective-conditioned index design.](/figures/patterns/why-not-to-condition-on-the-objective.png)
+![Visual comparison of corpus-derived views versus objective-conditioned index design.](/figures/patterns/why-not-to-condition-on-the-objective.webp)
 
 ## The claim and its five forms
 

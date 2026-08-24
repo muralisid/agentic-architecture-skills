@@ -4,12 +4,20 @@ Why the rules that bind an agent are enforced outside the AI model, where those 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/enforcement (Markdown: https://www.agenticarchitectureskills.com/architecture/enforcement.md)
-Updated: 2026-08-21
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
 > An AI model can be talked into things, because the instructions it follows and the content it reads arrive through the same channel. So the rules that matter, such as who may access what and which actions need approval, are enforced by separate components that the model cannot argue with. This page shows the three places those controls live, and why AI-based filters are an early warning rather than the lock on the door. The one thing to remember: a rule the model merely reads is advice; a rule enforced outside the model is a control.
+
+## Why enforcement must sit outside the model
+
+**WHY:** The model receives instructions and untrusted content through the same language channel, so its behaviour can be manipulated by what it reads. A prompt can express intent, but it cannot guarantee authorization. AI guardrails remain useful detectors, but measured bypass rates and their latency make them the wrong final decision-maker for consequential actions.
+
+**WHAT:** Enforce in three external tiers. **Tier 1: the gateway** controls tool reachability, identity exchange, credentials, rate limits and logging. **Tier 2: a deterministic policy decision point** says yes or no to consequential actions. **Tier 3: learned rules become real only after testing, human approval and promotion into policy-as-code outside the model.** Keep guardrails as advisory detection and content-policy components.
+
+![Visual summary of enforcement outside the model](/figures/architecture/enforcement.webp)
 
 ## The premise
 

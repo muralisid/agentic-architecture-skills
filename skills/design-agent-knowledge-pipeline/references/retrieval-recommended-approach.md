@@ -19,7 +19,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **Evidence:** The strongest results are in patterns 1 to 3: multi-vector retrieval prevents aspect dilution, matched controls reveal how much of the gain is simply extra capacity, and keyword search wins decisively on exact-attribute lookup. The later patterns are useful under narrower conditions and should earn their complexity on the target workload.
 
-![Visual overview of the nine context patterns, their problem, solution, pipeline, and evidence.](/figures/patterns/index.png)
+![Visual overview of the nine context patterns, their problem, solution, pipeline, and evidence.](/figures/patterns/index.webp)
 
 ## The patterns
 
