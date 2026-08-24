@@ -2,7 +2,10 @@
 
 Why the rules that bind an agent are enforced outside the AI model, where those controls sit, what they cost, and the measured limits of softer filters.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/enforcement (Markdown: https://www.agenticarchitectureskills.com/architecture/enforcement.md)
+Updated: 2026-08-21
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

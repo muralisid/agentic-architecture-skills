@@ -2,7 +2,10 @@
 
 The four areas where an AI model may advise but never decide (access, money, safety actuation, formal records), what sits in each, and how to build the boundary.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/deterministic-zones (Markdown: https://www.agenticarchitectureskills.com/architecture/deterministic-zones.md)
+Updated: 2026-08-21
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

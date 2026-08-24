@@ -2,7 +2,10 @@
 
 The evidence behind pattern 9: three arms per experiment, a matched control, a ladder of corpora, rules fixed before any number is read, and an adversarial review. Five of our own headlines reversed at least once, and the two causes behind all five are the checks worth copying.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design (Markdown: https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

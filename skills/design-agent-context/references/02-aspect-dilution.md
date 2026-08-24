@@ -2,7 +2,10 @@
 
 A document about several things gets one embedding that is an average of all of them. The measurement of that loss, the control that separates more vectors from better-aligned vectors, and the stress test that shows how much of the gain is capacity.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/aspect-dilution (Markdown: https://www.agenticarchitectureskills.com/patterns/aspect-dilution.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

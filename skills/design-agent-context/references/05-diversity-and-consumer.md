@@ -2,7 +2,10 @@
 
 Within a gated pool, harvesting the least similar tail buys sub-topic coverage about twice as cheaply as maximal marginal relevance and admits fewer answerless documents than a determinantal point process. The claim that the right amount of diversity depends on whether a model or a person reads the results did not survive a cross-family judge.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/diversity-and-consumer (Markdown: https://www.agenticarchitectureskills.com/patterns/diversity-and-consumer.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

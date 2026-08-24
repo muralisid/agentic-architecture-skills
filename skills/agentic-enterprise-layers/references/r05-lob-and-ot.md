@@ -2,7 +2,10 @@
 
 Agents advise the people who run physical plant but never control it: proposals are checked in simulation before display, and a person decides every action and every change to the asset register.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot (Markdown: https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

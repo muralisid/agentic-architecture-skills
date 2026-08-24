@@ -2,7 +2,10 @@
 
 Where agents run: each session isolated, risky work in locked-down sandboxes, every agent with its own identity, and model access metered and routed by data sensitivity.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r01-infrastructure (Markdown: https://www.agenticarchitectureskills.com/layers/r01-infrastructure.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

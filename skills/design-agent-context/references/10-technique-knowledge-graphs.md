@@ -1,6 +1,9 @@
 # When a Knowledge Graph Earns Its Keep: Graph Databases vs Embedding Retrievers
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/techniques/when-a-knowledge-graph-earns-its-keep (Markdown: https://www.agenticarchitectureskills.com/library/techniques/when-a-knowledge-graph-earns-its-keep.md)
+Updated: 2026-08-20
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 As of August 2026. A contested-choice study: the claimed value, the simplest credible alternative, the evidence both ways, and the economics.
 

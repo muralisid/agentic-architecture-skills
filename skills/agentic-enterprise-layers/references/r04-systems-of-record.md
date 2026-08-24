@@ -2,7 +2,10 @@
 
 Agents reach core business systems through the permissions those systems already enforce, acting as the requesting person, with risky changes paused for approval until the agent proves reliable.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r04-systems-of-record (Markdown: https://www.agenticarchitectureskills.com/layers/r04-systems-of-record.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

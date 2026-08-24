@@ -2,7 +2,10 @@
 
 The published work read during the programme, grouped by the question it answers, with what each paper shows and how the experiments here relate to it: confirmed, contradicted, or bounded.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/reading-list (Markdown: https://www.agenticarchitectureskills.com/patterns/reading-list.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

@@ -2,7 +2,10 @@
 
 How every action an agent takes stays traceable to the person who asked, at each hop from the agent's own identity to the system of record.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/identity-chain (Markdown: https://www.agenticarchitectureskills.com/architecture/identity-chain.md)
+Updated: 2026-08-21
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

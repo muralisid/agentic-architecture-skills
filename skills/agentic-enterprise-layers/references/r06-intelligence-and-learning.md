@@ -2,7 +2,10 @@
 
 How agents improve safely: domain experts set the tests, model judges grade at volume with human spot checks, and only proven rules become enforceable policy outside the model.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning (Markdown: https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

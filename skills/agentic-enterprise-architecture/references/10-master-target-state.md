@@ -1,6 +1,9 @@
 # Master Target-State Architecture
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/architecture/master-target-state (Markdown: https://www.agenticarchitectureskills.com/library/architecture/master-target-state.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 As of August 2026. Phase 4 synthesis, informed by all 14 research tracks.
 

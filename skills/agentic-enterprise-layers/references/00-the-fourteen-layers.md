@@ -2,7 +2,10 @@
 
 One page for each of the fourteen parts of the enterprise estate that agents touch: what good looks like, how it is built, the choices made, and what the evidence supports.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers (Markdown: https://www.agenticarchitectureskills.com/layers.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

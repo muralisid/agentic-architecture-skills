@@ -1,6 +1,9 @@
 # The Agentic Enterprise: Vision and Target State
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/architecture/vision-and-target-state (Markdown: https://www.agenticarchitectureskills.com/library/architecture/vision-and-target-state.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 As of August 2026. Claims marked as the authors' position are labeled in the text; all other claims carry their sources inline or in the source list.
 

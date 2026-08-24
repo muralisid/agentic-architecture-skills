@@ -2,7 +2,10 @@
 
 How much human supervision agents really need, worked out from waiting times and peak load rather than headcount, and the measurements that prove oversight is happening.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r13-operating-model (Markdown: https://www.agenticarchitectureskills.com/layers/r13-operating-model.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

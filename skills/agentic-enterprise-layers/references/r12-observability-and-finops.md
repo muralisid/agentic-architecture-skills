@@ -2,7 +2,10 @@
 
 How to see what every agent did, test every change before it spreads, and keep every agent's spending inside a limit its business sponsor owns.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops (Markdown: https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

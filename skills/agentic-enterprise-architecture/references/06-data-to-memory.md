@@ -2,7 +2,10 @@
 
 The nine-stage path from company data to a cited answer, with the source trail intact, and the two rules that make it a governed record rather than plumbing.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/data-to-memory (Markdown: https://www.agenticarchitectureskills.com/architecture/data-to-memory.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

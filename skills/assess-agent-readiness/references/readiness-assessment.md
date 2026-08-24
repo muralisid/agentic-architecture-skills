@@ -1,6 +1,9 @@
 # Agent Readiness Assessment: Light and Heavy Modes
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments (Markdown: https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments.md)
+Updated: 2026-08-20
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 As of August 2026. Phase 2 deliverable; feeds the Phase 5 roadmap checklist as its readiness input.
 

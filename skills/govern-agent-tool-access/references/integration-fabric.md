@@ -2,7 +2,10 @@
 
 How agents reach company systems: one standard way to connect, one gateway every request passes through, and the rules, credentials, and audit trail enforced there.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r03-integration-fabric (Markdown: https://www.agenticarchitectureskills.com/layers/r03-integration-fabric.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

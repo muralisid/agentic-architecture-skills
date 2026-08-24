@@ -2,7 +2,10 @@
 
 Nine patterns for giving an agent the right context, each with the measurement that supports it and the published work behind it. Derived from our own experiments on public corpora and from the retrieval literature, and written to be applied rather than admired.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns (Markdown: https://www.agenticarchitectureskills.com/patterns.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

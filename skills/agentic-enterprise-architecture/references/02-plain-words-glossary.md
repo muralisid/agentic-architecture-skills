@@ -2,7 +2,10 @@
 
 Every technical term in this guide, explained for anyone in the organisation, with the group it belongs to.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/plain-words (Markdown: https://www.agenticarchitectureskills.com/architecture/plain-words.md)
+Updated: 2026-08-21
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

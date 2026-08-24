@@ -2,7 +2,10 @@
 
 How agents get trustworthy company data: indexes that respect who may see what, fixed business definitions for high-stakes numbers, and freshness matched to how often decisions are made.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r02-data-platform (Markdown: https://www.agenticarchitectureskills.com/layers/r02-data-platform.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

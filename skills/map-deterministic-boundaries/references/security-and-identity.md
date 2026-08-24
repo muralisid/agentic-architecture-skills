@@ -2,7 +2,10 @@
 
 Every agent gets its own registered, short-lived identity with minimal access, and a rules engine the agent cannot bypass approves or blocks each consequential action.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r10-security-and-identity (Markdown: https://www.agenticarchitectureskills.com/layers/r10-security-and-identity.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

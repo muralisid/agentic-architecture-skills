@@ -2,7 +2,10 @@
 
 Office assistants and agents: every agent gets a registered identity, a mailbox or meeting seat is a rare separate grant, and rollout follows whether work is solitary or shared.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration (Markdown: https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

@@ -2,7 +2,10 @@
 
 Buy the runtime and build the harness: the loop around the model gets explicit stop rules and budgets, inspectable state, separate checking, tested release gates, and crash survival.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r07-agent-platform (Markdown: https://www.agenticarchitectureskills.com/layers/r07-agent-platform.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

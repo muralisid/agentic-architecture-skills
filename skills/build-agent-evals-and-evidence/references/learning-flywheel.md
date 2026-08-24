@@ -2,7 +2,10 @@
 
 How agent behaviour improves over time without anyone losing control of it: tested promotion, calibrated judges, and staged rollout.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/learning-flywheel (Markdown: https://www.agenticarchitectureskills.com/architecture/learning-flywheel.md)
+Updated: 2026-08-21
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

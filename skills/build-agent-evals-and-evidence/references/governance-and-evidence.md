@@ -2,7 +2,10 @@
 
 Every agent sits on an official register with a named owner and a risk tier, the records kept grow with the risk, and any agent can be stopped fast.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty (Markdown: https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

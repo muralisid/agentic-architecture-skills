@@ -2,7 +2,10 @@
 
 Revisions to the published guide. Newest first. Volatile facts also sit on the re-verification list, which is reviewed quarterly.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/changelog (Markdown: https://www.agenticarchitectureskills.com/library/changelog.md)
+Updated: 2026-08-24
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## 2026-08-23 (second release)
 
@@ -17,6 +20,10 @@ Source: https://www.agenticarchitectureskills.com/library/changelog (Markdown: h
 ## 2026-08-23
 
 **Published.** A research section (`/research`, nine pages) documenting the multi-card retrieval experiments: five rounds on public corpora between 2026-08-19 and 2026-08-22, with human relevance judgements where they exist, seeded and replicated on a second machine. The section carries the experiments, the adversarial review and the five headline reversals, the approach the evidence supports, and the reading list behind it. The site's visual design was aligned with the maintainer's marketing site (warm paper surfaces, serif display headings, an ember accent, a floating pill header and a full footer).
+
+**Authorship and citation (D040).** Every page now carries a visible byline linking to the author, a "Cite this page" block with a copyable citation and the licence, and structured data: one `Person` entity with `sameAs` links to LinkedIn and GitHub, referenced by a `TechArticle` node per page with its published and modified dates from the file's git history. The same attribution travels in the Markdown twin of every page, in `llms.txt` and `llms-full.txt`, and inside every published skill bundle. A new [about page](https://www.agenticarchitectureskills.com/about) is the author's entity home.
+
+**Fixed: the Markdown twin of every page returned 404.** Appending `.md` to a URL, and requesting `Accept: text/markdown`, both silently failed because the rewrite pattern was built from a documents route of `/`, which asked for two leading slashes and matched nothing. Both work now, which restores the main affordance a model uses to read a page as clean text.
 
 **Research became patterns (D039).** The research section is now a pattern catalogue at `/patterns`: nine named patterns for giving an agent the right context, each stating what to do, what it buys, when it does not apply, and the measurement behind it. The experiment pages remain as the evidence for each pattern. Two were retitled to say what they are for: the objective-conditioning rounds became "Why the view taxonomy comes from the corpus, not the goal", and the method page became "How to test a context design". The `/research` routes redirect. The skill that carried the experiments is now `design-agent-context` and leads with the patterns.
 

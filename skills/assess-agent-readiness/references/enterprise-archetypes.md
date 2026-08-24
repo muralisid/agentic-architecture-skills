@@ -1,6 +1,9 @@
 # Enterprise Archetypes: The Size-by-Gravity Grid
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/architecture/archetype-grid (Markdown: https://www.agenticarchitectureskills.com/library/architecture/archetype-grid.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 As of August 2026. Phase 2 deliverable: the personas every later chapter references.
 

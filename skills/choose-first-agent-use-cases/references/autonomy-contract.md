@@ -2,7 +2,10 @@
 
 How much an agent may do on its own, how it may learn, and the controls, readiness checks, and oversight capacity that earn each step up.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/autonomy-contract (Markdown: https://www.agenticarchitectureskills.com/architecture/autonomy-contract.md)
+Updated: 2026-08-21
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

@@ -1,6 +1,9 @@
 # The Use-Case Portfolio Framework
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/frameworks/use-case-portfolio (Markdown: https://www.agenticarchitectureskills.com/library/frameworks/use-case-portfolio.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 As of August 2026. Phase 5 deliverable. Which use cases get budget this quarter, and which do not.
 

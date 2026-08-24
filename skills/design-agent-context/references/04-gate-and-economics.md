@@ -2,7 +2,10 @@
 
 A first pass built from embeddings alone separates on-purpose from off-purpose email at ROC-AUC 0.933, yet discards only a third of a corpus at high recall. The two-pass design is about two hundred times cheaper than reading every document with a model, but the advantage does not widen with corpus size.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/gate-and-economics (Markdown: https://www.agenticarchitectureskills.com/patterns/gate-and-economics.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

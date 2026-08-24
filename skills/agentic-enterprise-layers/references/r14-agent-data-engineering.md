@@ -2,7 +2,10 @@
 
 How the data behind agents is prepared: documents read with their source attached, permissions that travel with every copy, governed memory, and deletion that reaches every derivative.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering (Markdown: https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

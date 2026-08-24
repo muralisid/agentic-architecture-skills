@@ -1,6 +1,9 @@
 # The Economics Model
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/architecture/economics-model (Markdown: https://www.agenticarchitectureskills.com/library/architecture/economics-model.md)
+Updated: 2026-08-20
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 As of August 2026. Phase 4 synthesis. Two levels: what the invoice measures, and what the decision requires.
 

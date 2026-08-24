@@ -2,7 +2,10 @@
 
 The evidence behind pattern 4. Showing the view designer a sample of the corpus is worth a great deal; telling it your goal costs you, and the harm grows with the amount of context supplied. Tested in five forms, ending on real human-judged instruction-following data, with the design rule each result produced.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/why-not-to-condition-on-the-objective (Markdown: https://www.agenticarchitectureskills.com/patterns/why-not-to-condition-on-the-objective.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

@@ -2,7 +2,10 @@
 
 On 5,183 human-judged scientific abstracts, purpose cards score below matched blind chunks, whether the card taxonomy is written by hand or designed by a model from the corpus and the training queries. The domain boundary of the method, measured.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/real-prose (Markdown: https://www.agenticarchitectureskills.com/patterns/real-prose.md)
+Updated: 2026-08-23
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >

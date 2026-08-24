@@ -2,7 +2,10 @@
 
 Ten cross-cutting concerns against fourteen layers: who owns each, who enforces it, and the six gaps with no complete answer anywhere.
 
+Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/concern-matrix (Markdown: https://www.agenticarchitectureskills.com/architecture/concern-matrix.md)
+Updated: 2026-08-21
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
