@@ -4,12 +4,22 @@ The published work read during the programme, grouped by the question it answers
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/reading-list (Markdown: https://www.agenticarchitectureskills.com/patterns/reading-list.md)
-Updated: 2026-08-23
+Updated: 2026-08-24
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
 >
 > This is the reading behind the research pages: the papers that proposed the ideas under test, the ones that supplied the benchmarks and metrics, and the ones the recommendation leans on. Each row says what the paper showed and whether the experiments here agree with it. Vendor-published results are marked as such. The one thing to remember: nothing in the recommended approach rests on this programme's experiments alone; each recommendation has independent published support.
+
+## Problem and solution
+
+**Problem:** A recommendation based only on one programme's experiments is difficult to trust or generalise.
+
+**Solution:** Tie each architectural recommendation to the independent literature, and state whether the local experiments confirm it, contradict it, or only bound where it applies.
+
+**Evidence:** The papers below cover multi-vector retrieval, instruction-conditioned retrieval, taxonomy design, topic-level processing, diversity, distractors and evaluation. Vendor evidence is labelled separately from peer-reviewed work.
+
+![Visual map of the independent literature supporting and bounding the context-pattern recommendations.](/figures/patterns/reading-list.png)
 
 ## Several vectors per document, and the unit of indexing
 
