@@ -4,7 +4,7 @@ How much an agent may do on its own, how it may learn, and the controls, readine
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/autonomy-contract (Markdown: https://www.agenticarchitectureskills.com/architecture/autonomy-contract.md)
-Updated: 2026-08-24
+Updated: 2026-08-26
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -69,6 +69,8 @@ Diagram: https\://www\.agenticarchitectureskills.com/figures/readiness-six-dimen
 | All six at 3, plus regulator-ready evidence       | A5 candidacy, per domain only            |
 
 Identity gaps cap autonomy without blocking a start. A workload can begin at A1 while the identity chain is built.
+
+Readiness is scored on controls that are in place, not on a tally of clean runs, because a run count is a weaker instrument than it appears. A gate of twenty runs at a 95 percent pass rate is consistent with a true pass rate of 78 percent, and it revokes a genuinely compliant workload most of the time. The arithmetic is on [what an Agentic OS is, and what it does not solve](https://www.agenticarchitectureskills.com/architecture/agentic-os).
 
 ## The oversight gate, as a burst rate
 

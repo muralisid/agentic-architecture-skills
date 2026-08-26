@@ -4,7 +4,7 @@ Nine patterns for giving an agent the right context, each with the measurement t
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns (Markdown: https://www.agenticarchitectureskills.com/patterns.md)
-Updated: 2026-08-24
+Updated: 2026-08-26
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -132,6 +132,8 @@ Use nDCG\@10 with paired tests for relevance and coverage-aware metrics for cove
 This is the pattern we learned the hard way: five headline results in this programme reversed at least once, and every reversal traced to one of two causes. A control that is not matched is not a control. A measurement that cannot come out negative is not measuring. [How to test a context design](https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design) has the checks and the reversals that produced them.
 
 ***
+
+These patterns are the part of an agent system that a coordination platform does not supply. [What an Agentic OS is, and what it does not solve](https://www.agenticarchitectureskills.com/architecture/agentic-os) sets out why.
 
 ## The reference pipeline
 

@@ -4,7 +4,7 @@ Seven planes across fourteen layers, two binding rules, and the two-estate reali
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture (Markdown: https://www.agenticarchitectureskills.com/architecture.md)
-Updated: 2026-08-24
+Updated: 2026-08-26
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -96,7 +96,7 @@ A globally regulated enterprise runs both estates and doubles nothing else: same
 
 ## Where to go deep
 
-The cross-layer mechanics live in six spine pages. They are [the four deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones), [the identity and delegation chain](https://www.agenticarchitectureskills.com/architecture/identity-chain), [enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement), [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory), [the learning flywheel](https://www.agenticarchitectureskills.com/architecture/learning-flywheel), and [the autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). The full [concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix) shows all ten cross-cutting concerns against all fourteen layers. Every contested technology choice has a verdict in [the decision catalog](https://www.agenticarchitectureskills.com/decisions).
+The cross-layer mechanics live in six spine pages. They are [the four deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones), [the identity and delegation chain](https://www.agenticarchitectureskills.com/architecture/identity-chain), [enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement), [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory), [the learning flywheel](https://www.agenticarchitectureskills.com/architecture/learning-flywheel), and [the autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). The full [concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix) shows all ten cross-cutting concerns against all fourteen layers. Every contested technology choice has a verdict in [the decision catalog](https://www.agenticarchitectureskills.com/decisions). Where a platform is offered as the whole answer, [what an Agentic OS is, and what it does not solve](https://www.agenticarchitectureskills.com/architecture/agentic-os) sets out what the term means and what it leaves you to build.
 
 **The research behind this page**
 
