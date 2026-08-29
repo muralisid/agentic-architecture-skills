@@ -4,7 +4,7 @@ Volatile facts carry an as-of date of August 2026. This list is reviewed quarter
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/re-verification (Markdown: https://www.agenticarchitectureskills.com/library/re-verification.md)
-Updated: 2026-08-23
+Updated: 2026-08-29
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## Completed for the August 2026 release
@@ -15,6 +15,8 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 | FINRA AI recordkeeping language      | RN 24-09 preserves existing technology-neutral obligations and creates no new interpretation. RN 25-07, published April 14, 2025, asks for comment on AI-generated communications and recordkeeping; it is not a final interpretation | [https://www.finra.org/rules-guidance/notices/24-09](https://www.finra.org/rules-guidance/notices/24-09); [https://www.finra.org/rules-guidance/notices/25-07](https://www.finra.org/rules-guidance/notices/25-07)                                                                                                                                                                                     |
 
 ***
+
+\| OpenAI self-serve fine-tuning wind-down | Announced 7 May 2026. New organisations blocked 7 May 2026; organisations without fine-tuned inference in 60 days blocked 2 July 2026; all remaining customers blocked 6 January 2027. Used on /ladder/adapters-and-fine-tuning. Re-check before the January 2027 date passes | [https://developers.openai.com/api/docs/deprecations](https://developers.openai.com/api/docs/deprecations) |
 
 ## Due Q4 2026
 
