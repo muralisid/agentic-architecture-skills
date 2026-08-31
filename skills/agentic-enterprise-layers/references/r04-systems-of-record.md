@@ -4,7 +4,7 @@ Agents reach core business systems through the permissions those systems already
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r04-systems-of-record (Markdown: https://www.agenticarchitectureskills.com/layers/r04-systems-of-record.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ Embedded and external agents converge on the same permission plane.
 **What the diagram shows:** Two agent paths, embedded and external, converging on the record system's own CRUD, field-level security, and sharing-rule enforcement, with audit attributed to the requesting user. The map contains Embedded agent: Vendor-hosted, same permission plane; External agent: Through the gateway, run-as-user; Permission plane: CRUD, field-level security, sharing rules; Consequence-class write gate: Native approval machinery; relaxed by demonstrated reliability; Record; Audit log: Attributed to the human identity. Its connections are embedded to perms; external to perms; perms to gate; gate to record; record to audit. Important boundary: Embedded agents do not pause by default; the human checkpoint is wired by you, not the platform.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-04-hero.svg
+
+**Figure: The agent inherits authority; it does not invent authority.** The access layer carries the requesting person's identity into the system that already owns entitlements and truth. Requests outside that scope are denied before the official record is touched.
+
+**What the image shows:** A requesting person's identity passes through an agent access layer into the existing entitlement controls of the system of record, which remains the authority for the official record.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r04-record-authority-labeled-v1.webp
 
 | Component                 | Responsibility                                             | Control it hosts                                                                                                       | Where it runs                                                                                                               |
 | ------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -51,6 +57,12 @@ The load-bearing change of the first half of 2026 is that **the permission contr
 ### The no-pause-by-default trap
 
 **In short:** An agent built into a vendor product keeps going unless you deliberately add an approval step, so the pause is your job.
+
+**Figure: Reading and consequential writing need different paths.** A user may read freely inside existing scope. Creating or changing an official record pauses for approval until evidence earns a wider standing mandate, and vendor model changes trigger release tests before that mandate continues.
+
+**What the image shows:** Read requests return governed records after entitlement checks, while record creation and change pause at an approval checkpoint before an authorised write and audit receipt.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r04-read-write-paths-labeled-v1.webp
 
 **An embedded agent does not pause by default.** Salesforce agents execute on configuration and context without stopping for approval, unless a human checkpoint is explicitly wired in through Flow. Oracle is the counterpoint. Its approval routing is a first-class primitive: it can confirm whether a user or an agent holds authority for an action and route the request accordingly. ServiceNow markets autonomy, with the human in the loop reserved for security containment; its first-line (L1) IT desk is GA with "91% of cases without reassignment" \[vendor]. The gate is your job, not the platform's. Wire the checkpoint per consequence class and instrument the override rate, because a falling override rate is the evidence that earns autonomy.
 

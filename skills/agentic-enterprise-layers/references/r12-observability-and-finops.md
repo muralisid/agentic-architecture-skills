@@ -4,7 +4,7 @@ How to see what every agent did, test every change before it spreads, and keep e
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops (Markdown: https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ Session, model-call, and tool-call spans keyed to agent identity and cost.
 **What the diagram shows:** Observability architecture from agent execution through out-of-band collection, a schema translation layer, trace storage with cost attribution, budget enforcement returning errors on exhaustion, and the change-gate pipeline. The map contains Agent execution; Out-of-band collection: Agents cannot forge their own traces; Translation layer: Conventions unstable; avoid deep SDK coupling; Traces + cost: Session, model, tool spans keyed to agent identity; Budget enforcement: Hierarchical caps; 429 on exhaustion; fail to human queues; Change gates: Shadow, 1-5% canary, full; judges calibrated. Its connections are agent to collect; collect to translate; translate to traces; budget to agent for caps per run; traces to gates for gate evidence. Important boundary: An observability outage must not blind the kill switch.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-12-hero.svg
+
+**Figure: Evidence and budget enforcement share the same end-to-end view.** The trace must cover the whole run and remain outside the agent's control. Budgets are enforced at several scopes by deterministic controls, with cost measured per solved case rather than per call.
+
+**What the image shows:** A complete agent run from request through model, tool, decision and outcome writes a tamper-resistant trace, while run, agent and team budgets stop exhausted work and send it to a human queue.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r12-trace-budget-labeled-v1.webp
 
 | Component                           | Responsibility                                                                                                                                  | Control it hosts                                                                                                          | Where it runs                                                               |
 | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -58,6 +64,12 @@ Budget enforcement is a deterministic control, not a model behaviour, and it shi
 ### The change gate
 
 **In short:** No behaviour change reaches all users at once; it is tested offline, shadowed, then tried on a small slice of traffic.
+
+**Figure: Every change expands gradually and keeps a rollback path.** Offline evidence starts the release, but shadow and canary stages reveal production-only failures. Model judges remain calibrated against humans, and any regression returns the system to the last proven version.
+
+**What the image shows:** A behaviour change moves through offline evaluation, shadow traffic, a small canary and wider release, with quality, safety, cost and human-comparison gates plus immediate rollback on regression.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r12-staged-release-labeled-v1.webp
 
 No agent behaviour change reaches full traffic ungated. The published pattern comes from arXiv 2606.08867, the 100M-user support-agent deployment. It runs offline evals first, then shadow traffic, then a canary on **1 to 5 percent of traffic**, then full rollout. The canary is **gated on session success, satisfaction (transactional Net Promoter Score, tNPS), and escalation rate**. **Feature flags decouple activation from deployment**, so rollback is a flag flip, not a redeploy. Escalation has a published healthy band of **5 to 15 percent**, tracked per release alongside session success and containment. Guardrail metrics alert in both directions: a **block-rate spike signals attack, and a block-rate drop signals misconfiguration** (Bedrock Guardrails CloudWatch metrics \[vendor]). The pattern's weight got priced: OpenAI bought Statsig, a flags-and-experimentation company, for **$1.1B** (September 2025). One honest gap remains. No published enterprise error-budget analogue for agent quality SLOs exists; this guide carries it as an open pattern.
 

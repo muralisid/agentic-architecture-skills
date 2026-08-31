@@ -4,7 +4,7 @@ How agents get trustworthy company data: indexes that respect who may see what, 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r02-data-platform (Markdown: https://www.agenticarchitectureskills.com/layers/r02-data-platform.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ Fail-close on permission-sync errors; provenance runs from answer back to source
 **What the diagram shows:** ACL-aware grounding pipeline from source systems through permission crawl into index metadata, pre-filtered retrieval on live identity, and span-level provenance, with fail-close branch. The map contains Source systems: Documents, records, events with native ACLs; Permission crawl: ACLs into index metadata; ReBAC pre-computation; Governed index: Version-stamped vectors; purpose-scoped where stakes demand; Pre-filtered retrieval: Caller's live identity inside the query; Semantic contract: Deterministic answers or refusal for high-stakes numerics; Agent context: Answer with span-level source provenance. Its connections are sources to crawl; crawl to index for fail-close on sync error; index to retrieval; retrieval to agent; semantics to agent for numeric questions. Important boundary: Embeddings are recoverable text; vectors inherit source classification and erasure obligations.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-02-hero.svg
+
+**Figure: Permission is applied before retrieval, not after generation.** The caller's live identity narrows the searchable set before similarity ranking happens. High-stakes numeric questions take a separate deterministic path that produces a governed answer or an explicit refusal.
+
+**What the image shows:** Caller identity filters unauthorised documents before a governed index returns source spans and a cited answer, while high-stakes numbers pass through a semantic contract.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r02-permission-retrieval-labeled-v1.webp
 
 | Component           | Responsibility                                              | Control it hosts                                           | Where it runs                       |
 | ------------------- | ----------------------------------------------------------- | ---------------------------------------------------------- | ----------------------------------- |
@@ -45,6 +51,12 @@ ACL-aware retrieval checks the access control list (ACL), the record of who may 
 ### Embeddings are recoverable data
 
 **In short:** The numeric form of a document can often be turned back into its text, so it needs the same protection as the document.
+
+**Figure: Every derived fragment must keep its governance envelope.** A chunk is not just text. Its permissions, provenance, residency, version and freshness must survive parsing, embedding, indexing and answer generation, because losing that metadata loses the ability to govern the result.
+
+**What the image shows:** A searchable data chunk carries access rules, source provenance, residency, embedding version and freshness metadata; its vector and answer inherit the strictest source rule.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r02-fragment-rules-labeled-v1.webp
 
 Exact reconstruction of short inputs from their embeddings has been demonstrated at 92 percent. The result is vec2text, presented at the Empirical Methods in Natural Language Processing conference (EMNLP) in 2023 and reproduced in 2025. The architectural consequence is not optional. Vectors inherit the source's classification, ACLs, residency rules, and privacy obligations. Erasure cascades into vectors and every derived artifact: delete the record, and every copy made from it goes too. This is the reasoning behind the named risk in the OWASP (Open Worldwide Application Security Project) application list. Treat an index as a copy of the data, because that is what it is.
 

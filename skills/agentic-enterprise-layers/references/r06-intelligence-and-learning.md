@@ -4,7 +4,7 @@ How agents improve safely: domain experts set the tests, model judges grade at v
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning (Markdown: https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ The optimizer and the evaluator stay decoupled; every promoted artifact has a de
 **What the diagram shows:** Learning flywheel from production traces through shared eval data layer, judged evaluation, counterexample-gated promotion into out-of-model policy enforcement, with rollback and demotion paths. The map contains Production traces; Shared eval data layer: Failing online scores auto-promote traces; Calibrated judges: Version-pinned, human-calibrated, decoupled from the optimizer; Promotion gate: Counterexample survival + eval regression + human approval; Policy-as-code layer: Outside the model; versioned; rollback; Agent behavior. Its connections are traces to datasets; datasets to judge; judge to gate; gate to policy for promoted artifacts; policy to agent for enforced; agent to traces. Important boundary: Roughly a quarter of written policy statements are statically enforceable; the rest stay judged behavior.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-06-hero.svg
+
+**Figure: The safest improvement path is the fastest and most reversible.** Begin with prompt and context, move to governed retrieval or memory only when needed, and change weights rarely. Every path converges on the same locked evaluation and no-regression gate.
+
+**What the image shows:** Prompt and context changes move quickly, retrieval and memory changes move at a governed medium speed, and model-weight changes move slowly; all three pass a locked expert-owned evaluation before production.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r06-improvement-speeds-labeled-v1.webp
 
 | Component                              | Responsibility                                         | Control it hosts                                                                             | Where it runs                                                                            |
 | -------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
@@ -46,6 +52,12 @@ The fastest loop is context and prompt improvement: cheap, quick, and reversible
 ### Governed rule promotion, revised by evidence
 
 **In short:** Rules earn promotion by surviving real failure cases and the test suite, and writing good rules proved the hard part.
+
+**Figure: A rule becomes policy only after it survives attempts to break it.** Counterexamples send weak rules back for revision or rejection. Promoted rules live outside the model where they can be versioned, monitored and demoted, while judges are checked against independent human judgement.
+
+**What the image shows:** A real failure is labelled by experts, turned into a candidate rule, challenged with counterexamples and the full test suite, then promoted to policy outside the model; model judges are calibrated against humans.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r06-rule-promotion-labeled-v1.webp
 
 The 2025 design this page inherited assumed two things: generating candidate rules is easy, and the promotion step is the control point. A July 2026 study of exactly this pipeline (arXiv 2607.20668) inverted that. Execution works. Human-written policies improved a frozen (not retrained) agent built on a 7-billion-parameter (7B) model by 5.0 success points (95 percent confidence interval +1.88 to +9.38). They also cut interaction by 2.64 turns. Generation is the bottleneck. Of 32 automatically learned policies, only 7 were grounded and executable. Another 9 were too generic to change behavior, and 16 were shortcuts, semantic errors, or malformed. Policies learned from traces scored 1.88 points below fixed prompting. The promotion gate failed in both directions. It accepted a rule that cut success from 5 out of 20 to 1 out of 20. It rejected a rule worth +5 points.
 

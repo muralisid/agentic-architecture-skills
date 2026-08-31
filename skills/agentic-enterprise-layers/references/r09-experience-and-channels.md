@@ -4,7 +4,7 @@ Customer-facing agents get their own edge for channels, hand-offs, disclosure, a
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels (Markdown: https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ The separation is justified by legal attribution, not technology.
 **What the diagram shows:** Customer experience architecture with the channel edge (telephony, disclosure, guardrails, legal evidence) distinct from the shared control plane (knowledge corpus, identity, tool layer, evaluation, observability, model access). The map contains Channel edge: Web, voice, telephony; barge-in and latency budgets; Disclosure and consent: At first interaction; Article 50 live; Adversarial hardening: Anonymous users; public injection surface; Legal evidence layer: Verbatim records; statements bind the company; Shared control plane: Knowledge, identity, tools, evals, observability, models; Staffed escalation queue: Working-state transfer; never manufactured containment. Its connections are channels to plane; disclosure to channels; guard to channels; channels to evidence for every conversation; channels to human for escalation.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-09-hero.svg
+
+**Figure: Separate only what customer exposure makes different.** The channel edge carries latency, disclosure, consent, adversarial-input and handover concerns. The governed core behind it remains shared with employee-facing and operational agents.
+
+**What the image shows:** A customer-specific edge provides voice, chat, AI disclosure, consent, brand safety and stateful handover over shared identity, knowledge, tools, security, evaluation, observability and model access.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r09-customer-edge-labeled-v1.webp
 
 | Component                  | Responsibility                                                                                                                     | Control it hosts                                                                                                        | Where it runs                                                          |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
@@ -63,6 +69,12 @@ CRMArena-Pro (arXiv 2505.18878, May 2025, 4,280 task instances) was published by
 ### Measurement architecture
 
 **In short:** Count problems solved and customers who had to come back, not conversations that simply ended without a human.
+
+**Figure: A good journey protects identity, preserves choice and measures resolution.** Successful containment is not the same as a solved problem. Measure repeat contact and cost per resolved issue, and preserve a real handover path with the customer's context intact.
+
+**What the image shows:** A customer agent discloses AI, verifies the customer, works inside entitlement, solves or refuses, and hands over with context; voice controls and outcome measures sit underneath.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r09-customer-journey-labeled-v1.webp
 
 False containment is the named metric failure. A session that ends without escalation scores as contained whether the customer was helped or gave up. The corrective is structural, not analytic. Instrument post-contact resolution and repeat-contact rate as a pair, and price cost per resolved issue rather than cost per contact. Circulating vendor pricing of $0.99 to $2.00 per automated resolution, against a $6 to $12 human comparator \[vendor], means nothing when the denominator counts abandonments. Customer outcome rises or falls sharply on resolution. In one survey, 74 percent were satisfied with their most recent AI interaction, and above 90 percent when the issue was resolved without further steps. Net Promoter Score (NPS) fell by as much as 70 points on failure. In the US, full resolution followed a failed AI interaction only about half the time (COPC, Jan 2026, 1,000+ consumers, six countries). COPC names three primary causes of AI customer experience failure: measuring deflection rather than resolution, the people-simulation trap (optimising for sounding human), and weak data foundations. Escalation is where instrumentation is weakest. Zendesk's CX Trends 2026 survey covered 11,000+ respondents in 22 countries \[vendor]. In it, 52 percent of Chinese respondents experienced context loss during escalation (having to start again after the handover). Only 20 percent of Australians called the handover seamless. And 74 percent find retelling their story frustrating. Preference is barely moving. In Metrigy's survey (503 respondents, fielded Nov 2025), 84.9 percent of consumers prefer human agents. Even when assured of equal resolution, 80.1 percent still do. Only 13 percent prefer AI, up from 11.6 percent. Escalation with working-state transfer is therefore launch scope, not a fast follow. No credible independent escalation-rate benchmark exists as of mid-2026. This guide states the absence as a finding rather than repeating circulating figures.
 

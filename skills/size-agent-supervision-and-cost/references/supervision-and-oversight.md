@@ -4,7 +4,7 @@ How much human supervision agents really need, worked out from waiting times and
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r13-operating-model (Markdown: https://www.agenticarchitectureskills.com/layers/r13-operating-model.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ Alarms on alarms: an algorithmic monitor flags elevated-risk sessions before the
 **What the diagram shows:** Supervision architecture from agent fleet through algorithmic monitoring and the escalation queue to the supervisor, with wait time explicit in the capacity model and telemetry feeding back. The map contains Agent fleet; Algorithmic monitor: Flags elevated-risk sessions; alarms on alarms; Escalation queue: Wait time is the binding term; Supervisor: Capacity = NT / (IT + WT) + 1; Supervision telemetry: Intervention rate, escalation mix by trigger, wait per item. Its connections are fleet to monitor; monitor to queue; queue to supervisor; supervisor to telemetry; telemetry to monitor for tunes flagging. Important boundary: No credible published human-to-agent supervision ratio exists; burst bands replace ratios.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-13-hero.svg
+
+**Figure: Supervision capacity is a queueing calculation.** Headcount alone says nothing about whether escalation work arrives faster than people can process it. Design for peak bursts and allowed waiting time, then monitor the algorithmic monitor against real outcomes.
+
+**What the image shows:** Agent sessions are risk-ranked into a priority queue for human reviewers, with capacity determined by arrival rate, review time, allowed wait and peak ten-minute bursts.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r13-supervision-queue-labeled-v1.webp
 
 | Component             | Responsibility                                        | Control it hosts                                     | Where it runs                                                                                              |
 | --------------------- | ----------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -62,6 +68,12 @@ One study covered roughly 55,000 agent-generated code-review comments in 342 rep
 ### Calibrated oversight, not a ratchet
 
 **In short:** As trust grows, people should step in more often while granting more standing freedom; fewer interventions is the warning sign.
+
+**Figure: Healthy autonomy changes the shape of oversight; it does not remove oversight.** As agents handle more, supervisors encounter more edge cases and may intervene more often even while granting wider standing freedom. Track load, intervention rate, escalation mix and wait time instead of celebrating fewer human touches.
+
+**What the image shows:** Healthy autonomy combines growing standing permission with visible human intervention, easy verification and accountable sponsorship; falling interventions, longer waits, blind trust and skill erosion are warning signs.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r13-healthy-autonomy-labeled-v1.webp
 
 This is calibrated oversight: trust does not reduce supervision; it redistributes it. In measured deployments, auto-approval rose from roughly 20 percent to above 40 percent with experience. Interrupt rates rose from roughly 5 percent to roughly 9 percent over the same period. Rising interventions alongside expanding standing permission is the system working. Falling interventions alongside expanding autonomy is the pattern to investigate. Named accountability is not itself a control. In testing, a phished employee's prompt asked an agent to read cloud credentials and post them externally. It succeeded in 24 of 25 attempts, and the sponsor's name on the agent prevented none of them.
 

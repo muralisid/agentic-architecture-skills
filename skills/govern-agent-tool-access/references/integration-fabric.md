@@ -4,7 +4,7 @@ How agents reach company systems: one standard way to connect, one gateway every
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r03-integration-fabric (Markdown: https://www.agenticarchitectureskills.com/layers/r03-integration-fabric.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ The enforcement plane of the agentic enterprise.
 **What the diagram shows:** Tool-plane architecture from agent through gateway enforcement stages to MCP server, governed API, and system of record, with SIEM audit tap. The map contains Agent: Holds no credentials; MCP gateway: Allowlist, RFC 8693 token exchange, credential injection, description-integrity check, classification routing, rate limits; MCP server: Curated catalog entry; version-pinned; Governed API: Entitlement, validation, audit already enforced; System of record; SIEM: Action-granular audit. Its connections are agent to gateway for every tool call; gateway to server; server to api; api to record; gateway to siem for audit tap. Important boundary: The gateway enforces the arriving auth standards (EMA/XAA, ID-JAG); it does not replace them.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-03-hero.svg
+
+**Figure: The gateway is the enforcement point for every tool call.** The model can request an action, but it never supplies its own credentials or decides whether the request is allowed. One gateway authenticates, authorises, injects credentials, inspects, meters and records the call.
+
+**What the image shows:** An agent request passes through a single MCP gateway that checks identity, authorisation, credentials, inspection, rate limits and classification before an approved tool executes and writes an audit record.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r03-gateway-labeled-v1.webp
 
 | Component           | Responsibility                                           | Control it hosts                                                                                             | Where it runs                                       |
 | ------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------- |
@@ -51,6 +57,12 @@ No direct model-to-server connections, ever. The gateway enforces a fixed list. 
 ### Safe-action primitives
 
 **In short:** Tools are read-only unless marked otherwise, every change can be repeated or undone safely, and approvals go through the gateway.
+
+**Figure: Discovery, approval and execution are three different trust decisions.** Public registries can help find tools, but they cannot approve them. The private registry pins what is trusted, while the gateway applies extra controls whenever a tool can change state.
+
+**What the image shows:** Safe tool defaults are read-only, version-pinned, privately registered and idempotent; consequential actions require destructive marking, approval, scoped credentials, receipts and rollback.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r03-tool-defaults-labeled-v1.webp
 
 Read-only by default. Tool annotations drive gating: readOnly, destructive, and idempotent (safe to repeat without a second effect). Every tool that changes something carries an idempotency key, so a repeated call does not repeat the change, and returns a receipt. Compensation, the undo step, is defined before shipping, not after the first duplicate. Approvals use elicitation and the `input_required` flow from the 2026-07-28 version. That lets the gateway mediate approvals instead of trapping them inside each agent's harness (the engineering shell around the model). The set is completed by timeouts, circuit breakers (automatic cut-offs for failing dependencies), idempotent retries with receipts, and retry-storm alerts. Rate limits serve as budget controls, and graceful degradation to human queues closes the list.
 

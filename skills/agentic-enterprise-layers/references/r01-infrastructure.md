@@ -4,7 +4,7 @@ Where agents run: each session isolated, risky work in locked-down sandboxes, ev
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r01-infrastructure (Markdown: https://www.agenticarchitectureskills.com/layers/r01-infrastructure.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ Isolation is tiered by capability set, not product category; serving is classifi
 **What the diagram shows:** Execution infrastructure with agent runtime, microVM sandbox, egress proxy, durable session log, workload identity issuance, and classification-routed model serving. The map contains Agent runtime: Managed or platform-provided, per-session isolation; microVM sandbox: Code, browsing, computer use; session memory sanitized on termination; Egress proxy: Domain allowlists; metadata endpoints and private ranges blocked; Durable session: Event-logged, snapshot/restore, hibernate-and-wake; Workload identity: Directory, WIMSE/SPIFFE, or XAA-based; ID2 floor; Model serving: Metered by default; sovereign or self-hosted by classification. Its connections are runtime to sandbox for act-capable work; sandbox to egress for all network egress; runtime to session for event log; identity to runtime for issued per agent; runtime to serving for classification-routed. Important boundary: Gate on capability set (private data, untrusted content, external communication), re-evaluated on every tool grant.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-01-hero.svg
+
+**Figure: The safe session is the unit of agent infrastructure.** Isolation, identity, egress control, durable state and a kill switch form one runtime boundary. If any one is missing, a capable agent can escape the assumptions made about the others.
+
+**What the image shows:** A task enters through a dedicated workload identity and isolated microVM session, reaches approved destinations only through an egress proxy, and records durable state for pause, crash and resume.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r01-safe-session-labeled-v1.webp
 
 | Component                  | Responsibility                                                               | Control it hosts                                                                         | Where it runs                                                                                                        |
 | -------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -63,6 +69,12 @@ Agents are long-running processes that get interrupted. Their state must survive
 ### Serving economics and classification routing
 
 **In short:** Pay-per-use access beats running your own models unless volume is high and steady; data sensitivity decides where a model runs.
+
+**Figure: Sensitivity chooses the location; utilisation chooses the economics.** Managed metered access is the default. Sovereign or air-gapped serving is earned by classification, while owning model capacity is justified only by sustained utilisation or a control requirement.
+
+**What the image shows:** Three model-serving lanes route lower-sensitivity work to metered APIs, restricted work to sovereign regions, and the highest-sensitivity work to air-gapped or self-hosted infrastructure.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r01-model-location-labeled-v1.webp
 
 Self-hosting beats metered frontier APIs (application programming interfaces) only above roughly 100 to 250 million tokens per month, sustained, per workload. It also needs utilisation of 60 percent or more, and an honest operations multiplier of 1.3 to 2 times in the cost model. At 10 percent utilisation, cost per token rises roughly tenfold. These figures come from four mutually consistent practitioner analyses (2025 to 2026), none peer-reviewed, and utilisation is the pivotal assumption. Open-weight models are models whose trained weights are published for anyone to run. Against budget APIs serving them at roughly $0.14 per million input tokens, break-even recedes to billions of tokens per month. So the cost path is open-weight models through metered APIs, not self-hosting. Open-weight models lag the frontier by about 4 months (Epoch AI, May 2026). OpenRouter telemetry (June 2026) shows US closed models falling from about 70 percent to about 30 percent of token share in twelve months. Chinese open-weight models stand at about 61 percent of tokens. Enterprises meanwhile still run 81 percent of large language model (LLM) workloads on closed models (Menlo, December 2025, a venture capital source \[VC]). Cold starts (the delay when a model server starts from nothing) have stopped being the objection. Graphics processing unit (GPU) memory snapshots cut cold starts about tenfold (Modal, 118 seconds down to 12 \[vendor]; Cerebrium, 71 percent average reduction \[vendor]). Cloud Run GPUs (generally available June 2025) start a GPU instance in under 5 seconds, with about 19 seconds to first token on gemma3:4b \[vendor]. Also, vLLM ships a sleep mode. Scale-to-zero (shutting capacity down entirely when idle) is viable for bursty agent serving.
 

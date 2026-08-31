@@ -4,7 +4,7 @@ Buy the runtime and build the harness: the loop around the model gets explicit s
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r07-agent-platform (Markdown: https://www.agenticarchitectureskills.com/layers/r07-agent-platform.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ The harness is the lock-in and the differentiator; the runtime is becoming the p
 **What the diagram shows:** Agent platform architecture separating the enterprise-owned harness (context, termination, verification, budgets, artifacts-as-state) from the managed runtime (isolation, durable sessions), with the registry gating promotion. The map contains Harness: Context assembly and reset, iteration and wall-clock caps, per-run budgets; Verification path: Separate agent or process; self-assessment distrusted; Artifacts-as-state: Inspectable state outside the context window; Managed runtime: Isolation, durable execution, hibernate-and-wake; Registry: Eval-gated promotion; staleness demotes; search returns PUBLISHED only; Routing tiers: Deterministic pre-router, light models, frontier synthesis. Its connections are harness to runtime for runs on; harness to verify; harness to artifacts; registry to harness for gates promotion; harness to router for model calls. Important boundary: Approval rules are held in the harness and enforced at the gateway.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-07-hero.svg
+
+**Figure: The model is a component; the harness is the production system.** The harness owns the loop, the durable artifacts, independent verification and every stopping condition. A managed runtime supplies isolation and crash survival underneath that organisation-specific control logic.
+
+**What the image shows:** A harness surrounds the model with context assembly, tool calls, inspectable state, separate verification and explicit stopping, while hard limits and a managed runtime provide control and crash survival.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r07-harness-labeled-v1.webp
 
 | Component                | Responsibility                                                    | Control it hosts                                                                                                 | Where it runs                                             |
 | ------------------------ | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
@@ -64,6 +70,12 @@ Two layers are commonly conflated. A checkpoint preserves data, not execution. A
 ### The lifecycle state machine
 
 **In short:** Agents move through named stages with test thresholds at each gate, and one that stops passing drops out of circulation automatically.
+
+**Figure: Production status is earned, discoverable and reversible.** Only PUBLISHED agents appear in discovery. Promotion requires explicit evidence, while later gate failures automatically demote the version instead of leaving stale or unsafe behaviour in circulation.
+
+**What the image shows:** An agent moves through draft, approved, published, deprecated and retired states, with evaluation, safety, lineage and freshness gates; failed agents are removed from circulation.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r07-lifecycle-labeled-v1.webp
 
 The only fully specified published agent lifecycle (Kang and Wang, arXiv 2607.00345, July 2026) runs through five states: DRAFT, APPROVED, PUBLISHED, DEPRECATED, and RETIRED. Each promotion gate has a named threshold. Faithfulness must be at least 0.80, correctness at least 0.90, and tool accuracy at least 0.90. Helpfulness must be at least 0.70, latency at most 15 seconds, and harm at most 5 percent. Versioning is by lineage, so a failing new version never reaches production. A 7-day staleness policy re-evaluates each agent automatically and demotes it on failure. Measured evaluation overhead is $2.10 per month at 10,000 interactions, about 2.5 percent of model cost. The architecturally interesting move is governance through discoverability. Search through MCP (Model Context Protocol), the standard plug that connects agents to tools, returns only PUBLISHED agents. So a drop in quality reduces how reachable an agent is automatically, instead of waiting for a policy engine to step in. One caveat: this is a six-agent proof of concept by a cloud consultancy, not observed enterprise operation. Governance practice adds a complementary rule: an agent's autonomy level (how much it may do without a person in the loop) is itself a versioned, review-gated property. Prompt refinements take a light path. Model updates and autonomy adjustments take a full review. One pharmaceutical programme, with five published levels of agency, requires a runtime policy enforcement layer at the AI gateway before higher levels are enabled.
 

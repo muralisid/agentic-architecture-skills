@@ -4,7 +4,7 @@ Every agent gets its own registered, short-lived identity with minimal access, a
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r10-security-and-identity (Markdown: https://www.agenticarchitectureskills.com/layers/r10-security-and-identity.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ JIT elevation over a minimal baseline, short-lived credentials, revocation as a 
 **What the diagram shows:** Authorization chain from registered agent identity through just-in-time elevation and the gateway to a policy decision point and the tool, with guardrails as an advisory side channel and verification stages in parallel. The map contains Agent identity: Registered, least-privileged, short-lived, named owner and risk tier; JIT elevation: RFC 9396 rich authorization; automatic drop-back; Policy decision point: Cedar-class sub-millisecond or OPA; the agent cannot bypass it; Tool / action; Guardrails: Advisory: measured evasion 72-77%; Information-flow control: Deterministic; plus formal output verification where warranted. Its connections are identity to jit; jit to pdp; pdp to tool for allow, deny, limit, stop; guardrail to pdp for advisory signal only; ifc to tool for parallel verification. Important boundary: Fail closed when the policy engine fails; time-to-revoke is a measured metric.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-10-hero.svg
+
+**Figure: Every consequential action meets a decision the agent cannot bypass.** The policy decision uses caller, action, resource and context as fixed inputs. It fails closed: if the decision service is unavailable, the action stops instead of defaulting to permission.
+
+**What the image shows:** A named agent with a short-lived credential sends an action request to a deterministic policy decision point, which allows execution with an audit receipt or blocks and escalates to a human.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r10-policy-decision-labeled-v1.webp
 
 | Component                      | Responsibility                                      | Control it hosts                                                                                                  | Where it runs                                                                                                                                   |
 | ------------------------------ | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -57,6 +63,12 @@ The authorisation boundary is policy-as-code in the tool-call path: rules writte
 ### Guardrails are advisory
 
 **In short:** AI-based filters miss most real attacks in published tests, so they may warn but never decide whether an action goes ahead.
+
+**Figure: Models may advise security; fixed controls decide.** The model cannot reliably separate instructions from untrusted data. Consequential zones therefore use independent policy code that remains deterministic, versioned and fail-closed even when the model is manipulated.
+
+**What the image shows:** A model may detect patterns and warn but can be attacked; a deterministic, fail-closed and versioned policy engine outside the model decides access, money, safety and official-record actions.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r10-fixed-rules-labeled-v1.webp
 
 Published measurement settles this. In one study (the LLMSEC 2025 workshop of the Association for Computational Linguistics, ACL), roughly **72 percent of attacks got past Azure Prompt Shield**. **Protect AI v1 let 77 percent through, and NeMo jailbreak detection let 72.5 percent through.** In some configurations the figure rose to **100 percent**. The one configuration measured at zero percent bypass paid for it with 16.22 percent false positives (legitimate requests wrongly blocked) and roughly 1.5 seconds of added latency (arXiv 2605.06669). Latency alone separates the layers. A policy engine evaluates in under a millisecond to a few milliseconds. One large language model (LLM) guardrail call takes roughly 1.5 seconds. That is **three orders of magnitude**, roughly a thousand times slower. Guardrails are also themselves a target: an attacker can trip the guardrail on purpose to cause a denial of service (arXiv 2410.02916). The position this evidence forces: guardrails keep their value for content policy, detection of personal data (PII, personally identifiable information), and telemetry, where a miss is tolerable. They never authorise an action.
 

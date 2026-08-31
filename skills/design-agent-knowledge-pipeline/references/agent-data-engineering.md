@@ -4,7 +4,7 @@ How the data behind agents is prepared: documents read with their source attache
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering (Markdown: https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ Side rails: CDC freshness, memory-write quarantine, erasure cascade with exclusi
 **What the diagram shows:** Agent data engineering pipeline from source through layout-aware parsing with provenance, contextual chunking, versioned embedding, permission-carrying index, pre-filtered retrieval, to span-cited answers, with freshness, quarantine, and erasure rails. The map contains Source: Owned corpus; authenticity at ingestion; Layout-aware parse: Provenance at page and cell level; Chunk + enrich: Per-corpus evaluated; contextual enrichment; Versioned embeddings: Blue/green migration; drift monitored; Permission-carrying index: ACLs in metadata; erasure exclusion sets; Memory tiers: Writes quarantined before durable promotion; Cited answer: Span-level lineage to source. Its connections are source to parse; parse to chunk; chunk to embed; embed to index; index to answer for pre-filtered retrieval; memory to index for promoted writes only. Important boundary: Derived artifacts inherit the strictest source classification; deletion cascades or it did not happen.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-14-hero.svg
+
+**Figure: The data pipeline determines the ceiling of agent quality.** Structure lost during parsing cannot be recovered downstream. Every transformation carries governance metadata, and proposed durable memories take a separate quarantine-and-review path before they can influence future runs.
+
+**What the image shows:** A source document passes through layout-aware parsing, meaningful chunking, versioned embeddings and a permission-aware index to a cited answer, while provenance, access, residency and freshness travel throughout and memory writes are quarantined for review.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r14-data-pipeline-labeled-v1.webp
 
 | Component                 | Responsibility                                               | Control it hosts                                                                              | Where it runs                 |
 | ------------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------- | ----------------------------- |
@@ -69,6 +75,12 @@ Access control lists (ACLs) go into chunk and vector metadata, and retrieval pre
 ### Erasure cascades or it did not happen
 
 **In short:** Deleting a record must also delete every copy made from it, or the deletion did not really happen.
+
+**Figure: Deletion is a cross-system operation with proof.** Every derivative inherits the source's obligations. The erasure controller must reach every copy and emit receipts; if one derived artifact survives, the deletion has not completed.
+
+**What the image shows:** An erasure request deletes the source record and cascades across parsed text, chunks, vectors, search indexes, agent memory, logs and exclusion sets, producing deletion receipts for audit.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r14-deletion-cascade-labeled-v1.webp
 
 Deletion must reach raw logs, derived memories, and vectors. The published mechanics have three parts. Deleted-vector exclusion sets are consulted before approximate nearest neighbour (ANN) queries, the fast similarity search behind retrieval. Purpose-scoped namespaces give deletion a bounded blast radius. Deletion is exposed as an audited callable operation rather than a manual runbook. Derived artifacts inherit residency: embeddings, memories, and summaries built from in-region data are in-region data. Bitemporal facts separate event time from ingestion time. They let a superseded fact be invalidated without destroying the history that explains an earlier decision.
 

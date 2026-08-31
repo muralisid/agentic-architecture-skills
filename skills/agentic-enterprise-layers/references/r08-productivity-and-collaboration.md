@@ -4,7 +4,7 @@ Office assistants and agents: every agent gets a registered identity, a mailbox 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration (Markdown: https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ Nameability is not presence; five capability surfaces define the presence tier.
 **What the diagram shows:** Collaboration identity architecture from mandatory agent service principal with sponsor field, through optional one-to-one user account, to the five presence capability surfaces, with conditional-access-targetable connector permissions. The map contains Agent service principal: Mandatory; sponsor attribute; non-revocable creation right, capped; Connector permissions: Surfaced as API permissions; conditional-access targetable; Optional user account: Separate 1:1 child object; admin-granted, revocable; Presence surfaces: Mailbox, calendar, licence, HR system, meeting roster; Nameability: @mentionable without a user account. Its connections are principal to connector; principal to account for only when acting as a user; account to surfaces; principal to mention. Important boundary: Sponsor accountability is an access-identity attribute; presence is a deliberate, revocable decision.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-08-hero.svg
+
+**Figure: Identity is universal; human-like presence is a separate grant.** Every agent needs an auditable directory identity, but few need to appear as a user. Mailboxes, meeting seats and other presence surfaces add impersonation and consent risk, so they require explicit justification.
+
+**What the image shows:** Every agent receives a service principal, named sponsor, scoped connectors and automatic revocation; only exceptional agents receive a separately approved mailbox, meeting seat or user-like presence.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r08-identity-presence-labeled-v1.webp
 
 | Component                   | Responsibility                                                                                    | Control it hosts                                                                                                                                       | Where it runs                                                         |
 | --------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
@@ -51,6 +57,12 @@ Blocking moves usage rather than stopping it. Although **90 percent of organisat
 ### The solitary-vs-coordinated gate
 
 **In short:** Measured gains appear in solitary tasks such as email; shared work does not change unless the team agrees new norms.
+
+**Figure: Deploy assistants by task, not by licence availability.** Individual acceleration does not automatically change coordinated work. Measure each task's outcome, assume review will be shallow, and retain only the workflows that improve real quality or time.
+
+**What the image shows:** Assistants show measurable gains on solitary tasks such as drafting, summarising and research, while meetings, decisions and handoffs improve only when team norms change.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r08-task-team-labeled-v1.webp
 
 The only large randomised field experiment with telemetry outcomes is Dillon, Jaffe, Immorlica and Stanton, National Bureau of Economic Research (NBER) working paper 33795, revised November 2025. It covered **66 firms, 7,137 knowledge workers, and six months**. Users spent **two fewer hours per week on email** and did less out-of-hours work. The study detected no other shift in the quantity or composition of work. Meetings showed no measurable effect: the bounds rule out anything outside **-0.01 to +0.21 hours** against a **5.22 hours-per-week mean**. Document counts also showed no effect. The authors' explanation is that email is solitary, while shifting meetings or document ownership "requires coordinating with colleagues and agreeing on new norms".
 

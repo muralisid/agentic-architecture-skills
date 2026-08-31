@@ -4,7 +4,7 @@ Every agent sits on an official register with a named owner and a risk tier, the
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty (Markdown: https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty.md)
-Updated: 2026-08-23
+Updated: 2026-08-31
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,12 @@ Evidence floor for every production agent; Article-12-grade instrumentation for 
 **What the diagram shows:** Governance topology with the agent registry as hub feeding risk tiering, two-tier evidence capture, kill switch, classification-routed deployment, and board reporting. The map contains Agent registry: Owner, purpose, risk tier, tools and credentials, model and prompt versions; Risk tiers: Observe / Advise / Act-with-approval / Autonomous; Evidence floor: Per-action logs retained, named oversight, provenance-carrying grounding; Article-12-grade tier: For plausibly high-risk workloads; Kill switch: Wired before autonomy expands; Classification-routed deployment: Data class selects region and estate. Its connections are registry to tiers; tiers to floor; tiers to art12 for plausible high-risk; registry to kill; registry to routing.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-11-hero.svg
+
+**Figure: The agent register is the operational compliance inventory.** Registration binds an agent to a human owner, a declared purpose, a risk posture, evidence and a tested stop mechanism. An unregistered agent has no authorised route into production.
+
+**What the image shows:** An official agent register records each agent's owner, purpose, risk tier, data classification, deployment location, model version, evidence bundle and kill switch before approval, monitoring or stopping.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r11-register-labeled-v1.webp
 
 | Component                          | Responsibility                                                                                    | Control it hosts                                                                                                  | Where it runs                                                                                                               |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -45,6 +51,12 @@ Each registry entry records owner, purpose, risk tier, tools and credentials, an
 ### The two-tier evidence posture
 
 **In short:** Every production agent keeps a basic set of records, and agents that might count as high-risk under EU law keep much more.
+
+**Figure: Evidence and deployment controls grow with impact.** Baseline records apply to every production agent. Higher-risk or higher-autonomy use adds a much stronger evidence file, and data classification independently determines whether deployment is public, restricted, sovereign or air-gapped.
+
+**What the image shows:** Every production agent keeps owner, purpose, sources, actions and incident records; potentially high-risk agents add technical, data-governance, oversight, robustness and post-market evidence, while classification routes deployment.
+
+Image: https\://www\.agenticarchitectureskills.com/images/layers/r11-risk-evidence-labeled-v1.webp
 
 The floor applies to **all** production agents: a registry entry, **per-action audit logs retained for at least six months**, named oversight, and provenance-carrying grounding. The six-month retention is the deployer duty in Article 26, which also requires competent oversight and informing workers. **Instrumentation at the level Article 12 requires applies to the tier that could plausibly classify as high-risk.** That tier includes systems that touch employment, credit, or essential services, and Copilot-class multi-purpose systems under the draft presumption. The honest line, stated plainly: no regulator or auditor has endorsed retrieval provenance, the source trail kept by retrieval, as satisfying Article 12. The demand side is already institutional. Forty percent of boards assign AI oversight to a committee, up from 11 percent a year earlier (ISS, Institutional Shareholder Services, 2026). Sixty-two percent reserve agenda time (NACD, the National Association of Corporate Directors, 2026). Only 28 percent of internal-audit leaders are confident they can audit AI risks, and only 21 percent of organisations report a mature agentic governance model (Deloitte). Gartner finds that organisations which operationalise AI TRiSM (trust, risk and security management) are 3.4 times as likely to report high governance effectiveness.
 
