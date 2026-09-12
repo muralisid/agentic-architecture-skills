@@ -4,8 +4,12 @@ Revisions to the published guide. Newest first. Volatile facts also sit on the r
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/changelog (Markdown: https://www.agenticarchitectureskills.com/library/changelog.md)
-Updated: 2026-09-11
+Updated: 2026-09-12
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+## 2026-09-12
+
+**The intelligence ladder is now a run of slides.** Each of the nine pages shows one idea per slide, with a short explanation under it. New words are explained in plain words before they are named. Each page opens with what it covers and closes with what to remember. The pages hold 213 slides, up from 155 illustrations and prose sections. The bank example is gone, so the theory stands on its own. No new research: every claim and source is one the pages already carried.
 
 ## 2026-09-11
 
