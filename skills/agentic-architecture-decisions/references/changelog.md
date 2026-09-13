@@ -4,8 +4,12 @@ Revisions to the published guide. Newest first. Volatile facts also sit on the r
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/changelog (Markdown: https://www.agenticarchitectureskills.com/library/changelog.md)
-Updated: 2026-09-12
+Updated: 2026-09-13
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+## 2026-09-13
+
+**A memory architectures section.** Six new pages under Memory: a taxonomy of six memory architectures keyed on what is stored and when a model runs, what the public benchmarks measure and ten ways a score misleads, why a one-million-token context window is not a memory, the ten-million-token question with the enterprise workload beside the best published results, one independent reproduction of a published 100 percent claim, and a dated source register. Each page is a run of slides with its explanation, in the ladder's form, so the same words carry a video. The section describes the industry from primary sources; every vendor number is flagged, vendor numbers are never ranked against each other, and retrieval-only and answered-question scores never share a table. The section recommends no architecture: no published, independently run result shows useful recall over ten million tokens. The R14 layer page's refusal to cite memory-service benchmarks stands for recommendations; the section relaxes it for description under those rules.
 
 ## 2026-09-12
 
