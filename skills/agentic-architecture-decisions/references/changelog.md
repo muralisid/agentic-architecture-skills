@@ -4,8 +4,12 @@ Revisions to the published guide. Newest first. Volatile facts also sit on the r
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/changelog (Markdown: https://www.agenticarchitectureskills.com/library/changelog.md)
-Updated: 2026-09-13
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+## 2026-09-17
+
+**The intelligence ladder is back to prose and figures.** The nine ladder pages return to the form they had on 11 September: written sections, each with a few illustrations. The slide run described in the 12 September entry is withdrawn. The ladder's slide images are removed from the site. No claim and no source changed. The Memory section is unaffected and stays a run of slides. The 13 September entry describes that form as the ladder's; the ladder no longer uses it. The ladder slides stay in the history at commit cce2644, and the toolkit that made them stays in the repository.
 
 ## 2026-09-13
 
