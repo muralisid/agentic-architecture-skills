@@ -91,8 +91,4 @@ What the adjacent measurement does support:
 * Gartner, agentic AI maturity and adoption commentary, 2025-2026 (via press releases and licensed reprints)
 * Olsen and Wood, fan-out and neglect-time formulation of supervisory capacity (2004 onward); human-supervisory-control literature
 * EEMUA 191 and IEC 62682 alarm-management practice, including the removal of the per-day metric and the ten-minute burst rate
-* Full evidence base and the span-of-control finding: [research/R13-operating-model/findings.md](https://www.agenticarchitectureskills.com/library/layers/r13-operating-model/findings) and sources.md
-
-***
-
-Source: `synthesis/maturity-model.md` in the evidence repository behind this site.
+* Full evidence base and the span-of-control finding: related research and sources.md

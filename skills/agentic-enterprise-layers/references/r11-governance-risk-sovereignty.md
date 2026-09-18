@@ -4,7 +4,7 @@ Every agent sits on an official register with a named owner and a risk tier, the
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty (Markdown: https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -108,8 +108,12 @@ The stop capability now exists in three forms. First, a product feature: **Servi
 
 This layer's incident record is regulatory rather than a list of software vulnerabilities (CVEs). The operative facts are two. A Big Four firm gave a partial refund over fabricated citations (Oct 2025). No AI-Act-specific enforcement action against an enterprise has been publicly reported as of Aug 2026. Dates in flux carry flags. The omnibus OJ publication (reported 24 Jul 2026) and the provisional-agreement date show discrepancies across sources, as does the 8-versus-9 count of ready member states; verify against EUR-Lex. Vendor-published capability claims (ServiceNow, OneTrust, Credo AI, Holistic AI, watsonx.governance) carry \[vendor] status. So do the analyst figures (Gartner: the governance-platform market passing $1 billion by 2030; the 3.4 times effectiveness multiple). Board and audit percentages are survey-based (ISS, NACD, Deloitte). The ISO 42001 count has no official register behind it. Compliance-cost figures are held to order of magnitude (tens of thousands for a deployer versus hundreds of thousands for a provider) because sourcing is weak. The guide declines to publish exact ranges. The provenance thesis is the authors' position, with converging support and no auditor or regulator endorsement. Re-verify before relying on this page: the final omnibus text, final classification guidelines, final Article 73 guidance, and the first JTC 21 standards citations in the OJ (the event that starts the compliance clock). Also re-verify first enforcement actions (checked quarterly), RBI model risk management finalisation, CADA's legislative progress, and China's agent-rules finalisation.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Governance, risk and sovereignty findings](https://www.agenticarchitectureskills.com/library/layers/r11-governance-risk-sovereignty/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r11-governance-risk-sovereignty/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [compliance evidence](https://www.agenticarchitectureskills.com/use-cases/compliance-evidence) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

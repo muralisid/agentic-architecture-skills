@@ -4,7 +4,7 @@ Buy the runtime and build the harness: the loop around the model gets explicit s
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r07-agent-platform (Markdown: https://www.agenticarchitectureskills.com/layers/r07-agent-platform.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -121,8 +121,12 @@ Authors' position, labelled as such: for passive and embedded agents, the qualif
 
 Refusals. Circulating build-versus-buy figures for time to production, success rate, and maintenance share trace to vendor blogs without methodology, so this guide excludes them. A widely shared single-versus-multi-agent token comparison attributed to AssetOpsBench is a misreading of a domain fingerprint and a sample size. No such comparison exists in that paper. The claim that the leading single-agent essay predates the rival multi-agent post by months is contradicted by the pages themselves, which are dated one day apart. Also unverified and excluded: a compaction token-reduction percentage absent from the vendor's own documentation, and a cost-reduction claim for a popular open router. Likewise excluded: a skills-benchmark effect size, a maintenance-mode end date for the two merged frameworks, and a failure-share percentage attributed to MAST. No agents-per-supervisor ratio appears in this guide, because none has a defensible source. Re-verify quarterly: framework surface change after general availability, the lifecycle pattern beyond proof of concept, routing-plateau replication, and skills-marketplace hygiene.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Agent platform findings](https://www.agenticarchitectureskills.com/library/layers/r07-agent-platform/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r07-agent-platform/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [vegetation inspection](https://www.agenticarchitectureskills.com/use-cases/vegetation-inspection) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

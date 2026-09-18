@@ -208,7 +208,7 @@ The four zones are the general case; your estate will have its own instances. Fo
 
 The zone framing itself is this guide's position, argued from convergent evidence rather than measured outcomes. The payment-stack details are vendor artifacts (Visa, Mastercard, Google): consistent in shape, but each self-described. The safety-zone exclusions are standards text (IEC 61511, ISO/IEC TR 5469:2024) and joint agency guidance, the strongest evidence class on this page. The records-zone reading rests on FINRA 24-09 and ESMA's 2024 statement, both of which mandate accountability rather than prescribing tooling. Interpretations are still moving, so re-verify against the current notices before relying on them for a filing. The intent-formation caveat rests on one published red-team study; treat it as an existence proof, not a rate. The measurements of how often attacks get past guardrails (AI-based filters), which justify deterministic gates over probabilistic filters, are on [the enforcement page](https://www.agenticarchitectureskills.com/architecture/enforcement#what-guardrails-are-for).
 
-**The research behind this page**
+**Explore this topic**
 
 * [Security and identity findings](https://www.agenticarchitectureskills.com/library/layers/r10-security-and-identity/findings)
 * [The identity and security model](https://www.agenticarchitectureskills.com/library/architecture/identity-security-model)

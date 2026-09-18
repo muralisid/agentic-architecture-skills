@@ -159,7 +159,7 @@ If you read nothing else, read the six group headings below: agents and autonomy
 | Safety instrumented system (SIS) | Certified equipment that shuts a process down safely when limits are crossed. Standards exclude AI from it.                                                                                  |
 | Validation loop                  | Checking an agent's proposal against rules or a simulation before a person sees it, so only options that pass are shown.                                                                     |
 
-**The research behind this page**
+**Explore this topic**
 
 * [The canonical glossary](https://www.agenticarchitectureskills.com/library/glossary)
 * [The target-state architecture](https://www.agenticarchitectureskills.com/architecture)

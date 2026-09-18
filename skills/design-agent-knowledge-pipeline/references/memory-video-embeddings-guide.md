@@ -1,0 +1,38 @@
+# Video embeddings: search for events
+
+Represent a useful interval while retaining timing and surrounding context.
+
+Author: Murali Sid (https://linkedin.com/in/muralisid)
+Source: https://www.agenticarchitectureskills.com/memory/video-embeddings (Markdown: https://www.agenticarchitectureskills.com/memory/video-embeddings.md)
+Updated: 2026-09-18
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+A video contains change: a person approaches a loading zone, a vehicle moves, or an inspection unfolds. A suitable representation can help search for similar clips or events. Finding a related video is different from locating the exact interval that supports a claim.
+
+**Figure: Video: find a similar event.** Keep timestamps and original clips. A vector is not a directly readable event chronology.
+
+**What the image shows:** A timestamped CCTV clip becomes a representation of an event interval. Similar filmstrips are grouped together; a retrieved result opens the original clip with its camera, start and end time, and surrounding context.
+
+Image: https\://www\.agenticarchitectureskills.com/images/memory/video-space-v1.webp
+
+## What the space represents
+
+A video can carry motion, interactions, and events that a single frame does not establish. A video representation may encode sampled frames or clips for discovery and comparison. InternVideo2 is one research example of multimodal video representation learning. Different models and sampling strategies preserve different information.
+
+## What to retain beside the vector
+
+Keep the recording, camera or source, start and end time of the represented interval, sampling method, observation context, permissions, and model version. If the task needs exact event timing, retain the timestamps and check the original recording.
+
+## Where the first approach can fail
+
+One vector or summary for a long recording may find the right video without finding the event. Sampling can miss a brief action. Two clips containing the same objects can show different sequences. Test discovery and event localization separately, and never infer a precise chronology solely from vector proximity.
+
+## How it serves a decision
+
+A safety agent can retrieve a candidate interval for review. The reviewer needs the supporting clip and surrounding context before accepting an event label. Generated coaching material is a separate output and must not be confused with incident evidence.
+
+See [safety coaching](https://www.agenticarchitectureskills.com/use-cases/safety-coaching) and [organizing media evidence](https://www.agenticarchitectureskills.com/memory/images-video-and-audio).
+
+## External source
+
+[InternVideo2](https://arxiv.org/abs/2403.15377), 2024. Reviewed 18 September 2026.

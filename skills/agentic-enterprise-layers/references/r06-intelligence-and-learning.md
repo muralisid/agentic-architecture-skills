@@ -4,7 +4,7 @@ How agents improve safely: domain experts set the tests, model judges grade at v
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning (Markdown: https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -117,8 +117,12 @@ Anthropic's production reinforcement-learning study (arXiv 2511.18397, November 
 
 The load-bearing results here are dated studies rather than Common Vulnerabilities and Exposures (CVE) records. They are the policy-pipeline study (arXiv 2607.20668, July 2026), AutoSpec (arXiv 2606.24245), the instruction-file analysis (arXiv 2606.25189), and the enforceability proof (arXiv 2607.22868, July 2026). They also include the reward-hacking study (arXiv 2511.18397, November 2025), GEPA and ACE at ICLR 2026, and the UC Berkeley benchmark-exploitation report (April 2026). Three figures are vendor-published and carried as such: the NVIDIA 98.6 percent cost-reduction headline, OpenAI's RFT customer gains, and the fine-tuned-versus-prompted head-to-head with its price arithmetic. The support-agent resolution spread is competitor-sourced and flagged as such. Advertised figures run 67 to 86 percent, against 42 to 50 percent in Intercom's own case studies. Business-to-business (B2B) deployments run 17 to 25 points below benchmark. Gartner's 2028 governance-shift and 2030 runtime-enforcement figures are projections. Known limits follow. The policy-pipeline study found no transfer beyond its training task family. The statically-enforceable fraction comes from instruction files, not from deployed enterprise decisions, and no published measurement of the latter exists. No credible published evidence identifies which function owns agent quality at scale, so this page's ownership verdict is the authors' position. Re-verify quarterly: judge-to-human agreement drift, benchmark-harness isolation fixes, and distillation break-even as the frontier-to-small price ratio moves.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Intelligence and learning findings](https://www.agenticarchitectureskills.com/library/layers/r06-intelligence-and-learning/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r06-intelligence-and-learning/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [systemic audit issues](https://www.agenticarchitectureskills.com/use-cases/systemic-audit-issues) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

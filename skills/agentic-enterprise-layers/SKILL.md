@@ -16,7 +16,7 @@ compatibility: Reference material only. No tools, network access, or scripts
 metadata:
   track: enterprise
   kind: reference
-  version: 2026.08.23
+  version: 2026.09.17
   source: https://www.agenticarchitectureskills.com/skills
   bundled: "15"
 ---
@@ -58,3 +58,8 @@ The files are long. Search first:
 ## How to use it
 
 Layer pages describe what an enterprise owns; they are not product recommendations. Products are named for orientation only, with an as-of date, and vendor-published numbers are labelled as such. Where a layer's evidence runs out, the page says so; carry that qualification into any answer rather than filling the gap.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.

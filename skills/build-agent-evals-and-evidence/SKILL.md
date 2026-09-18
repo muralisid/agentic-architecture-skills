@@ -14,7 +14,7 @@ compatibility: Reference material only. No tools, network access, or scripts
 metadata:
   track: both
   kind: task
-  version: 2026.08.23
+  version: 2026.09.17
   source: https://www.agenticarchitectureskills.com/skills
   bundled: "4"
 ---
@@ -55,3 +55,8 @@ Shadow, then canary, then full, with the eval suite run on every release and on 
 ## 5. What to refuse
 
 Benchmark scores from a harness with no isolation between agent and evaluator. Containment or deflection as a target metric, in any form: every documented reversal of an AI-first programme set one. Any claim of improvement that rests on a judge from the same model family as the generator, unless a cross-family judge agrees.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.

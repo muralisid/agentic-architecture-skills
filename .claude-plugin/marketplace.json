@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Agentic Architecture Skills",
-    "version": "2026.8.23"
+    "version": "2026.9.18"
   },
   "plugins": [
     {
@@ -16,7 +16,7 @@
         "repo": "muralisid/agentic-architecture-skills"
       },
       "description": "The published architecture skills, one install for the whole catalogue.",
-      "version": "2026.8.23",
+      "version": "2026.9.18",
       "category": "architecture"
     }
   ]

@@ -65,7 +65,7 @@ The M1–M5 namespace keeps memory distinct from learning maturity.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/memory-obligation-tiers.svg
 
-**The research behind this page**
+**Explore this topic**
 
 * [The memory-pipeline architecture](https://www.agenticarchitectureskills.com/library/architecture/memory-pipeline-architecture)
 * [Agent data engineering findings](https://www.agenticarchitectureskills.com/library/layers/r14-agent-data-engineering/findings)

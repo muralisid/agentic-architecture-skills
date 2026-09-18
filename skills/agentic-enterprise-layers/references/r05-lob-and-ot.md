@@ -4,7 +4,7 @@ Agents advise the people who run physical plant but never control it: proposals 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot (Markdown: https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -120,8 +120,12 @@ The incident record at this layer is a process-safety case, not a CVE (a catalog
 
 Refusals (claims this page declines to use): circulating figures for an autonomous Ford manufacturing execution system (MES) deployment trace to content farms and are excluded. Equinor's reported $130M 2025 AI saving is traditional machine learning on roughly 700 rotating machines, not agents, and is excluded as agent evidence. Siemens Industrial Copilot generates IEC 61131-3 code in TIA Portal, but it does not deploy autonomously and no human-approval protocol is published. No published production alarm-triage deployment exists in an electric utility control room, and no agent holds autonomous control authority at any named water utility. AMLAS (Assurance of Machine Learning for use in Autonomous Systems) is the assurance methodology Ofgem points to. Ofgem cites it alongside ISO/IEC 23894, ISO/IEC 42001, and the NIST AI Risk Management Framework (AI RMF). AMLAS was built for conventional machine learning, not LLMs. Re-verify: the joint-guidance primary text, ISA-18.2 revision status, and CIP-015-1 compliance milestones (October 2028). Also re-verify the independent review by the Department for Energy Security and Net Zero (DESNZ), with its final report due Summer 2026.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Line of business and OT findings](https://www.agenticarchitectureskills.com/library/layers/r05-lob-and-ot/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r05-lob-and-ot/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [water operations](https://www.agenticarchitectureskills.com/use-cases/water-operations) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

@@ -1,105 +1,101 @@
-# The target-state architecture
+# Architecture of the agentic enterprise
 
-Seven planes across fourteen layers, two binding rules, and the two-estate reality every design must survive.
+See how intelligence, memory, tools, people, and controls work together, then explore the fourteen enterprise layers.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture (Markdown: https://www.agenticarchitectureskills.com/architecture.md)
-Updated: 2026-08-26
+Updated: 2026-09-18
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-> **In plain terms.**
->
-> This page is the one-page map of how a company runs AI agents safely at scale. It shows the parts of your business that agents touch, the new capabilities you build around them, and where the controls and the evidence live. The thing to remember: an instruction written to an AI model is a request, while a rule checked by a separate system is a control.
+How do you turn model intelligence into useful enterprise work? Start with a task, such as investigating a possible safety issue and arranging an inspection. The architecture must connect the agent to evidence, give it appropriate tools, limit what it can do, and confirm what actually happened.
 
-## Why this architecture exists
+Connecting a model to documents can help it answer a question. Completing the work requires more: current information, permission to act, reliable business systems, and someone responsible when the task cannot be completed.
 
-**WHY:** Agents do not live inside one AI model. They reach into identity, data, applications, tools, records, observability, governance and human workflows. If control stays inside the prompt, the agent can influence the rule that is supposed to constrain it. If evidence is collected by the agent itself, the system is asking the actor to certify its own behaviour. And if the design assumes every agent passes through one company gateway, vendor-embedded agents create an immediate blind spot.
+## See the whole system first
 
-**WHAT:** Build the agentic enterprise as **seven planes across the fourteen layers you already own**: Execution, Action, Knowledge, Control, Improvement, Evidence and Human. Bind them with two non-negotiable rules: **enforcement lives outside execution**, and **evidence is collected through a channel the agent cannot influence**. Apply the same architecture to both the metered estate you control and the licensed estate that runs on vendor control planes.
+**Figure: From a business goal to a confirmed result.** Start with the outcome. Intelligence and memory help the agent work toward it; tools, controls, and people make that work possible.
 
-![Visual summary of the target-state architecture](/figures/architecture/index.jpg)
+**What the image shows:** A business owner defines a goal. An agent uses intelligence and memory, passes an independent permission check, and uses enterprise systems. The system returns a result for the agent to check. People oversee the work and independent records capture what happened.
 
-## The whole thing, on one page
+Image: https\://www\.agenticarchitectureskills.com/images/architecture/enterprise-overview-v1.webp
 
-Everything below is in this diagram. It shows the fourteen layers, each with its control point, key mechanisms, and market products. It shows the seven planes that group them. It shows the ten cross-cutting concerns as columns, marking who owns and who enforces each, plus the products that serve them. Underneath sit the four deterministic zones, where a model may advise but never decide. Products are named for orientation as of August 2026; they are representative rather than exhaustive, and they are not endorsements. If you read one artifact from this guide, read this one.
+For example, an agent reviewing vegetation near power lines needs images, the correct asset location, and the inspection policy. It may request a closer look or propose an inspection. A separate permission check determines whether it can create the work order. The task ends with a confirmed result or a clear handover to a person.
 
-**Figure: The agentic enterprise, on one page.** Fourteen layers with their control point, key mechanisms, and the products that serve them, grouped into the seven planes, with the ten cross-cutting concerns as columns and the four deterministic zones underneath.
+This is a proposed design example, not a claim that an image alone establishes a safety risk. The [task walkthrough](https://www.agenticarchitectureskills.com/architecture/task-walkthrough) follows an inspection in more detail.
 
-Diagram: https\://www\.agenticarchitectureskills.com/diagrams/target-state.svg
+## Break the system into responsibilities
 
-## The shape
+The reference design uses seven **planes** to group responsibilities. These are a way to reason about the system, not seven products to buy.
 
-**In short:** Agents are built across the systems you already own, with seven new groups of capability around them. Two rules hold: an agent never enforces its own rules and never keeps its own evidence.
+**Figure: Seven responsibilities in one system.** Every responsibility needs an owner and an implementation. Several may be supported by systems the enterprise already operates.
 
-An agentic enterprise is fourteen layers of estate with a seven-plane agent system built across them. The layers are what you already own: infrastructure, data, integration, records, line-of-business systems, and the rest. The planes are what you build. There are seven. **Execution** is where agent work runs. **Action** is how agents reach your systems. **Knowledge** is what agents know. **Control** is what is allowed. **Improvement** is how behaviour changes. **Evidence** is what you can prove afterward. **Human** is who decides and answers for it.
+**What the image shows:** Human: set goals and handle exceptions. Execution: run the agent and workflow. Knowledge: supply information and memory. Action: connect tools and business systems. Control: enforce permissions and limits. Evidence: independently record what happened. Improvement: evaluate changes before release.
 
-**Figure: The seven-plane target architecture.** Enforcement and evidence must remain outside the agent’s influence.
+Image: https\://www\.agenticarchitectureskills.com/images/architecture/architecture-responsibilities-v1.webp
 
-The same seven planes apply to every archetype; their contents and operating ownership differ.
+Read the diagram around one task: a person sets the goal; execution runs the agent; knowledge supplies context; action connects it to tools. Control limits what is allowed. Evidence records what happened. Improvement tests proposed changes before they enter use.
 
-**What the diagram shows:** Seven horizontal architecture planes for execution, action, knowledge, control, improvement, evidence, and human accountability, connected by policy and trace flows. The map contains Execution plane: Runtimes and durable sessions; Action plane: Gateways and governed APIs; Knowledge plane: Curated corpora and memory; Control plane: Identity, policy, approvals, budgets; Improvement plane: Evals, promotion, demotion; Evidence plane: Independent traces and records; Human plane: Intent, accountability, exceptions. Its connections are human to control for intent and mandate; control to action for deterministic permission; execution to action for tool request; action to evidence for immutable trace; evidence to improvement for evaluation input.
+Two boundaries matter throughout this design. **The model does not enforce its own permissions.** Enforcement belongs outside its reasoning. **The agent is not the sole author of its audit trail.** Trusted collection must capture calls, approvals, and outcomes independently. Read the [complete system view](https://www.agenticarchitectureskills.com/architecture/system-view) for the boundaries and their implementation options.
 
-Diagram: https\://www\.agenticarchitectureskills.com/figures/seven-plane-architecture.svg
+## Connect intelligence and memory
 
-Two rules bind the planes, and they are the two most often violated:
+Intelligence and memory are two important parts of this architecture. Their design starts with different questions: how capable must the agent be for this task, and what information must it have to make a supported decision?
 
-1. **Enforcement lives in the control plane, never in the execution plane.** An instruction in a prompt is a preference. The same rule becomes a control when a gateway or a policy decision point checks it. A gateway is the single door every agent request passes through; a policy decision point is the component that says yes or no to each action. Every layer page names where its enforcement actually sits.
-2. **The evidence plane is fed by collection the agent cannot influence.** Anything an agent reports about itself is testimony, not evidence. Traces (the step-by-step log of each run), decisions, and provenance (where each piece of information came from) are collected by a separate channel the agent cannot touch.
+**Figure: How intelligence and memory work together.** Memory supplies context and referenceable evidence. Intelligence chooses the next step. The actual result determines whether to continue, stop, or ask for help.
 
-## The crosswalk
+**What the image shows:** Memory supplies the current task, past experience, and reference evidence to intelligence. Intelligence chooses the next check. A separate permission gate precedes tool use. The result returns for checking and the agent continues or finishes. Task progress is saved; updates to shared memory require review.
 
-**Figure: Fourteen estate layers, seven agent-system planes.** Layers describe what the enterprise owns; planes describe how governed agent work operates across it.
+Image: https\://www\.agenticarchitectureskills.com/images/architecture/intelligence-memory-loop-v1.webp
 
-A layer can contribute to more than one plane; the planes cut across the estate rather than containing its layers.
+In the inspection example, thread memory keeps track of the location being investigated and checks already completed. Longer-lived memory may supply an earlier inspection, an approved procedure, or a relevant past case. The agent uses that context to decide whether it has enough information or needs another observation.
 
-**What the diagram shows:** Crosswalk matrix showing fourteen enduring enterprise layers down the rows and seven agent-system planes across the columns, with several layers contributing to multiple planes. The matrix crosses R01 Infrastructure, R02 Data platform, R03 Integration fabric, R04 Systems of record, R05 LOB and OT, R06 Intelligence and learning, R07 Agent platform, R08 Productivity and collaboration, R09 Experience and channels, R10 Security and identity, R11 Governance, risk and sovereignty, R12 Observability and FinOps, R13 Operating model, R14 Agent data engineering with Execution, Action, Knowledge, Control, Improvement, Evidence, Human. Annotated cells are R01 Infrastructure by Execution: Runtime and model serving; R02 Data platform by Knowledge: Governed source data; R03 Integration fabric by Action: Gateway and tool path; R04 Systems of record by Action: Authoritative action boundary; R05 LOB and OT by Action: Operational actuation boundary; R06 Intelligence and learning by Improvement: Evaluation and promotion; R07 Agent platform by Execution: Agent runtime; R07 Agent platform by Control: Registry and runtime controls; R08 Productivity and collaboration by Human: Human work surface; R09 Experience and channels by Human: Customer and employee edge; R10 Security and identity by Control: Identity and policy; R11 Governance, risk and sovereignty by Control: Risk and sovereignty rules; R11 Governance, risk and sovereignty by Evidence: Decision and consultation records; R12 Observability and FinOps by Evidence: Independent traces and cost; R13 Operating model by Human: Accountability and supervision; R14 Agent data engineering by Knowledge: Curation and memory; R14 Agent data engineering by Improvement: Eval-data flywheel. Important boundary: The cells show primary contributions, not exclusive ownership. Every deployed workload uses all seven planes across the relevant estate layers.
+Keep two kinds of evidence distinct. **Reference evidence** supports the decision: which image, record, or procedure was used, and when it applied. **Execution evidence** establishes what happened: which tool was called, who approved it, and what the business system returned. A summary written by the agent cannot replace those records.
 
-Diagram: https\://www\.agenticarchitectureskills.com/figures/layers-planes-crosswalk.svg
+Saving task progress is also different from changing shared knowledge or improving a model. Review proposed durable updates for accuracy, access, and freshness. Test changes to models, prompts, and policies through the improvement process before release.
 
-| Plane       | Built primarily from                                                                                           | Deep pages                                                                                                                                                                                                                                                   |
-| ----------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Execution   | Sandboxes, runtimes, durable sessions, model serving                                                           | [R01](https://www.agenticarchitectureskills.com/layers/r01-infrastructure), [R07](https://www.agenticarchitectureskills.com/layers/r07-agent-platform)                                                                                                       |
-| Action      | Tool gateway, wrapped governed APIs (application programming interfaces), OT (operational technology) boundary | [R03](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric), [R04](https://www.agenticarchitectureskills.com/layers/r04-systems-of-record), [R05](https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot)                        |
-| Knowledge   | Governed indexes, curation pipelines, memory tiers                                                             | [R02](https://www.agenticarchitectureskills.com/layers/r02-data-platform), [R14](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering)                                                                                                |
-| Control     | Identity, policy decision points, registry, budgets                                                            | [R10](https://www.agenticarchitectureskills.com/layers/r10-security-and-identity), [R11](https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty), [R07](https://www.agenticarchitectureskills.com/layers/r07-agent-platform)       |
-| Improvement | Evals, judges, promotion gates, staged rollout                                                                 | [R06](https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning), [R12](https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops)                                                                                  |
-| Evidence    | Traces, provenance chains, retention                                                                           | [R12](https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops), [R11](https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty)                                                                                |
-| Human       | Supervision instrumentation, accountability, channels                                                          | [R13](https://www.agenticarchitectureskills.com/layers/r13-operating-model), [R08](https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration), [R09](https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels) |
+**Design the intelligence (/ladder)**Choose the level of reasoning, tool use, and coordination the task needs. Consider quality, time, cost, and supervision together.
+**Design the memory (/memory)**Start with current context, thread memory, and longer-lived knowledge. Then organize sources, representations, retrieval, and lifecycle.
 
-## The two-estate reality
+## Find these responsibilities in the fourteen layers
 
-**In short:** Some agents run through systems you control, where you can see and govern everything. Others run inside vendor products, where you govern only what the vendor's settings allow, so every design has to work for both.
+The seven planes describe responsibilities across the system. The fourteen layers below locate the enterprise capabilities that provide them. They are two views of the same architecture, not twenty-one separate components.
 
-Agent work runs in two estates, and every design must survive that fact. The **metered estate** flows through your own gateways. It is fully governable, budget-enforced, and traced on your terms. The **licensed estate** (suite copilots, agents embedded in record systems) runs on vendor control planes your gateway never sees. You can govern it only through tenant policy settings and by extracting telemetry, the activity measurements the vendor's system emits. The vendor interfaces (APIs) for doing so have documented gaps. Architectures that assume one gateway governs everything are the most common structural error at enterprise scale. A cost model that prices agent actions but not the governance plane is wrong by a variable amount. Governance is a separately priced per-user item (a SKU, or stock-keeping unit) in one vendor stack and free in another \[vendor pricing].
+For intelligence, start with **Intelligence & learning** and **Agent platform**, supported by **Infrastructure & compute**. For memory, start with **Data platform** and **Data engineering for agents**, connected to the agent platform. Both depend on security, governance, monitoring, and the people operating the service.
 
-**Figure: Licensed and metered agent estates.** One gateway cannot govern agents that run inside a vendor’s licensed control plane.
+Explore all fourteen enterprise architecture layers at https\://www\.agenticarchitectureskills.com/layers. The layers cover infrastructure, data, integration, official records, industrial systems, models, agent platforms, collaboration, channels, security, governance, monitoring, operating practices, and agent data engineering.
 
-Use tenant policy and telemetry extraction for the licensed estate; direct gateway enforcement for the metered estate.
+Open a layer to see its role, then follow its detailed design. The [plane-to-layer crosswalk](https://www.agenticarchitectureskills.com/architecture/system-view#the-crosswalk) connects the two views explicitly.
 
-**What the diagram shows:** Two-estate architecture comparing licensed suite agents governed through tenant policy with metered agents governed through an enterprise gateway and shared evidence plane. The comparison contains 2 groups: Licensed estate, containing Vendor execution plane, Tenant policy, Telemetry extraction, Limited gateway visibility; Metered estate, containing Enterprise runtime, Gateway enforcement, Per-run budgets, Full action trace.
+## Add detail when you need it
 
-Diagram: https\://www\.agenticarchitectureskills.com/figures/support-licensed-metered-estates.svg
+Once the main flow is clear, work through the boundaries for your task:
 
-## Three builds of the same planes
+* [Protect consequential actions](https://www.agenticarchitectureskills.com/architecture/deterministic-zones): access, money, physical safety, and official regulatory records.
+* [Identify the agent and its sponsor](https://www.agenticarchitectureskills.com/architecture/identity-chain), then [enforce permission outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement).
+* [Choose autonomy for the task](https://www.agenticarchitectureskills.com/architecture/autonomy-contract), with enough supervision capacity to support it.
+* [Test proposed improvements](https://www.agenticarchitectureskills.com/architecture/learning-flywheel), [check all ten cross-cutting concerns](https://www.agenticarchitectureskills.com/architecture/concern-matrix), and [examine security threats](https://www.agenticarchitectureskills.com/security).
 
-**In short:** Large regulated enterprises, mid-sized companies, and digital-native companies build the same seven planes in different ways. The diagram shows what each one builds, rents, or still has to add.
+**Make software usable by agents (/architecture/software-for-agents)**Design interfaces, delegated access, reliable transactions, and human handover.
+**Compare technology choices (/decisions)**Explore twenty-five decisions with alternatives, evidence, and conditions that change the answer.
 
-**Figure: One frame, three target architectures.** Use the same plane model but adapt ownership and controls to the enterprise’s real operating capacity.
+## Adapt the design to your enterprise
 
-A global regulated enterprise, mid-market organisation, and digital native should not build the same control-plane implementation.
+A company using agents inside purchased software has different control interfaces from a team operating its own agent platform. Check what each system exposes rather than assuming one gateway observes every action. The [enterprise reference designs](https://www.agenticarchitectureskills.com/library/architecture/master-target-state) compare starting points.
 
-**What the diagram shows:** Three side-by-side target architectures comparing global regulated, mid-market, and digital-native enterprises across defining constraint, control ownership, and primary gap. The comparison contains 3 groups: Global regulated, containing Two estates at the edge, Independent control and evidence, Sovereignty routing from day one; Mid-market, containing Control plane is rented, Purpose-scoped curation is the build priority, Operate one independent capability at most; Digital native, containing Execution arrives first, Retrofit control and evidence now, Discipline is the limiting factor.
+Start from a [business use case](https://www.agenticarchitectureskills.com/use-cases), explore [all fourteen detailed layers](https://www.agenticarchitectureskills.com/layers), or apply an [architecture review skill](https://www.agenticarchitectureskills.com/skills) to a concrete design.
 
-Diagram: https\://www\.agenticarchitectureskills.com/figures/three-target-architectures.svg
+**Detailed system explanations**
 
-A globally regulated enterprise runs both estates and doubles nothing else: same knowledge plane, same registry, same evidence machinery, two enforcement surfaces. A mid-market estate rents the control plane from its productivity vendor and builds only the knowledge plane, which vendors do not curate for you. A digital-native estate has the execution and action planes early. It must add control and evidence before autonomy rises, which is what the [autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract) enforces.
+[Why this architecture exists](https://www.agenticarchitectureskills.com/architecture/system-view#why-this-architecture-exists)
 
-## Where to go deep
+[The whole thing, on one page](https://www.agenticarchitectureskills.com/architecture/system-view#the-whole-thing-on-one-page)
 
-The cross-layer mechanics live in six spine pages. They are [the four deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones), [the identity and delegation chain](https://www.agenticarchitectureskills.com/architecture/identity-chain), [enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement), [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory), [the learning flywheel](https://www.agenticarchitectureskills.com/architecture/learning-flywheel), and [the autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). The full [concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix) shows all ten cross-cutting concerns against all fourteen layers. Every contested technology choice has a verdict in [the decision catalog](https://www.agenticarchitectureskills.com/decisions). Where a platform is offered as the whole answer, [what an Agentic OS is, and what it does not solve](https://www.agenticarchitectureskills.com/agentic-os) sets out what the term means and what it leaves you to build.
+[The shape](https://www.agenticarchitectureskills.com/architecture/system-view#the-shape)
 
-**The research behind this page**
+[The crosswalk](https://www.agenticarchitectureskills.com/architecture/system-view#the-crosswalk)
 
-* [Master target-state architecture](https://www.agenticarchitectureskills.com/library/architecture/master-target-state)
-* [Vision and target state](https://www.agenticarchitectureskills.com/library/architecture/vision-and-target-state)
-* [The concerns-by-layers matrix](https://www.agenticarchitectureskills.com/library/architecture/concerns-by-layers-matrix)
+[The two-estate reality](https://www.agenticarchitectureskills.com/architecture/system-view#the-two-estate-reality)
+
+[Three builds of the same planes](https://www.agenticarchitectureskills.com/architecture/system-view#three-builds-of-the-same-planes)
+
+[Where to go deep](https://www.agenticarchitectureskills.com/architecture/system-view#where-to-go-deep)

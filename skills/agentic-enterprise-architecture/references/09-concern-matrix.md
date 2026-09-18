@@ -77,7 +77,7 @@ The gaps below are published as unsolved. A matrix without holes would be the le
 | Human-to-agent supervision ratio                                          | R13   | No credible published figure from any source                                                              |
 | Embedded versus external agent outcomes                                   | R04   | No published head-to-head measurement on identical tasks                                                  |
 
-**The research behind this page**
+**Explore this topic**
 
 * [The concerns-by-layers matrix](https://www.agenticarchitectureskills.com/library/architecture/concerns-by-layers-matrix)
 * [All fourteen research tracks](https://www.agenticarchitectureskills.com/library/layers)

@@ -63,7 +63,7 @@ Guardrails are the advisory layer, never the boundary. In published tests, rough
 | Iteration count, cost, wall-clock time | Harness caps plus platform hard caps (429 too-many-requests on exhaustion) | Model self-restraint              |
 | Content policy, PII screening          | Guardrails, advisory                                                       | Anything consequential            |
 
-**The research behind this page**
+**Explore this topic**
 
 * [Security and identity findings](https://www.agenticarchitectureskills.com/library/layers/r10-security-and-identity/findings)
 * [Intelligence and learning findings](https://www.agenticarchitectureskills.com/library/layers/r06-intelligence-and-learning/findings)

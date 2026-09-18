@@ -89,7 +89,3 @@ There is no credible published benchmark of any specific full stack against anot
 * The Distracting Effect, ACL 2025. [https://arxiv.org/abs/2505.06914](https://arxiv.org/abs/2505.06914)
 * BGE-M3, arXiv 2024. [https://arxiv.org/abs/2402.03216](https://arxiv.org/abs/2402.03216) ; ColBERTv2, NAACL 2022. [https://arxiv.org/abs/2112.01488](https://arxiv.org/abs/2112.01488)
 * Neo4j operations and Cypher documentation (graph capabilities and traversal guidance) \[vendor]
-
-***
-
-Source: `techniques/when-a-knowledge-graph-earns-its-keep.md` in the evidence repository behind this site.

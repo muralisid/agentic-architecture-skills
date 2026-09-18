@@ -144,7 +144,3 @@ Not an AI strategy scorecard (Cisco, ServiceNow, and Accenture/SEI already score
 ## Sources
 
 EDM Association Global Data Management Benchmark, May 2026; ISO Survey 2024; Fortra State of Cybersecurity 2025 \[vendor]; Devolutions SMB Security 2025 \[vendor]; KPMG AI Quarterly Pulse Q3 2025; Gartner press releases Feb 26 2025 (AI-ready data), Jul 29 2024 (abandonment), Jun 25 2025 (cancellation drivers); S\&P Global 451 via CIO Dive, Mar 2025; MIT NANDA, Aug 2025 (methodology contested); McKinsey State of AI, Nov 2025; LangChain State of Agent Engineering, Dec 2025 \[vendor]; MuleSoft Connectivity Benchmark 2025/2026 \[vendor]; Okta AI at Work 2025 \[vendor]; SailPoint agent report 2025 \[vendor]; Cisco AI Readiness Index, Oct 2025 \[vendor]; ServiceNow/Oxford Economics Enterprise AI Maturity Index 2025 \[vendor]; Accenture and CMU SEI AI Adoption Maturity Model, Jun 8 2026; Openlayer ISO 42001 guide, Jun 2026.
-
-***
-
-Source: `frameworks/readiness-assessments.md` in the evidence repository behind this site.

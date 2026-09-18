@@ -19,7 +19,7 @@ The claim of this guide is that knowledge work is heading to the same shape, and
 
 **The metaphor was tested, and it holds in one direction only.** The shape of that residual work is well evidenced: supervise, adjust, maintain, expand, improve are exactly the tasks the human-factors literature identified in 1983 and has found stable ever since. The rate is not evidenced, and the guide does not claim it. Two corrections came out of the research and are stated here rather than buried in a track: the widely circulated claim that a famous automated electronics plant runs 128 robots with nine workers is wrong, since the primary reporting says several dozen workers per shift; and the best-documented agentic deployment in knowledge work had agent-eligible conversations under 10% of volume, of which the agent completed 35% without a human taking over.
 
-So the honest version of the metaphor is not "fewer humans" but **different humans, doing different work, under a different failure model**. That is the version this guide defends. Which humans become what differs by function: operations work moves toward exception handling and supervision, knowledge work moves toward design and curation of what agents execute, and client-facing work stays human because the thing being sold is a relationship. The full test, including the finding that no credible human-to-agent supervision ratio has ever been published, is in [research/R13-operating-model/findings.md](https://www.agenticarchitectureskills.com/library/layers/r13-operating-model/findings).
+So the honest version of the metaphor is not "fewer humans" but **different humans, doing different work, under a different failure model**. That is the version this guide defends. Which humans become what differs by function: operations work moves toward exception handling and supervision, knowledge work moves toward design and curation of what agents execute, and client-facing work stays human because the thing being sold is a relationship. The full test, including the finding that no credible human-to-agent supervision ratio has ever been published, is in related research.
 
 ## What "agentic enterprise" means
 
@@ -70,7 +70,3 @@ It is not a vendor pitch, and it is not hype amplification. That bottling plant 
 * Anthropic, framework for safe and trustworthy agents, Aug 4 2025; Lessons on building effective human-agent teams, Jun 24 2026 \[vendor]
 * Dell'Acqua et al., The Cybernetic Teammate, NBER working paper 33641, Mar 2025. [https://www.nber.org/papers/w33641](https://www.nber.org/papers/w33641)
 * McKinsey, The State of AI in 2025, Nov 2025; Menlo Ventures, 2025 State of Generative AI in the Enterprise, Nov 2025; LangChain, State of Agent Engineering, Dec 2025; Gartner CIO webinar poll via press release, Jun 11 2025; MIT NANDA, The GenAI Divide, Aug 2025 (methodology contested); Forrester, Conversational AI Waves for Customer Service (Q2 2026) and Employee Services (Q3 2026)
-
-***
-
-Source: `synthesis/vision-and-target-state.md` in the evidence repository behind this site.

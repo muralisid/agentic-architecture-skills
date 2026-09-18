@@ -92,7 +92,7 @@ Diagram: https\://www\.agenticarchitectureskills.com/figures/oversight-burst-cap
 
 Measure these, as [R13](https://www.agenticarchitectureskills.com/layers/r13-operating-model), the operating model layer, sets out. Track the intervention rate and its trend, the mix of escalations by trigger, wait time per item, and verification cost per review. Add periodic blind checks against self-reported figures.
 
-**The research behind this page**
+**Explore this topic**
 
 * [The maturity model](https://www.agenticarchitectureskills.com/library/architecture/maturity-model)
 * [Readiness assessments](https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments)

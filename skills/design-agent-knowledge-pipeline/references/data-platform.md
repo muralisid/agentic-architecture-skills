@@ -4,7 +4,7 @@ How agents get trustworthy company data: indexes that respect who may see what, 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r02-data-platform (Markdown: https://www.agenticarchitectureskills.com/layers/r02-data-platform.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -70,7 +70,7 @@ For high-stakes numeric questions, the value of a governed semantic layer (a sha
 
 **In short:** Start with the simplest storage that fits the number of documents, and move up only when measurements say so.
 
-The ladder has rungs with thresholds, because "which vector database" is the wrong first question. Below roughly 100,000 vectors, brute-force search is enough. Postgres with the pgvector extension serves roughly 1 to 10 million vectors. At 1 million it answers in under 20 milliseconds with above 95 percent recall (the share of relevant items it finds). Index-build pain appears around 2 million, and partitioning becomes necessary past 5 million. Scale-out Postgres extensions reach roughly 50 million. Published comparisons show large advantages at 99 percent recall against a managed peer, at lower cost \[vendor]. The advantages are in p95 latency (the time within which 95 percent of queries return) and in queries per second (QPS). Dedicated or managed engines earn the top rung for extreme scale, heavy write rates, or filter-heavy multi-tenancy (many tenants on one index). Take 100 million vectors with filters that select 20 percent of the data. There, Postgres p99 latency (the time within which 99 percent of queries return) runs several times that of a purpose-built engine. Two operational cautions decide real migrations. Index builds consume tens of gigabytes of memory (RAM) for hours. Filtered search has recall cliffs: past certain filters, it suddenly misses relevant items. Vector storage on object stores has reached general availability at up to 90 percent lower cost \[vendor]. That tilts the economics toward more, smaller, purpose-scoped indexes rather than one large one.
+The ladder has methods with thresholds, because "which vector database" is the wrong first question. Below roughly 100,000 vectors, brute-force search is enough. Postgres with the pgvector extension serves roughly 1 to 10 million vectors. At 1 million it answers in under 20 milliseconds with above 95 percent recall (the share of relevant items it finds). Index-build pain appears around 2 million, and partitioning becomes necessary past 5 million. Scale-out Postgres extensions reach roughly 50 million. Published comparisons show large advantages at 99 percent recall against a managed peer, at lower cost \[vendor]. The advantages are in p95 latency (the time within which 95 percent of queries return) and in queries per second (QPS). Dedicated or managed engines earn the top method for extreme scale, heavy write rates, or filter-heavy multi-tenancy (many tenants on one index). Take 100 million vectors with filters that select 20 percent of the data. There, Postgres p99 latency (the time within which 99 percent of queries return) runs several times that of a purpose-built engine. Two operational cautions decide real migrations. Index builds consume tens of gigabytes of memory (RAM) for hours. Filtered search has recall cliffs: past certain filters, it suddenly misses relevant items. Vector storage on object stores has reached general availability at up to 90 percent lower cost \[vendor]. That tilts the economics toward more, smaller, purpose-scoped indexes rather than one large one.
 
 ### Freshness is a cost decision, not a virtue
 
@@ -87,7 +87,7 @@ Model upgrades force a re-embed of the full corpus. Reference costs run from hou
 ## Design decisions
 
 * **Semantic-layer product vs governed views** ([CD-8](https://www.agenticarchitectureskills.com/decisions#cd-8)): decided per use case, by failure mode rather than by accuracy points. The binding variable is curated business context.
-* **Dedicated vector database vs the simplest substrate** ([CD-9](https://www.agenticarchitectureskills.com/decisions#cd-9)): climb the ladder above one rung at a time. Prefer the vector capability bundled with the platform where the corpus already lives. Governance and ACL inheritance then come free.
+* **Dedicated vector database vs the simplest substrate** ([CD-9](https://www.agenticarchitectureskills.com/decisions#cd-9)): climb the ladder above one method at a time. Prefer the vector capability bundled with the platform where the corpus already lives. Governance and ACL inheritance then come free.
 * **Data mesh vs governed central substrate** ([CD-10](https://www.agenticarchitectureskills.com/decisions#cd-10)): mesh ideas on a governed substrate. Every shipped ACL-sync architecture assumes a governed central index.
 * **Real-time vs batch grounding** ([CD-12](https://www.agenticarchitectureskills.com/decisions#cd-12)): CDC is the default. Streaming is earned by decision cadence.
 * **One universal index vs use-case-scoped** ([CD-11](https://www.agenticarchitectureskills.com/decisions#cd-11)): two layers. The detail is resolved on [R14](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering), the agent data engineering page.
@@ -109,10 +109,14 @@ Model upgrades force a re-embed of the full corpus. Reference costs run from hou
 
 ## Evidence and limits
 
-The vec2text reconstruction result, the ontology-checked accuracy figures, and the substrate benchmarks are peer-reviewed or reproducible. The semantic-layer coverage comparisons and the substrate performance claims are vendor-published and flagged as such. The oversharing percentage is secondary-sourced and carried with that status. Two refusals. First, a widely circulated projection says that a majority of agentic analytics projects relying solely on tool protocols will fail by 2028. It is secondhand, with no located primary source, and this guide excludes it. Second, the substrate ladder's rung thresholds are working figures from published benchmarks, not guarantees for your corpus, so measure before you migrate. Re-verify quarterly: platform vector general-availability states, semantic interchange specification adoption, and embedding model releases that would trigger a re-embed decision.
+The vec2text reconstruction result, the ontology-checked accuracy figures, and the substrate benchmarks are peer-reviewed or reproducible. The semantic-layer coverage comparisons and the substrate performance claims are vendor-published and flagged as such. The oversharing percentage is secondary-sourced and carried with that status. Two refusals. First, a widely circulated projection says that a majority of agentic analytics projects relying solely on tool protocols will fail by 2028. It is secondhand, with no located primary source, and this guide excludes it. Second, the substrate ladder's method thresholds are working figures from published benchmarks, not guarantees for your corpus, so measure before you migrate. Re-verify quarterly: platform vector general-availability states, semantic interchange specification adoption, and embedding model releases that would trigger a re-embed decision.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Data platform findings](https://www.agenticarchitectureskills.com/library/layers/r02-data-platform/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r02-data-platform/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [compliance evidence](https://www.agenticarchitectureskills.com/use-cases/compliance-evidence) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

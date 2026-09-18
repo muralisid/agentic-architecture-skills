@@ -4,7 +4,7 @@ A document about several things gets one embedding that is an average of all of 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/aspect-dilution (Markdown: https://www.agenticarchitectureskills.com/patterns/aspect-dilution.md)
-Updated: 2026-08-24
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -55,7 +55,7 @@ Each synthetic document concatenates k passages drawn from k of ten unrelated to
 
 The pooled index collapses and does not recover. Splitting the document, by any method, holds retrieval up. The purpose cards pull away from the matched chunks from k=5 onward, and the hand-written anchors (a practitioner's topical description of each aspect, carrying none of the generator's phrasing) do better than the anchors rendered from the generator's own templates.
 
-**Source:** Benchmark repository, results/e0\_dilution/metrics.json and results/e1\_anchor\_sensitivity/metrics.json, commit 2b9c6ef (2026-08-22). Reproduced on a second machine to within 5e-8.
+**Source:** Author-reported experiment, August 2026. The comparison and limitations are described on this page.
 
 Against the matched chunk control, cards built from hand-written anchors score +0.023 at k=3 (p=0.12, not significant), +0.099 at k=5, +0.098 at k=7, and +0.188 at k=10 (95 percent interval +0.152 to +0.225, p=0.0001, 135 wins to 34 losses), while using 9.8 units per document against the control's 13.0, which is 25 percent fewer embeddings. The earlier template-anchor version of the same experiment gave +0.109 at k=10. The reason the cruder anchors do better is intuitive once seen: a topical description is a better prototype for an aspect than one rendered sentence carrying one specific fact.
 
@@ -86,7 +86,7 @@ LIMIT is constructed to expose the representational ceiling of single-vector ret
 
 Keyword search wins outright, because LIMIT queries name an exact attribute. The pooled dense vector fails; per-attribute cards recover it; the hybrid matches BM25. The 30-word chunk arm here is not a matched control: it has 4 units per document against the cards' 44.
 
-**Source:** Benchmark repository, results/e1\_limit/metrics.json, commit 2b9c6ef (2026-08-22). Byte-identical on a second machine.
+**Source:** Author-reported experiment, August 2026. The comparison and limitations are described on this page.
 
 The first reading of this table attributed the 0.674 gain to alignment, because 30-word chunks gained only 0.076. An adversarial re-run, described on the [method page](https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design), varied only the chunk granularity and found that nDCG\@10 is a smooth function of units per document.
 
@@ -102,7 +102,7 @@ The first reading of this table attributed the 0.674 gain to alignment, because 
 
 A semantically blind three-word sliding window, with no taxonomy and no anchors, recovers 0.610 of the 0.674 that cards gain. The residual card advantage at matched capacity is +0.064. Dropping the card template and using the bare attribute string beats the framed cards by a further +0.010 (p=0.0001).
 
-**Source:** Adversarial review of the benchmark repository at commit 1cec616, 2026-08-20; reported in the programme's review record.
+**Source:** Author-reported experiment, August 2026. The comparison and limitations are described on this page.
 
 Two things follow. Capacity is necessary and explains most of the LIMIT result; the decomposition has to match the query distribution for the remainder to appear. And LIMIT supplies a perfect decomposition for free while its queries are effectively exact-attribute lookups, which is why BM25 wins outright and the hybrid only matches it. Real corpora arrive undecomposed, the taxonomy must be designed and may be misaligned, so the honest reading of the table is an upper bound on what alignment can buy. The storage cost is also a property of the corpus: 44 cards per document here, far above the small constant the pattern implies elsewhere.
 
@@ -114,9 +114,8 @@ Several embeddings per document beat one on aspect-rich material, decisively and
 
 \[Evidence status: Independently measured] The synthetic and LIMIT results reproduced byte-for-byte or to floating-point precision across two machines and two processor architectures.
 
-**The research behind this page**
+**Explore this topic**
 
-* Benchmark repository: `results/e0_dilution`, `results/e1_anchor_sensitivity`, `results/e1_limit`, commit 2b9c6ef, 2026-08-22.
 * Weller, Boratko, Naim, Lee, On the Theoretical Limitations of Embedding-Based Retrieval, arXiv:2508.21038, Aug 2025. [https://arxiv.org/abs/2508.21038](https://arxiv.org/abs/2508.21038)
-* The adversarial review of Sprint R1, 2026-08-20, whose chunk-granularity re-run produced the second chart.
+
 * [The papers behind the recommendation](https://www.agenticarchitectureskills.com/patterns/reading-list) for the multi-vector literature this sits in.

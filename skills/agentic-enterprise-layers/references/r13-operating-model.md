@@ -4,7 +4,7 @@ How much human supervision agents really need, worked out from waiting times and
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r13-operating-model (Markdown: https://www.agenticarchitectureskills.com/layers/r13-operating-model.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -101,8 +101,12 @@ This is calibrated oversight: trust does not reduce supervision; it redistribute
 
 The fan-out measurements, the alarm-standard bands, the code-review study, and the cognitive-forcing results are peer-reviewed or standards-published. The auto-approval and interrupt trends come from platform telemetry \[vendor]. **The central refusal**: no credible published human-to-agent supervision ratio exists from any source. A major vendor introduced the metric as a management concept and published no figure in either of two annual editions. Every number in circulation is an extrapolation. Several widely repeated figures were traced to untraceable or misquoted origins and are excluded from this guide entirely. Design to the burst-rate bands and your own measured wait times instead. Two items to re-verify. First, whether any credible measurement of agent-supervision capacity is published. Second, whether the 2026 finding holds that the vigilance decrement (the fall in attention over a long watch) is a bias shift rather than a sensitivity loss. If it holds, it would redirect interventions aimed at improving detection.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Operating model findings](https://www.agenticarchitectureskills.com/library/layers/r13-operating-model/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r13-operating-model/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [water operations](https://www.agenticarchitectureskills.com/use-cases/water-operations) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

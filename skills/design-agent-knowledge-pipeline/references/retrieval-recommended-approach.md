@@ -4,7 +4,7 @@ Nine patterns for giving an agent the right context, each with the measurement t
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns (Markdown: https://www.agenticarchitectureskills.com/patterns.md)
-Updated: 2026-08-26
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -39,7 +39,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 Where a pattern is marked measured, we ran it: five rounds on public corpora, with human relevance judgements where they exist, seeded and reproducible. Where it is marked published work, the evidence is someone else's and is cited. The [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list) has about thirty-five papers with what each shows.
 
-The code, the committed outputs and the per-query results are public at [github.com/muralisid/multicard-bench](https://github.com/muralisid/multicard-bench), under MIT for the code and CC BY-SA for everything else. You do not have to take any number here on trust: recompute it, or rerun the experiment. The programme's working documents are published with it, and the [hypothesis scorecard](https://www.agenticarchitectureskills.com/patterns/what-we-got-wrong) records how each prediction fared.
+These pages report the author’s experiments. Read each comparison with its dataset, baseline, and limitations; this revision does not claim independent replication. The [changed findings](https://www.agenticarchitectureskills.com/research/what-changed) explain where the results narrowed our advice.
 
 ***
 
@@ -159,9 +159,10 @@ If a pattern is missing that you needed, that is useful to know: the [skills rep
 
 The encoders were small, the corpora ran to twenty thousand documents, everything was in English, and no production data was used. Prices are as of 2026-08-19 and local compute is priced at zero. A larger instruction-tuned encoder would strengthen pattern 5, not weaken it. The obvious next experiment is a real aspect-targeted corpus with human judgements, which would test pattern 1's one positive finding outside synthetic data.
 
-**The research behind this page**
+**Explore this topic**
 
 * The experiment pages linked from each pattern, and the [reading list](https://www.agenticarchitectureskills.com/patterns/reading-list)
-* The [benchmark repository](https://github.com/muralisid/multicard-bench), commit 2b9c6ef, 2026-08-22: one metrics file and one per-query file per experiment. It is public, so every number on these pages can be recomputed from the per-query results rather than taken on trust
+
 * [Agent data engineering](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering) and [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory), where these patterns sit in the architecture
+
 * [CD-25](https://www.agenticarchitectureskills.com/decisions#cd-25) records the decision

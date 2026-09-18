@@ -99,8 +99,4 @@ The invoice case also receives kill criteria at approval: stop if the eval targe
 
 ## Sources
 
-Evaluability and promotion evidence: research/R06-intelligence-and-learning/. Cost per resolved outcome: [../synthesis/economics-model.md](https://www.agenticarchitectureskills.com/library/architecture/economics-model). Supervision capacity: research/R13-operating-model/ and [../synthesis/maturity-model.md](https://www.agenticarchitectureskills.com/library/architecture/maturity-model). Corpus scoping and curation: research/R14-agent-data-engineering/. Reversal and liability evidence: research/R09-experience-and-channels/.
-
-***
-
-Source: `frameworks/use-case-portfolio.md` in the evidence repository behind this site.
+Evaluability and promotion evidence: related research. Cost per resolved outcome: [Related explanation](https://www.agenticarchitectureskills.com/library/architecture/economics-model). Supervision capacity: related research and [Related explanation](https://www.agenticarchitectureskills.com/library/architecture/maturity-model). Corpus scoping and curation: related research. Reversal and liability evidence: related research.

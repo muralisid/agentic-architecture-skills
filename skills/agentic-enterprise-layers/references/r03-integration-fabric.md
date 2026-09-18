@@ -4,7 +4,7 @@ How agents reach company systems: one standard way to connect, one gateway every
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r03-integration-fabric (Markdown: https://www.agenticarchitectureskills.com/layers/r03-integration-fabric.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -110,8 +110,12 @@ The event backbone is the trigger fabric for ambient agents. A business event on
 
 Incidents above are dated with CVE and CVSS identifiers where they exist. Estate figures are survey-based and carried with that status. Under half of enterprise APIs are managed. Some 27 percent of APIs are ungoverned. Under 40 percent of organisations enforce central API governance. And 19 percent of chief information security officers (CISOs) claim full API visibility. One refusal: a widely circulated projection puts a precise share on the API gateway vendors that will ship MCP features by the end of 2026. Its primary source could not be located, and this guide excludes the figure. Re-verify quarterly: MCP registry maturity, EMA and ID-JAG standardisation progress, and gateway vendor capability against the 2026-07-28 specification.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Integration fabric findings](https://www.agenticarchitectureskills.com/library/layers/r03-integration-fabric/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r03-integration-fabric/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [vegetation inspection](https://www.agenticarchitectureskills.com/use-cases/vegetation-inspection) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

@@ -1,0 +1,60 @@
+# Turn delivery knowledge into new opportunities
+
+Support opportunity development with relevant experience, evidence, and accountable commitments.
+
+Author: Murali Sid (https://linkedin.com/in/muralisid)
+Source: https://www.agenticarchitectureskills.com/use-cases/commercial-growth (Markdown: https://www.agenticarchitectureskills.com/use-cases/commercial-growth.md)
+Updated: 2026-09-18
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+A proposal needs relevant delivery evidence and commitments the business can honor. The proposed agent retrieves approved experience and prepares options for an accountable commercial owner.
+
+## See the work first
+
+**Figure: Turn delivery knowledge into new opportunities.** Proposed agent extension. Each action remains within an explicitly permitted business process.
+
+**What the image shows:** Understand customer needs, retrieve approved delivery evidence, prepare options and assumptions, and review scope, price and commitments.
+
+Image: https\://www\.agenticarchitectureskills.com/images/use-cases/commercial-growth-v1.webp
+
+**Experience behind this example**
+
+The author’s experience includes shaping unclear customer problems into funded solutions and expanding engagements. The proposed agent supports the research and preparation around that work; it does not claim autonomous sales outcomes.
+
+## Start with evidence
+
+Use approved account records, public customer information, documented delivery experience, and current offering details. Separate known facts from assumptions about a customer’s needs. Restrict confidential material from other customers.
+
+## What the agent adds
+
+An agent can prepare opportunity briefs, identify relevant capabilities, draft a proposal outline, and flag missing requirements. It can compare the proposed scope with previous delivery constraints and prepare questions for the next customer discussion.
+
+## How the investigation proceeds
+
+Ask what evidence is missing to qualify the opportunity: the actual problem, owner, expected outcome, constraints, or ability to deliver. Seek targeted evidence rather than generating more proposal text. Stop when the responsible person has a useful brief or a clear reason not to proceed.
+
+## Measure the business result
+
+Measure qualified opportunities, preparation effort, proposal quality, conversion over an appropriate period, and realized margin. Separate pipeline estimates from contracted revenue and delivered profit. Compare with the existing sales and solutioning process.
+
+## Responsibility and failure handling
+
+People retain responsibility for customer communications, commercial promises, pricing, and contract commitments. Inaccurate claims should be corrected at their source. No proposed success rate is presented as a measured result.
+
+## Start with a bounded trial
+
+Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+
+## Explore the architecture
+
+* [Experiences & channels](https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels).
+* [Workplace & collaboration](https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration).
+* [Systems of record](https://www.agenticarchitectureskills.com/layers/r04-systems-of-record).
+
+Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/memory), [value and investment](https://www.agenticarchitectureskills.com/use-cases/value-and-investment), or [practical skills](https://www.agenticarchitectureskills.com/skills).
+
+## External sources
+
+* [NIST AI Risk Management Framework Playbook](https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook). Accessed 17 September 2026.
+
+Return to [Energy](https://www.agenticarchitectureskills.com/use-cases/energy) or [explore the agent roles](https://www.agenticarchitectureskills.com/use-cases/agent-roles).

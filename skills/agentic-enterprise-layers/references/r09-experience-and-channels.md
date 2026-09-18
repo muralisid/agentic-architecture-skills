@@ -4,7 +4,7 @@ Customer-facing agents get their own edge for channels, hand-offs, disclosure, a
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels (Markdown: https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -118,8 +118,12 @@ Vendor-published figures are flagged \[vendor] inline. They include the 84 perce
 
 Refusals: a widely recycled pairing of two vendors' containment figures was traced to its attributed article, and the figures are not in it. This guide treats the pairing as fabricated in transit and excludes it. Also excluded as unverifiable: circulating figures for voice-agent penetration among large banks, year-on-year voice-deployment growth, an average containment rate, every escalation-rate benchmark, and a pilots-never-reach-production rate. Re-verify on a quarterly cycle: Article 50 enforcement practice and first penalties; the Colorado act's 1 January 2027 effective date; ACP and UCP specification status (both pre-1.0); the agentic-access line of cases after the Ninth Circuit ruling; and whether a credible independent escalation benchmark has appeared.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Experience and channels findings](https://www.agenticarchitectureskills.com/library/layers/r09-experience-and-channels/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r09-experience-and-channels/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [commercial growth](https://www.agenticarchitectureskills.com/use-cases/commercial-growth) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

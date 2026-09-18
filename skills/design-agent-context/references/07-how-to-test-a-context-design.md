@@ -4,7 +4,7 @@ The evidence behind pattern 9: three arms per experiment, a matched control, a l
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design (Markdown: https://www.agenticarchitectureskills.com/patterns/how-to-test-a-context-design.md)
-Updated: 2026-08-24
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -27,7 +27,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 Every experiment carries three arms: one pooled vector; the same text cut into blind fixed-size windows, with the width chosen so that windows per document match cards per document; and the same text split by purpose. The gap between the first two is capacity. The gap between the last two is the hypothesis. Matching the number of units per document between the chunk and card arms is what makes the comparison mean anything, and getting that wrong was the single largest error in the programme.
 
-The corpora form a ladder of realism: a synthetic corpus where the number of aspects is a dial and relevance comes from the generative process; LIMIT, a published stress test with a perfect free decomposition; SciFact, real abstracts with human judgements; Enron, real corporate email; and FollowIR, real news with two sets of human judgements per query. The point of the ladder is that a technique which only works on the top rung is an artefact of the test.
+The corpora form a ladder of realism: a synthetic corpus where the number of aspects is a dial and relevance comes from the generative process; LIMIT, a published stress test with a perfect free decomposition; SciFact, real abstracts with human judgements; Enron, real corporate email; and FollowIR, real news with two sets of human judgements per query. The point of the ladder is that a technique which only works on the top method is an artefact of the test.
 
 Measurement is paired. Every delta is a per-query paired difference with a 95 percent bootstrap interval, a two-sided paired permutation p-value, Holm step-down correction wherever several comparisons run together, and wins, ties, and losses recorded beside it. The statistical core was checked by the adversarial reviewer against textbook definitions over 2,000 randomised comparisons; nDCG, recall, MRR, reciprocal rank fusion, alpha-nDCG and subtopic recall all match their standard definitions on hand-worked cases, and maximal marginal relevance at lambda 1 reduces exactly to relevance ranking.
 
@@ -43,7 +43,7 @@ For round 5 the maintainer waived preregistration and directed the programme to 
 
 **In short:** The first sprint was rejected at 1.5 out of 5 by a reviewer who re-ran the experiments rather than reading the code, and was right on every fatal finding.
 
-An adversarial reviewer was run against the benchmark repository at the end of the first sprint with one instruction: try to reject. The reviewer found that the benefit attributed to purpose-aligned cards was, on the evidence then in the repository, mostly the benefit of having more embeddings per document, and that three of the four experiments had construction defects that made their headline numbers wrong. The review is the most valuable single artifact the programme produced, and it is the best argument for the process. Two of its findings the programme had found independently in the same hours; four it had missed, and those were the ones that mattered most.
+An adversarial reviewer was run against the experimental material at the end of the first sprint with one instruction: try to reject. The reviewer found that the benefit attributed to purpose-aligned cards was, on the evidence then in the experimental material, mostly the benefit of having more embeddings per document, and that three of the four experiments had construction defects that made their headline numbers wrong. The review is the most valuable single artifact the programme produced, and it is the best argument for the process. Two of its findings the programme had found independently in the same hours; four it had missed, and those were the ones that mattered most.
 
 | Reported first                                        | What was wrong                                                                                                                                                                                                         | How it was caught                                                                                |
 | ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -75,8 +75,6 @@ With both fixes, the pure encoder and retrieval experiments reproduced byte-for-
 * *The harvest is on the efficient frontier.* A corpus with natural sub-topic labels where MMR or a DPP reaches the harvest's coverage at equal or lower relevance cost.
 * *Harvesting reduces unsupported content.* A replication with a different generator where the effect disappears.
 
-**The research behind this page**
+**Explore this topic**
 
-* The adversarial review of Sprint R1 against the benchmark repository at commit 1cec616, 2026-08-20, and its same-day economics addendum.
 * The programme's findings summary and worklog entries of 2026-08-20 to 2026-08-22, including the second-machine replication record.
-* Benchmark repository `results/replication-arm`, commit 2b9c6ef, 2026-08-22: the regenerated results that differ from the committed tree.

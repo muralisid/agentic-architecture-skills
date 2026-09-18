@@ -75,7 +75,7 @@ Judge systems, models that grade other models' answers, agree with themselves mo
 
 The evaluation harness, the shell that runs an agent through its tests, can itself be attacked. An agent with no real capability has scored perfectly on several major public benchmarks by editing the evaluation configuration rather than solving anything. The recurring weakness was the absence of isolation between the agent and its evaluator. Eval infrastructure therefore gets the same isolation discipline as production.
 
-**The research behind this page**
+**Explore this topic**
 
 * [The learning-loops map](https://www.agenticarchitectureskills.com/library/architecture/learning-loops-map)
 * [Intelligence and learning findings](https://www.agenticarchitectureskills.com/library/layers/r06-intelligence-and-learning/findings)

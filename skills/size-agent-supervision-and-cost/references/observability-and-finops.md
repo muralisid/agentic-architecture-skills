@@ -4,7 +4,7 @@ How to see what every agent did, test every change before it spreads, and keep e
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops (Markdown: https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -115,8 +115,12 @@ Cost and usage live in two estates: the licensed estate (per-seat copilots) and 
 
 The incident record here is cost incidents, not Common Vulnerabilities and Exposures (CVE) entries, and it is graded. The $1.3 million, 603 billion token loop is self-reported (May 2026, medium confidence). The $47K agent-to-agent (A2A) loop traces only to a vendor blog (low confidence, unverified) and stays flagged until a primary source exists. Survey and telemetry figures are vendor-published and marked so throughout (LangChain, Harness, Datadog). The Harness cost figures are paired with FinOps Foundation State of FinOps data for neutrality. Every pricing anchor ($0.10 per action, $0.01 credits, $0.99 to $2.00 per resolution) is a vendor list price. The sponsor-owned envelope is the authors' recommended design, not established practice. The error-budget analogue for agent quality has no published enterprise example. One refusal: a spring 2026 funding round attributed to the open-source tracing project circulates on content-farm sites. It contradicts the verified January 2026 acquisition, so this guide excludes it and treats that class of aggregator source as unreliable generally. Four items to re-verify quarterly. The first, and the single most important item on this layer, is the semantic-conventions-genai repository's first tagged release and stability status. The others are the Dynatrace-Arize close and the fate of the Phoenix open-source project, the shipped depth of workforce-system agent budgeting, and agents-console GA states.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Observability and FinOps findings](https://www.agenticarchitectureskills.com/library/layers/r12-observability-and-finops/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r12-observability-and-finops/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [production measurement](https://www.agenticarchitectureskills.com/use-cases/production-measurement) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

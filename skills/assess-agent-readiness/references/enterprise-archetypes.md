@@ -46,7 +46,3 @@ Every later chapter writes against these cells: current-state baselines, the pat
 ## Sources
 
 Zylo 2025 SaaS Management Index, Jan 2025 \[vendor]; Okta Businesses at Work 2025, Mar 2025 \[vendor]; MuleSoft Connectivity Benchmark 2025/2026 \[vendor]; Apps Run The World ERP and ITSM vendor analyses, 2025-Aug 2026; IDC CRM tracker via Salesforce, Apr 2026 \[vendor-published]; Gartner productivity-suite share, 2025 (doc 6860166); Gartner Copilot/agents assessment, Jun 9 2026 (doc 7974937; 66% multivendor); Gartner martech survey press release, Oct 29 2025 (45% dissatisfaction); Google Workspace Gemini bundling, Jan 2025 \[vendor]; Microsoft Copilot adoption disclosures via earnings coverage \[vendor-derived]; Salesforce Agentforce attach analyses of earnings, 2026. Methodology note: productivity-suite share differs by measure (domains vs seats vs revenue); this chapter uses the enterprise-seat view.
-
-***
-
-Source: `synthesis/archetype-grid.md` in the evidence repository behind this site.

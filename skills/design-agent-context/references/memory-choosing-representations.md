@@ -1,0 +1,44 @@
+# Choose how memory is represented
+
+Use exact records, similarity, or relationships according to the question.
+
+Author: Murali Sid (https://linkedin.com/in/muralisid)
+Source: https://www.agenticarchitectureskills.com/memory/choosing-representations (Markdown: https://www.agenticarchitectureskills.com/memory/choosing-representations.md)
+Updated: 2026-09-18
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+The agent has retained an inspection case. A later question could ask for its official completion date, a similar incident, or all sites affected by the same requirement. **The same stored case needs different ways of being found.**
+
+**Figure: Start with the question, then choose the representation.** Teaching illustration. The example is a proposed design, not a measured deployment.
+
+**What the image shows:** Exact questions use records, related meaning uses text embeddings, similar observations use suitable media representations, and connected facts use relationships. Original sources and metadata support every choice.
+
+Image: https\://www\.agenticarchitectureskills.com/images/memory/representation-choices-v1.webp
+
+## Why one search method is not enough
+
+Putting everything into embeddings makes related material easy to look for. It does not make a nearby result the official record for a particular asset. Conversely, an exact identifier lookup will not discover differently worded incidents with a related pattern.
+
+The memory's role stays the same. An episode is still a past event whether you retrieve it through a database key, keywords, an embedding, or a relationship.
+
+## Keep exact questions exact
+
+Use governed records and queries for identifiers, completion status, dates, quantities, and versions. Keep units and scope explicit. Use keyword search for exact names and phrases within documents. Verify the selected record before treating its value as the answer.
+
+## Use similarity to discover candidates
+
+Text, images, video, sound, places, and sensor windows preserve different features. A useful embedding groups examples according to the question you want to ask. The [visual tour of vector spaces](https://www.agenticarchitectureskills.com/memory/vector-spaces) shows each form and links to deeper explanations.
+
+Ask which differences must remain visible: magnitude, duration, order, location, operating state, or terminology. Normalizing a signal may help compare shape while hiding its absolute size. The [TS2Vec paper](https://arxiv.org/abs/2106.10466), 2021, is one primary example of learned time-series representations. Reviewed 18 September 2026.
+
+## Use relationships when the answer depends on connections
+
+“Which sites share this control and have overdue evidence?” involves relationships between sites, controls, and records. Start with existing identifiers and joins. A graph becomes a candidate when its traversal and maintenance needs justify it. A graph link still needs an origin and a valid period.
+
+## Compare before combining
+
+Try exact queries and keyword retrieval as baselines, then add a representation to address a specific missed question. Test whether it improves evidence retrieval and the final decision. Embeddings from different models are not automatically comparable, even if their vectors have the same length.
+
+Keep the originals and their permissions alongside every derived representation. Discovery should lead back to inspectable evidence.
+
+**Continue the story:** [Make media evidence inspectable](https://www.agenticarchitectureskills.com/memory/images-video-and-audio).

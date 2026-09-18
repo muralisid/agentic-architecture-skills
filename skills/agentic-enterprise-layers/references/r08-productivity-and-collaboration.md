@@ -4,7 +4,7 @@ Office assistants and agents: every agent gets a registered identity, a mailbox 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration (Markdown: https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -117,8 +117,12 @@ No Common Vulnerabilities and Exposures (CVE) records, the public catalogue of s
 
 Evidence statuses to carry. The identity mechanics and the July 2026 mandate come from vendor documentation \[vendor] and should be re-verified against tenant behaviour. Shadow-usage figures are security-vendor telemetry \[vendor]. Spend composition comes from a single market survey (Dec 2025). The oversight-sabotage study and the AI-teammate RCT are preprints, the latter with a student sample. Observed-task figures rest on six people per group. One refusal: a widely circulated share of companies said to have delayed or cancelled copilot rollouts traces to a vendor security survey whose stated driver is data-protection risk. This guide excludes it as evidence about worker consultation. Open gaps: there is no comparative outcome study of presence-grade versus invoked agents at organisational scale, and no rigorous study of how notetakers change what participants say. Re-verify quarterly: the identity mandate's scope and caps, conditional-access coverage of connector permissions, and the shadow-telemetry baseline.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Productivity and collaboration findings](https://www.agenticarchitectureskills.com/library/layers/r08-productivity-and-collaboration/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r08-productivity-and-collaboration/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [compliance evidence](https://www.agenticarchitectureskills.com/use-cases/compliance-evidence) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

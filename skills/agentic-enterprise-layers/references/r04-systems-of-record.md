@@ -4,7 +4,7 @@ Agents reach core business systems through the permissions those systems already
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r04-systems-of-record (Markdown: https://www.agenticarchitectureskills.com/layers/r04-systems-of-record.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -114,8 +114,12 @@ Four meters price the same activity, and none of them is a seat. All figures are
 
 Incidents above carry CVE, CVSS, and patch dates where published. Meter figures are \[vendor] list pricing and move; re-verify before procurement. Adoption context behind CD-17, the decision on embedded versus external agents, is mixed. Salesforce reports Agentforce annual recurring revenue (ARR) of $800M in the fourth quarter of fiscal year 2026 (Q4 FY26) \[vendor]. It reports $1.2B in the first quarter of fiscal year 2027 (Q1 FY27) \[vendor]. Paid adoption near 6 percent of an installed base around 150k is derived, not disclosed. An analyst forecast has fewer than 15 percent of firms turning on the agentic features in their automation suites in 2026. The claim that 3 percent of Joule customers run in production traces to a single origin, is unverified, and this guide does not rely on it. The Salesforce agent limits await verification against the official limits document. Three absences are findings in their own right. First, no published head-to-head measurement of embedded versus external agents on identical tasks. Second, no published migration of a production agent estate between SoR platforms, so portability claims are untested. Lock-in concentrates in configuration, not data: one major platform auto-deletes agent memory after 28 days of inactivity with no documented export path. Third, no vendor-published practice for managing behavior regressions in embedded agents. The wrap-do-not-reinvent spine and the write-access trust progression are the authors' position, strongly supported by the vendor parity statements. Re-verify quarterly: meter rates and pool disclosures, SAP enforcement posture, A2A production readiness.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Systems of record findings](https://www.agenticarchitectureskills.com/library/layers/r04-systems-of-record/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r04-systems-of-record/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [production measurement](https://www.agenticarchitectureskills.com/use-cases/production-measurement) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

@@ -1,0 +1,44 @@
+# Control what memory retains and reveals
+
+Make ownership, access, correction, and removal work across derived information.
+
+Author: Murali Sid (https://linkedin.com/in/muralisid)
+Source: https://www.agenticarchitectureskills.com/memory/permissions-and-lifecycle (Markdown: https://www.agenticarchitectureskills.com/memory/permissions-and-lifecycle.md)
+Updated: 2026-09-18
+Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+
+An incident report is restricted, but its old summary remains searchable. The next agent can still disclose information from it. **Controlling the original document is not enough when copies and derivatives remain usable.**
+
+**Figure: Follow the information beyond the original.** Teaching illustration. The example is a proposed design, not a measured deployment.
+
+**What the image shows:** A source report feeds an index, note, summary, and task cache. A change in access triggers review of each derivative, and a current-caller gate checks access before retrieval.
+
+Image: https\://www\.agenticarchitectureskills.com/images/memory/memory-access-v1.webp
+
+## Give retained information an owner and purpose
+
+Before a candidate memory becomes durable, identify why it is needed, who may use it, who maintains it, and when it should be reviewed or removed. A thread checkpoint and a shared organizational fact may need different policies.
+
+Do not let text retrieved from a source authorize new access or rewrite an approved procedure. Stored content is evidence to evaluate, not an instruction to bypass the application's controls.
+
+## Check access when writing and reading
+
+Write only to the appropriate scope: this thread, this entity, this team, or a permitted shared store. On retrieval, use the current caller and task authority. Recheck changed membership and permissions. Search previews, explanations, logs, and diagnostic traces must respect the same information boundary.
+
+## Track the derived copies
+
+Maintain links from source versions to extracted facts, indexes, summaries, caches, and retained evaluation copies. A correction, permission change, or removal request should identify the affected material. Mixed-source summaries may require regeneration or more restrictive access.
+
+Test the whole path, including backups and caches under their approved lifecycle policy. Where a retention requirement prevents deletion, restrict use according to that policy instead of letting the model invent an exception.
+
+## Make forgetting observable
+
+A successful deletion call is not sufficient evidence that a later query cannot retrieve the content. Test the original question, paraphrases, related entity lookups, and already-open tasks. Verify that stale context is invalidated or safely rebuilt before reuse.
+
+## Review before changing shared knowledge
+
+An agent can propose a useful lesson, but one successful episode does not create a company rule. Check sources, repeated evidence, scope, and an accountable approval before changing procedural memory.
+
+The [NIST AI RMF Playbook](https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook), reviewed 18 September 2026, provides broader lifecycle and governance guidance. The derivative tracking and removal checks here are proposed implementation practices.
+
+**Continue the story:** [Test whether memory serves the task](https://www.agenticarchitectureskills.com/memory/what-the-benchmarks-measure).

@@ -82,8 +82,4 @@ There is no peer-reviewed unit-economics comparison of self-hosted model serving
 
 ## Sources
 
-research/R12-observability-and-finops/, research/R09-experience-and-channels/, research/R08-productivity-and-collaboration/, research/R13-operating-model/, research/R14-agent-data-engineering/, research/R01-infrastructure/, research/R05-lob-and-ot/. Loop multiplier figures are vendor-published (2025). Outcome and action pricing are vendor list prices as of mid-2026 and sit on the quarterly re-verification list.
-
-***
-
-Source: `synthesis/economics-model.md` in the evidence repository behind this site.
+related research, related research, related research, related research, related research, related research, related research. Loop multiplier figures are vendor-published (2025). Outcome and action pricing are vendor list prices as of mid-2026 and sit on the quarterly re-verification list.

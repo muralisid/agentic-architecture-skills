@@ -108,7 +108,7 @@ Two rules bind the planes together, and they are the ones most often broken in p
 
 ## The data-to-memory pipeline, in all three
 
-Every architecture above includes a knowledge plane, and the plane is not a store. It is a pipeline that converts enterprise data into agent-usable memory at five tiers, with governance that tightens as the tier persists. The end-to-end design is its own chapter: see [memory-pipeline-architecture.md](https://www.agenticarchitectureskills.com/library/architecture/memory-pipeline-architecture). Three properties of it are architectural rather than data-engineering concerns, and belong here:
+Every architecture above includes a knowledge plane, and the plane is not a store. It is a pipeline that converts enterprise data into agent-usable memory at five tiers, with governance that tightens as the tier persists. The end-to-end design is its own chapter: see [Related explanation](https://www.agenticarchitectureskills.com/library/architecture/memory-pipeline-architecture). Three properties of it are architectural rather than data-engineering concerns, and belong here:
 
 1. **Curation is scoped by purpose, not by source.** The unit is the use case, not the system of record. This is what makes curation affordable at every archetype including the mid-market.
 2. **Derived artifacts inherit the strictest classification of their sources**, and embeddings are personal data where their sources are, so erasure must cascade into vectors, memories, traces and eval datasets.
@@ -120,8 +120,4 @@ Platform choice, vendor selection and the specific sequencing of use cases. Thos
 
 ## Sources
 
-Rolled up from all 14 research tracks; every claim above is sourced in the corresponding track's sources.md. Archetype definitions from [archetype-grid.md](https://www.agenticarchitectureskills.com/library/architecture/archetype-grid). Maturity levels and the oversight gate from [maturity-model.md](https://www.agenticarchitectureskills.com/library/architecture/maturity-model). Concern ownership from [concerns-by-layers-matrix.md](https://www.agenticarchitectureskills.com/library/architecture/concerns-by-layers-matrix).
-
-***
-
-Source: `synthesis/master-target-state.md` in the evidence repository behind this site.
+Rolled up from all 14 research tracks; every claim above is sourced in the corresponding track's sources.md. Archetype definitions from [Related explanation](https://www.agenticarchitectureskills.com/library/architecture/archetype-grid). Maturity levels and the oversight gate from [Related explanation](https://www.agenticarchitectureskills.com/library/architecture/maturity-model). Concern ownership from [Related explanation](https://www.agenticarchitectureskills.com/library/architecture/concerns-by-layers-matrix).

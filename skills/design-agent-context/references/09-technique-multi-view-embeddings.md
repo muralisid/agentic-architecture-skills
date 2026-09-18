@@ -79,7 +79,3 @@ Validated in the social media domain; conditionally valid for large enterprise c
 * Weller et al., When do Generative Query and Document Expansions Fail?, EACL 2024. [https://arxiv.org/abs/2309.08541](https://arxiv.org/abs/2309.08541)
 * TREX, arXiv Mar 2025. [https://arxiv.org/abs/2503.02922](https://arxiv.org/abs/2503.02922) ; BERTopic, 2022. [https://maartengr.github.io/BERTopic/](https://maartengr.github.io/BERTopic/)
 * ColBERTv2, NAACL 2022. [https://arxiv.org/abs/2112.01488](https://arxiv.org/abs/2112.01488)
-
-***
-
-Source: `techniques/multi-view-embeddings.md` in the evidence repository behind this site.

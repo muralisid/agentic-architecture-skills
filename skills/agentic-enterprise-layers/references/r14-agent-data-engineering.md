@@ -4,7 +4,7 @@ How the data behind agents is prepared: documents read with their source attache
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering (Markdown: https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -116,8 +116,12 @@ A curated domain knowledge base cut hallucination (confident false statements) f
 
 The parsing loss, the poisoning success rates, the embedding reconstruction, and the corpus-curation accuracy results are peer-reviewed. The contextual-enrichment improvements, the chunking comparisons, and the storage economics are vendor-published and flagged. One standing refusal: every memory-service benchmark now in circulation is vendor-authored and publicly disputed between vendors, so this guide cites none of them. Run your own acceptance suite instead. Build that suite to cover local facts, semantic recall, exact identifiers, multi-hop questions, temporal contradictions, corpus-global synthesis, unanswerable questions, deletions, and ACL enforcement. Measure correctness, evidence recall, faithfulness, 95th-percentile (p95) latency, cost, ingestion lag, and permission leakage. Re-verify two things: whether any complete solution to many-to-one derived-artifact permissions is published, and whether independent memory benchmarks emerge.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Agent data engineering findings](https://www.agenticarchitectureskills.com/library/layers/r14-agent-data-engineering/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r14-agent-data-engineering/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [systemic audit issues](https://www.agenticarchitectureskills.com/use-cases/systemic-audit-issues) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

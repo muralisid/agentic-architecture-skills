@@ -14,9 +14,9 @@ compatibility: Reference material only. No tools, network access, or scripts
 metadata:
   track: both
   kind: task
-  version: 2026.08.23
+  version: 2026.09.18
   source: https://www.agenticarchitectureskills.com/skills
-  bundled: "4"
+  bundled: "16"
 ---
 
 # Design the pipeline from data to a cited answer
@@ -56,3 +56,28 @@ The architectural line sits where information persists past the end of a session
 Artifacts built from many sources at once (cross-document summaries, extracted memories, cluster labels) have no complete published permissions answer. Current practice stamps the intersection of the sources' permissions and re-derives when any of them changes. Say so when it comes up rather than implying the problem is solved.
 
 `references/agent-data-engineering.md` and `references/data-platform.md` carry the engineering detail, the cost figures and the vendor-published claims, each labelled.
+
+
+## Applying this guidance
+
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+
+## Additional task references
+
+- [Choose the representation for the question](references/memory-choosing-representations.md): consult when this aspect is part of the task.
+- [Represent how equipment behaves over time](references/memory-time-series.md): consult when this aspect is part of the task.
+- [Represent places and changes over time](references/memory-location-and-satellite-data.md): consult when this aspect is part of the task.
+- [Combine different kinds of evidence](references/memory-combining-evidence.md): consult when this aspect is part of the task.
+- [Keep memory usable and accountable](references/memory-permissions-and-lifecycle.md): consult when this aspect is part of the task.
+
+## Intelligence and memory pillars
+
+- [Memory](references/memory-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+- [Memory: text embeddings](references/memory-text-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+- [Memory: image embeddings](references/memory-image-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+- [Memory: video embeddings](references/memory-video-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+- [Memory: audio embeddings](references/memory-audio-embeddings-guide.md): use this explanation when choosing task capability, representation, or evidence requirements.
+
+## Memory foundations
+
+Use [memory roles and scope](references/memory-foundations.md) to distinguish working context, thread state, and long-term episodes, facts, and procedures before choosing storage. These roles are separate from information forms and retrieval methods. Use the [vector-space tour](references/memory-vector-spaces.md) when choosing representations for particular information forms.

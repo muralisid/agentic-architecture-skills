@@ -4,7 +4,7 @@ Every agent gets its own registered, short-lived identity with minimal access, a
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r10-security-and-identity (Markdown: https://www.agenticarchitectureskills.com/layers/r10-security-and-identity.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -114,8 +114,12 @@ Why the boundary must be architectural: a transformer treats every token (the sm
 
 The incident record has four entries. EchoLeak (CVE-2025-32711, CVSS 9.3) was zero-click exfiltration via a Copilot-attached mailbox. Microsoft's failure-mode taxonomy v2.0 (June 2026) counted 99 MCP-related CVEs for 2025. Unit 42 documented indirect prompt injection in the wild. Agent tooling has suffered supply-chain compromise. Several figures are vendor-published and carried as such. They are the non-human identity ratios (roughly 100 to 1, and 97 percent over-privileged), the Cloud Security Alliance and Oasis survey \[sponsored], the identity-platform GA dates and the JIT pattern, the FIDES AgentDojo result, and Bedrock Automated Reasoning checks. Verified only to headline: the RSA Conference (RSAC) 2026 reporting on the baselining gap; the primary report could not be retrieved. Secondary-sourced: the exact publication date of the six-nation guidance. The FINRA 25-07 reading traces through a vendor blog and should be verified against finra.org before it carries weight. One refusal: the widely repeated count of agents registered on Microsoft's platform is an earnings self-report, and this page excludes it. The phrase "models may inform, never decide" is the authors' formulation of the zone principle; the payment stack is its convergent evidence, not a standard citing it. Re-verify quarterly: the AI-security acquisition ledger (the fastest-consolidating market in this guide), SIEM behavioural baselining (after RSAC 2027), the NCCoE project's published output, and the FINRA 25-07 disposition.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Security and identity findings](https://www.agenticarchitectureskills.com/library/layers/r10-security-and-identity/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r10-security-and-identity/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [safety coaching](https://www.agenticarchitectureskills.com/use-cases/safety-coaching) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

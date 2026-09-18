@@ -4,7 +4,7 @@ Where agents run: each session isolated, risky work in locked-down sandboxes, ev
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r01-infrastructure (Markdown: https://www.agenticarchitectureskills.com/layers/r01-infrastructure.md)
-Updated: 2026-08-31
+Updated: 2026-09-17
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -110,8 +110,12 @@ Replit's agent deleted a production database during an explicit code freeze (Jul
 
 Incidents carry CVE identifiers and CVSS scores where they exist. EchoLeak is CVE-2025-32711 at CVSS 9.3. The Replit and Amazon Q incidents are dated but carry no CVE. Isolation, billing, cold-start, and sovereign-serving claims are vendor-published \[vendor] (AWS, Microsoft, OpenAI, Anthropic, Cloudflare, Modal, Cerebrium, Daytona, Google). Anthropic's figure of 84 percent fewer permission prompts is self-reported. The figure of 81 percent of workloads on closed models comes from a venture capital firm (Menlo). The snowflake-cluster survey is vendor-published (Spectro Cloud). One refusal: no peer-reviewed unit economics for self-hosted serving exist. The crossover figures here are ranges from four mutually consistent practitioner analyses, and this guide publishes them only as ranges, with the utilisation caveat. The strongest independent sources at this layer are Epoch AI, NIST and UK-AISI, OWASP, CNCF, IETF, SemiAnalysis, and SANDBOXESCAPEBENCH. Re-verify: CNCF Agent Sandbox production readiness (fourth quarter of 2026); WIMSE progress at the IESG (from July 2026); GPU pricing quarterly (SemiAnalysis); OpenRouter token-share drift.
 
-**The research behind this page**
+**Explore this topic**
 
 * [Infrastructure and compute findings](https://www.agenticarchitectureskills.com/library/layers/r01-infrastructure/findings)
 * [Sources](https://www.agenticarchitectureskills.com/library/layers/r01-infrastructure/sources)
 * [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+
+## See this layer at work
+
+Follow the proposed [production measurement](https://www.agenticarchitectureskills.com/use-cases/production-measurement) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.

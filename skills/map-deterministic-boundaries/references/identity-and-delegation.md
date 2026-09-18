@@ -61,7 +61,7 @@ Accountability is also not enforcement. A named sponsor answers for purpose and 
 
 The time it takes to revoke one agent's credentials is a drilled, measured number. Kill switches exist in the identity system as well as in the runtime, the gateway, and the harness (the engineering shell around the model). Each covers what the others cannot. Policy engines fail closed: if the engine fails, the answer is no. Only a minority of enterprises have a formal agent identity strategy. The chain above is what one looks like.
 
-**The research behind this page**
+**Explore this topic**
 
 * [The identity and security model](https://www.agenticarchitectureskills.com/library/architecture/identity-security-model)
 * [Security and identity findings](https://www.agenticarchitectureskills.com/library/layers/r10-security-and-identity/findings)
