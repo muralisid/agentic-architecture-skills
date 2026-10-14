@@ -70,7 +70,7 @@ Open a layer to see its role, then follow its detailed design. The [plane-to-lay
 
 Once the main flow is clear, work through the boundaries for your task:
 
-* [Protect consequential actions](https://www.agenticarchitectureskills.com/architecture/deterministic-zones): access, money, physical safety, and official regulatory records.
+* [Protect consequential actions](https://www.agenticarchitectureskills.com/architecture/deterministic-zones): access, money, safety actuation, and official regulatory records.
 * [Identify the agent and its sponsor](https://www.agenticarchitectureskills.com/architecture/identity-chain), then [enforce permission outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement).
 * [Choose autonomy for the task](https://www.agenticarchitectureskills.com/architecture/autonomy-contract), with enough supervision capacity to support it.
 * [Test proposed improvements](https://www.agenticarchitectureskills.com/architecture/learning-flywheel), [check all ten cross-cutting concerns](https://www.agenticarchitectureskills.com/architecture/concern-matrix), and [examine security threats](https://www.agenticarchitectureskills.com/security).

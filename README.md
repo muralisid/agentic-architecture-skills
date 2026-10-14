@@ -7,7 +7,7 @@ Each skill is a `SKILL.md` plus the pages it needs as `references/`. They carry 
 | Skill | Kind | Track | Updated |
 |---|---|---|---|
 | `review-agent-architecture` | task | both | 2026.09.17 |
-| `map-deterministic-boundaries` | task | both | 2026.09.17 |
+| `map-deterministic-boundaries` | task | both | 2026.10.14 |
 | `assess-agent-readiness` | task | enterprise | 2026.09.17 |
 | `choose-first-agent-use-cases` | task | enterprise | 2026.09.17 |
 | `govern-agent-tool-access` | task | enterprise | 2026.09.17 |
