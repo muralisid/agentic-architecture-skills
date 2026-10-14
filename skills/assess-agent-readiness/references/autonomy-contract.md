@@ -4,7 +4,7 @@ How much an agent may do on its own, how it may learn, and the controls, readine
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/autonomy-contract (Markdown: https://www.agenticarchitectureskills.com/architecture/autonomy-contract.md)
-Updated: 2026-08-26
+Updated: 2026-10-14
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -24,6 +24,8 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 **In short:** Each piece of work gets two settings, how independent the agent is and whether it may learn, both chosen on purpose and reversible.
 
 The first axis is the autonomy level: who executes the work, and what the human keeps hold of. Its levels are A0 manual, A1 assisted, A2 delegated tasks, A3 supervised autonomy, A4 managed autonomy, and A5 governed lights-out. The second axis is the learning level: whether the agent improves, and under what control. Its levels are L0 fixed policy, L1 curated learning, L2 governed learning (the learning flywheel), and L3 continuous learning inside guardrails. The two axes move independently. Every workload sits somewhere on the grid deliberately, and movement is earned and reversible.
+
+Autonomy is recorded three ways. Designed autonomy is what the build allows. Permitted autonomy is what this contract grants. Exercised autonomy is what the logs show the agent doing. Controls follow the higher of permitted and exercised. Exercised above permitted is an incident. This happens in practice. The [MIT AI Agent Index](https://aiagentindex.mit.edu/) (2025 edition) studied enterprise agents. They were configured at low autonomy but often ran at high autonomy once deployed. How A0 to A5 lines up with other published ladders is in [the crosswalk on the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile#the-autonomy-crosswalk).
 
 **Figure: The A×L maturity matrix.** Autonomy and learning are independent; higher is not automatically better.
 

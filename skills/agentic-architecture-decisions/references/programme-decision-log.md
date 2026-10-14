@@ -4,7 +4,7 @@ Editorial choices for the September 2026 revision. These are the author's choice
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/decisions (Markdown: https://www.agenticarchitectureskills.com/library/decisions.md)
-Updated: 2026-09-17
+Updated: 2026-10-14
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## Start with the reader's question

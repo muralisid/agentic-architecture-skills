@@ -4,7 +4,7 @@ How every action an agent takes stays traceable to the person who asked, at each
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/identity-chain (Markdown: https://www.agenticarchitectureskills.com/architecture/identity-chain.md)
-Updated: 2026-08-24
+Updated: 2026-10-14
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -44,6 +44,8 @@ Diagram: https\://www\.agenticarchitectureskills.com/figures/identity-delegation
 **In short:** Every agent carries a named accountable person on its access identity; giving it a mailbox is a separate, rare decision.
 
 The accountable human sponsor is an attribute of the agent's access identity, not a reward for giving it a mailbox. Platform architectures carry the sponsor field on the service principal itself, the agent's own directory account. Agents can be named and mentioned in chat and collaboration tools without any user account. Presence is different. It means a mailbox, a calendar seat, licence consumption, a place in the human resources (HR) system, or a seat on a meeting roster. Presence is a separate, optional, one-to-one user account, granted by an administrator and revocable. It is decided per capability surface, meaning per thing the agent could actually do, and only for a small set of long-lived agents. Being nameable is not the same as having presence.
+
+The sponsor is named when the agent is created, not added later. When a sponsor leaves, Microsoft's implementation passes sponsorship to the leaver's manager automatically (Microsoft Learn, 3 September 2026) \[vendor]. As of October 2026, only Microsoft confirms on its own pages that its agent identity is generally available. Google's own pages confirm it for one runtime only. Other vendors' dates come from summaries or trade press. The stages around the identity, from registration to retirement, are on the [agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle) page.
 
 **Figure: Accountability is not enforcement.** A named sponsor answers for purpose and outcomes; a deterministic control prevents or permits the action.
 
