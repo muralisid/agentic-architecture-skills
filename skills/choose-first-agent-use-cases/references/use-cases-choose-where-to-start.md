@@ -7,7 +7,7 @@ Source: https://www.agenticarchitectureskills.com/use-cases/choose-where-to-star
 Updated: 2026-10-14
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-Start with a process that has a clear owner and a result people can judge. A visible business problem is more useful than a general ambition to “add agents”.
+Start with a process that has a clear owner and a result people can judge. A visible business problem is more useful than a general ambition to "add agents".
 
 **Figure: Apply five checks.** The first three are the gates in the use-case portfolio. Checks 4 and 5 decide whether to wait for a vendor's agent or build your own.
 
@@ -35,11 +35,11 @@ These five checks are the three gates and the two packaged-application tests in 
 
 ## Assess the organization
 
-Use the [readiness assessment](https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments). Keep the six areas separate: a strong score in one area does not compensate for a missing control elsewhere. The complete assessment retains its 24 questions and deeper evidence-based mode.
+Use the [readiness assessment](https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments). Keep the seven areas separate. A strong score in one area does not make up for a missing control in another. The complete assessment has 28 questions across seven areas, and a deeper evidence-based mode.
 
 ## Choose a first portfolio
 
-Use the [use-case portfolio](https://www.agenticarchitectureskills.com/library/frameworks/use-case-portfolio) to compare expected value, operating cost, risk, and supervision capacity. A collection of individually attractive cases can still exceed the team’s ability to review exceptions.
+Use the [use-case portfolio](https://www.agenticarchitectureskills.com/library/frameworks/use-case-portfolio) to compare expected value, operating cost, risk, and supervision capacity. A collection of individually attractive cases can still exceed the team's ability to review exceptions.
 
 ## Set the trial boundary
 

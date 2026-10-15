@@ -15,7 +15,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **WHY:** "Autonomous" is not a useful architecture property by itself. A workload can only operate as independently as its weakest readiness area and the organisation's real ability to supervise bursts of exceptions. Raising autonomy without the controls, learning loop, evidence and oversight capacity behind it creates an operational gap rather than a capability.
 
-**WHAT:** Give every workload two explicit, reversible settings: **autonomy A0 to A5** and **learning L0 to L3**. Treat the required-controls column as the actual contract. Gate higher autonomy on six readiness areas, let the weakest area set the ceiling, require governed learning and proven oversight at A4+, and size supervision using burst-rate queueing capacity rather than daily averages.
+**WHAT:** Give every workload two explicit, reversible settings: **autonomy A0 to A5** and **learning L0 to L3**. Treat the required-controls column as the actual contract. Gate higher autonomy on seven readiness areas, let the weakest area set the ceiling, require governed learning and proven oversight at A4+, and size supervision using burst-rate queueing capacity rather than daily averages.
 
 **Figure: Autonomy and learning: floors, ceiling and gate.** A level you cannot supervise is a level you have not reached.
 
@@ -54,23 +54,35 @@ Three rules connect the axes. **A4 and above require L2 or better.** At that lev
 
 ## Readiness gates autonomy
 
-**In short:** Six areas of readiness are each scored from 0 to 3, and the weakest area, not the total, decides how much autonomy is safe.
+**In short:** Seven areas of readiness are each scored from 0 to 3, and the weakest area, not the total, decides how much autonomy is safe.
 
-Six areas are each scored from 0 to 3: absent, ad hoc, managed, operated. Data readiness includes ACL-aware retrievability, meaning retrieval that respects each person's access rights. Integration readiness covers governed API coverage (application programming interfaces, the defined ways software talks to software), tool exposure, and event availability. Identity readiness covers agents as first-class principals, on-behalf-of flows in which the agent acts with the requesting person's permissions, and secrets never held by agents. Operational discipline covers observability, offline and online evals, and incident practice. Governance and value discipline covers intake with kill criteria (agreed conditions for stopping), per-run cost visibility, and the two-estate view. The two estates are agents behind your own gateway and agents inside vendor products. The sixth area is operating capacity. The profile governs, never the total:
+Seven areas are each scored from 0 to 3: absent, ad hoc, managed, operated. Each area has four yes, partly or no questions in [the readiness assessment](https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments).
 
-| Profile                                           | Safe ceiling                             |
-| ------------------------------------------------- | ---------------------------------------- |
-| Any area at 0 for the target workload             | A1 only                                  |
-| Data and integration at 2+, others at 1+          | A2                                       |
-| Data, integration, identity, and operations at 2+ | A3                                       |
-| All six at 2+, operations and governance at 3     | A4, and L2 governed learning is required |
-| All six at 3, plus regulator-ready evidence       | A5 candidacy, per domain only            |
+1. **Data** covers who owns the data, its class, its quality, and agent memory. It includes ACL-aware retrievability, meaning retrieval that respects each person's access rights.
+2. **Integration and tools** covers governed API coverage (application programming interfaces, the defined ways software talks to software) and tool exposure through a gateway. It also covers on-behalf-of flows, in which the agent acts with the requesting person's permissions, and safe long-running actions.
+3. **Identity and registry** covers agents as first-class principals in one registry, with a named sponsor. The registry shows the two estates: agents behind your own gateway and agents inside vendor products. Credentials are short-lived and never held by agents, and the off switch is tested.
+4. **Controls on actions** covers the risk tier, a policy decision point outside the model, sandboxed code, and a person who decides when a decision affects a person.
+5. **Testing and operations** covers observability, offline and online evals, re-testing on every change, and incident practice.
+6. **Cost and value** covers intake with kill criteria (agreed conditions for stopping), token budgets with a hard stop, and cost per resolved outcome.
+7. **People and operating model** covers named owners and supervisors, clear exceptions, and burst supervision capacity.
+
+The profile governs, never the total. Read it in this order: data, integration, identity, controls, testing, cost, people.
+
+| Profile                                                                             | Highest autonomy                                              |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| Any area at 0 for the target workload                                               | A1 only                                                       |
+| Data and integration at 2 or more, all others at 1 or more                          | A2                                                            |
+| Data, integration, identity, controls and testing at 2 or more, others at 1 or more | A3                                                            |
+| All seven at 2 or more, with controls, testing and cost at 3                        | A4, with L2 governed learning and the oversight-capacity gate |
+| All seven at 3, plus regulator-ready evidence                                       | A5 candidacy, per domain only                                 |
 
 **Figure: The weakest area sets the ceiling.** Northstar is a fictional teaching example. Read the profile, not the total.
 
-**What the image shows:** Six bars score the readiness areas from 0 to 3. Northstar scores 2 for data, 2 for integration, 1 for identity, 1 for operational discipline, 2 for governance and value, and 1 for workforce. A dashed line runs from the lowest score, 1, to the ceiling table. The row for data and integration at 2 or more, with others at 1 or more, gives A2.
+**What the image shows:** Seven bars score the readiness areas from 0 to 3. Northstar scores 2 for data, 2 for integration and tools, 1 for identity and registry, 1 for controls on actions, 2 for testing and operations, 1 for cost and value, and 2 for people and operating model. A dashed line runs from the lowest score, 1, to the ceiling table. The row for data and integration at 2 or more, with all others at 1 or more, gives A2.
 
 Image: https\://www\.agenticarchitectureskills.com/figures/architecture/readiness-profile-to-ceiling.svg
+
+Two overrides tie the ceiling to [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile). Each can only lower it. A Tier 3 workload needs controls at 3 for A3 or above. A session with untrusted input, sensitive data and external action is capped at A2, whatever the scores. That second override is the Rule of Two.
 
 Identity gaps cap autonomy without blocking a start. A workload can begin at A1 while the identity chain is built.
 
@@ -78,7 +90,7 @@ Readiness is scored on controls that are in place, not on a tally of clean runs,
 
 **Figure: Stepping autonomy up and down.** Step up one level at a time, on controls and eval results. Step down at once. Every move re-runs the evals and the risk profile.
 
-**What the image shows:** Six levels run from A0 manual at the bottom to A5 governed lights-out at the top. Each shows the human's job, what it takes to step up to it, and its tier floor. A2 needs data and integration at 2 or more and the rest at 1 or more. A3 needs data, integration, identity and operations at 2 or more, plus approval gates, budgets, a kill switch and evals against a human baseline. A line before A4 marks the oversight gate, burst capacity proven. A4 also needs L2 governed learning and all six areas at 2 or more, with operations and governance at 3. A5 needs all six at 3, regulator-ready evidence and oversight measured in production, per domain only. An anomaly, a change of scope, or exercised autonomy above permitted demotes the agent at once. Promotion rests on controls and eval results, never a count of clean runs. An example agent is designed for A4, permitted at A3 and exercised at A2.
+**What the image shows:** Six levels run from A0 manual at the bottom to A5 governed lights-out at the top. Each shows the human's job, what it takes to step up to it, and its tier floor. A2 needs data and integration at 2 or more and the rest at 1 or more. A3 needs data, integration, identity, controls and testing at 2 or more, plus approval gates, budgets, a kill switch and evals against a human baseline. A line before A4 marks the oversight gate, burst capacity proven. A4 also needs L2 governed learning and all seven areas at 2 or more, with controls, testing and cost at 3. A5 needs all seven at 3, regulator-ready evidence and oversight measured in production, per domain only. An anomaly, a change of scope, or exercised autonomy above permitted demotes the agent at once. Promotion rests on controls and eval results, never a count of clean runs. An example agent is designed for A4, permitted at A3 and exercised at A2.
 
 Image: https\://www\.agenticarchitectureskills.com/figures/architecture/autonomy-step-up-and-down.svg
 

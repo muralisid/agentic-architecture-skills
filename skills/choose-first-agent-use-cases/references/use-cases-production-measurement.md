@@ -59,4 +59,15 @@ Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/m
 
 Explore [mining and resources](https://www.agenticarchitectureskills.com/library/blueprints/verticals/mining-and-resources) or [explore the agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
 
+## Where this sits
+
+This guide's position, from the four questions on [agent types](https://www.agenticarchitectureskills.com/architecture/agent-types) and the [risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile):
+
+* **Role:** assist. Domain: mining production.
+* **Capability surface:** reads images, calibration data, scale records and maintenance logs. Writes reconciliation cases and measurement requests. Untrusted input: none. Highest data class: confidential, since production figures are commercially sensitive.
+* **Placement:** A2, L1 on the [autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). An accountable owner reviews every case. People choose the reference measurements it learns from. Accepting an adjustment drops to A1. The owner decides.
+* **Zone:** none. The accepted figure can feed royalty and regulator reports. That record sits in the [formal records zone](https://www.agenticarchitectureskills.com/architecture/deterministic-zones#formal-regulatory-records). A named owner accepts it.
+* **Tier:** Tier 2. Production systems of record and confidential data score Medium. It is Tier 3 if your classification treats scale and sensor feeds as control-system data.
+* **Control:** the agent cannot write the accepted production record.
+
 **Next step:** score this agent on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), then design its controls on [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones).

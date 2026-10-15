@@ -4,7 +4,7 @@ Help an agent continue its work, use past experience, and support decisions with
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory (Markdown: https://www.agenticarchitectureskills.com/memory.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 An agent should not start every task from nothing. It also should not treat everything it has ever seen as current, trusted, or available to everyone. **Good memory helps it carry work forward and show what supports its decisions.**
@@ -34,6 +34,8 @@ The main path has three parts. Start with the first and follow the continuation 
 The sidebar separates the main story from optional visual tours and advanced design choices. You do not need to read every embedding article to understand memory. The [vector-space tour](https://www.agenticarchitectureskills.com/memory/vector-spaces) explains the different information forms together; its individual articles offer more detail.
 
 The advanced pages compare storage designs, long context, large histories, and research findings. They are choices to investigate, not a list of components every enterprise needs.
+
+**Token efficiency: spend tokens on outcomes (/memory/token-efficiency)**Why agents use many times the tokens of chat, what to meter for each agent, and which savings have been measured.
 
 Memory supplies evidence within the [enterprise architecture](https://www.agenticarchitectureskills.com/architecture). The [Intelligence ladder](https://www.agenticarchitectureskills.com/ladder) explains how an agent uses that evidence to do useful work at an acceptable cost.
 

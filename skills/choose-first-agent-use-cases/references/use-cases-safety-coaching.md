@@ -59,4 +59,15 @@ Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/m
 
 Return to [Energy](https://www.agenticarchitectureskills.com/use-cases/energy) or [explore the agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
 
+## Where this sits
+
+This guide's position, from the four questions on [agent types](https://www.agenticarchitectureskills.com/architecture/agent-types) and the [risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile):
+
+* **Role:** create. Domain: workplace safety.
+* **Capability surface:** reads detector events, CCTV clips and safety procedures. Drafts coaching notes and labeled teaching videos. Sends approved items to verified workers. Untrusted input: none. Highest data class: personal, since workers can be identified.
+* **Placement:** A2, L1 on the [autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). The safety owner approves each item before delivery. People choose the reviewed events it learns from. Discipline stays with people.
+* **Zone:** none. It has no path to any machine, alarm or control system. That keeps it out of the [safety actuation zone](https://www.agenticarchitectureskills.com/architecture/deterministic-zones#safety-actuation). Watch for automation bias. People stop checking a detector that is usually right.
+* **Tier:** Tier 2. Footage of identifiable workers is personal data. That scores Medium. If coaching records ever feed discipline, the people-decisions floor applies. It is then Tier 3.
+* **Control:** a person checks each event against the clip before any coaching goes out.
+
 **Next step:** score this agent on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), then design its controls on [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones).
