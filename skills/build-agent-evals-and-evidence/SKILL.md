@@ -4,9 +4,9 @@ description: "Build the two things that let an agent's behaviour change safely:
   an evaluation suite owned by the people who know the work, and an evidence
   trail the agent cannot influence. Covers eval tasks drawn from real failures,
   judge calibration, promotion gated on counterexample survival with a demotion
-  path, staged rollout, traces and unit economics, and the evidence floor a
-  deployer owes. Use whenever setting up evals for an agent, deciding whether a
-  change may ship, designing observability or audit for agents, or answering
+  path, staged rollout, traces and unit economics, and the audit trail baseline
+  a deployer owes. Use whenever setting up evals for an agent, deciding whether
+  a change may ship, designing observability or audit for agents, or answering
   what evidence a regulator or auditor will expect."
 license: CC-BY-SA-4.0
 compatibility: Reference material only. No tools, network access, or scripts
@@ -14,7 +14,7 @@ compatibility: Reference material only. No tools, network access, or scripts
 metadata:
   track: both
   kind: task
-  version: 2026.09.17
+  version: 2026.10.15
   source: https://www.agenticarchitectureskills.com/skills
   bundled: "4"
 ---
@@ -30,7 +30,7 @@ Twenty to fifty pass-or-fail tasks, drawn from real failures rather than imagine
 Three rules that the evidence forced:
 
 - **Gate on counterexample survival and eval regression, never on frequency.** A pattern seen often is not a pattern that is right; the published promotion experiments failed in both directions when frequency was the gate.
-- **Name the enforcement tier.** A rule the model merely reads is still a soft rule. The hard tier is policy as code, outside the model.
+- **Name the enforcement point.** A rule the model merely reads is still a soft rule. The hard rule is policy as code, outside the model.
 - **Ship a demotion path and exercise it.** Roughly three quarters of policy statements depend on context that cannot be predefined, so a promoted rule that stops working must be able to come back out.
 
 ## 2. Judges, and their limits
@@ -59,4 +59,4 @@ Benchmark scores from a harness with no isolation between agent and evaluator. C
 
 ## Applying this guidance
 
-Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user’s actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.
+Treat the supplied references as a starting point, not proof that a recommendation fits the task. Check important claims against dated external evidence. Distinguish proposed industrial examples from delivered work and author-reported experiments. Use the user's actual industry and constraints; utilities and mining are examples, not universal requirements. Keep working-file and internal repository references out of reader-facing reports.

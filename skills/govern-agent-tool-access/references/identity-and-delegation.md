@@ -1,27 +1,13 @@
-# The identity and delegation chain
+# The delegation chain: trace every action to the person who asked
 
-How every action an agent takes stays traceable to the person who asked, at each hop from the agent's own identity to the system of record.
+How every action an agent takes stays traceable to the person who asked, from the agent's own identity, through the gateway, to the system of record.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
-Source: https://www.agenticarchitectureskills.com/architecture/identity-chain (Markdown: https://www.agenticarchitectureskills.com/architecture/identity-chain.md)
+Source: https://www.agenticarchitectureskills.com/architecture/delegation-chain (Markdown: https://www.agenticarchitectureskills.com/architecture/delegation-chain.md)
 Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-> **In plain terms.**
->
-> When an AI agent does something in a company system, someone must be able to say which person asked for it. This page describes the chain of checks that keeps that link intact at every step. The agent has its own registered identity, it borrows only the requesting person's permissions, and the business system records the action against that person. The one thing to remember: an agent should never be able to do anything its requesting user could not do themselves.
-
-## Why the identity chain exists
-
-**WHY:** An agent can cross several systems in one task. If identity is lost or replaced with a shared credential at any hop, you can no longer prove who requested the action, apply the user's real permissions, or revoke the agent cleanly. Accountability without enforceable identity is only a label.
-
-**WHAT:** Preserve one delegation chain end to end: **the agent has its own registered identity -> the gateway exchanges the requesting user's identity -> the system of record executes run-as-user -> edge and sub-agent identities can only narrow the scope**. Keep a named sponsor on the agent identity, inject short-lived credentials at execution time, and maintain kill switches at several points.
-
-![Visual summary of the identity and delegation chain](/figures/architecture/identity-chain.jpg)
-
-## The chain
-
-**In short:** An agent acts as the person who asked, and that claim must survive every hand-off from one system to the next.
+An agent changed a record in a business system. Who asked for it, and under whose permissions did it act? The delegation chain answers both questions for every action. The agent has its own registered identity. At the gateway it takes on the permissions of the person who asked, and no more. The business system records the action against that person. At every later hop, access can only get narrower. So an agent can never do anything its requesting user could not do.
 
 **Figure: Identity follows the delegation chain.** Every consequential action must identify the agent, requesting person, sponsor, and granted scope.
 
@@ -31,21 +17,47 @@ Entitlement decisions stay in the authoritative identity or record system.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/identity-delegation-chain.svg
 
-**Hop 1: the agent's own identity (the ID2 floor).** Every agent is a first-class principal: an account in its own right. This guide calls that minimum ID2. It means the agent is registered, holds least privilege (only the access its current task needs), uses short-lived credentials, and carries a named sponsor and a risk tier. Sharing a human's credentials is the ID1 anti-pattern. The baseline is bad: non-human identities outnumber human ones by roughly 100 to 1, and 97 percent of them hold more access than they need. Three families of workload identity (the machine equivalent of an ID badge) are in production. Directory-based: the Entra Agent ID class. Standards-track: the IETF WIMSE architecture, where IETF is the Internet Engineering Task Force and WIMSE stands for Workload Identity in Multi System Environments. In that family, SPIFFE (Secure Production Identity Framework for Everyone) already runs for agents in production at scale. OAuth-extension based, where OAuth is the standard web protocol for delegated access. The example is Cross App Access (XAA), adopted as the Enterprise Managed Authorization (EMA) extension of the Model Context Protocol (MCP). It had 25 or more independent software vendors (ISVs) behind it by mid-2026.
+## Three levels of agent identity
 
-**Hop 2: delegation at the gateway.** The gateway, the single door every agent request passes through, exchanges the caller's identity rather than copying it. The mechanisms are token exchange under the internet standard RFC 8693, on-behalf-of flows, and XAA in its EMA form. The IETF ID-JAG draft (Identity Assertion JWT Authorization Grant) joins them as it lands. The gateway injects credentials at execution time, so agents never hold secrets. Access above a minimal baseline is granted just in time for a single action, using OAuth Rich Authorization Requests (RAR, RFC 9396), and drops back automatically afterwards.
+Three levels describe how an agent is identified.
 
-**Hop 3: run-as-user in the system of record.** Inside the business system the agent operates run-as-user: it is the requesting person, with that person's permissions and nothing more. The tool layer is a wrapper, not a second policy engine. The system of record keeps its own create, read, update, and delete (CRUD) rules, its field-level security, and its sharing rules in force. Its audit log attributes the action to the human identity. Vendor parity statements now make this explicit: if the user cannot do something in the platform, their agent cannot do it through the tool server.
+* **Shared credentials (ID1).** The agent uses a person's login or a shared service account. Nobody can tell the agent's actions from the person's. Avoid it.
+* **The agent's own identity (ID2).** The agent has its own registered account, called an agent identity. It holds only the access its task needs and uses short-lived credentials. It has a named sponsor and a [risk tier](https://www.agenticarchitectureskills.com/architecture/risk-profile). This is the minimum for any agent in production.
+* **The agent's own identity plus an agent user account (ID3).** Some agents also need a mailbox, a calendar seat, or a seat in a meeting or chat. That needs a second account, an agent user account. It is a separate decision, made for a few long-lived agents.
 
-**Hop 4: constrained identities at the edges.** In operational technology (OT), the systems that run physical equipment, the agent is a security principal with least privilege. Assets without a registered name are not reachable on the network, and access can be cut in seconds. Sub-agents inherit a narrower scope than their parent, never a wider one, and the stated purpose travels with each delegation.
+Microsoft's products draw the same line. An agent identity lets an agent act on systems. An agent user account lets it join a meeting or a chat.
 
-## Sponsor at access identity, presence by exception
+## Hop 1: the agent's own identity
 
-**In short:** Every agent carries a named accountable person on its access identity; giving it a mailbox is a separate, rare decision.
+Every agent is registered before it gets any credential. Its identity is an account in its own right. It holds least privilege, meaning only the access its current task needs. Its credentials are short-lived. It carries a named sponsor and a risk tier. Agent identity belongs to identity and policy, one of [the seven capabilities](https://www.agenticarchitectureskills.com/architecture/system-view) an agent platform provides. It is built in the [security and identity layer (R10)](https://www.agenticarchitectureskills.com/layers/r10-security-and-identity).
 
-The accountable human sponsor is an attribute of the agent's access identity, not a reward for giving it a mailbox. Platform architectures carry the sponsor field on the service principal itself, the agent's own directory account. Agents can be named and mentioned in chat and collaboration tools without any user account. Presence is different. It means a mailbox, a calendar seat, licence consumption, a place in the human resources (HR) system, or a seat on a meeting roster. Presence is a separate, optional, one-to-one user account, granted by an administrator and revocable. It is decided per capability surface, meaning per thing the agent could actually do, and only for a small set of long-lived agents. Being nameable is not the same as having presence.
+The starting point is poor. Non-human identities outnumber human ones by roughly 100 to 1 \[vendor]. About 97 percent of them hold more access than they need \[vendor].
 
-The sponsor is named when the agent is created, not added later. When a sponsor leaves, Microsoft's implementation passes sponsorship to the leaver's manager automatically (Microsoft Learn, 3 September 2026) \[vendor]. As of October 2026, only Microsoft confirms on its own pages that its agent identity is generally available. Google's own pages confirm it for one runtime only. Other vendors' dates come from summaries or trade press. The stages around the identity, from registration to retirement, are on the [agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle) page.
+Three kinds of workload identity are in production. A workload identity is the machine version of an ID badge. The first kind lives in a company directory, such as Microsoft Entra Agent ID \[vendor]. The second comes from open standards work at the Internet Engineering Task Force (IETF). SPIFFE, one of those standards, already runs for agents at scale. The third extends OAuth, the standard web protocol for delegated access. Cross App Access is the main example \[vendor].
+
+## Hop 2: delegation at the gateway
+
+The tool gateway sits between agents and the systems they touch. It does not copy the caller's identity. It exchanges it, so the next system sees who asked and through which agent. The standard way is token exchange under OAuth (RFC 8693), or an on-behalf-of flow.
+
+The gateway adds credentials at the moment of the call, so the agent never holds secrets. Access above a small baseline is granted just in time for one action. Then it drops back on its own. How the gateway checks each call is on [enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement).
+
+## Hop 3: run-as-user in the system of record
+
+Inside the business system the agent acts as the person who asked. It has that person's permissions and nothing more. The system keeps its own rules in force. Those rules say who may read, create, change or delete each record and field. Its audit log names the person.
+
+The tool in between is a wrapper, not a second set of rules. Vendors now say this plainly. If the user cannot do something in the platform, their agent cannot do it either.
+
+## Hop 4: narrower at every edge
+
+A sub-agent gets a narrower scope than the agent that started it, never a wider one. The stated purpose travels with each hand-off.
+
+In operational technology (OT), the systems that run physical equipment, the agent is a security principal with least privilege. Assets without a registered name are not reachable on the network. Access can be cut in seconds.
+
+## The sponsor and the agent user account
+
+Every agent identity carries a named sponsor. The sponsor is the business person who answers for the agent's purpose and results. The sponsor is named when the agent is created, not added later. When a sponsor leaves, Microsoft passes sponsorship to the leaver's manager automatically (3 September 2026) \[vendor].
+
+An agent can be named and mentioned in chat without any user account. An agent user account is different. It brings a mailbox, a calendar seat, a licence, or a place in the HR system. It is optional, granted by an administrator, and revocable. Decide it by what the agent would do with it, and only for a few long-lived agents. Being nameable is not the same as having an account.
 
 **Figure: Accountability is not enforcement.** A named sponsor answers for purpose and outcomes; a deterministic control prevents or permits the action.
 
@@ -55,24 +67,46 @@ Both are necessary and neither substitutes for the other.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/support-accountability-enforcement.svg
 
-Accountability is also not enforcement. A named sponsor answers for purpose and outcomes. A deterministic control, one that follows fixed rules and always gives the same answer, permits or prevents the action. In testing, a prompt from a phished employee asking an agent to send credentials out of the company succeeded in 24 of 25 attempts. The name on the agent stopped nothing. Both are necessary; neither substitutes for the other.
+A sponsor answers for the agent. A rule is what stops an action. In one test, a phished employee's prompt asked an agent to send credentials out of the company. It worked in 24 of 25 attempts. The sponsor's name stopped nothing. You need both.
 
-## Operational floor
+## Switch any agent off
 
-**In short:** You must be able to switch any agent off fast, from more than one place, and know from drills how long it takes.
+**Figure: The delegation chain, request to retirement.** An agent should never do more than its requesting user could. Revoke time is drilled and measured.
 
-**Figure: Identity, request to retirement.** An agent should never do more than its requesting user could. Revoke time is drilled and measured.
-
-**What the image shows:** The top lane follows one request. The requesting user and the sponsor lead to the agent with its own ID2 identity. Next it passes the gateway for token exchange, then the policy decision point, the system of record acting run-as-user, and the evidence record. A sub-agent branches off the agent, and its scope only narrows. Kill switches sit at the identity, runtime, harness and gateway, and the revoke time is drilled. The bottom lane follows the agent's life: register, entitle with a grant that expires, operate, change, review and retire.
+**What the image shows:** The top lane follows one request. The requesting user and the sponsor lead to the agent, which has its own identity (ID2). The request passes the gateway for token exchange, then the policy decision point. The system of record acts as the user, and the decision lands in the audit trail. A sub-agent branches off the agent, and its scope only narrows. Kill switches sit at the identity, runtime, harness and gateway, and the revoke time is drilled. The bottom lane follows the agent's life: register, entitle with a grant that expires, operate, change, review and retire.
 
 Image: https\://www\.agenticarchitectureskills.com/figures/architecture/identity-request-to-retirement.svg
 
-The time it takes to revoke one agent's credentials is a drilled, measured number. Kill switches exist in the identity system as well as in the runtime, the gateway, and the harness (the engineering shell around the model). Each covers what the others cannot. Policy engines fail closed: if the engine fails, the answer is no. Only a minority of enterprises have a formal agent identity strategy. The chain above is what one looks like.
+You must be able to switch any agent off fast, from more than one place. Kill switches sit in the identity system, the runtime, the gateway and the harness. The harness is the engineering shell around the model. Each switch covers what the others cannot. Time how long it takes to revoke one agent's credentials, in drills. Policy engines fail closed: if the engine fails, the answer is no.
 
-**Next step:** give the agent a sponsor and a path from registration to retirement on [the agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle).
+The identity is created at the first stage of [the agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle) and revoked at the last. The level an agent works at is set on [the autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). What its identity lets it reach is one of [the four questions](https://www.agenticarchitectureskills.com/architecture/agent-types) asked of every agent.
+
+## A worked example: booking a referral in a hospital
+
+This is a proposed design. A care coordinator asks an agent to book a referral appointment for a patient. The agent has its own identity and a named sponsor in the outpatient team. At the gateway, its request carries the coordinator's identity. In the scheduling system it acts as the coordinator. It can book only the clinics the coordinator can book. The audit log shows the coordinator, acting through the agent.
+
+The agent passes one sub-task to a second agent that checks the referral letter. That sub-agent can read the letter and nothing else. To stop the agent, the hospital can revoke the identity, block it at the gateway, or stop its runtime. The full design is on [referral coordination](https://www.agenticarchitectureskills.com/use-cases/referral-coordination).
+
+## Evidence and limits
+
+This guide once called this the identity chain. The four hops rest on shipped products and on standards still in progress. As of October 2026, only Microsoft confirms on its own pages that its agent identity is generally available. Google confirms it for one runtime only. Other vendors' dates come from summaries or trade press.
+
+The figures on non-human identities come from vendor surveys. A sponsored survey found that only 23 percent of organisations have a formal agent identity strategy (January 2026). The test of the phished prompt is a single account. The split between an agent identity and an agent user account follows Microsoft's products. Other vendors may draw the line elsewhere.
+
+## Next step
+
+Give the agent a sponsor and a path from registration to retirement on [the agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle).
 
 **Explore this topic**
 
 * [The identity and security model](https://www.agenticarchitectureskills.com/library/architecture/identity-security-model)
 * [Security and identity findings](https://www.agenticarchitectureskills.com/library/layers/r10-security-and-identity/findings)
 * [Productivity and collaboration findings](https://www.agenticarchitectureskills.com/library/layers/r08-productivity-and-collaboration/findings)
+
+**Workload identity families.** Directory-based: the Entra Agent ID class \[vendor]. Standards-track: the IETF WIMSE architecture (Workload Identity in Multi System Environments). SPIFFE (Secure Production Identity Framework for Everyone) already runs for agents in production at scale. OAuth-extension based: Cross App Access (XAA), adopted as the Enterprise Managed Authorization (EMA) extension of the Model Context Protocol (MCP). It had 25 or more independent software vendors behind it by mid-2026 \[vendor].
+
+**Delegation at the gateway.** The mechanisms are token exchange under RFC 8693, on-behalf-of flows, and XAA in its EMA form. The IETF ID-JAG draft (Identity Assertion JWT Authorization Grant) joins them as it lands. Just-in-time access uses OAuth Rich Authorization Requests (RAR, RFC 9396).
+
+**Survey figures.** Non-human identities outnumber humans roughly 100 to 1, and 97 percent carry excessive privileges \[vendor surveys]. Only 23 percent of organisations have a formal agent identity strategy (CSA and Oasis, January 2026, sponsored).
+
+**Sponsorship.** Microsoft Entra Agent ID requires a sponsor per agent identity and passes sponsorship to a leaver's manager (Microsoft Learn, 3 September 2026) \[vendor].

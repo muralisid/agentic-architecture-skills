@@ -1,194 +1,437 @@
 # The decision catalog
 
-Twenty-five technology choices usually made by habit, each with a verdict, the condition that decides your case, and what would change it.
+Twenty-five technology choices usually made by habit. Each record gives the common choice, the verdict, the one test that decides your case, and what would change the answer.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/decisions (Markdown: https://www.agenticarchitectureskills.com/decisions.md)
 Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-> **In plain terms.**
->
-> This page lists twenty-five technology choices that are usually made by habit or by following the crowd, and records what the evidence says about each. It matters because these are the choices that decide cost, risk, and how much of the estate has to be rebuilt later. The one thing to remember: each decision comes with the single condition that would change it, so check that condition against your own situation before following the verdict.
+Many technology choices for agents are made by habit, or because everyone else made them. A graph database for knowledge. A dedicated gateway for tools. Several agents where one would do. This catalog tests twenty-five of those choices against the simplest credible alternative, on evidence and cost. Each record gives a verdict. It also gives the one test that decides your own case, because the common answer may not fit it.
 
-Each entry is a challenged default: a hyped or habitual technology choice the research contested, resolved by evidence and economics rather than adoption momentum. Each record holds the question, the verdict, the discriminator that decides your case, and the register status in the research vocabulary. The statuses are converged, supported with reframe, split, conditionally approved, and position. This catalog records technology decisions; the programme's own decision log is at [/library/decisions](https://www.agenticarchitectureskills.com/library/decisions).
+## How to read a record
 
-| ID              | Question                                                                                                    | Verdict in one line                                                                                 |
-| --------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [CD-1](#cd-1)   | Graph database vs embedding retrieval                                                                       | Routed hybrid, vector-first; a graph only for deterministic traversal                               |
-| [CD-2](#cd-2)   | Dedicated Model Context Protocol (MCP) gateway vs extend application programming interface (API) management | Extend the incumbent by default; dedicated is conditional                                           |
-| [CD-3](#cd-3)   | Replace robotic process automation (RPA) vs coexist                                                         | Coexist, supervised; replacement earned per workload                                                |
-| [CD-4](#cd-4)   | Agent-to-agent protocols now                                                                                | Not yet for most; selective for cross-organisation federation                                       |
-| [CD-5](#cd-5)   | Modernize the enterprise service bus (ESB) first vs bypass                                                  | Strangle, do not wait; govern before you wrap                                                       |
-| [CD-6](#cd-6)   | Self-hosted graphics processing unit (GPU) estate vs metered APIs                                           | Metered by default; open-weight via API is the cost path                                            |
-| [CD-7](#cd-7)   | Kubernetes everywhere vs managed runtimes                                                                   | Split by layer: Kubernetes for self-hosted serving, managed runtimes for orchestration              |
-| [CD-8](#cd-8)   | Semantic-layer product vs governed views                                                                    | Per use case, chosen by failure mode, not accuracy points                                           |
-| [CD-9](#cd-9)   | Dedicated vector database vs simplest substrate                                                             | Climb the ladder; dedicated is the top method, not the default                                      |
-| [CD-10](#cd-10) | Data mesh vs governed central substrate                                                                     | Mesh ideas on a governed substrate                                                                  |
-| [CD-11](#cd-11) | One universal index vs use-case-scoped                                                                      | Two layers: permission-aware universal for discovery, scoped for high stakes                        |
-| [CD-12](#cd-12) | Real-time vs batch grounding                                                                                | Change data capture (CDC) is the default; streaming is earned                                       |
-| [CD-13](#cd-13) | Dedicated AI security platforms vs security information and event management (SIEM) extension               | Platform absorption is the market answer; baselining stays unsolved                                 |
-| [CD-14](#cd-14) | Broad vs narrow AI Act classification                                                                       | Neither: a risk-tiered evidence posture                                                             |
-| [CD-15](#cd-15) | Application performance monitoring (APM) extension vs dedicated large language model (LLM) observability    | The question dissolved; choose on open telemetry standards, eval depth, self-hosting                |
-| [CD-16](#cd-16) | Guardrail products vs deterministic gates                                                                   | Gates own the boundary; guardrails are advisory wherever they run                                   |
-| [CD-17](#cd-17) | Embedded vendor agents vs external through APIs                                                             | Decided by authority boundary; nobody has measured the head-to-head                                 |
-| [CD-18](#cd-18) | Brokered operational technology (OT) read paths vs unidirectional                                           | Consequence class decides; transport is downstream of the control point                             |
-| [CD-19](#cd-19) | Fine-tuning vs prompt-and-context engineering                                                               | An ordering, not a side: optimise, then distil, then reinforcement fine-tuning behind a hard grader |
-| [CD-20](#cd-20) | AI-first vs human-first service                                                                             | Wrong axis: containment as the target is the failure; resolution as the target is the design        |
-| [CD-21](#cd-21) | Multi-agent orchestration vs a single good loop                                                             | Parallel breadth only; tokens explain most of the famous gains                                      |
-| [CD-22](#cd-22) | Agents as workforce vs agents as tools                                                                      | Keep the accountability, drop the personnel metaphor                                                |
-| [CD-23](#cd-23) | One universal assistant vs many specialised agents                                                          | Wrong axis: solitary vs coordinated work is the predictive variable                                 |
-| [CD-24](#cd-24) | Separate customer-facing stack vs shared platform                                                           | Separate lane and edge, shared control plane; the justification is legal                            |
-| [CD-25](#cd-25) | Purpose-specific embedding views vs matched chunking                                                        | Chunks first; views only on a measured win; never condition the index on the objective              |
+Each record has the same five parts, in the same order.
 
-## The records
+1. **The choice:** the question a team faces.
+2. **The common choice:** what most teams do by default.
+3. **Verdict:** what the evidence supports, and why.
+4. **The discriminator:** the one test that separates the options for your case.
+5. **What changes the answer:** the evidence or condition that would move the verdict.
 
-### CD-1. Graph database vs embedding retrieval
+A status line closes each record. "Verdict holds" means the evidence supports the verdict as written. "Verdict refined" means research narrowed or reframed it, on the date shown. "Verdict reversed" would mean evidence overturned it. No verdict has been reversed. Each record also names the layer that owns the decision, one of [the fourteen layers](https://www.agenticarchitectureskills.com/layers).
 
-**In short:** Use ordinary search plus meaning-based search for most questions; add a graph only to follow exact relationships.
+| ID              | Area                    | The choice                                                       | Verdict in one line                                                                                 |
+| --------------- | ----------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| [CD-1](#cd-1)   | Data and search         | Graph database or embedding retrieval                            | Routed hybrid, vector-first; a graph only for exact relationship paths                              |
+| [CD-8](#cd-8)   | Data and search         | Semantic-layer product or governed views                         | Per use case, chosen by how it fails, not by accuracy points                                        |
+| [CD-9](#cd-9)   | Data and search         | Dedicated vector database or the simplest store                  | Start simple; step up to a dedicated engine only on measured strain                                 |
+| [CD-10](#cd-10) | Data and search         | Data mesh or a governed central store                            | Mesh ideas on a governed central store                                                              |
+| [CD-11](#cd-11) | Data and search         | One universal index or scoped indexes                            | Both: a permission-aware universal index for discovery, scoped indexes for high stakes              |
+| [CD-12](#cd-12) | Data and search         | Real-time or batch grounding                                     | Change data capture (CDC) is the default; streaming is earned                                       |
+| [CD-25](#cd-25) | Data and search         | Purpose-specific views or matched chunks                         | Chunks first; views only on a measured win; never shape the index around the objective              |
+| [CD-2](#cd-2)   | Connecting to systems   | Dedicated MCP gateway or extending API management                | Extend what you already run by default; a dedicated gateway is conditional                          |
+| [CD-3](#cd-3)   | Connecting to systems   | Replace robotic process automation (RPA) or coexist              | Coexist, supervised; replacement is earned per workload                                             |
+| [CD-4](#cd-4)   | Connecting to systems   | Agent-to-agent protocols now                                     | Not yet for most; adopt selectively for work across organisations                                   |
+| [CD-5](#cd-5)   | Connecting to systems   | Modernise the enterprise service bus (ESB) first or go around it | Strangle, do not wait; govern before you wrap                                                       |
+| [CD-17](#cd-17) | Connecting to systems   | Vendor-embedded agents or your own agents                        | Decided by the authority boundary; nobody has measured the two head to head                         |
+| [CD-18](#cd-18) | Connecting to systems   | Brokered reads or one-way designs for plant systems              | Impact decides the control point; the transport comes after                                         |
+| [CD-6](#cd-6)   | Where agents run        | Your own GPUs or metered APIs                                    | Metered by default; open-weight models through APIs are the cheaper path                            |
+| [CD-7](#cd-7)   | Where agents run        | Kubernetes everywhere or managed runtimes                        | Split by workload: Kubernetes for models you host, managed runtimes for agents                      |
+| [CD-21](#cd-21) | Where agents run        | Several agents or one good loop                                  | Several agents only for wide, parallel work; extra tokens explain most famous gains                 |
+| [CD-13](#cd-13) | Security and regulation | Dedicated AI security platform or extending the SIEM             | Platforms absorbed the market; baselining agent behaviour is still unsolved                         |
+| [CD-14](#cd-14) | Security and regulation | Broad or narrow reading of the EU AI Act                         | Neither pole: scale the records to the risk                                                         |
+| [CD-16](#cd-16) | Security and regulation | Guardrail products or fixed gates                                | Fixed gates own the decision to authorise; guardrails only advise                                   |
+| [CD-15](#cd-15) | Improving and measuring | Extending APM or dedicated LLM observability                     | The question dissolved; choose on open standards, evaluation depth and self-hosting                 |
+| [CD-19](#cd-19) | Improving and measuring | Fine-tuning or prompt and context engineering                    | An ordering, not a side: optimise, then distil, then reinforcement fine-tuning behind a hard grader |
+| [CD-20](#cd-20) | People and service      | AI-first or human-first service                                  | Framed wrong: target resolution, not containment                                                    |
+| [CD-22](#cd-22) | People and service      | Agents as a workforce or as tools                                | Keep the accountability, drop the idea of agents as staff                                           |
+| [CD-23](#cd-23) | People and service      | One universal assistant or many specialised agents               | Framed wrong: whether work is solo or coordinated predicts the result                               |
+| [CD-24](#cd-24) | People and service      | Separate customer-facing stack or shared platform                | Separate lane and edge on a shared platform; the reason is legal                                    |
 
-**Verdict: routed hybrid, vector-first.** Keep a canonical raw and event store. Combine lexical search with contextual dense embeddings (numeric fingerprints of text that let a computer find similar meaning). Where content is aspect-rich, keep multiple purpose-specific views. Rerank over candidates. Treat topics as versioned, regenerable navigation metadata. Add a selective, provenance-linked graph only for deterministic relationship traversal: lineage, dependency and impact, authorisation paths, temporal validity, transactional shared state. Edge hygiene if you do: every generated edge carries a source-span identifier (ID), extraction model and version, confidence, and a validity interval. The measured spreads justify routing rather than picking a side. Graph-augmented retrieval wins multi-hop benchmarks while costing an order of magnitude more to build, and dense-plus-graph beat either alone. Rejected outright: graph-only memory, vector-only without lexical and raw sources, topic summaries as source of truth, and fine-tuned weights as factual memory. Status: converged. Owner: [R14](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering), [R02](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+## Data and search
 
-### CD-2. Dedicated MCP gateway vs extending API management
+### CD-1. Graph database or embedding retrieval
 
-**In short:** Use the API management tools you already own for agent traffic; buy a dedicated gateway only for controls they lack.
+**The choice.** How agents find knowledge: by following a graph of relationships, or by searching for similar meaning.
 
-**Verdict: extend the incumbent by default.** The incumbent is the application programming interface (API) management platform you already run. The 2026-07-28 Model Context Protocol (MCP) specification was deliberately redesigned to be routable and authorisable by ordinary Hypertext Transfer Protocol (HTTP) gateways. Every incumbent shipped support within a year. Choose a dedicated gateway for agent-specific controls that incumbents do not model well: tool-description diffing and poisoning scans, multi-runtime federation, and elicitation mediation. Status: conditionally approved, converging. Owner: [R03](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
+**The common choice.** Pick one side: a graph database for everything, or vector search on its own.
 
-### CD-3. Replace RPA vs coexist
+**Verdict: routed hybrid, vector-first.** Keep the raw sources and an event store as the record. Combine keyword search with embeddings, numeric fingerprints of text that let a computer find similar meaning. Where documents cover many aspects, keep several views per document. Rerank the candidates. Treat topics as navigation labels that can be regenerated. Add a graph only for exact relationship paths. These are lineage, what depends on what, who may authorise what, validity over time, and shared transaction state. If you add a graph, every generated edge carries its source passage and the extraction model and version. It also carries a confidence value and a validity interval. Graph-augmented retrieval wins benchmarks where answers need several linked steps. It costs about ten times more to build. Embedding search plus a graph beat either one alone. Rejected outright: graph-only memory, and vector search without keyword search and raw sources. Also rejected: topic summaries as the source of truth, and fine-tuned weights as a store of facts.
 
-**In short:** Keep the old screen-clicking bots for mechanical steps, let agents handle judgement, and retire bots only when a proper interface arrives.
+**The discriminator.** Does the question need an exact path through relationships? If yes, route it to the graph. If not, use hybrid search.
 
-**Verdict: coexist, supervised.** Robotic process automation (RPA) bots stay the deterministic execution layer for systems without APIs; agents reason and handle exceptions above them. Replacement is earned per workload when a governed API arrives, never declared estate-wide. Status: converged. Owner: [R03](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
+**What changes the answer.** A large fall in the cost of building and keeping a graph would let more questions justify one.
+
+**Status:** verdict holds. **Layer:** [agent data engineering (R14)](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering) and [data platform (R02)](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+
+### CD-8. A semantic-layer product or governed views
+
+**The choice.** How agents get shared business definitions, such as what "revenue" means. One path is a semantic-layer product. The other is governed views in the database.
+
+**The common choice.** Buy a semantic-layer product, because benchmarks show accuracy gains.
+
+**Verdict: per use case, chosen by how it fails.** The property that matters is what happens to wrong answers. Governed definitions turn silent wrong answers into refusals or fixed answers. Benchmarks show large gains, but only on the part of the data that was modelled. A disciplined counter-camp reaches similar accuracy through data modelling alone. Both camps have published. The real variable is curated business context. A semantic-layer product is its most governable packaging.
+
+**The discriminator.** How does this use case fail? If a wrong number would pass silently and cost a lot, governed definitions pay. If not, well-modelled data may be enough.
+
+**What changes the answer.** A portable standard for definitions would lower the lock-in cost of a product. The Open Semantic Interchange published a first specification in January 2026.
+
+**Status:** verdict holds. **Layer:** [data platform (R02)](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+
+### CD-9. A dedicated vector database or the simplest store
+
+**The choice.** Where to keep the embeddings that agents search.
+
+**The common choice.** Buy a dedicated vector database from the start.
+
+**Verdict: start with the simplest store, and step up only on measured strain.** Use brute-force search below about 100,000 vectors. Use pgvector, an extension to the Postgres database, up to the low millions. At 1 million vectors it answers in under 20 milliseconds with recall above 95 percent. Recall is the share of true matches it finds. Index builds get painful from about 2 million vectors. You need partitioning at 5 million and above. Scale-out Postgres extensions carry you to about 50 million. Use a dedicated engine for extreme scale, heavy write rates, or many tenants with heavy filtering. There the gap in worst-case latency (the 99th percentile) becomes real. Vector search bundled into data platforms is now standard. Prefer it where the data already lives. Governance and access control list (ACL) inheritance then come with it. Include the vendor's viability in the selection.
+
+**The discriminator.** Your measured load: how many vectors, how many writes and how much filtering. Step up only when measurements show strain.
+
+**What changes the answer.** The burden of running it can justify a managed service earlier than scale does. Long index builds and recall that drops under filtering are the usual signs.
+
+**Status:** verdict holds. **Layer:** [data platform (R02)](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+
+### CD-10. Data mesh or a governed central store
+
+**The choice.** Whether each business domain serves its own data to agents, or a governed central store does.
+
+**The common choice.** A data mesh, where each domain owns and serves its data on its own infrastructure.
+
+**Verdict: mesh ideas on a governed central store.** Every shipped design that keeps search permissions in step with source systems assumes a governed central index. A pure mesh multiplies three problems that agents punish. These are keeping permissions in step, keeping definitions consistent, and checking freshness. Keep domain ownership, data contracts and agreed definitions as ways of working. Keep the store and its permissions central and governed.
+
+**The discriminator.** Where are permissions, definitions and freshness enforced? If each domain does it alone, agents inherit every gap between them.
+
+**What changes the answer.** A shipped permission-sync design that works without a central index would reopen the question.
+
+**Status:** verdict holds. **Layer:** [data platform (R02)](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+
+### CD-11. One universal index or indexes scoped to each use case
+
+**The choice.** Whether agents search one index across everything, or smaller indexes built for each purpose.
+
+**The common choice.** One universal enterprise index.
+
+**Verdict: both, for different jobs.** A permission-aware universal index serves discovery and questions that cross silos. Curated indexes scoped to one purpose serve high-stakes tasks. Scoped routing over the universal index can do the same job. The trade is coverage against trust. Even the largest universal-index vendors shipped scoping controls to reduce the risk.
+
+**The discriminator.** What does a wrong answer cost? For discovery, use the universal index. For high-stakes tasks, use a scoped, curated index.
+
+**What changes the answer.** A universal index that keeps its quality as the corpus grows, and stops oversharing. Today search quality falls as a corpus broadens.
+
+**Status:** verdict holds. **Layer:** [agent data engineering (R14)](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering).
+
+### CD-12. Real-time or batch grounding
+
+**The choice.** How fresh the data behind agent answers must be, and how it gets there.
+
+**The common choice.** Real-time streaming for all agent data.
+
+**Verdict: change data capture is the default; streaming is earned.** Change data capture (CDC) copies each database change as it happens. It keeps grounding data minutes old, at close to batch cost. One documented like-for-like comparison ran $400 against $7,600 a month.
+
+**The discriminator.** How fast must the decision be made? Windows under a minute, such as fraud or operational triage, earn streaming. Everything else uses change data capture.
+
+**What changes the answer.** The cost of freshness is falling as streaming and table storage converge. So the boundary is revisited every year.
+
+**Status:** verdict holds. **Layer:** [data platform (R02)](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+
+### CD-25. Purpose-specific embedding views or matched chunks
+
+**The choice.** How to cut documents into pieces for search. One path is views designed around a purpose. The other is plain chunks of fixed size.
+
+**The common choice.** Design purpose-specific views for each document.
+
+**Verdict: chunks first, views only on a measured win, and never shape the index around the objective.** Several embeddings per document beat one on documents that cover many aspects. Most of that gain comes from having more vectors, not from the purpose. A blind sliding window recovered most of it. On human-judged scientific abstracts, purpose views scored below matched chunks. Views won only where queries targeted one aspect. Shaping the views around the objective, the business context or the schema made search worse in every form tested. Keyword search stays in the mix either way.
+
+**The discriminator.** What do your queries ask? Queries aimed at one aspect of a many-aspect document earn views. Queries about whole documents do not.
+
+**What changes the answer.** The positive result for views rests on synthetic data. A test on a real corpus with human judgements could move it.
+
+**Status:** verdict refined (2026-08-23). **Layer:** [agent data engineering (R14)](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering). The measurements are in [the context patterns](https://www.agenticarchitectureskills.com/patterns).
+
+## Connecting to systems
+
+### CD-2. A dedicated MCP gateway or extending API management
+
+**The choice.** How agent traffic to tools is controlled: a new gateway built for agents, or the API management you already run.
+
+**The common choice.** Buy a dedicated Model Context Protocol (MCP) gateway, because agents seem to need their own.
+
+**Verdict: extend the incumbent by default.** The incumbent is the application programming interface (API) management platform you already run. The MCP specification of 28 July 2026 was redesigned on purpose. Ordinary web (HTTP) gateways can now route and authorise it. Every incumbent shipped support within a year.
+
+**The discriminator.** Do you need controls built for agents that your platform lacks? Examples are scanning tool descriptions for changes and poisoning, and joining several agent runtimes. Another is controlling a tool's requests for more input from the user. If you need these, add a dedicated gateway for them.
+
+**What changes the answer.** Incumbents adding those agent controls would remove the case for a dedicated gateway. This market moves fast, so the verdict is checked every quarter.
+
+**Status:** verdict holds. **Layer:** [integration fabric (R03)](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
+
+### CD-3. Replace robotic process automation or keep it
+
+**The choice.** What happens to the screen-clicking bots of robotic process automation (RPA) when agents arrive.
+
+**The common choice.** Replace the bots with agents across the whole organisation.
+
+**Verdict: coexist, supervised.** Bots keep doing fixed steps on systems that have no API. Agents reason and handle the exceptions above them. Replacement is earned one workload at a time, never declared for the whole organisation.
+
+**The discriminator.** Does this workload have a governed API? If yes, and the cost and reliability case is proven, move it to the API and an agent. If not, the bot stays.
+
+**What changes the answer.** If most bot workloads gained governed APIs, coexistence would give way to replacement.
+
+**Status:** verdict holds. **Layer:** [integration fabric (R03)](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
 
 ### CD-4. Agent-to-agent protocols now
 
-**In short:** Standards for agents talking directly to other agents are not worth adopting yet, except across company boundaries.
+**The choice.** Whether to adopt a standard protocol now for agents to talk directly to other agents.
 
-**Verdict: not yet for most.** The standard consolidated and stabilised, but published milestones are organisation counts rather than production evidence. Teams approximate coordination with tool-protocol primitives. Adopt selectively for cross-organisation agent federation, where nothing else fits. Status: position, re-verify quarterly. Owner: [R03](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
+**The common choice.** Adopt it now, so agents are ready to work together.
 
-### CD-5. Modernize the ESB first vs bypass
+**Verdict: not yet for most.** The standard has consolidated and stabilised. But its published milestones count member organisations, not production use. Teams get most coordination today from tool-protocol features. Treat calls between agents as ordinary governed APIs.
 
-**In short:** Do not wait for the old integration bus to be modernised; govern what agents use and replace the rest gradually.
+**The discriminator.** Do your agents need to work with agents in another organisation? If yes, adopt selectively, because nothing else fits. If not, wait.
 
-**Verdict: strangle, do not wait; govern before you wrap.** To strangle an enterprise service bus (ESB) is to replace it one slice at a time while it keeps running, instead of waiting for a full modernisation. Of modernisation programmes, 74 percent fail to complete. Incumbent gateways expose governed APIs as tools with zero backend change. The discipline: govern the specific API paths agents will use before exposing them, and let each strangler increment retire real load. Status: converged. Owner: [R03](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
+**What changes the answer.** Published evidence of production use, not counts of members. The verdict is checked every quarter.
 
-### CD-6. Self-hosted GPU estate vs metered APIs
+**Status:** verdict holds. **Layer:** [integration fabric (R03)](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
 
-**In short:** Pay per use for AI models rather than running your own GPU fleet, unless the work must stay isolated.
+### CD-5. Modernise the enterprise service bus first, or go around it
 
-**Verdict: metered by default; the cost path is open-weight via metered APIs, not self-hosting.** Open-weight models are models whose weights are published for anyone to run. Break-even for self-hosting sits at sustained nine-figure token volumes per month per workload at high utilisation, with operations multipliers of 1.3 to 2 times. At 10 percent utilisation, cost per token rises roughly tenfold. Against budget open-weight API pricing, break-even recedes to billions of tokens per month. Self-hosting earns its place for air-gap and classification, not for generic residency. Status: refined by evidence. Owner: [R01](https://www.agenticarchitectureskills.com/layers/r01-infrastructure).
+**The choice.** Whether agents wait for the old integration bus to be modernised.
 
-### CD-7. Kubernetes everywhere vs managed agent runtimes
+**The common choice.** Modernise the enterprise service bus (ESB) first, then add agents.
 
-**In short:** Use Kubernetes only for model servers you host yourself; run the agents themselves on a managed service.
+**Verdict: strangle, do not wait; govern before you wrap.** To strangle a system is to replace it one slice at a time while it keeps running. To wrap an API is to put it behind a governed tool. Of modernisation programmes, 74 percent fail to complete. Gateways you already run can expose governed APIs as tools with no change to the backend. Govern the specific API paths agents will use before you expose them. Let each slice you replace retire real load.
 
-**Verdict: split by layer.** Model serving belongs on Kubernetes only if you self-host at all. Agent orchestration belongs on managed runtimes with per-session isolation and durability. The lock-in is symmetric: managed runtimes are proprietary control planes, and the portability camp sells its own ecosystem. Status: position with strong support. Owner: [R01](https://www.agenticarchitectureskills.com/layers/r01-infrastructure), [R07](https://www.agenticarchitectureskills.com/layers/r07-agent-platform).
+**The discriminator.** Are the specific API paths the agent will use governed? If yes, expose them as tools now. If not, govern those paths first. The state of the whole bus is not the test.
 
-### CD-8. Semantic-layer product vs governed views
+**What changes the answer.** If a path cannot be exposed as a governed tool without changing the backend, that slice needs work first.
 
-**In short:** Whether to buy a shared-definitions product depends on how each use case fails, not on small accuracy differences.
+**Status:** verdict holds. **Layer:** [integration fabric (R03)](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
 
-**Verdict: per use case, chosen by failure mode.** The load-bearing property is failure-mode conversion: governed semantics turn silent wrong answers into refusals or deterministic answers. Benchmarks show large gains on modelled scope with partial coverage. A disciplined counter-camp reaches comparable accuracy through data modelling alone. The binding variable is curated business context, and a semantic-layer product is its most governable packaging. Status: split, both camps published. Owner: [R02](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+### CD-17. Vendor-embedded agents or your own agents through governed APIs
 
-### CD-9. Dedicated vector database vs the simplest substrate
+**The choice.** Whether work in a packaged application runs on the vendor's built-in agent, or on your own agent through governed APIs.
 
-**In short:** Start with the simplest storage that handles your data volume, and move up only when measurements show strain.
+**The common choice.** Back one side for everything.
 
-**Verdict: climb the ladder.** Use brute force below roughly 100,000 vectors. Use pgvector up to the low millions. At 1 million vectors it answers in under 20 milliseconds with recall above 95 percent. Build pain starts at roughly 2 million, and partitioning is needed at 5 million and above. Use scale-out Postgres extensions to roughly 50 million. Use a dedicated vector database engine for extreme scale, heavy write rates, or filter-heavy multi-tenancy, where the 99th-percentile (p99) latency gap becomes real. Platform-bundled vector search is table stakes: prefer it where the corpus already lives, because governance and access control list (ACL) inheritance come free. Vendor viability belongs in selection. Status: converged. Owner: [R02](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+**Verdict: decided by the authority boundary. Nobody has measured the two head to head.** Inside one system, vendors state that both paths now enforce the same permissions. So choose on control of the model, the cost meter and how far you can customise. Across systems, no single vendor's permission model is authoritative. Records about the same customer or asset must also be matched across systems, which is called entity resolution. So your own orchestration becomes a requirement. Generic benchmarks show cost differences of up to fifty times at similar accuracy. The harness around the model matters more than whose name is on it.
 
-### CD-10. Data mesh vs governed central substrate
+**The discriminator.** Does the work's authority boundary sit inside one system of record? If yes, either path works. If it crosses systems, use your own agents through governed APIs.
 
-**In short:** Let business units own their data, but keep the shared store and its permissions central and governed.
+**What changes the answer.** A published head-to-head measurement on the same task. None exists yet. Agent-to-agent protocols that are ready for work across vendors would also change it.
 
-**Verdict: mesh ideas on a governed substrate.** Every shipped ACL-sync architecture assumes a governed central index. Pure mesh multiplies permission sync, definitional consistency, and freshness monitoring, which are exactly what agents punish. Keep domain ownership as an operating idea; keep the substrate governed and central. Status: converged. Owner: [R02](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+**Status:** verdict refined (2026-08-19). **Layer:** [systems of record (R04)](https://www.agenticarchitectureskills.com/layers/r04-systems-of-record). For packaged software, see [agents and packaged applications](https://www.agenticarchitectureskills.com/use-cases/packaged-applications).
 
-### CD-11. One universal index vs use-case-scoped
+### CD-18. Brokered reads or one-way designs for plant systems
 
-**In short:** Run one permission-aware search across everything for discovery, and separate purpose-built collections where mistakes are costly.
+**The choice.** How agents read operational technology (OT), the systems that run physical equipment.
 
-**Verdict: two layers.** A permission-aware universal index for discovery and cross-silo questions, plus purpose-scoped curated indexes (or scoped routing over the universal one) for high-stakes tasks. The trade is formalised as coverage versus trust, and even the largest universal-index vendors shipped scoping controls as mitigation. Status: converged. Owner: [R14](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering).
+**The common choice.** Start from the transport. Teams pick a historian, the database of plant readings over time, or a unified namespace or protocol gateway.
 
-### CD-12. Real-time vs batch grounding
+**Verdict: impact decides the control point; the transport comes after.** [Impact](https://www.agenticarchitectureskills.com/architecture/agent-types) is what the agent can damage. If any output can reach or influence a control action, use a one-way (unidirectional) or push-based design. Keep a documented path back to manual or fixed control. If output stays as alerts, recommendations and data-quality findings, a brokered read path is defensible. It needs per-agent identity, least privilege, inline inspection, logs held by the operator and a tested isolation plan.
 
-**In short:** Keep agent data fresh by copying each database change as it happens; buy real-time streaming only where decisions cannot wait.
+**The discriminator.** Can any output of the agent reach or influence a control action?
 
-**Verdict: CDC is the default; streaming is earned.** Change data capture (CDC) delivers minutes-level freshness for grounding at near batch cost; a documented like-for-like comparison ran $400 against $7,600 per month. Streaming is justified by decision cadence (fraud, operational triage), not by default. Status: converged. Owner: [R02](https://www.agenticarchitectureskills.com/layers/r02-data-platform).
+**What changes the answer.** A change in what the agent's output can reach. If it starts to influence a control action, the one-way design applies.
 
-### CD-13. Dedicated AI security platforms vs SIEM extension
+**Status:** verdict holds. **Layer:** [line of business and OT (R05)](https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot).
 
-**In short:** Buy AI security inside the platforms you already run, but know that spotting abnormal agent behaviour is still unsolved.
+## Where agents run
 
-**Verdict: the market resolved toward platform absorption; buy accordingly, but absorption is not parity.** Six AI-security acquisitions in roughly fourteen months, plus two non-human-identity deals, moved the capability inside platforms. The honest gap: behavioural baselining of agents remains unsolved in mainstream security information and event management (SIEM) systems, and guardian agents persist as a distinct runtime category. Status: refined. Owner: [R10](https://www.agenticarchitectureskills.com/layers/r10-security-and-identity).
+### CD-6. Your own GPUs or metered APIs
 
-### CD-14. Broad vs narrow AI Act classification
+**The choice.** Whether to run models on your own graphics processing units (GPUs), or pay a provider per use.
 
-**In short:** Do not bet on a broad or narrow reading; keep basic records for every agent and full records for high-risk ones.
+**The common choice.** Host models yourself on your own GPUs, to save cost and keep control.
 
-**Verdict: neither pole; a risk-tiered evidence posture.** Two currents pull on EU AI Act classification. The legal (de jure) current tilted narrow, through deferrals. The interpretive current tilts broad, through draft classification tests and the multi-purpose presumption. Enforcement capacity is thin. Run an evidence floor for every production agent, and Article 12-grade instrumentation (the Act's record-keeping article) for the plausibly high-risk tier. Re-verify at every regulatory milestone. Status: position, dated. Owner: [R11](https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty).
+**Verdict: metered by default. The cheaper path is open-weight models through metered APIs, not self-hosting.** Metered means paying a provider per use. Open-weight models have their weights published for anyone to run. Self-hosting breaks even only at hundreds of millions of tokens a month per workload. That assumes high utilisation, and operations add 1.3 to 2 times the cost. At 10 percent utilisation, the cost per token rises about tenfold. Against budget prices for open-weight APIs, break-even moves out to billions of tokens a month.
 
-### CD-15. APM extension vs dedicated LLM observability
+**The discriminator.** Must the work run air-gapped, cut off from outside networks, or under a classification rule? If yes, self-host. A general need for data residency is not enough on its own.
 
-**In short:** The extend-or-buy monitoring question has largely disappeared because the specialists were bought up; choose on standards, testing depth, and self-hosting.
+**What changes the answer.** Sustained, very high volume at high utilisation for one workload. Below about 100 to 250 million tokens a month, or below 60 percent utilisation, the numbers do not close.
 
-**Verdict: the question dissolved.** The observability category merged. Choose on the real fault lines. The first is an OpenTelemetry (OTel)-native pipeline versus a proprietary software development kit (SDK); both need a translation layer while the conventions stay unstable. The second is eval-loop depth versus infrastructure correlation. The third is self-hosting. Most enterprises land on the application performance monitoring (APM) incumbent plus one eval-capable tool. Status: dissolved by consolidation. Owner: [R12](https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops).
+**Status:** verdict refined (2026-08-19). **Layer:** [infrastructure and compute (R01)](https://www.agenticarchitectureskills.com/layers/r01-infrastructure).
 
-### CD-16. Guardrail products vs deterministic gates
+### CD-7. Kubernetes everywhere or managed agent runtimes
 
-**In short:** Fixed rules decide whether an agent may act; AI-based filters can warn but must never grant or deny.
+**The choice.** Where agents and models run: on Kubernetes, or on a managed runtime from a provider.
 
-**Verdict: deterministic gates own the authorisation boundary; guardrails are advisory wherever they run.** In published tests, roughly 72 to 77 percent of attacks got past major commercial guardrails, and up to 100 percent in some configurations. The one guardrail measured at 0 percent bypass cost 16.22 percent false positives and roughly 1.5 seconds of added latency. Policy engines decide in under a millisecond. Status: converged. Owner: [R10](https://www.agenticarchitectureskills.com/layers/r10-security-and-identity).
+**The common choice.** Kubernetes for everything, including the agents.
 
-### CD-17. Embedded vendor agents vs external agents through governed APIs
+**Verdict: split by workload.** Serve models on Kubernetes only if you host them yourself. Run agent orchestration on managed runtimes, with a separate sandbox per session and durable state. The lock-in risk runs both ways. Managed runtimes are proprietary platforms, and the portability camp sells its own ecosystem.
 
-**In short:** Use the vendor's built-in agent when work stays inside one product; use your own agents when work spans systems.
+**The discriminator.** Do you host models yourself? Only then does model serving belong on Kubernetes. Agent orchestration goes to a managed runtime unless the condition below holds.
 
-**Verdict: decided by authority boundary, and nobody has measured the head-to-head.** Inside one system, both paths now enforce identical permissions (stated parity), so choose on model control, the cost meter, and the customisation ceiling. Across systems, no vendor's permission plane is authoritative and entity resolution binds, so external orchestration is a requirement rather than a preference. Generic benchmarks show up to fiftyfold cost variation at similar accuracy; the harness matters more than the badge. For packaged software, see [agents and packaged applications](https://www.agenticarchitectureskills.com/use-cases/packaged-applications). Status: reframed. Owner: [R04](https://www.agenticarchitectureskills.com/layers/r04-systems-of-record).
+**What changes the answer.** Strong in-house platform engineering plus a real need to run the same agents in several environments. Then Kubernetes for orchestration can make sense.
 
-### CD-18. Brokered OT read paths vs unidirectional architectures
+**Status:** verdict holds. **Layer:** [infrastructure and compute (R01)](https://www.agenticarchitectureskills.com/layers/r01-infrastructure) and [agent platform (R07)](https://www.agenticarchitectureskills.com/layers/r07-agent-platform).
 
-**In short:** For plant and grid systems, the design depends on whether agent output could ever affect a physical control.
+### CD-21. Several agents or one good loop
 
-**Verdict: consequence class decides the control point; transport is downstream.** This record covers operational technology (OT), the systems that run physical equipment. If any output can reach or influence a control action: unidirectional or push-based architectures, plus a documented path back to manual or deterministic control. If output is confined to alerts, recommendations, and data-quality findings, a brokered read path is defensible. It needs per-agent identity, least privilege, inline inspection, operator-custodied logging, and a tested isolation plan. Status: converged across camps. Owner: [R05](https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot).
+**The choice.** Whether to split a job across several coordinated agents, or run one agent with good tools.
 
-### CD-19. Fine-tuning and RFT vs prompt-and-context engineering
+**The common choice.** Multi-agent orchestration, because famous results showed big gains.
 
-**In short:** Improve instructions and context first, then teach a smaller model the results; retrain weights only as a last resort.
+**Verdict: use several agents only for wide, parallel work. Hold compute constant before you believe any comparison.** The famous orchestrator-worker win used about 15 times the tokens. Token use alone explains most of the variation on related benchmarks. With reasoning tokens held equal, single agents match or beat multi-agent systems on questions that need several linked steps.
 
-**Verdict: an ordering, not a side.** Optimise context and prompts against a locked eval suite first; measured wins came at up to 35 times fewer rollouts than reinforcement learning (RL). Distil when latency or unit cost forces it. Use reinforcement fine-tuning (RFT) only when a programmable, hard-to-game grader exists and the prompt-optimised ceiling is demonstrably flat. RFT is the wrong tool for format and tone. Counter-evidence kept honestly: a fine-tuned small model has beaten a prompt-engineered frontier model decisively on cost and accuracy in narrow classification. Status: refined. Owner: [R06](https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning).
+**The discriminator.** Four conditions must all hold. The work splits into independent strands that mostly read. The information is more than one context window holds. The accuracy bar is above what one pass reaches. The value covers the extra cost.
 
-### CD-20. AI-first vs human-first service
+**What changes the answer.** A comparison that holds compute constant and still shows a multi-agent gain on your kind of task. Where agents must share changing state, the cost of coordinating them dominates.
 
-**In short:** Do not aim to keep customers away from staff; aim to solve their problems and measure who has to come back.
+**Status:** verdict refined (2026-08-19). **Layer:** [agent platform (R07)](https://www.agenticarchitectureskills.com/layers/r07-agent-platform).
 
-**Verdict: the axis is wrong; the target is what fails.** Every documented reversal of an AI-first programme set a containment target (the share of conversations that never reach a person) or a headcount target. Target resolution, instrument repeat contact beside it, and let containment be an outcome. Status: reframed. Owner: [R09](https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels).
+## Security and regulation
 
-### CD-21. Multi-agent orchestration vs a single good loop
+### CD-13. A dedicated AI security platform or extending the SIEM
 
-**In short:** Splitting one job across several agents pays off only for wide, independent work; most famous gains came from extra tokens.
+**The choice.** Where agent security monitoring lives: a dedicated AI security product, or the security tools you already run.
 
-**Verdict: parallel breadth only, and hold compute constant before believing any comparison.** The famous orchestrator-worker win was bought with roughly 15 times the tokens. Token usage alone explains most of the variance on related benchmarks. At constant reasoning tokens, single agents match or beat multi-agent systems on multi-hop reasoning. Pay the multiplier only when strands are independent and read-heavy, the information exceeds one context window, the accuracy bar exceeds single-pass, and the value clears the cost. Status: supported with reframe. Owner: [R07](https://www.agenticarchitectureskills.com/layers/r07-agent-platform).
+**The common choice.** Buy a dedicated AI security platform.
 
-### CD-22. Agents as workforce vs agents as tools
+**Verdict: the market moved toward platform absorption, so buy accordingly. Absorption is not parity.** Six AI security acquisitions in about fourteen months moved the capability inside existing platforms. Two deals for non-human identity added to it. One gap remains. Mainstream security information and event management (SIEM) systems cannot yet learn what normal agent behaviour looks like. Guardian agents, which watch other agents at runtime, remain a separate product category.
 
-**In short:** Give every agent a named accountable person, but do not treat agents as employees with personnel records.
+**The discriminator.** Do you need to baseline agent behaviour now? If not, buy inside the platforms you run. If yes, plan for a specialist tool beside them.
 
-**Verdict: keep the accountability, drop the personnel metaphor.** The accountability substance is productised: a named sponsor on the identity, automatic transfer, and scoped expiring credentials. The flagship attempt to give agents employee records was withdrawn within days. The strongest field deployment achieves per-agent accountability with no org-chart presence. Status: refined. Owner: [R13](https://www.agenticarchitectureskills.com/layers/r13-operating-model).
+**What changes the answer.** Mainstream SIEMs learning to baseline agent behaviour would close the gap. This market is consolidating fastest of any in the catalog, so it is checked every quarter.
 
-### CD-23. One universal assistant vs many specialised agents
+**Status:** verdict refined (2026-08-19). **Layer:** [security and identity (R10)](https://www.agenticarchitectureskills.com/layers/r10-security-and-identity).
 
-**In short:** Ask whether the work is done alone or with others, because AI reliably helps solo work and rarely changes teamwork.
+### CD-14. A broad or narrow reading of the EU AI Act
 
-**Verdict: the axis is wrong; solitary versus coordinated work is the predictive variable.** Individually provisioned AI reliably improves solitary work and reliably fails to change coordinated work, because coordination requires agreeing new norms. The evidenced third answer is a long tail of narrow agents built by employees inside the horizontal platform. Status: reframed. Owner: [R08](https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration).
+**The choice.** How widely to treat agents as high-risk under the EU AI Act.
 
-### CD-24. Separate customer-facing stack vs shared platform
+**The common choice.** Bet on one reading: treat almost everything as high-risk, or almost nothing.
 
-**In short:** Customer-facing agents get their own channels and legal safeguards, but share knowledge, identity, tools, and monitoring with everything else.
+**Verdict: neither pole; scale the records to the risk.** Two currents pull on classification. The law itself tilted narrow, through deferrals. The way the rules are read tilts broad. Draft classification tests and a presumption for multi-purpose systems push that way. Enforcement capacity is thin either way. Keep an audit trail baseline for every production agent. For uses that may be high-risk, keep the records the Act asks for under Article 12.
 
-**Verdict: separate lane and separate edge on a shared control plane, justified by legal exposure rather than technology.** Edge-specific: channels and telephony, disclosure mechanics, adversarial hardening, and the legal-evidence layer. Shared, and duplicating them is a defect: knowledge corpus, identity, tool layer, evals, observability, and model access. Honest caveat: no published case measures either choice. Status: position with legal anchors. Owner: [R09](https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels).
+**The discriminator.** Could this use plausibly be high-risk under the Act? If yes, keep EU AI Act record keeping. If not, the audit trail baseline is enough.
 
-### CD-25. Purpose-specific embedding views vs matched chunking
+**What changes the answer.** The final classification guidelines, the first harmonised standards and the first enforcement actions. The verdict is checked at each of these milestones.
 
-**In short:** Split documents into several vectors, start with plain chunks, and add purpose-specific views only where your own queries prove they help.
+**Status:** verdict holds. **Layer:** [governance, risk and sovereignty (R11)](https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty).
 
-**Verdict: chunks first, views on a measured win, and never condition the index on the objective.** Several embeddings per document beat one on aspect-rich material (a pooled index fell from 0.815 to 0.294 nDCG\@10 as aspects grew from one to ten), but most of that benefit is capacity: a blind sliding window recovered 0.610 of the 0.674 that purpose views gained on the LIMIT stress test, and on human-judged scientific abstracts purpose views scored 0.032 to 0.042 below matched chunks. Views won only where queries targeted one aspect (+0.188 at ten aspects, with 25 percent fewer embeddings). Conditioning the view design on the objective, the business context, or the schema made retrieval worse in every form tested, including real instruction-following data, where a plain instruction-prepended encoder beat every view arm. The discriminator is the query distribution: aspect-targeted queries over aspect-rich items earn views; whole-document queries do not. Keyword search stays fused in either case. Status: independently measured, five rounds, two machines. Owner: [R14](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering); the evidence is on the [research pages](https://www.agenticarchitectureskills.com/patterns), and the design is [the recommended approach](https://www.agenticarchitectureskills.com/patterns).
+### CD-16. Guardrail products or fixed gates
+
+**The choice.** What decides whether an agent may take an action: an AI-based filter, or a fixed rule.
+
+**The common choice.** Buy a guardrail product and let it block unsafe actions.
+
+**Verdict: fixed gates own the decision to authorise; guardrails advise wherever they run.** In published tests, roughly 72 to 77 percent of attacks got past major commercial guardrails. Some configurations let up to 100 percent through. Attacks tuned to the defence do even better. The one guardrail measured at 0 percent bypass flagged 16.22 percent of good requests. It also added about 1.5 seconds per call. A policy engine decides in under a millisecond.
+
+**The discriminator.** Does the control grant or deny an action? Then it must be a fixed gate. Content policy and spotting personal data can use guardrails, because a miss there is tolerable.
+
+**What changes the answer.** Better guardrail numbers would change which guardrail you buy. The fixed gate would still authorise, because models may take permission away, never grant it.
+
+**Status:** verdict holds. **Layer:** [security and identity (R10)](https://www.agenticarchitectureskills.com/layers/r10-security-and-identity). [Enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement) gives the full figures and dates.
+
+## Improving and measuring
+
+### CD-15. Extending APM or a dedicated LLM observability tool
+
+**The choice.** Whether agent monitoring extends your application performance monitoring (APM), or uses a tool built for large language models (LLMs).
+
+**The common choice.** Buy a dedicated LLM observability platform beside APM.
+
+**Verdict: the question dissolved.** Bigger vendors bought most of the specialists, and the category merged. Choose on three real differences instead. The first is OpenTelemetry (OTel), an open standard, against a vendor's own software development kit (SDK). Both need a translation step while the standard is unstable. The second is the depth of evaluation tooling, against seeing agents beside the infrastructure they touch. The third is whether you must host it yourself. Most enterprises use their APM incumbent plus one tool that can run evaluations.
+
+**The discriminator.** Which of the three differences matters most for you? Choose on that, not on the category name.
+
+**What changes the answer.** The last gap, between APM and evaluation tools, may close as the category merges. Two of the deals had not closed at research time, so this is checked every quarter.
+
+**Status:** verdict refined (2026-08-19). **Layer:** [observability and FinOps (R12)](https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops).
+
+### CD-19. Fine-tuning or prompt and context engineering
+
+**The choice.** How to make a model better at your task: change its weights, or improve its instructions and context.
+
+**The common choice.** Fine-tune the model.
+
+**Verdict: an ordering, not a side.** First, optimise context and prompts against a locked evaluation suite. Measured wins came with up to 35 times fewer trial runs than reinforcement learning. Next, distil into a smaller model when latency or unit cost forces it. Use reinforcement fine-tuning (RFT) last. RFT is the wrong tool for format and tone.
+
+**The discriminator.** Is there a grader, a program that scores answers, that is hard to game? And has prompt work hit a flat ceiling? Only then use RFT. The usual sign is accuracy that climbs for a week of prompt work, then stops.
+
+**What changes the answer.** Narrow classification tasks. There a fine-tuned small model has clearly beaten a prompted frontier model on cost and accuracy.
+
+**Status:** verdict refined (2026-08-19). **Layer:** [intelligence and learning (R06)](https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning).
+
+## People and service
+
+### CD-20. AI-first or human-first service
+
+**The choice.** Whether customers meet AI first, or people first with AI helping them.
+
+**The common choice.** AI-first service, measured by how many contacts never reach a person.
+
+**Verdict: the question is framed wrong. Set a resolution target, not a containment target.** Containment is the share of conversations that never reach a person. Every documented reversal of an AI-first programme had set a containment or headcount target. Set a target for resolved problems instead. Measure repeat contact beside it, and let containment follow.
+
+**The discriminator.** What is the target: contacts kept away from staff, or problems solved? Track who has to come back.
+
+**What changes the answer.** A documented case of lasting gains under a containment target would reopen the question. The research found none.
+
+**Status:** verdict refined (2026-08-19). **Layer:** [experience and channels (R09)](https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels).
+
+### CD-22. Agents as a workforce or agents as tools
+
+**The choice.** Whether agents are managed like staff, with managers and a place on the org chart. The other path treats them as tools that existing roles run.
+
+**The common choice.** Treat agents as a digital workforce.
+
+**Verdict: keep the accountability, drop the idea of agents as staff.** The accountability part is now built into products. Each agent has a named sponsor on its identity. Sponsorship transfers automatically, and credentials are scoped and expire. The best-known attempt to give agents employee records was withdrawn within days. The strongest field deployment has a named person accountable for each agent, with no place on the org chart.
+
+**The discriminator.** What does accountability need? A named sponsor, automatic transfer and expiring credentials. None of these needs an HR record.
+
+**What changes the answer.** A study comparing outcomes under the two approaches. None exists yet.
+
+**Status:** verdict refined (2026-08-19). **Layer:** [operating model and supervision (R13)](https://www.agenticarchitectureskills.com/layers/r13-operating-model).
+
+### CD-23. One universal assistant or many specialised agents
+
+**The choice.** Whether everyone gets one general assistant, or teams get many agents built for specific jobs.
+
+**The common choice.** Pick one side: one assistant for everyone, or a portfolio of specialised agents.
+
+**Verdict: the question is framed wrong. Whether the work is done alone or with others predicts the result.** AI given to individuals reliably improves work people do alone. It reliably fails to change work people do together, because teams must first agree new ways of working. A third answer has the most deployment evidence. Give everyone an assistant they can build on. Employees then build a long tail of narrow agents inside it.
+
+**The discriminator.** Is the work done alone or with others?
+
+**What changes the answer.** Evidence that AI given to individuals changes coordinated work. Today the evidence runs the other way.
+
+**Status:** verdict refined (2026-08-19). **Layer:** [productivity and collaboration (R08)](https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration).
+
+### CD-24. A separate stack for customer-facing agents or a shared platform
+
+**The choice.** Whether agents that talk to customers get their own technology stack, or share the platform internal agents use.
+
+**The common choice.** Build a separate stack for customer-facing agents.
+
+**Verdict: a separate lane and a separate edge on a shared platform. The reason is legal exposure, not technology.** The lane is a separate budget and governance path. The edge is the part customers touch. It covers channels and telephony, disclosure to customers, hardening against attackers, and the legal evidence record. The rest is shared, and duplicating it is a defect. That covers the knowledge corpus, identity, tools, evaluations, observability and model access. No published case measures either choice.
+
+**The discriminator.** Is a failure legally attributable, binding and public? Customer-facing failures are. That justifies separate governance, funding gates and risk appetite.
+
+**What changes the answer.** A published case that measures a separate or a shared stack. None exists, so the verdict rests on legal exposure and market structure.
+
+**Status:** verdict holds. **Layer:** [experience and channels (R09)](https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels).
+
+## A worked example: grid data at a utility
+
+A distribution utility wants an agent to read grid sensor data and flag feeder faults. Record CD-18 applies. The test is whether any output can reach a control action. Say the agent only raises alerts for an operator. Then a brokered read path is defensible. It still needs its own identity, least privilege, inspection, logs held by the operator and a tested isolation plan. Now say its output could feed a switching action. Switching is safety actuation, one of [the four deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones). Then use a one-way design, and keep a tested path back to manual control. This is an illustrative example, not a measured deployment.
+
+## Evidence and limits
+
+The verdicts come from the guide's research across the fourteen layers, completed on 2026-08-19. CD-25 rests on the guide's own experiments, run from 2026-08-19 to 2026-08-22. Each choice was tested against the simplest credible alternative, on evidence and cost. Three records have no head-to-head measurement, and say so: CD-17, CD-22 and CD-24. Market facts date quickly. CD-2, CD-4, CD-13 and CD-15 are checked every quarter. CD-14 is checked at each regulatory milestone.
+
+## Next step
+
+Find the record that matches a choice in front of you, and apply its discriminator to your case. Then open the layer page it names for the dated evidence. The guide's own editorial decisions are in [the decision log](https://www.agenticarchitectureskills.com/library/decisions).
+
+**Explore this topic**
+
+* Each verdict's dated sources are on the layer page named in its record.
+* CD-2: the Model Context Protocol specification of 28 July 2026.
+* CD-25, measured in five rounds on public corpora between 2026-08-19 and 2026-08-22, seeded and replicated on a second machine:
+  * A pooled index fell from 0.815 to 0.294 nDCG\@10 as aspects per document grew from one to ten.
+  * A blind sliding window recovered 0.610 of the 0.674 gain that purpose views made on the LIMIT stress test.
+  * On human-judged scientific abstracts, purpose views scored 0.032 to 0.042 below matched chunks.
+  * Views won by 0.188 at ten aspects when queries targeted one aspect, with 25 percent fewer embeddings.
+  * On real instruction-following data, a plain encoder with the instruction prepended beat every view design.
+  * The experiments are in [the context patterns](https://www.agenticarchitectureskills.com/patterns) and [what we got wrong](https://www.agenticarchitectureskills.com/patterns/what-we-got-wrong).
+* [The decision log](https://www.agenticarchitectureskills.com/library/decisions) records the guide's own editorial decisions.

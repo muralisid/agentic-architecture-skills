@@ -4,7 +4,7 @@ A proposed workflow for finance. Revised 17 September 2026. The roles below are 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/blueprints/departments/finance (Markdown: https://www.agenticarchitectureskills.com/library/blueprints/departments/finance.md)
-Updated: 2026-09-17
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## The business opportunity
@@ -19,18 +19,18 @@ Compare the agent with deterministic three-way matching and a well-designed exce
 
 ## Proposed responsibilities
 
-| Agent                   | What it does                                                              | A x L position | Notes                                                              |
-| ----------------------- | ------------------------------------------------------------------------- | -------------- | ------------------------------------------------------------------ |
-| Invoice exception agent | Investigates match failures, gathers evidence, proposes disposition       | A3, L2         | Start where exception records and reviewer decisions are available |
-| Reconciliation agent    | Explains variances across ledgers and subledgers with provenance          | A2 to A3, L2   | Explains; the accountant disposes                                  |
-| Close assistance agent  | Assembles schedules, chases open items, drafts commentary against actuals | A2, L1         | Compresses the tail of close, which is where the overtime lives    |
-| Reporting draft agent   | Drafts management and statutory narrative from governed numbers           | A1 to A2, L1   | Drafts only. Attestation is deterministic and human                |
+| Agent                   | What it does                                                              | Autonomy and learning position | Notes                                                              |
+| ----------------------- | ------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------ |
+| Invoice exception agent | Investigates match failures, gathers evidence, proposes disposition       | A3, L2                         | Start where exception records and reviewer decisions are available |
+| Reconciliation agent    | Explains variances across ledgers and subledgers with provenance          | A2 to A3, L2                   | Explains; the accountant disposes                                  |
+| Close assistance agent  | Assembles schedules, chases open items, drafts commentary against actuals | A2, L1                         | Compresses the tail of close, which is where the overtime lives    |
+| Reporting draft agent   | Drafts management and statutory narrative from governed numbers           | A1 to A2, L1                   | Drafts only. Attestation is deterministic and human                |
 
 Start with one agent and ordinary tools. Separate a responsibility only when it needs different permissions, independent review, or its own operating schedule. The autonomy and learning positions are starting choices to test, not certification levels.
 
 ## How the architecture supports the task
 
-Knowledge (**direct**: semantic contracts on every numeric answer), Action (**direct**: wrapped ERP and banking APIs), Control (**direct**: the two deterministic zones), Evidence (**direct**: records regimes), Human (**direct**), Improvement (supporting), Execution (supporting).
+Knowledge and memory (**direct**: semantic contracts on every numeric answer), tool gateway (**direct**: wrapped ERP and banking APIs), identity and policy (**direct**: the two deterministic zones), observability and audit trail (**direct**: records regimes), human oversight (**direct**), evaluation and release (supporting), runtime (supporting).
 
 ## Controls and human decisions
 

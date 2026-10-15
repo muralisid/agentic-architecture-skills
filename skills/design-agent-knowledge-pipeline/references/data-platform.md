@@ -1,21 +1,30 @@
 # Data platform
 
-How agents get trustworthy company data: indexes that respect who may see what, fixed business definitions for high-stakes numbers, and freshness matched to how often decisions are made.
+How agents get company data they may see and can trust: permission checks before the search, an index protected like the data it copies, fixed definitions for numbers that matter, and freshness matched to the decision.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers/r02-data-platform (Markdown: https://www.agenticarchitectureskills.com/layers/r02-data-platform.md)
-Updated: 2026-09-17
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-> **In plain terms.**
->
-> This page covers the company data that agents read before they answer or act. An agent must only see what the person asking could see, and it must be able to show where each answer came from. For questions where a wrong number is costly, it must give the same answer every time or say that it does not know. The one thing to remember: a search index is a copy of your data and needs the same protection as the original.
+The data platform layer (R02) holds company data for reporting and analysis: warehouses, lakehouses, plant data copies and dashboards. It is one of the [fourteen layers](https://www.agenticarchitectureskills.com/layers). Agents read it before they answer or act. For agents it must provide four things. An agent finds only what the person asking may open. Every answer points back to the passage it came from. Numbers that matter come from fixed business definitions, or the agent says it does not know. Data is as fresh as the decision needs. A search index is a copy of the data, and it needs the same protection as the original.
 
-## Target state
+## What sits in this layer today
 
-**In short:** Agents answer from governed company data that respects permissions, carries its source, and is only as fresh as decisions need.
+| System category            | Electricity distributor                                                                   | Water utility                      | Hospital network                                                                                        | Generator, oil and gas, or miner                                                                                                   |
+| -------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Warehouse or lakehouse     | Snowflake, Databricks, Microsoft Fabric, SAP BW or Datasphere                             | Same as the distributor            | Enterprise data warehouse (SQL Server, Oracle). Newer builds on Snowflake, Databricks, Microsoft Fabric | Lakehouse (Databricks, Snowflake, Microsoft Fabric)                                                                                |
+| Business intelligence (BI) | Power BI, Tableau, SAP Analytics Cloud                                                    | Same as the distributor            | Power BI, Qlik, Tableau                                                                                 | Power BI, Tableau                                                                                                                  |
+| Copies of operational data | A copy of the plant historian, the archive of control-system readings                     | Same, plus hydraulic model outputs | Clinical data repository (InterSystems HealthShare, Orion Health)                                       | Process historian (AVEVA PI System, AspenTech IP.21, Honeywell PHD). Industrial data platform (Cognite Data Fusion, AVEVA CONNECT) |
+| Specialist data sets       | Interval meter data, copied from meter data management                                    | Water-quality lab data             | Clinical registries. Linked data for population health                                                  | Lab results (LabWare, Thermo SampleManager). Subsurface data (OSDU). Geology and block models (acQuire, Maptek)                    |
+| Data built for regulators  | Data marts for the Australian Energy Regulator's templates                                | Reports to the state regulator     | State data collections                                                                                  | Emissions reporting (NGER). Reserve statements for miners (JORC)                                                                   |
+| How fresh it is            | Loaded overnight, so good for history and poor for the current state (typical, unsourced) | Same as the distributor            | Nightly batch extracts from the patient administration system and medical record                        | The historian collects plant readings continuously                                                                                 |
 
-Grounding (answering from trusted company sources) is a governed product, not a side effect of a data lake. The data agents ground on is well modelled. Wherever the stakes demand a deterministic answer (the same answer every time), the business definitions behind it are governed. Indexes are permission-aware, and retrieval is filtered on the caller's live identity before results are returned. Freshness is fed by change data capture (CDC), which streams each database change as it happens. It is sized to how often decisions are made, not to fashion. Provenance runs from every answer back to the exact passage it came from. Catalogues supply ownership, lineage, and definitions as context for agents, not as a portal humans visit. Embeddings (numeric fingerprints of text) are treated as recoverable data, and they carry their sources' classification. Anything derived from several sources inherits the strictest classification among them.
+The shared vocabularies between these systems: CIM (IEC 61968 and 61970) in electricity, where used. Health uses SNOMED CT-AU, ICD-10-AM and LOINC. Energy and mining use ISA-95 object models, OSDU and ISO 14224. Vendor names are examples from industry knowledge (typical, unsourced). The full estates are on the [utilities](https://www.agenticarchitectureskills.com/use-cases/utilities), [healthcare](https://www.agenticarchitectureskills.com/use-cases/healthcare) and [energy](https://www.agenticarchitectureskills.com/use-cases/energy) pages.
+
+## What agents add
+
+Agents need company data turned into something they can safely answer from. That is called grounding: answering from trusted company sources. Treat grounding as a governed product, with an owner and rules. This layer feeds [knowledge and memory](https://www.agenticarchitectureskills.com/memory), one of [the seven capabilities an agent platform provides](https://www.agenticarchitectureskills.com/architecture/system-view).
 
 **Figure: Grounding as a governed product.** Permissions crawl into index metadata and retrieval is pre-filtered on the caller's live identity; post-filtering is the anti-pattern.
 
@@ -25,100 +34,152 @@ Fail-close on permission-sync errors; provenance runs from answer back to source
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/layer-02-hero.svg
 
-**Figure: Permission is applied before retrieval, not after generation.** The caller's live identity narrows the searchable set before similarity ranking happens. High-stakes numeric questions take a separate deterministic path that produces a governed answer or an explicit refusal.
+### A permission check before the search
 
-**What the image shows:** Caller identity filters unauthorised documents before a governed index returns source spans and a cited answer, while high-stakes numbers pass through a semantic contract.
+The index learns who may open each document. The source system's access list is copied into the index alongside each document. At query time the search is filtered on the caller's live identity, inside the query itself. Filtering the results after the search is the pattern to avoid. It leaks how many results exist, and it can leave too few to answer. The major search platforms support this natively. When the copy of permissions fails, the index denies access rather than allowing it.
+
+**Figure: Search only what the user may open.** The caller's live identity narrows the searchable set before ranking happens. High-stakes numbers take a separate fixed path that gives a governed answer or an explicit refusal.
+
+**What the image shows:** The caller's identity passes through a permission filter. Documents the caller may not open are removed before the search. A governed index returns relevant source passages, and the answer cites them. High-stakes numbers take a separate path through a fixed set of business definitions, which gives an answer or a refusal. The footer reads: check access before retrieval, never filter after generation.
 
 Image: https\://www\.agenticarchitectureskills.com/images/layers/r02-permission-retrieval-labeled-v1.webp
 
-| Component           | Responsibility                                              | Control it hosts                                           | Where it runs                       |
-| ------------------- | ----------------------------------------------------------- | ---------------------------------------------------------- | ----------------------------------- |
-| Permission crawler  | Pull source access control lists (ACLs) into index metadata | Fail-close on sync error                                   | Alongside each connector            |
-| Governed index      | Serve retrieval with permissions inside the query           | Pre-filter on live caller identity                         | Existing search or vector substrate |
-| Semantic layer      | Answer high-stakes numerics deterministically or refuse     | Semantic contract; refusal over improvisation              | Warehouse or semantic product       |
-| CDC pipeline        | Keep indexes fresh at decision cadence                      | Freshness lag as a monitored service level objective (SLO) | Existing streaming or batch estate  |
-| Catalog and lineage | Supply ownership, definitions, and lineage as context       | Definition authority                                       | Existing catalog                    |
-| Provenance store    | Bind every claim to its source span                         | Citability by construction                                 | With the index                      |
+### An index protected like the data it copies
 
-## Mechanisms
+An index stores embeddings, which are numeric fingerprints of text. Those fingerprints can often be turned back into the text. One study rebuilt 92 percent of short inputs exactly from their embeddings. So vectors carry the source's classification, access rules, residency and privacy duties. Deleting a record deletes every copy made from it, vectors included. Anything built from several sources takes the strictest classification among them.
 
-### ACL-aware retrieval is deterministic security applied to grounding
+**Figure: Every data fragment carries its rules.** A chunk is not just text. Its permissions, source, residency, version and freshness must survive parsing, embedding, indexing and answering, or the result cannot be governed.
 
-**In short:** Check who is asking before searching, so an agent can never surface a document its user could not open.
-
-ACL-aware retrieval checks the access control list (ACL), the record of who may open each document, before returning results. The shipped pattern: crawl source permissions into index metadata, then filter **inside** the vector query on the caller's live identity. Document-level directory ACLs are native on the major search platforms. Connector-crawled permission maps ship with fail-close behaviour: on an error, they deny rather than allow. Relationship-based authorisation engines of the Zanzibar class pre-compute the authorised objects for the hard cases. **Filtering after the search is the anti-pattern.** It leaks result counts and starves the result set. Four named failure modes survive a correct implementation and must be designed for. First, permission-sync lag: a revoked permission takes effect at the next crawl, not at the click. Second, group-membership drift. Third, documents with no ACL defaulting to public. Fourth, inherited oversharing, where agents amplify a decade of accumulated permission sprawl. Vendor-published estimates put roughly 16 percent of business-critical data in an overshared state. The mitigation shipped by one major vendor is a scoped-search allowlist that its own documentation calls a stopgap. Hygiene comes before retrieval. No retrieval layer fixes wrong ACLs.
-
-### Embeddings are recoverable data
-
-**In short:** The numeric form of a document can often be turned back into its text, so it needs the same protection as the document.
-
-**Figure: Every derived fragment must keep its governance envelope.** A chunk is not just text. Its permissions, provenance, residency, version and freshness must survive parsing, embedding, indexing and answer generation, because losing that metadata loses the ability to govern the result.
-
-**What the image shows:** A searchable data chunk carries access rules, source provenance, residency, embedding version and freshness metadata; its vector and answer inherit the strictest source rule.
+**What the image shows:** A searchable chunk of text sits in the centre. Around it are its access rules, its source, its residency, its embedding version and its freshness date. A panel shows that the chunk, its vector and the answer built from it all inherit the strictest rule of the source. The footer reads: if the metadata is lost, governance is lost.
 
 Image: https\://www\.agenticarchitectureskills.com/images/layers/r02-fragment-rules-labeled-v1.webp
 
-Exact reconstruction of short inputs from their embeddings has been demonstrated at 92 percent. The result is vec2text, presented at the Empirical Methods in Natural Language Processing conference (EMNLP) in 2023 and reproduced in 2025. The architectural consequence is not optional. Vectors inherit the source's classification, ACLs, residency rules, and privacy obligations. Erasure cascades into vectors and every derived artifact: delete the record, and every copy made from it goes too. This is the reasoning behind the named risk in the OWASP (Open Worldwide Application Security Project) application list. Treat an index as a copy of the data, because that is what it is.
+### Fixed definitions for numbers that matter
 
-### Semantic contracts convert silent errors into refusals
+For a high-stakes number, a set of fixed business definitions does one important thing. It turns a confidently wrong number into a right number or an honest refusal. These definitions are often kept in a semantic model. In one study, checking queries against such definitions raised accuracy from 54 to 72 percent. It also produced an "I do not know" on about 8 percent of questions. That refusal is the property that matters. Some teams reach similar accuracy through careful data modelling alone. Good modelling does the same job.
 
-**In short:** Fixed business definitions turn a confidently wrong number into either the right number or an honest refusal.
+### Storage sized to the number of documents
 
-For high-stakes numeric questions, the value of a governed semantic layer (a shared set of business definitions) is not a few points of accuracy. It is failure-mode conversion: a wrong number becomes either a refusal or a deterministic answer. Ontology-checked querying moved accuracy from 54 percent to 72 percent. It also produced explicit "I do not know" responses on about 8 percent of questions, which is the property that matters. A vendor's paired benchmark compares a semantic layer against text-to-SQL, where the model writes Structured Query Language (SQL) database queries directly. It reports 98 to 100 percent accuracy through the semantic layer on the modelled scope, against 84 to 90 percent for text-to-SQL. The semantic layer covered 72.7 percent of the full question set \[vendor]. A semantic-document approach added 17 to 23 points across three frontier models \[vendor]. The honest counter-camp reaches comparable accuracy through disciplined data modelling alone. It argues that good modelling **is** the semantic layer. The floor everyone should know: on the hardest public text-to-SQL benchmark, frontier models score between single digits and the low twenties, in percent. On its predecessor they score above 90 percent.
+Start with the simplest storage that fits, and move up only when measurements say so. Below roughly 100,000 vectors, a plain search over all of them is enough. Postgres with the pgvector extension serves roughly 1 to 10 million vectors. Past about 5 million, it needs partitioning. Dedicated vector engines earn their place at very large scale, heavy write rates, or many tenants with heavy filters. Two cautions decide real moves. Building a large index takes tens of gigabytes of memory for hours. Filtered search can suddenly miss relevant items once a filter gets narrow.
 
-### The retrieval substrate ladder
+### Fresh enough for the decision
 
-**In short:** Start with the simplest storage that fits the number of documents, and move up only when measurements say so.
+Change data capture streams each database change as it happens. Feeding it into an index gives freshness in minutes at close to batch cost. Full streaming commonly costs about ten times more than batch. One like-for-like case cost about $400 a month as a five-minute batch. The same job cost about $7,600 a month as a stream. So streaming is earned by how often decisions are made, as in fraud checks or operational triage. Similarity ranking ignores time. A superseded document can outrank its replacement unless freshness is part of the ranking.
 
-The ladder has methods with thresholds, because "which vector database" is the wrong first question. Below roughly 100,000 vectors, brute-force search is enough. Postgres with the pgvector extension serves roughly 1 to 10 million vectors. At 1 million it answers in under 20 milliseconds with above 95 percent recall (the share of relevant items it finds). Index-build pain appears around 2 million, and partitioning becomes necessary past 5 million. Scale-out Postgres extensions reach roughly 50 million. Published comparisons show large advantages at 99 percent recall against a managed peer, at lower cost \[vendor]. The advantages are in p95 latency (the time within which 95 percent of queries return) and in queries per second (QPS). Dedicated or managed engines earn the top method for extreme scale, heavy write rates, or filter-heavy multi-tenancy (many tenants on one index). Take 100 million vectors with filters that select 20 percent of the data. There, Postgres p99 latency (the time within which 99 percent of queries return) runs several times that of a purpose-built engine. Two operational cautions decide real migrations. Index builds consume tens of gigabytes of memory (RAM) for hours. Filtered search has recall cliffs: past certain filters, it suddenly misses relevant items. Vector storage on object stores has reached general availability at up to 90 percent lower cost \[vendor]. That tilts the economics toward more, smaller, purpose-scoped indexes rather than one large one.
+### Plan for re-embedding
 
-### Freshness is a cost decision, not a virtue
+Changing the embedding model means redoing the fingerprints for every document. Stamp every vector with its model version, and build the new index beside the old one before switching. The full discipline sits with [agent data engineering (R14)](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering), which prepares data for agents.
 
-**In short:** Keep data as fresh as the decisions need, because instant updates cost far more than near-instant ones.
+### The parts and where they run
 
-Change data capture feeding incremental indexing delivers freshness measured in minutes at close to batch cost. One documented like-for-like requirement priced at about $400 per month as a five-minute batch, against about $7,600 per month as streaming. Streaming commonly runs an order of magnitude (roughly ten times) above batch. Streaming is earned by decision cadence: fraud, operational triage, inventory. The failure mechanism to design against is specific. Similarity ranking ignores time, so a superseded document outranks its current replacement unless freshness or validity is part of the ranking.
+| Part                 | What it does                                                         | Where it runs                          |
+| -------------------- | -------------------------------------------------------------------- | -------------------------------------- |
+| Permission copier    | Copies each source's access list into the index, and denies on error | Beside each connector                  |
+| Governed index       | Serves search with permissions inside the query                      | Your existing search or vector store   |
+| Business definitions | Answer high-stakes numbers the same way every time, or refuse        | Warehouse or semantic model            |
+| Change capture       | Keeps indexes as fresh as the decision needs                         | Your existing streaming or batch tools |
+| Catalog and lineage  | Supply owners, definitions and data history to agents                | Your existing catalog                  |
+| Source links         | Tie every claim to the passage it came from                          | Stored with the index                  |
 
-### Re-embedding is the hidden line item
+## What must be true before an agent touches it
 
-**In short:** Changing the model behind the fingerprints means redoing every document, which costs real money and needs a plan.
+**The source permissions are right.** No search tool fixes wrong permissions. Vendor estimates put about 16 percent of business-critical data in an overshared state. Find and fix oversharing before an agent amplifies it.
 
-Model upgrades force a re-embed of the full corpus. Reference costs run from hours on multi-GPU (graphics processing unit) hardware to four figures through an API (application programming interface). The operational discipline has four parts. Version-stamp every vector. Run blue/green index migrations: build the new index beside the old one and switch over only when it passes. Evaluate embedding models quarterly. Migrate only for eval gains (gains on test tasks with known right answers) above a stated threshold, and 5 percent is the working figure. Cross-model conversion, published at roughly 100 times cheaper than re-embedding, is worth testing before any large migration. Re-embed changed chunks (the pieces documents are split into) continuously, and keep a periodic full re-index as the recovery baseline.
+**The search filters on the caller's live identity.** The caller is the person who asked, carried through the [delegation chain](https://www.agenticarchitectureskills.com/architecture/delegation-chain). The filter runs inside the query, never after it.
 
-## Design decisions
+**Four known failures are designed for.** A revoked permission takes effect at the next copy, not at the click. Group membership drifts. Documents with no access list can default to public. Old oversharing gets amplified.
 
-* **Semantic-layer product vs governed views** ([CD-8](https://www.agenticarchitectureskills.com/decisions#cd-8)): decided per use case, by failure mode rather than by accuracy points. The binding variable is curated business context.
-* **Dedicated vector database vs the simplest substrate** ([CD-9](https://www.agenticarchitectureskills.com/decisions#cd-9)): climb the ladder above one method at a time. Prefer the vector capability bundled with the platform where the corpus already lives. Governance and ACL inheritance then come free.
-* **Data mesh vs governed central substrate** ([CD-10](https://www.agenticarchitectureskills.com/decisions#cd-10)): mesh ideas on a governed substrate. Every shipped ACL-sync architecture assumes a governed central index.
-* **Real-time vs batch grounding** ([CD-12](https://www.agenticarchitectureskills.com/decisions#cd-12)): CDC is the default. Streaming is earned by decision cadence.
-* **One universal index vs use-case-scoped** ([CD-11](https://www.agenticarchitectureskills.com/decisions#cd-11)): two layers. The detail is resolved on [R14](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering), the agent data engineering page.
+**Every index carries its source's rules.** Classification, residency and deletion travel with each vector and each answer.
 
-## Cross-cutting concerns
+**Every answer shows its source.** Each claim links back to the exact passage it came from.
 
-| #   | Concern                | Treatment at this layer                                                                                                                  |
-| --- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| C1  | Identity and access    | ACLs crawled into index metadata; pre-filtered retrieval on live identity; relationship-based pre-computation; fail-close on sync errors |
-| C2  | Observability          | Retrieval traces, permission-sync lag metrics, freshness telemetry per index                                                             |
-| C3  | Traceability and audit | Answer-to-source-span provenance; embedding model version stamps; lineage carried into agent context                                     |
-| C4  | Grounding              | The layer's whole purpose: curated context, semantic contracts, refusal over improvisation                                               |
-| C5  | Impersonation          | Source authenticity via connector provenance; no unattributed corpora in grounding                                                       |
-| C6  | Sovereignty            | Indexes and embeddings carry source residency; region-scoped indexes; derived artifacts inherit the strictest classification             |
-| C7  | Privacy                | Embeddings treated as personal data where sources are; erasure cascades to vectors and derived artifacts; minimisation at index scope    |
-| C8  | Safety and oversight   | High-stakes numeric answers gated by semantic contracts; refusal behaviour monitored                                                     |
-| C9  | Cost                   | Re-embedding and index costs per corpus; freshness cost against decision cadence                                                         |
-| C10 | Resilience             | Blue/green index migrations; degraded-mode retrieval; periodic full re-index as the recovery baseline                                    |
+**High-stakes numbers go through fixed definitions, or the agent refuses.** Watch how often it refuses. A sudden drop can mean it has started guessing.
 
-**Next step:** read the next layer, [R03 Integration fabric](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
+The enforcement point is the index query. It runs in the search service, outside the model, on the caller's identity. This is [enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement). The path from source data to agent memory is set out in [from data to memory](https://www.agenticarchitectureskills.com/architecture/data-to-memory).
+
+## Choices and their verdicts
+
+Each entry is the common choice, tested against the simplest credible alternative. The full records are in the [decision catalog](https://www.agenticarchitectureskills.com/decisions).
+
+* [A semantic product or governed views](https://www.agenticarchitectureskills.com/decisions#cd-8): decide per use case, by how the answer fails, not by accuracy points.
+* [A dedicated vector database or the simplest store](https://www.agenticarchitectureskills.com/decisions#cd-9): move up one step at a time. Prefer the vector search built into the platform where the data already lives.
+* [Data mesh or a governed central store](https://www.agenticarchitectureskills.com/decisions#cd-10): use mesh ideas on a governed central store. Every shipped permission-copying design assumes a central index.
+* [Real-time or batch grounding](https://www.agenticarchitectureskills.com/decisions#cd-12): change data capture by default. Streaming is earned by how often decisions are made.
+* [One universal index or one per use case](https://www.agenticarchitectureskills.com/decisions#cd-11): both, in two levels. The detail is on the agent data engineering page.
+
+## Concerns this layer must honour
+
+A concern is a requirement every layer must honour. This layer carries a specific duty for six of the ten.
+
+* **Identity and access.** Search is filtered on the caller's live identity, and permission copy errors deny access.
+* **Traceability and audit.** Every answer links to its passage. Every vector carries its model version.
+* **Grounding.** This layer owns it, with agent data engineering. Fixed definitions answer or refuse.
+* **Sovereignty and residency.** Indexes and embeddings keep the source's residency. Indexes can be scoped by region.
+* **Privacy.** Embeddings count as personal data where the source does. Deletion reaches every vector and copy.
+* **Cost.** Re-embedding, index size and freshness each have a price, set against how often decisions are made.
+
+The full grid of concerns against layers is the [concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix).
 
 ## Evidence and limits
 
-The vec2text reconstruction result, the ontology-checked accuracy figures, and the substrate benchmarks are peer-reviewed or reproducible. The semantic-layer coverage comparisons and the substrate performance claims are vendor-published and flagged as such. The oversharing percentage is secondary-sourced and carried with that status. Two refusals. First, a widely circulated projection says that a majority of agentic analytics projects relying solely on tool protocols will fail by 2028. It is secondhand, with no located primary source, and this guide excludes it. Second, the substrate ladder's method thresholds are working figures from published benchmarks, not guarantees for your corpus, so measure before you migrate. Re-verify quarterly: platform vector general-availability states, semantic interchange specification adoption, and embedding model releases that would trigger a re-embed decision.
+The embedding reconstruction result and the accuracy gain from checked definitions are peer reviewed or reproducible. The vector storage benchmarks and the semantic product comparisons come from vendors, and are marked \[vendor] below. The oversharing estimate is a vendor figure, reported second-hand.
+
+The storage thresholds are working figures from published benchmarks. They are not guarantees for your data. This guide recommends measuring on your own documents before any move.
+
+## Next step
+
+See this layer at work in [collecting and checking compliance evidence](https://www.agenticarchitectureskills.com/use-cases/compliance-evidence), where every answer must point to its source. Then read the next layer, the [integration fabric (R03)](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric).
 
 **Explore this topic**
 
-* [Data platform findings](https://www.agenticarchitectureskills.com/library/layers/r02-data-platform/findings)
-* [Sources](https://www.agenticarchitectureskills.com/library/layers/r02-data-platform/sources)
-* [Products named for orientation](https://www.agenticarchitectureskills.com/architecture), on the one-page wall chart
+* [Data platform findings](https://www.agenticarchitectureskills.com/library/layers/r02-data-platform/findings) and [sources](https://www.agenticarchitectureskills.com/library/layers/r02-data-platform/sources).
 
-## See this layer at work
+**Permissions and search**
 
-Follow the proposed [compliance evidence](https://www.agenticarchitectureskills.com/use-cases/compliance-evidence) example. Compare the required capability with the systems already in place, then use the [architecture map](https://www.agenticarchitectureskills.com/architecture) to inspect neighboring responsibilities.
+* Document-level directory access lists are native on the major search platforms.
+* Connector permission copies ship with fail-closed behaviour: on an error, they deny.
+* Relationship-based authorisation engines (the Zanzibar class) pre-compute allowed objects for the hard cases.
+* About 16 percent of business-critical data is overshared, by vendor estimate, reported second-hand.
+* One major vendor's fix is a scoped-search allowlist. Its own documentation calls it a stopgap.
+
+**Embeddings**
+
+* vec2text rebuilt 92 percent of short inputs exactly from their embeddings (EMNLP 2023, reproduced 2025).
+* This result underpins the embedding risk named in the OWASP list for language model applications.
+
+**Business definitions**
+
+* Ontology-checked querying raised accuracy from 54 to 72 percent, with refusals on about 8 percent of questions.
+* A vendor's paired test: 98 to 100 percent accuracy through definitions on the modelled scope \[vendor].
+* In the same test, text-to-SQL scored 84 to 90 percent \[vendor].
+* The definitions covered 72.7 percent of the full question set in that test \[vendor].
+* A semantic-document approach added 17 to 23 points across three frontier models \[vendor].
+* On the hardest public text-to-SQL benchmark, frontier models score from single digits to the low twenties, in percent.
+* On that benchmark's predecessor, the same models score above 90 percent.
+
+**Storage**
+
+* pgvector at 1 million vectors answers in under 20 milliseconds, with above 95 percent recall.
+* pgvector index builds get painful around 2 million vectors.
+* Scale-out Postgres extensions reach roughly 50 million vectors.
+* One comparison shows large latency and throughput gains for scale-out Postgres at 99 percent recall \[vendor].
+* At 100 million vectors with filters selecting 20 percent, Postgres p99 latency runs several times a dedicated engine's.
+* Vector storage on object stores is generally available at up to 90 percent lower cost \[vendor].
+* Cheap object storage favours more, smaller, purpose-scoped indexes over one large one.
+
+**Freshness**
+
+* One documented requirement cost about $400 a month as a five-minute batch, and $7,600 as a stream.
+
+**Re-embedding**
+
+* A full re-embed takes hours on multi-GPU hardware, or four figures in API fees.
+* Evaluate embedding models each quarter. Migrate only for test gains above a stated threshold. 5 percent is the working figure.
+* Converting embeddings between models is published at roughly 100 times cheaper than re-embedding. Test it first.
+
+**Refusals and checks**
+
+* Refused: a widely circulated projection about agentic analytics projects failing by 2028. No primary source was found.
+* Re-verify each quarter: vector search availability on the main platforms.
+* Re-verify each quarter: adoption of the semantic interchange specification.
+* Re-verify each quarter: embedding model releases that would trigger a re-embed.

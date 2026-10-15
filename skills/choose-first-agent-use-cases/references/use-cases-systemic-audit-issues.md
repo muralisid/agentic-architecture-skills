@@ -1,73 +1,170 @@
-# Investigate recurring audit issues
+# Investigate recurring audit issues across sites
 
-Use patterns across sites to ask better questions and test possible systemic causes.
+When the same finding keeps appearing at several sites, an agent tests competing explanations against maintenance, inspection and procedure records. The assurance owner decides the response.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/use-cases/systemic-audit-issues (Markdown: https://www.agenticarchitectureskills.com/use-cases/systemic-audit-issues.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-Similar findings across sites can be worth investigating, but similar wording is not enough to establish a common cause. This proposed agent searches for evidence that supports or challenges each explanation.
+A miner audits ground control at six sites. The same kind of finding keeps showing up: slope inspections overdue, or prism data not reviewed. Is there one shared cause, or six local ones? Today an assurance analyst groups findings by their words and reports the repeats to the board. In this design an agent states competing explanations and asks for the records that would test each one. It also looks at the sites that did not have the finding. The assurance owner decides the response. The formal audit record stays untouched by the agent.
 
-## See the work first
+**Figure: Test whether recurring audit issues share a cause.** The agent checks each explanation against the records before anyone calls it a shared cause.
 
-**Figure: Investigate recurring audit issues.** Proposed agent extension. Each action remains within an explicitly permitted business process.
-
-**What the image shows:** Find patterns across sites, state competing explanations, investigate evidence and counterexamples, and report support and uncertainty.
+**What the image shows:** Four steps, left to right. Find a pattern: compare findings across sites A, B and C. Ask why: state competing explanations, such as one shared cause or different local causes. Investigate: seek evidence and counterexamples. Report: explain the support and the uncertainty. A banner says similar wording is a clue, not proof of a common cause.
 
 Image: https\://www\.agenticarchitectureskills.com/images/use-cases/systemic-audit-issues-v1.webp
 
 **Experience behind this example**
 
-The author described using topic modeling on audit gaps and action details, particularly geotechnical audits, to look for systemic issues across sites. The proposed agent adds targeted follow-up investigation and tests competing explanations.
+The design builds on the author's own topic-modelling work on geotechnical audit gaps across sites.
 
-## Start with evidence
+## The systems involved
 
-Keep finding text, site, audit scope, date, severity, action owner, closure evidence, and changes to the audit method. Clustered language is a starting point for investigation, not proof that several sites share a cause.
+The work touches seven of the fourteen layers. The full estate is on the [energy and resources](https://www.agenticarchitectureskills.com/use-cases/energy) page.
 
-## What the agent adds
+| Layer                                                                                                                      | Systems in this use case                                                                                                                                                                                                                                                               |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Systems of record (R04)](https://www.agenticarchitectureskills.com/layers/r04-systems-of-record)                          | Audit system (Enablon, Cority, Intelex, SAP Audit Management, Ideagen), or Excel. The action module of the health, safety and environment (HSE) system. Enterprise asset management (EAM) with maintenance and inspection history. Document store with procedures and closure evidence |
+| [Line of business and OT (R05)](https://www.agenticarchitectureskills.com/layers/r05-lob-and-ot)                           | Geotechnical monitoring: slope radar (GroundProbe) and survey prisms. Read only                                                                                                                                                                                                        |
+| [Intelligence and learning (R06)](https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning)          | Topic models, which group findings that use similar words                                                                                                                                                                                                                              |
+| [Agent platform (R07)](https://www.agenticarchitectureskills.com/layers/r07-agent-platform)                                | New: the agent, its case store, and an evidence request queue                                                                                                                                                                                                                          |
+| [Governance, risk and sovereignty (R11)](https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty) | The assurance program. The board risk committee. Certification to ISO 45001, 14001 and 55001. Tailings governance (GISTM)                                                                                                                                                              |
+| [Operating model and supervision (R13)](https://www.agenticarchitectureskills.com/layers/r13-operating-model)              | Assurance manager, auditors, site owners, standard owners, executives                                                                                                                                                                                                                  |
+| [Agent data engineering (R14)](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering)                | Links across sources: site, asset, procedure version, auditor and audit template                                                                                                                                                                                                       |
 
-The agent can request maintenance history, inspection records, action closure evidence, or procedure changes relevant to a specific hypothesis. Keep a record of what would disprove the explanation. Check whether apparent recurrence comes from different audit coverage, copied wording, or inconsistent classification.
+## How it runs today
 
-## How the investigation proceeds
+The trigger is a periodic assurance review, a question from the board, or a serious finding that looks familiar. The work then runs in nine steps.
 
-For each hypothesis, specify the missing evidence and the next discriminating question. Search for sites that did not show the issue as well as those that did. Stop when the evidence supports a bounded conclusion, competing explanations remain unresolved, or the investigation budget is exhausted.
+| Step                        | Who                                                                  | System                                      | How the data moves                                             |
+| --------------------------- | -------------------------------------------------------------------- | ------------------------------------------- | -------------------------------------------------------------- |
+| 1. Plan                     | Assurance manager                                                    | Audit system, or Excel                      | An annual audit program, by site and topic                     |
+| 2. Audit                    | Auditor: internal, third party, geotechnical review board or insurer | Checklists. Site visit                      | Findings written in a Word or PDF report                       |
+| 3. Enter findings           | Auditor or coordinator                                               | Audit system                                | Copied from the report. Severity and category set by hand      |
+| 4. Assign actions           | Site owners                                                          | HSE action module                           | An owner and a due date for each action                        |
+| 5. Close actions            | Site owners                                                          | Audit system. Evidence in SharePoint        | A document or a note is uploaded. Often closed without a check |
+| 6. Look for patterns        | Assurance analyst                                                    | Excel export, keyword search, topic models  | Findings grouped by their words                                |
+| 7. Report                   | Head of assurance                                                    | Board risk or sustainability committee pack | Repeat findings and overdue actions                            |
+| 8. Decide on a systemic fix | Executive, standard owner                                            | Standards and procedures                    | Change a standard, or fund a program                           |
+| 9. Check it worked          | Assurance                                                            | The next audit cycle                        | Months later                                                   |
 
-## Measure the business result
+Geotechnical audits draw on more than findings. They use slope radar and prism data, inspection records, ground control plans and tailings dam reviews. The tailings standard GISTM (August 2020) sets the frame for tailings.
 
-Measure expert agreement, useful issues discovered, false systemic conclusions, evidence completeness, and investigation effort. Compare with topic modeling plus expert review. A larger number of clusters or retrieved records is not the business outcome.
+**Figure: Recurring audit issues today: who does what.** Today findings are grouped by their words, and the check comes a year later.
 
-## Responsibility and failure handling
+**What the image shows:** A swimlane with five lanes: assurance, auditors, audit system, site owners, and executive. Step 1: the assurance manager plans the annual program. Step 2: auditors audit and write a report. Step 3: findings are copied into the audit system by hand. Step 4: site owners are assigned actions. Step 5: site owners close actions, often without a check. Step 6: an assurance analyst groups findings by their words. Step 7: the head of assurance reports repeats to the board. Step 8: the executive decides on a systemic fix. This is an approval. Step 9: assurance checks it at the next audit, months later.
 
-An engineering or assurance owner decides the response. The agent reports associations and uncertainty, not unproved causation. Keep site permissions and traceability across every combined source.
+Image: https\://www\.agenticarchitectureskills.com/figures/use-cases/audit-as-is.svg
 
-## Start with a bounded trial
+### Handoffs
 
-Use a representative historical sample and an agreed reference outcome. Run the proposed process without making live operational changes. Review errors and costs with the people who will own the work. Move to a narrow live scope only when quality, permissions, recovery, and supervision are adequate.
+Findings pass from auditors to site owners, then to assurance. Assurance reports to the executive and the standard owners. The next audit checks whether the fix worked.
 
-## Explore the architecture
+### Where reporting comes in
 
-* [Intelligence & learning](https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning).
-* [Governance & risk](https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty).
-* [Data engineering for agents](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering).
+Audit dashboards track open and overdue actions. The board risk or sustainability committee reads the repeat findings. Certification audits for ISO 45001, 14001 and 55001 and regulator inspections use the same records.
 
-Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/memory), [value and investment](https://www.agenticarchitectureskills.com/use-cases/value-and-investment), or [practical skills](https://www.agenticarchitectureskills.com/skills).
+### Cycle time and volumes
 
-## External sources
+* The audit program runs once a year (typical, unsourced).
+* Actions fall due in 30 to 90 days (typical, unsourced).
 
-* [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629). Accessed 17 September 2026.
+### Pain points
 
-Return to [Utilities](https://www.agenticarchitectureskills.com/use-cases/utilities) or [explore the agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
+* The same issue is written in different words.
+* Different issues share the same words.
+* Text is copied between reports.
+* Categories differ by auditor.
+* Audit scope changes from year to year.
+* Closure evidence is weak.
+* Findings are not linked to maintenance or inspection records.
+
+## How agents run it
+
+The agent tests explanations. It reads the audit system through a read interface, and other records only through internal requests. It writes its own case and evidence requests. It never writes the audit record.
+
+| Step                        | Agent or person                | Reads from, and how                                                   | Writes to                                                                     | Who approves, and where                                                           |
+| --------------------------- | ------------------------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| 1. Group                    | The topic model calculates     | Audit system export, by its programming interface                     | The case: candidate groups                                                    | No one                                                                            |
+| 2. State explanations       | Agent                          | The groups. Audit scope. Changes to the audit method                  | Explanations, each with what would disprove it                                | No one                                                                            |
+| 3. Check for false patterns | Agent                          | Audit dates, auditor, template version                                | Notes on copied wording or changed coverage                                   | No one                                                                            |
+| 4. Ask for evidence         | Agent drafts                   | EAM history. Inspection records. Procedure versions. Closure evidence | Evidence requests to the owning teams, in a request queue                     | The assurance owner approves the request list. Or a rule allows internal requests |
+| 5. Look for counterexamples | Agent                          | The same records at sites without the finding                         | Case store                                                                    | No one                                                                            |
+| 6. Report                   | Agent                          | The case                                                              | A report on support, uncertainty and gaps. Each statement links to its source | The assurance owner reviews it                                                    |
+| 7. Decide                   | Assurance or engineering owner | The report                                                            | The audit system: a systemic issue record and its actions                     | A person, in the audit system                                                     |
+
+Similar wording alone does not prove a shared cause. The agent checks whether apparent repeats come from changed audit coverage, copied text or different categories. It stops when the evidence supports a bounded answer, or when the explanations stay unresolved.
+
+**Figure: Recurring audit issues with an agent: who does what.** The agent tests explanations against records. A person writes the audit record.
+
+**What the image shows:** A swimlane with five lanes: topic model, agent, assurance owner, owning teams, and the case store. Step 1: the topic model groups findings from the audit system. Step 2: the agent states competing explanations and what would disprove each. Step 3: the agent checks for false patterns such as copied wording or changed scope. Step 4: the agent drafts evidence requests. The assurance owner approves the request list. This is an approval. The owning teams reply with EAM, inspection and procedure records. Step 5: the agent looks at sites without the finding. Step 6: the agent reports support, uncertainty and gaps. Step 7: the assurance owner decides and records any systemic issue in the audit system. This is an approval. The case store links every statement to its source.
+
+Image: https\://www\.agenticarchitectureskills.com/figures/use-cases/audit-to-be.svg
+
+### What stays with a person
+
+* The audit opinion and the formal findings. They are formal records, in the [formal records zone](https://www.agenticarchitectureskills.com/architecture/deterministic-zones#formal-regulatory-records).
+* Closing actions. An accountable owner signs.
+* Changing a standard. That is a management decision.
+* Anything sent to the board or a regulator.
+
+### Where the evidence is kept
+
+The case links each statement to its source record. Requests and replies are kept. The formal audit record is untouched by the agent. The agent cannot change its own log either. That is the [observability and audit trail](https://www.agenticarchitectureskills.com/architecture/system-view) capability at work.
+
+### What changes in the systems
+
+* A read interface on the audit system.
+* An "evidence request" action type, or a request queue.
+* A "systemic issue" link field on findings.
+* Site permissions carried into every read the agent makes.
+* A search index over procedures and past findings, held in [knowledge and memory](https://www.agenticarchitectureskills.com/memory).
+
+### What does not change
+
+The audit method and the audit record stay as they are. The same people close actions. Certification audits do not change.
+
+## Who does this today
+
+No named deployment of a cross-site audit agent was found by 15 October 2026.
+
+* **Intelex with COMET** launched investigations and root cause analysis on 27 October 2025. It aims to find systemic failure patterns in incidents \[vendor].
+* **Cognite with ABB** announced agents on ABB's safety and alarm tools on 21 May 2026. Aker BP is the first customer. Aker BP aims for "hundreds of agents by 2026" \[vendor]. The release does not say whether its agents can write anywhere.
+* **Aker BP with Cognite** lists barrier management among its current agent uses (World Oil, 16 September 2025) \[vendor].
 
 ## Where this sits
 
-This guide's position, from the four questions on [agent types](https://www.agenticarchitectureskills.com/architecture/agent-types) and the [risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile):
+The [four questions](https://www.agenticarchitectureskills.com/architecture/agent-types) place this agent as follows. Its role is assist. Its permissions are read only on the audit system, and it reaches other records only through internal requests. It writes its own case, notes and requests. It never writes the audit record. It runs at delegated tasks (A2) on the [autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract), as designed and as permitted. The assurance owner reviews every report. For the decision on a response, the agent only assists (A1). Its impact is small. A wrong pattern costs review time, and the owner catches it before anything is recorded.
 
-* **Role:** assist. Domain: audit and assurance across sites.
-* **Capability surface:** reads audit findings, maintenance history, inspection records and closure evidence. Sends internal requests for evidence. Writes its own notes, not the audit record. Untrusted input: none. Highest data class: confidential.
-* **Placement:** A2, L1 on the [autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). An engineering or assurance owner reviews every report. People choose the past findings it learns from. Deciding the response drops to A1. The owner decides.
-* **Zone:** none. Its findings are advice. A finding that goes into a formal audit record is in the [formal records zone](https://www.agenticarchitectureskills.com/architecture/deterministic-zones#formal-regulatory-records). A named person signs that record.
-* **Tier:** Tier 2. Production systems of record and internal requests score Medium. No zone action.
-* **Control:** every finding links to its source record.
+On the [risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile) it is Tier 2 (enhanced). Production systems of record and internal requests score Medium. It takes no action inside a [deterministic zone](https://www.agenticarchitectureskills.com/architecture/deterministic-zones). It starts at curated learning (L1). People choose the past findings it learns from.
 
-**Next step:** score this agent on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), then design its controls on [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones).
+## Measure the result
+
+Measure how often experts agree with the report, and the useful issues it finds. Count false systemic conclusions. Measure evidence completeness and investigation effort. Compare against topic models plus expert review. More clusters or more records found is not the result.
+
+## Start with a trial
+
+Take two years of findings from one topic, such as ground control, across all sites. Pick a pattern experts already investigated. Run the agent on it, with requests drafted but not sent. Compare its report with what the experts found. Then run it live on the next audit cycle. Register the agent through the [agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle), with a named sponsor.
+
+## Evidence and limits
+
+No named deployment of this agent exists. The as-is is typical practice. The cycle times are typical and unsourced.
+
+The vendor products named above aim at patterns in incidents, not audit findings across sites. None reports a measured result for this work.
+
+The topic-model step comes from the author's own work. The agent's evidence requests and counterexample search are a proposal. They have not been tested.
+
+## Next step
+
+Score this agent on the [risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile). Then read how evidence from several sources is combined in [knowledge and memory](https://www.agenticarchitectureskills.com/memory).
+
+**Explore this topic**
+
+Sources were read on 15 October 2026 unless a line says otherwise. \[vendor] marks a vendor's claim about its own product or customer.
+
+* [Business Wire, Intelex and COMET](https://www.businesswire.com/news/home/20251027770847/en/Intelex-and-COMET-Partner-to-Deliver-New-Investigation-RCA-Standard-That-Transforms-Incident-Data-Into-Prevention-Intelligence), 27 October 2025 \[vendor].
+* [Cognite and ABB release, ANSA copy](https://www.ansa.it/sito/notizie/economia/business_wire/2026/05/21/cognite-and-abb-collaborate-to-integrate-agentic-ai-into-industrial-applications-to-deliver_a850ecc6-a35c-4f7b-9ff6-ca67b4e3ef60.html), 21 May 2026 \[vendor].
+* [World Oil, Aker BP and Cognite Atlas AI](https://www.worldoil.com/news/2025/9/16/aker-bp-expands-ai-first-strategy-with-cognite-atlas-ai-to-transform-e-p-efficiency/), 16 September 2025 \[vendor].
+* [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629). Accessed 17 September 2026. The loop of stating a hypothesis, acting and checking.
+* GISTM, the Global Industry Standard on Tailings Management, August 2020. Known from background, not re-checked in this round.

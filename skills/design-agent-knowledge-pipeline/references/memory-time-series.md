@@ -4,7 +4,7 @@ Find similar operating periods without discarding units, duration, or context.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/time-series (Markdown: https://www.agenticarchitectureskills.com/memory/time-series.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## An average can hide the event you are looking for
@@ -21,7 +21,7 @@ Image: https\://www\.agenticarchitectureskills.com/images/memory/time-series-spa
 
 ## Define the observation window
 
-“Find periods like this pump’s last 30 minutes” is different from “Find a pump with the same average pressure”. Keep the sampling interval, missing readings, channels, and operating conditions with the window.
+"Find periods like this pump's last 30 minutes" is different from "Find a pump with the same average pressure". Keep the sampling interval, missing readings, channels, and operating conditions with the window.
 
 ## Decide what similar should mean
 

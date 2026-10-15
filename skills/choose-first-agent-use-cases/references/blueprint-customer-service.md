@@ -4,7 +4,7 @@ A proposed workflow for customer service. Revised 17 September 2026. The roles b
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/blueprints/departments/customer-service (Markdown: https://www.agenticarchitectureskills.com/library/blueprints/departments/customer-service.md)
-Updated: 2026-09-17
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## The business opportunity
@@ -19,7 +19,7 @@ Compare the agent with searchable help articles, a billing calculator, and estab
 
 ## Proposed responsibilities
 
-| Agent                   | What it does                                                             | A x L position                                   | Notes                                                                              |
+| Agent                   | What it does                                                             | Autonomy and learning position                   | Notes                                                                              |
 | ----------------------- | ------------------------------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------------------------------------------- |
 | Intent and triage agent | Classifies, retrieves the customer's own context, routes                 | A3, L2                                           | The safest and most valuable agent in the department                               |
 | Resolution agent        | Handles the narrow, well-instrumented, recoverable intent set end to end | A3, L2                                           | Scope by intent, never by channel                                                  |
@@ -30,7 +30,7 @@ Start with one agent and ordinary tools. Separate a responsibility only when it 
 
 ## How the architecture supports the task
 
-Knowledge (**direct**: a governed knowledge base, never model memory), Human (**direct**: escalation to a real queue), Evidence (**direct**: conversations are legal evidence), Action (**direct**), Control (**direct**: a separate edge on the shared control plane), Improvement (**direct**: customer escalations label failures for free, making this the highest-value trace source in the enterprise), Execution (supporting).
+Knowledge and memory (**direct**: a governed knowledge base, never model memory), human oversight (**direct**: escalation to a real queue), observability and audit trail (**direct**: conversations are legal evidence), tool gateway (**direct**), identity and policy (**direct**: a separate edge on the shared policy service), evaluation and release (**direct**: customer escalations label failures for free, making this the highest-value trace source in the enterprise), runtime (supporting).
 
 ## Controls and human decisions
 

@@ -4,7 +4,7 @@ Join sources by identity, place, and time before combining their conclusions.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/combining-evidence (Markdown: https://www.agenticarchitectureskills.com/memory/combining-evidence.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 The agent finds an inspection report, a site photograph, and a similar sensor event. Together they look convincing. But the photograph might be from another site and the sensor event from last year. **Relevance alone does not establish that the results describe the same case.**
@@ -35,7 +35,7 @@ The current reader must be permitted to see every source detail exposed. A summa
 
 ## Ask whether the extra source helped
 
-Compare records alone, text alone, and the proposed combination on the same tasks. Count evidence missed, unsupported conclusions, review effort, and cost. Keep extra modalities only when they improve the outcome enough to justify maintaining them.
+Compare records alone, text alone, and the proposed combination on the same tasks. Count evidence missed, unsupported conclusions, review effort, and cost. Keep extra kinds of media only when they improve the outcome enough to justify maintaining them.
 
 This is a proposed case-assembly pattern. The underlying document, image, and signal representations are illustrated in the [vector-space tour](https://www.agenticarchitectureskills.com/memory/vector-spaces), with primary sources for each model family.
 

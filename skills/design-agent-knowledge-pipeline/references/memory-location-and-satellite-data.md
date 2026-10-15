@@ -4,7 +4,7 @@ Use geospatial similarity while retaining the location and observation period.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/location-and-satellite-data (Markdown: https://www.agenticarchitectureskills.com/memory/location-and-satellite-data.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## The map answers one question; the inspection needs another
@@ -21,7 +21,7 @@ Use broad representations to guide investigation, then obtain the resolution, ge
 
 ## A representation can describe more than a photograph
 
-Google’s annual Satellite Embedding dataset describes each 10-meter pixel using 64 dimensions that encode surface conditions over a year. Its documentation supports comparisons between years. That is useful evidence for exploring broad surface change; it does not supply the exact day an event began.
+Google's annual Satellite Embedding dataset describes each 10-meter pixel using 64 numbers that encode surface conditions over a year. Its documentation supports comparisons between years. That is useful evidence for exploring broad surface change; it does not supply the exact day an event began.
 
 ## Keep the time interval explicit
 
@@ -29,7 +29,7 @@ Store the location, start and end of the represented interval, dataset version, 
 
 ## Match resolution to the decision
 
-A representation of a region can help identify an area worth examining. A particular tree’s clearance from a conductor requires evidence with suitable spatial detail, geometry, and freshness. Do not treat annual regional change as a real-time clearance measurement.
+A representation of a region can help identify an area worth examining. A particular tree's clearance from a conductor requires evidence with suitable spatial detail, geometry, and freshness. Do not treat annual regional change as a real-time clearance measurement.
 
 ## Combine with the asset map
 

@@ -4,7 +4,7 @@ Use exact records, similarity, or relationships according to the question.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/choosing-representations (Markdown: https://www.agenticarchitectureskills.com/memory/choosing-representations.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 The agent has retained an inspection case. A later question could ask for its official completion date, a similar incident, or all sites affected by the same requirement. **The same stored case needs different ways of being found.**
@@ -15,9 +15,9 @@ The agent has retained an inspection case. A later question could ask for its of
 
 Image: https\://www\.agenticarchitectureskills.com/images/memory/representation-choices-v1.webp
 
-## Why one search method is not enough
+## One search method will not do
 
-Putting everything into embeddings makes related material easy to look for. It does not make a nearby result the official record for a particular asset. Conversely, an exact identifier lookup will not discover differently worded incidents with a related pattern.
+Putting everything into [embeddings](https://www.agenticarchitectureskills.com/memory/vector-spaces) makes related material easy to look for. It does not make a nearby result the official record for a particular asset. Conversely, an exact identifier lookup will not discover differently worded incidents with a related pattern.
 
 The memory's role stays the same. An episode is still a past event whether you retrieve it through a database key, keywords, an embedding, or a relationship.
 
@@ -33,7 +33,7 @@ Ask which differences must remain visible: magnitude, duration, order, location,
 
 ## Use relationships when the answer depends on connections
 
-“Which sites share this control and have overdue evidence?” involves relationships between sites, controls, and records. Start with existing identifiers and joins. A graph becomes a candidate when its traversal and maintenance needs justify it. A graph link still needs an origin and a valid period.
+"Which sites share this control and have overdue evidence?" involves relationships between sites, controls, and records. Start with existing identifiers and joins. A graph becomes a candidate when its traversal and maintenance needs justify it. A graph link still needs an origin and a valid period.
 
 ## Compare before combining
 

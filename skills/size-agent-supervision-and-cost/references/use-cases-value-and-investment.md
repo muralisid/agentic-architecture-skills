@@ -1,13 +1,13 @@
 # Measure value and full cost
 
-Connect agent performance to useful business outcomes and a realistic operating budget.
+A sponsor asks what an agent will cost and what it will save. Count every cost, divide by the outcomes the business accepts as resolved, and compare with today.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/use-cases/value-and-investment (Markdown: https://www.agenticarchitectureskills.com/use-cases/value-and-investment.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-Choose the business result before choosing a model. Production throughput, customer resolution, evidence coverage, and proposal quality need different measures.
+The head of billing at an energy retailer wants an agent for billing exceptions. Before funding it, finance asks two questions. What will the agent cost? And what will it save? Answer both with one number: the cost per resolved outcome. Count every cost, including the people who review the agent's work and the cost of fixing its mistakes. Divide by the cases the business accepts as resolved. Then compare that with what the same result costs today.
 
 **Figure: Measure value per completed outcome.** Keep the current process as the comparison. Count outcomes the business accepts.
 
@@ -15,44 +15,79 @@ Choose the business result before choosing a model. Production throughput, custo
 
 Image: https\://www\.agenticarchitectureskills.com/images/use-cases/value-and-investment-v1.webp
 
-## Establish the starting point
+## Pick the business result first
 
-Record the current time, quality, cost, and volume of work, including exceptions. Keep the same definition of a completed outcome when comparing alternatives. Record what changed besides the agent so that unrelated improvements are not attributed to it.
+Choose the result before choosing a model. For billing exceptions, the result is a bill that goes out correct and on time. Other work needs other measures. Production throughput, customer resolution, evidence coverage and proposal quality are each measured differently.
+
+## Record today's starting point
+
+Record the current time, quality, cost and volume of the work, exceptions included. For the retailer, that means how many exceptions arrive each week and how long each one takes. It also means how many bills go out wrong, and what fixing them costs. Keep the same definition of a resolved case when you compare options. Record what else changed besides the agent. Then a new billing rule or extra staff is not credited to the agent.
 
 ## Count the full cost
 
-Include model calls, tools, infrastructure, data preparation, integration, licenses, human review, retries, incorrect outcomes, and maintenance. See the [full economics model](https://www.agenticarchitectureskills.com/library/architecture/economics-model).
+Include model calls, tools, infrastructure, data preparation, integration and licences. Include human review, retries, wrong outcomes and maintenance. [The economics model](https://www.agenticarchitectureskills.com/library/architecture/economics-model) has the full list.
 
-The unit is **cost per resolved outcome**: all model, tool and platform cost for the period, failed and retried attempts included, plus supervision time at a loaded rate, plus the cost of fixing wrong outcomes, divided by the outcomes accepted as resolved under the agreed quality standard. Divide by resolution, never by containment. A cheap run that creates expensive rework is not a cheap outcome. Keep severe or delayed harms visible separately rather than hiding them inside an average.
+Platforms charge per run. A run that ends in a wrong bill still counts as one run. So the decision needs a cost per outcome, not a cost per run.
 
-**Figure: Cost per resolved outcome.** A cheap run that creates expensive rework is not a cheap outcome. Use the same definition of a resolved outcome when you compare options.
+## Divide by the outcomes accepted as resolved
 
-**What the image shows:** Model, tool and platform cost, failed and retried attempts included, plus supervision time at a loaded rate, plus the cost of fixing wrong outcomes. The sum is divided by the outcomes accepted as resolved under the agreed quality standard. Side notes say divide by resolution, never by containment, and report the resolution rate, failure rate, serious errors and repeat contacts beside it.
+**Cost per resolved outcome** is:
+
+* all model, tool and platform cost for the period, failed and retried attempts included,
+* plus supervision time at a loaded rate,
+* plus the cost of fixing wrong outcomes,
+* divided by the outcomes accepted as resolved under the agreed quality standard.
+
+A loaded rate is the full cost of an hour of a reviewer's time, overheads included.
+
+Divide by resolution, never by containment. Containment counts contacts that never reached a person, whether or not the problem was solved. Resolution counts problems actually solved. A cheap run that creates expensive rework is not a cheap outcome.
+
+Report four numbers beside it: the resolution rate, the failure rate, serious errors and repeat contacts. Show severe or delayed harms on their own. Do not hide them inside an average.
+
+**Figure: Cost per resolved outcome.** Use the same definition of a resolved outcome when you compare options. Show severe or delayed harms on their own, not inside an average.
+
+**What the image shows:** Add all costs for the period, failed and retried attempts included. That means model, tool and platform cost, supervision time at a loaded rate, and the cost of fixing wrong outcomes. Divide the sum by the outcomes accepted as resolved under the agreed quality standard. A side note says to divide by resolution, never by containment. Containment counts contacts that never reached a person. It does not count problems solved. A second note lists what to report beside it: the resolution rate, the failure rate, serious errors and repeat contacts.
 
 Image: https\://www\.agenticarchitectureskills.com/figures/use-cases/cost-per-resolved-outcome.svg
 
-## Separate different benefits
+## Keep the benefits apart
 
-* Time released creates capacity; it is not automatically a cash saving.
+* Time released creates capacity. It is not automatically a cash saving.
 * More qualified opportunities are not yet signed contracts.
-* Contract value is not recognized revenue or profit.
+* Contract value is not recognised revenue or profit.
 * Faster evidence collection is not proof of compliance.
-* A larger number of automated actions is not necessarily better service.
+* More automated actions do not always mean better service.
 
-## Include the people
+For the retailer, specialists freed from routine exceptions can work the hard cases. That is capacity. It becomes a saving only if the work or the staffing changes.
 
-Measure the time required to review and resolve exceptions, especially at peak demand. Plan for absence, escalations, and reviewer training. See the [operating model](https://www.agenticarchitectureskills.com/layers/r13-operating-model).
+## Count the people who review
 
-## Decide whether to expand
+Measure the time people spend reviewing and resolving exceptions, especially at peak. Plan for absence, escalations and reviewer training. The [operating model and supervision layer (R13)](https://www.agenticarchitectureskills.com/layers/r13-operating-model) shows how to size review for the busiest period, not the average day.
 
-Continue when quality, value, permissions, and support capacity meet agreed requirements. Change scope when a particular evidence or integration gap dominates the result. Stop when a simpler process delivers a better outcome at acceptable cost.
+## Track the number every week
 
-Use the [portfolio framework](https://www.agenticarchitectureskills.com/library/frameworks/use-case-portfolio) to compare work across departments.
+Once the agent is live, the weekly loop on [Operate](https://www.agenticarchitectureskills.com/operate) tracks this number. It also tracks the agent's budget and the reviewers' queue. Each agent has a budget with hard caps, owned by its sponsor. The traces and costs come from the [observability and FinOps layer (R12)](https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops).
 
-**Figure: The use-case portfolio: gates to funding.** Gate first, then test, then score. A collection of good cases can still exceed the people who supervise them.
+## Decide whether to continue
 
-**What the image shows:** Ideas pass three gates in order. Gate 1, evaluability: a domain expert can write 20 to 50 pass-or-fail tasks from real failures. Gate 2, the deterministic-zone check: for a decision on access, money, safety actuation or a formal record, the model may only analyse, draft and flag. Gate 3, reliable evidence: a curated corpus with a named owner. A fail goes to the make-it-evaluable queue, to redesign or rejection, or to grounding preparation. Two packaged-application tests follow. One package with a vendor agent available or dated means wait or buy. Across packages, or on an excluded edition, the agent is built thin. Survivors are scored as value per resolved outcome times outcomes per quarter, divided by cost per resolved outcome, times the reversibility factor. Constraints across the whole set include shared supervision capacity. Each funded use case carries kill criteria written at funding time. The portfolio is re-ranked every quarter with measured inputs.
+Continue when quality, value, permissions and review capacity meet the agreed bar. Change the scope when one gap in evidence or integration dominates the result. Stop when a simpler process gives a better outcome at an acceptable cost. Stopping is a normal outcome.
 
-Image: https\://www\.agenticarchitectureskills.com/figures/use-cases/portfolio-gates-to-funding.svg
+To compare agents across departments, use [the use-case portfolio](https://www.agenticarchitectureskills.com/library/frameworks/use-case-portfolio). It ranks ideas on their value, their volume and their cost per resolved outcome.
 
-**Next step:** grow from one task to shared capability on [build an agentic enterprise](https://www.agenticarchitectureskills.com/use-cases/enterprise-transformation).
+## Evidence and limits
+
+This page assumes no return-on-investment figure. Every number must come from your own baseline. The definition above has been the one definition across this guide since October 2026. The economics model explains each of its three cost lines.
+
+The warning against containment targets comes from public service reversals. Every documented reversal of an AI-first service programme had set a containment or headcount target. The economics model lists the research behind this.
+
+The sources stop short in two places. No enterprise has published running per-agent budgets. No published study compares the cost of vendor-embedded agents and your own agents on the same tasks.
+
+## Next step
+
+Grow from one task to shared capability on [build an agentic enterprise](https://www.agenticarchitectureskills.com/use-cases/enterprise-transformation).
+
+**Explore this topic**
+
+* [The economics model](https://www.agenticarchitectureskills.com/library/architecture/economics-model): cost per run, cost per resolved outcome, and the worksheet for who pays when an agent loops. One definition of cost per resolved outcome since October 2026.
+* [Observability and FinOps findings](https://www.agenticarchitectureskills.com/library/layers/r12-observability-and-finops/findings): how supervision load and cost are measured.
+* [The use-case portfolio](https://www.agenticarchitectureskills.com/library/frameworks/use-case-portfolio): the scoring that uses cost per resolved outcome.

@@ -1,29 +1,23 @@
 # The learning flywheel
 
-How agent behaviour improves over time without anyone losing control of it: tested promotion, calibrated judges, and staged rollout.
+How an agent's behaviour changes safely: a change passes evaluations, a canary and a staged release, and can be pulled back.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/learning-flywheel (Markdown: https://www.agenticarchitectureskills.com/architecture/learning-flywheel.md)
 Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-> **In plain terms.**
->
-> Agents can get better at their work over time, but every change in behaviour is a change to a production system. This page describes the controlled loop that makes improvement safe. Collect evidence from real use, test a proposed change against known failures, and have a person approve it. Roll it out to a small share of traffic first, and pull it back if it stops passing. The one thing to remember: an agent that changes its own behaviour without passing through that gate has deployed a change nobody approved.
+Someone wants an agent to behave differently. Perhaps it keeps making the same mistake, or a business rule has changed. Editing its prompt in production is not the way. Any change to how an agent behaves is a change to a production system. So the change goes through the learning flywheel. It passes the evaluations, which are tests with known right answers. It runs as a canary on a small share of work, then in a staged release. And it can be pulled back if it stops passing.
 
-## Why learning needs a deployment gate
+## Where this loop sits on the learning scale
 
-**WHY:** When an agent changes how it behaves, the production system has changed. Letting instance memory or automatically learned rules alter behaviour directly creates an unversioned deployment that nobody tested or approved. Improvement is valuable only if it remains reversible and measurable.
+[The autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract) sets how an agent may learn, on four levels. A fixed agent (L0) does not learn at all. In curated learning (L1), people choose what the agent learns from. Reviewed learning (L2) is this loop. Changes come from real runs, pass tests, and a person approves them. Continuous learning inside limits (L3) runs the same loop more often, inside hard limits. An agent at managed autonomy (A4) or above needs reviewed learning or better.
 
-**WHAT:** Separate **a fast instance-memory loop** from **a slow governed learning loop**. Production traces feed evals; failures become counterexamples; proposed changes are curated, tested, reviewed and promoted; rollout starts in shadow and canary stages; promoted hard rules land outside the model; dead rules can be demoted. Judges are calibrated, versioned and kept separate from the systems they grade.
+## Two loops: memory and behaviour
 
-![Visual summary of the governed learning flywheel](/figures/architecture/learning-flywheel.jpg)
+An agent learns in two ways. A fast loop lets one running agent remember things inside its work, such as a customer's preference. That is instance memory, part of [knowledge and memory](https://www.agenticarchitectureskills.com/memory). A slow loop changes how every copy of the agent behaves. Only the slow loop may change behaviour. It is built in the [intelligence and learning layer (R06)](https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning).
 
-## Two loops, separated by governance
-
-**In short:** A slow, tested loop changes how agents behave; a fast loop lets one agent remember things; only the slow loop may change behaviour.
-
-The system flywheel runs offline. It is evaluated, versioned, and can be rolled back. Its steps are trace (record what each run did), evaluate, curate, promote, roll out. Instance memory, what one running agent remembers, is online and immediate. Learnings move from the second loop into the first, never the reverse. Instance memory that reshapes behaviour without a gate is an unversioned deployment that nobody approved.
+Lessons move from the fast loop into the slow one, never the other way. A memory that reshapes behaviour without passing the gate is a change nobody approved.
 
 **Figure: Memory serves work; learning changes future work.** Do not let online memory updates silently become offline policy changes.
 
@@ -33,60 +27,72 @@ Learning promotion passes through evaluation, approval, staged release, and a de
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/memory-learning-flywheel.svg
 
-## The architectural fork
+## The five steps of the slow loop
 
-**In short:** Improvement compounds only when real-run records and the test suite share one store, so a production failure becomes a test case automatically.
+1. **Trace.** Record what each real run did: its inputs, its tool calls and its result.
+2. **Evaluate.** Score runs against evals, which are sets of test tasks with known right answers.
+3. **Curate.** Turn failures into counterexamples, test cases built from real failures.
+4. **Promote.** Propose a change and test it. A person approves it.
+5. **Roll out.** Release it in stages, and roll back on any regression.
 
-One property separates pipelines that compound from pipelines that stagnate: **production traces and eval datasets share a data layer**. An eval is a set of test tasks with known right answers. When the two share storage, a failing score in production promotes its trace into the offline test suite automatically. Without that join, every improvement cycle starts with a manual export, and most never start.
+Improvement only builds up when real-run records and the test set share one store. Then a failing score in production turns its trace into a test case automatically. Without that link, every cycle starts with a manual export, and most never start. The records are kept in the [observability and FinOps layer (R12)](https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops).
 
-## The promotion gate, as the evidence left it
+## The promotion gate
 
-**In short:** A rule is accepted for surviving tests, not for being frequent, lands outside the model, and can be removed later.
+Studies from 2026 change three things in the obvious design.
 
-Measurements from 2026 force three edits to the intuitive design:
+1. **Gate on tests, not on how often a pattern appears.** In one study, only 7 of 32 automatically learned rules were grounded in evidence and could run. A gate based on frequency failed both ways. It accepted a rule that cut success from 5 in 20 to 1 in 20. It rejected a rule worth five points. Rules built from counterexamples, with human review, came much closer to experts.
+2. **Land promoted rules outside the model.** Some promoted rules must hold every time. They take the strict path: policy-as-code, written as versioned code and deployed apart from the model. A rule the model only reads is still a request. Where these rules are checked is on [enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement).
+3. **Keep a way to remove rules.** Added context is not free. In one study, machine-written context files cut task success and raised running cost by about a fifth. A loop that only adds rules grows in cost and never sheds dead ones.
 
-1. **Gate on counterexample survival and eval regression, not frequency.** In the direct study, only 7 of 32 automatically learned policies were grounded in evidence and executable. A gate based on how often a pattern appeared failed in both directions. It accepted a rule that collapsed success from 5 in 20 to 1 in 20, and it rejected a rule worth five points. Rule induction guided by counterexamples (test cases built from real failures), with human review, reached an F1 score of 0.93 to 0.98 against expert baselines of 0.49 to 0.70. F1 is a standard accuracy measure. The process converged in four to five iterations.
-2. **Land promoted artifacts outside the model.** The hard tier is policy-as-code: rules written as versioned code, deployed independently of the model. Details are on [the enforcement page](https://www.agenticarchitectureskills.com/architecture/enforcement).
-3. **Keep a demotion path.** Accumulated context is not free. Machine-generated context files reduced task success while raising inference cost (the cost of running the model) by roughly a fifth. A pipeline that only ever promotes compounds cost and never sheds dead rules.
+## Release in stages
 
-## Lifecycle and rollout
-
-**In short:** An agent moves through named stages from draft to retired, each with a measured bar, and new versions reach a small share of traffic first.
-
-The one fully specified published lifecycle runs DRAFT, APPROVED, PUBLISHED, DEPRECATED, RETIRED. It names a threshold for each gate: faithfulness at least 0.80, correctness 0.90, tool accuracy 0.90, helpfulness 0.70, latency (response time) at most 15 seconds, harm at most 5 percent. A seven-day staleness policy triggers automated re-evaluation. Its enforcement is architecturally elegant: **discovery returns only PUBLISHED agents**. An agent whose quality degrades therefore becomes harder to reach, without a policy engine intervening. Rollouts run in shadow mode first, alongside production and affecting nothing. Next comes a canary release, where 1 to 5 percent of traffic uses the change, gated on session success, satisfaction, and escalation. Then it goes to everyone, with feature flags separating activation from deployment.
-
-These five states are release states, gated on quality scores. They are not the full agent lifecycle this guide uses. That has nine stages, from registration to retirement, on [the agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle).
+A change reaches people in three steps. It first runs in shadow mode, beside production, where it affects nothing. Then a canary release sends 1 to 5 percent of traffic to it. The canary is judged on session success, satisfaction and escalations. Then it goes to everyone. Feature flags keep switching it on separate from deploying it. Any regression rolls back to the last proven version. Who signs off before release follows the agent's risk tier on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile).
 
 **Figure: Build and release an agent.** The evals pass and the approvals are signed before anyone relies on the agent. Every change takes the same path again.
 
-**What the image shows:** Eight steps in two rows. First, domain experts write 20 to 50 pass-or-fail tasks from real failures, and these are the acceptance criteria. The agent is built, then passes an eval gate where counterexamples survive and no eval regresses, then security tests set by its tier floor: a security scan at A1 and A2, red-team results at A3, and independent validation at A4 and A5. A fail at either check goes back to build. Sign-off follows the risk tier. The release goes through your existing pipeline, then runs in shadow, then as a canary on 1 to 5 percent of traffic, then for everyone. A regression rolls back to the last proven version. Promoted rules land as policy-as-code outside the model, and every listed change re-runs the evals and the risk profile.
+**What the image shows:** Eight steps in two rows. First, domain experts write 20 to 50 pass-or-fail tasks from real failures. These are the acceptance criteria. The agent is built from a harness, context and tools. It then passes an eval gate, where counterexamples survive and no eval gets worse. Security tests follow, set by the autonomy level. Assisted and delegated agents (A1, A2) get a security scan. Supervised agents (A3) add red-team tests. Managed and lights-out agents (A4, A5) add independent validation. A fail at either check goes back to build. Sign-off follows the risk tier. Tier 1 (basic) needs the owner and sponsor. Tier 2 (enhanced) adds a security architect and the AI risk council. Tier 3 (strict) adds architecture review, the risk function and an executive. The release goes through your existing pipeline. It runs in shadow, then as a canary on 1 to 5 percent of traffic, then for everyone. A regression rolls back to the last proven version. Promoted rules land as policy-as-code outside the model. Every listed change re-runs the evals and the risk profile.
 
 Image: https\://www\.agenticarchitectureskills.com/figures/architecture/build-and-release.svg
 
-**Figure: From trace to rollout, gated at every step.** A learning reaches production only through evaluation, versioning, and staged release, and it can always come back out.
+One published design names five release states: draft, approved, published, deprecated and retired. Each step has a quality bar, and only published agents can be found and called. So an agent whose quality drops becomes harder to reach, with no policy engine involved.
 
-The promotion pipeline: evidence in, counterexample-gated, versioned outside the model, released in stages, demotable on staleness.
+These five states track one version of an agent through release, inside the evaluate, approve and change stages. [The agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle) tracks the agent itself through nine stages, from registration to retirement.
 
-**What the diagram shows:** Seven stages from captured trace through eval case, counterexample gate, versioning outside the model, shadow, canary, and full rollout with an armed demotion path. The sequence contains 7 stages: 1, Trace captured: A production run lands in the shared trace and eval data layer.; 2, Eval case built: A failing online score promotes its own trace into the offline suite.; 3, Counterexample gate: The candidate survives the counterexample suite with no eval regression; frequency alone never promotes., followed by the Human review before approval gate; 4, Versioned outside the model: The approved artifact lands as policy-as-code or a pinned version, deployable and rollback-capable.; 5, Shadow: Runs beside production, observed, with no effect on outcomes.; 6, Canary: 1 to 5 percent of traffic, gated on session success, satisfaction, and escalation., followed by the Flags decouple activation from deployment gate; 7, Full, demotion armed: Seven-day staleness re-evaluation; a failing score demotes the artifact while its eval case stays..
+## Judges are checked too
 
-Diagram: https\://www\.agenticarchitectureskills.com/figures/learning-promotion-pipeline.svg
+A judge is a model that grades another model's answers. Judges tend to agree with themselves more than they measure what matters. They also drift without notice when bought as a hosted service. So judges are calibrated against human labels and checked again on a schedule. Their versions are pinned. Their scoring guides are structured and include an "unknown" option. They grade outcomes, not the order of tool calls.
 
-## Judges are governed components
+Nothing grades its own work. The part that proposes changes and the part that grades them stay separate. Expert review costs about a hundred times more per answer than a model judge. So experts set the bar, judges grade at volume, and people check a sample.
 
-**In short:** A model that grades another model's work is itself a system to check, version, and keep separate from what it grades.
+## Lock down the test set-up
 
-Judge systems, models that grade other models' answers, agree with themselves more than they measure the intended property. They also drift silently when accessed as a hosted service. So judges are calibrated against human labels and re-validated on a schedule. Versions are pinned. Rubrics are structured and include an explicit Unknown option. Outcomes are graded, rather than the sequence of tool calls. And **the optimizer and the evaluator stay decoupled**, so nothing grades its own work. Expert review costs roughly a hundred times (two orders of magnitude) more per output than model judging. That is why the working design is an expert-owned bar, judging at volume, and sampled human verification.
+The test set-up that runs an agent through its evals can itself be attacked. Agents with no real skill have scored perfectly on several public benchmarks. They did it by editing the test settings, not by solving anything. Each time, nothing kept the agent apart from its grader. So test systems get the same isolation as production.
 
-## The harness is an attack surface
+## A worked example: an energy asset investigation
 
-**In short:** The test set-up itself can be gamed, so it is locked down like a production system.
+An energy company runs an agent that investigates plant equipment running outside its normal range. An engineer accepts or rejects each finding. Suppose engineers keep rejecting its findings on one pump type, because a sensor reads high after maintenance.
 
-The evaluation harness, the shell that runs an agent through its tests, can itself be attacked. An agent with no real capability has scored perfectly on several major public benchmarks by editing the evaluation configuration rather than solving anything. The recurring weakness was the absence of isolation between the agent and its evaluator. Eval infrastructure therefore gets the same isolation discipline as production.
+Nobody edits the prompt. The rejected cases become counterexamples in the test set. A proposed rule, "check the maintenance log before trusting this sensor", is tested against them and against the existing evals. A reliability engineer approves it. It runs in shadow first, then on a small share of investigations. If engineers accept fewer findings, it rolls back. The design is on [energy asset investigation](https://www.agenticarchitectureskills.com/use-cases/energy-asset-investigation).
 
-**Next step:** check who owns and who enforces each concern on [the concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix).
+## Evidence and limits
+
+The two loops and the gates rest on measured studies from 2026. Each study is small. The case against frequency gates rests on one direct study of 32 learned rules. The release states and their thresholds come from one published design, not a standard.
+
+The benchmark attacks are documented across several public benchmarks. The cost gap between experts and model judges is an estimate. The design of the loop as a whole is expert judgement.
+
+## Next step
+
+Check who owns and who enforces each requirement on [the concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix).
 
 **Explore this topic**
 
 * [The learning-loops map](https://www.agenticarchitectureskills.com/library/architecture/learning-loops-map)
 * [Intelligence and learning findings](https://www.agenticarchitectureskills.com/library/layers/r06-intelligence-and-learning/findings)
 * [Agent platform findings](https://www.agenticarchitectureskills.com/library/layers/r07-agent-platform/findings)
+
+**The gate study.** Only 7 of 32 automatically learned policies were grounded in evidence and executable. The frequency gate accepted a rule that cut success from 5 in 20 to 1 in 20, and rejected a rule worth five points. Rule induction guided by counterexamples, with human review, reached an F1 score of 0.93 to 0.98. Expert baselines scored 0.49 to 0.70. F1 is a standard accuracy measure. The process converged in four to five rounds.
+
+**The five release states.** The published design names a threshold for each gate. Faithfulness is at least 0.80, correctness 0.90, tool accuracy 0.90 and helpfulness 0.70. Response time is at most 15 seconds, and harm at most 5 percent. A seven-day staleness policy triggers automatic re-evaluation. Discovery returns only published agents.
+
+**Context files.** Machine-generated context files reduced task success while raising inference cost by roughly a fifth.

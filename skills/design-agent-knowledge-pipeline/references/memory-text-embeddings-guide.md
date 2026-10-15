@@ -4,10 +4,10 @@ Make differently worded passages discoverable while preserving exact evidence.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/text-embeddings (Markdown: https://www.agenticarchitectureskills.com/memory/text-embeddings.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-“Pump pressure is falling” and “low discharge pressure” may belong near each other even though their words differ. This helps find relevant procedures or earlier incidents. An exact asset number, policy version, or quantity still needs an exact check.
+"Pump pressure is falling" and "low discharge pressure" may belong near each other even though their words differ. This helps find relevant procedures or earlier incidents. An exact asset number, policy version, or quantity still needs an exact check.
 
 **Figure: Text: find related meaning.** Text similarity helps locate a passage. It does not establish whether that passage is current or applicable.
 

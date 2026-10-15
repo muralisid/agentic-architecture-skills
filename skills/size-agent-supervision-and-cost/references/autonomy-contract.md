@@ -1,121 +1,168 @@
 # The autonomy contract
 
-How much an agent may do on its own, how it may learn, and the controls, readiness checks, and oversight capacity that earn each step up.
+How much an agent may do on its own, and how it may learn, set on two scales for each piece of work. Readiness sets a ceiling, risk can only lower it, and each step up needs controls in place.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/autonomy-contract (Markdown: https://www.agenticarchitectureskills.com/architecture/autonomy-contract.md)
 Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-> **In plain terms.**
->
-> Every task an agent takes on sits at a chosen level of independence, from a person doing the work with help to the agent running unattended under policy. This page sets out those levels, the controls each one requires, the readiness a company must show before moving up, and how much human supervision each level really needs. The one thing to remember: a level you cannot supervise is a level you have not reached.
+An agent passes its tests, and its sponsor asks a plain question. How much may it do on its own? The autonomy contract answers that for one piece of work. It is the agreed level and the controls that level needs. It uses two scales. The autonomy scale says how freely the agent acts. The learning scale says whether, and how, it may improve. Autonomy is recorded three ways: designed, permitted and exercised. The organisation's readiness sets a ceiling on how high the agent can go. Do not grant a level that people cannot supervise.
 
-## Why autonomy needs a contract
+## The autonomy scale
 
-**WHY:** "Autonomous" is not a useful architecture property by itself. A workload can only operate as independently as its weakest readiness area and the organisation's real ability to supervise bursts of exceptions. Raising autonomy without the controls, learning loop, evidence and oversight capacity behind it creates an operational gap rather than a capability.
+Six levels, from a person doing all the work to the agent running alone under set rules.
 
-**WHAT:** Give every workload two explicit, reversible settings: **autonomy A0 to A5** and **learning L0 to L3**. Treat the required-controls column as the actual contract. Gate higher autonomy on seven readiness areas, let the weakest area set the ceiling, require governed learning and proven oversight at A4+, and size supervision using burst-rate queueing capacity rather than daily averages.
+* **Manual (A0):** a person does all the work, with no AI.
+* **Assisted (A1):** the agent suggests, and a person acts.
+* **Delegated tasks (A2):** the agent does set tasks, and a person reviews every output.
+* **Supervised autonomy (A3):** the agent acts. A person approves anything that cannot be undone and handles exceptions.
+* **Managed autonomy (A4):** the agent runs, and people work a queue of exceptions.
+* **Governed lights-out (A5):** the agent runs alone inside set rules. People set the policy, own the outcome and audit the results.
 
-**Figure: Autonomy and learning: floors, ceiling and gate.** A level you cannot supervise is a level you have not reached.
+Set the level for each piece of work, not for the agent as a whole. One agent can run at A3 for clear cases and A2 for the rest. Other published autonomy scales map onto these six in [the crosswalk on the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile#the-autonomy-crosswalk).
 
-**What the image shows:** A grid crosses autonomy levels A0 to A5 with learning levels L0 to L3. Each column shows the human's job. A1 and A2 carry a Tier 1 floor, A3 Tier 2, and A4 and A5 Tier 3. A0 has no floor. The cells for A4 and A5 at L0 and L1 are hatched: A4 and above need L2. A solid line before A4 marks the oversight gate, burst capacity proven. A dashed line marks the readiness ceiling, set by the weakest area. The chat and vegetation agents sit at A2. The billing-exception agent sits at A3. One agent shows three readings: designed, permitted and exercised. Exercised above permitted is an incident.
+## The learning scale
+
+Four levels, from fixed behaviour to learning that runs all the time inside limits.
+
+* **Fixed (L0):** behaviour changes only when people release a new version.
+* **Curated learning (L1):** people choose the examples and sources it learns from.
+* **Reviewed learning (L2):** improvements are proposed, tested and approved by a person before release. This is [the learning flywheel](https://www.agenticarchitectureskills.com/architecture/learning-flywheel).
+* **Continuous learning inside limits (L3):** it improves on its own inside fixed limits. Every change is still tested, and it can be rolled back.
+
+The two scales move independently. Each piece of work sits at a chosen point on both. A move up is earned. A move down can happen at any time.
+
+**Figure: The autonomy and learning scales: lowest tier, ceiling and gate.** Readiness sets the ceiling. From managed autonomy (A4), people must also be able to keep up at peak load.
+
+**What the image shows:** A grid crosses the six autonomy levels with the four learning levels. Autonomy runs from manual (A0) to governed lights-out (A5). Learning runs from fixed (L0) to continuous learning inside limits (L3). Each column shows the person's job. Assisted (A1) and delegated tasks (A2) need at least Tier 1. Supervised autonomy (A3) needs at least Tier 2. Managed autonomy (A4) and governed lights-out (A5) need Tier 3. Manual (A0) has no minimum tier. The cells for A4 and A5 at L0 and L1 are hatched, because A4 and above need reviewed learning (L2). A solid line before A4 marks the supervision gate: capacity at peak load is proven. A dashed line marks the readiness ceiling, set by the weakest area. The chat and vegetation agents sit at A2. The billing-exception agent sits at A3. One agent shows three readings: designed, permitted and exercised. Exercised above permitted is an incident.
 
 Image: https\://www\.agenticarchitectureskills.com/figures/architecture/axl-floors-and-gate.svg
 
-## Two axes, applied per workload
+## Record autonomy three ways
 
-**In short:** Each piece of work gets two settings, how independent the agent is and whether it may learn, both chosen on purpose and reversible.
+* **Designed:** what the build allows.
+* **Permitted:** what this contract grants.
+* **Exercised:** what the logs show the agent actually did.
 
-The first axis is the autonomy level: who executes the work, and what the human keeps hold of. Its levels are A0 manual, A1 assisted, A2 delegated tasks, A3 supervised autonomy, A4 managed autonomy, and A5 governed lights-out. The second axis is the learning level: whether the agent improves, and under what control. Its levels are L0 fixed policy, L1 curated learning, L2 governed learning (the learning flywheel), and L3 continuous learning inside guardrails. The two axes move independently. Every workload sits somewhere on the grid deliberately, and movement is earned and reversible.
+Controls follow the higher of permitted and exercised. Exercised above permitted is an incident. This happens in practice. The [MIT AI Agent Index](https://aiagentindex.mit.edu/) (2025 edition) studied enterprise agents. They were set up at low autonomy, but many ran at high autonomy once deployed.
 
-Autonomy is recorded three ways. Designed autonomy is what the build allows. Permitted autonomy is what this contract grants. Exercised autonomy is what the logs show the agent doing. Controls follow the higher of permitted and exercised. Exercised above permitted is an incident. This happens in practice. The [MIT AI Agent Index](https://aiagentindex.mit.edu/) (2025 edition) studied enterprise agents. They were configured at low autonomy but often ran at high autonomy once deployed. How A0 to A5 lines up with other published ladders is in [the crosswalk on the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile#the-autonomy-crosswalk).
+## The controls at each level
 
-**Figure: The A×L maturity matrix.** Autonomy and learning are independent; higher is not automatically better.
+Each step up comes with a fixed list of controls. That list is the agreement. The level name is only its label.
 
-Choose the cell that is justified for a workload rather than treating the top-right as a destination.
+| Level                    | The person's job                                         | Required controls                                                                                                                                                                                                |
+| ------------------------ | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Delegated tasks (A2)     | Review every output                                      | The task is scoped; every output is reviewed; actions are audited                                                                                                                                                |
+| Supervised autonomy (A3) | Approve actions that cannot be undone, handle exceptions | Approval steps; evaluations; a budget; a kill switch                                                                                                                                                             |
+| Managed autonomy (A4)    | Work the exception queues, supervise                     | Changes released only after evaluations pass; [the concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix) enforced; dashboards for supervisors; supervision capacity designed in |
+| Governed lights-out (A5) | Set policy, own the outcome, audit results               | A proven evaluation record; continuous checks; evidence a regulator would accept; supervision capacity measured in production                                                                                    |
 
-**What the diagram shows:** Six autonomy levels A0 through A5 crossed with four learning levels L0 through L3, with governed scaling emphasized in the middle of the matrix. The matrix crosses A0 Manual, A1 Assisted, A2 Delegated tasks, A3 Supervised autonomy, A4 Managed autonomy, A5 Governed lights-out with L0 Fixed policy, L1 Curated learning, L2 Governed learning, L3 Continuous learning. Annotated cells are A2 Delegated tasks by L1 Curated learning: Common starting point; A4 Managed autonomy by L2 Governed learning: Oversight gate; A5 Governed lights-out by L3 Continuous learning: Rare and domain-scoped.
+Three rules join the two scales.
 
-Diagram: https\://www\.agenticarchitectureskills.com/figures/autonomy-learning-matrix.svg
+* **Managed autonomy (A4) and above need reviewed learning (L2) or better.** At that level, people must be able to improve the agent's reliability, not only watch it.
+* **A4 and above need proven supervision capacity.** People must keep up at peak load, as set out below.
+* **No learning loop means fixed behaviour.** Fixed behaviour is the right choice for many tasks. Record it as fixed (L0).
 
-## The controls column is the contract
+## Readiness sets the ceiling
 
-**In short:** Each step up in independence comes with a fixed list of controls, and that list, not the level name, is the agreement.
+Seven areas of readiness are each scored from 0 to 3. The scores mean absent, ad hoc, managed and operated. Each area has four yes, partly or no questions in [the readiness assessment](https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments).
 
-| Level | Human role                                      | Required controls                                                                                               |
-| ----- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| A2    | Review every output                             | Task scoping, output review, audit                                                                              |
-| A3    | Approve irreversible actions, handle exceptions | Approval gates, evals, budgets, kill switch                                                                     |
-| A4    | Manage exception queues, supervise              | Eval-gated change, cross-cutting concern register enforced, supervisor dashboards, designed oversight capacity  |
-| A5    | Set policy, own accountability, audit outcomes  | Proven eval maturity, continuous assurance, regulator-ready evidence, oversight capacity measured in production |
+1. **Data:** who owns the data, its class, its quality, and agent memory. Retrieval must respect each person's access rights.
+2. **Integration and tools:** governed APIs and tools reached through a gateway. The agent can act with the requesting person's permissions. Long-running actions are safe to retry.
+3. **Identity and registry:** every agent is in one registry with a named sponsor. The registry lists your own agents and vendor-embedded agents. Credentials are short-lived and never held by agents. The off switch is tested.
+4. **Controls on actions:** a [risk tier](https://www.agenticarchitectureskills.com/architecture/risk-profile), a policy decision point outside the model, and sandboxed code. A person makes any decision about a person.
+5. **Testing and operations:** observability, evaluations before and after release, re-testing on every change, and incident practice.
+6. **Cost and value:** intake with agreed conditions for stopping, token budgets with a hard stop, and cost per resolved outcome.
+7. **People and operating model:** named owners and supervisors, clear exceptions, and capacity for bursts of work.
 
-Three rules connect the axes. **A4 and above require L2 or better.** At that level reliability must be improvable, not merely observable. **A4 and above require proven oversight capacity.** A level you cannot supervise is a level you have not reached. **Without a learning loop you have a fixed-policy agent, not a teammate.** Fixed policy is the right choice for many workloads, as long as it is named honestly.
+The weakest area sets the ceiling, not the total. Read the profile in this order: data, integration, identity, controls, testing, cost, people.
 
-## Readiness gates autonomy
-
-**In short:** Seven areas of readiness are each scored from 0 to 3, and the weakest area, not the total, decides how much autonomy is safe.
-
-Seven areas are each scored from 0 to 3: absent, ad hoc, managed, operated. Each area has four yes, partly or no questions in [the readiness assessment](https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments).
-
-1. **Data** covers who owns the data, its class, its quality, and agent memory. It includes ACL-aware retrievability, meaning retrieval that respects each person's access rights.
-2. **Integration and tools** covers governed API coverage (application programming interfaces, the defined ways software talks to software) and tool exposure through a gateway. It also covers on-behalf-of flows, in which the agent acts with the requesting person's permissions, and safe long-running actions.
-3. **Identity and registry** covers agents as first-class principals in one registry, with a named sponsor. The registry shows the two estates: agents behind your own gateway and agents inside vendor products. Credentials are short-lived and never held by agents, and the off switch is tested.
-4. **Controls on actions** covers the risk tier, a policy decision point outside the model, sandboxed code, and a person who decides when a decision affects a person.
-5. **Testing and operations** covers observability, offline and online evals, re-testing on every change, and incident practice.
-6. **Cost and value** covers intake with kill criteria (agreed conditions for stopping), token budgets with a hard stop, and cost per resolved outcome.
-7. **People and operating model** covers named owners and supervisors, clear exceptions, and burst supervision capacity.
-
-The profile governs, never the total. Read it in this order: data, integration, identity, controls, testing, cost, people.
-
-| Profile                                                                             | Highest autonomy                                              |
-| ----------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| Any area at 0 for the target workload                                               | A1 only                                                       |
-| Data and integration at 2 or more, all others at 1 or more                          | A2                                                            |
-| Data, integration, identity, controls and testing at 2 or more, others at 1 or more | A3                                                            |
-| All seven at 2 or more, with controls, testing and cost at 3                        | A4, with L2 governed learning and the oversight-capacity gate |
-| All seven at 3, plus regulator-ready evidence                                       | A5 candidacy, per domain only                                 |
+| Profile                                                                             | Highest autonomy                                                                   |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Any area at 0 for the target work                                                   | Assisted (A1) only                                                                 |
+| Data and integration at 2 or more, all others at 1 or more                          | Delegated tasks (A2)                                                               |
+| Data, integration, identity, controls and testing at 2 or more, others at 1 or more | Supervised autonomy (A3)                                                           |
+| All seven at 2 or more, with controls, testing and cost at 3                        | Managed autonomy (A4), with reviewed learning (L2) and proven supervision capacity |
+| All seven at 3, plus evidence a regulator would accept                              | Governed lights-out (A5) may be considered, one domain at a time                   |
 
 **Figure: The weakest area sets the ceiling.** Northstar is a fictional teaching example. Read the profile, not the total.
 
-**What the image shows:** Seven bars score the readiness areas from 0 to 3. Northstar scores 2 for data, 2 for integration and tools, 1 for identity and registry, 1 for controls on actions, 2 for testing and operations, 1 for cost and value, and 2 for people and operating model. A dashed line runs from the lowest score, 1, to the ceiling table. The row for data and integration at 2 or more, with all others at 1 or more, gives A2.
+**What the image shows:** Seven bars score the readiness areas from 0 to 3. Northstar scores 2 for data and 2 for integration and tools. It scores 1 for identity and registry, and 1 for controls on actions. It scores 2 for testing and operations, 1 for cost and value, and 2 for people and operating model. A dashed line runs from the lowest score, 1, to the ceiling table. The matching row is data and integration at 2 or more, with all others at 1 or more. That row gives delegated tasks (A2). Two overrides sit below the table. A Tier 3 workload needs controls at 3 for A3 or above. Untrusted input, sensitive data and an external action in one session cap autonomy at A2.
 
 Image: https\://www\.agenticarchitectureskills.com/figures/architecture/readiness-profile-to-ceiling.svg
 
-Two overrides tie the ceiling to [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile). Each can only lower it. A Tier 3 workload needs controls at 3 for A3 or above. A session with untrusted input, sensitive data and external action is capped at A2, whatever the scores. That second override is the Rule of Two.
+Two overrides tie the ceiling to the risk profile. Each can only lower it. A Tier 3 (strict) workload needs controls at 3 for A3 or above. The second override is the Rule of Two. A session that holds untrusted input, sensitive data and an external action is capped at A2, whatever the scores.
 
-Identity gaps cap autonomy without blocking a start. A workload can begin at A1 while the identity chain is built.
+Identity gaps cap autonomy without blocking a start. A piece of work can begin at A1 while [the delegation chain](https://www.agenticarchitectureskills.com/architecture/delegation-chain) is built. That chain traces every action to the person who asked.
 
-Readiness is scored on controls that are in place, not on a tally of clean runs, because a run count is a weaker instrument than it appears. A gate of twenty runs at a 95 percent pass rate is consistent with a true pass rate as low as 78 percent, and it revokes a genuinely compliant workload most of the time. The arithmetic is on [what an Agentic OS is, and what it does not solve](https://www.agenticarchitectureskills.com/agentic-os#a-worked-caution-the-trust-ledger).
+Readiness is scored on controls that are in place. A count of clean runs does not count. A short run of passes is a small sample, and it can hide a real failure rate.
 
-**Figure: Stepping autonomy up and down.** Step up one level at a time, on controls and eval results. Step down at once. Every move re-runs the evals and the risk profile.
+## Step up and step down
 
-**What the image shows:** Six levels run from A0 manual at the bottom to A5 governed lights-out at the top. Each shows the human's job, what it takes to step up to it, and its tier floor. A2 needs data and integration at 2 or more and the rest at 1 or more. A3 needs data, integration, identity, controls and testing at 2 or more, plus approval gates, budgets, a kill switch and evals against a human baseline. A line before A4 marks the oversight gate, burst capacity proven. A4 also needs L2 governed learning and all seven areas at 2 or more, with controls, testing and cost at 3. A5 needs all seven at 3, regulator-ready evidence and oversight measured in production, per domain only. An anomaly, a change of scope, or exercised autonomy above permitted demotes the agent at once. Promotion rests on controls and eval results, never a count of clean runs. An example agent is designed for A4, permitted at A3 and exercised at A2.
+**Figure: Stepping autonomy up and down.** Step up one level at a time, on controls and evaluation results. Step down at once. Every move re-runs the evaluations and the risk profile.
+
+**What the image shows:** Six levels run from manual (A0) at the bottom to governed lights-out (A5) at the top. Each shows the person's job, what it takes to step up to it, and its lowest tier. Delegated tasks (A2) needs data and integration at 2 or more, and the rest at 1 or more. Supervised autonomy (A3) needs data, integration, identity, controls and testing at 2 or more. It also needs approval steps, budgets, a kill switch and evaluations against a human baseline. A line before managed autonomy (A4) marks the supervision gate: capacity at peak load is proven. A4 also needs reviewed learning (L2). All seven areas must be at 2 or more, with controls, testing and cost at 3. A5 needs all seven areas at 3 and evidence a regulator would accept. Supervision must be measured in production, one domain at a time. An anomaly, a change of scope, or exercised autonomy above permitted moves the agent down at once. A step up rests on controls and evaluation results, never a count of clean runs. An example agent is designed for A4, permitted at A3 and exercised at A2.
 
 Image: https\://www\.agenticarchitectureskills.com/figures/architecture/autonomy-step-up-and-down.svg
 
-## The oversight gate, as a burst rate
+* **Step up one level at a time.** Each step needs the controls for that level in place, evaluation results, and the readiness scores.
+* **Step down at once.** An anomaly, a change of scope, or exercised autonomy above permitted moves the agent down straight away.
+* **Every move is a change.** A move on the autonomy scale is one of the change triggers in [the agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle#the-change-triggers). The evaluations and the risk profile run again.
 
-**In short:** No credible supervision ratio is published, so oversight capacity comes from queueing maths, budgeted per ten minutes, never daily.
+## Check that people can keep up
 
-No credible published human-to-agent supervision ratio exists from any source. The vendor that coined the metric has published no number in two annual editions. What transfers instead is queueing arithmetic and alarm-management standards:
+From managed autonomy (A4), people handle the agent's exceptions in a queue. They must keep up at the busiest moment, not on an average day. This is the supervision gate on A4 and above. No credible ratio of people to agents has been published, so measure your own.
 
-**Figure: Supervision capacity at burst.** Budget oversight per ten minutes, never as a daily average. No credible supervision ratio is published, so use your own measured wait times.
+**Figure: Supervision capacity at burst.** Budget supervision per ten minutes, never as a daily average. No credible supervision ratio is published, so use your own measured wait times.
 
-**What the image shows:** Fan-out equals neglect time divided by interaction time plus wait time, plus one. Leaving wait time out overstates capacity by up to 67 percent. A timeline shows routine exceptions, then a burst that crosses the capacity line in the busiest ten minutes. The system degrades safely, then recovers. The daily average stays under the capacity line the whole time.
+**What the image shows:** Span of control is how many agents one person can supervise. It equals neglect time divided by interaction time plus wait time, plus one. Leaving wait time out overstates capacity by up to 67 percent. A timeline shows routine exceptions, then a burst that crosses the capacity line in the busiest ten minutes. The daily average stays under the capacity line the whole time. The system degrades safely, then recovers.
 
 Image: https\://www\.agenticarchitectureskills.com/figures/architecture/supervision-burst-capacity.svg
 
-* **Capacity follows the fan-out relation.** Fan-out is how many agents one supervisor can watch at once. It equals neglect time (how long an agent can safely run unattended) divided by interaction time (how long a person needs per intervention) **plus wait time**, plus one for the agent being handled at that moment, the form the R13 research uses. Leaving wait time out overstates capacity by up to 67 percent, and by 36 percent even in exception-only designs.
-* **Budgets are burst rates, never daily averages.** Oversight budgets are set as burst rates per ten minutes (demand at its busiest, not averaged), never as daily averages. The alarm-management standards hold that a per-ten-minute rate cannot validly be converted to a longer window. They removed their per-day metric because averaging destroys its meaning. A daily-average target will be met on the dashboard and violated in every burst.
-* **Expect calibrated oversight, not a ratchet.** Calibrated oversight means that with experience, standing permission broadens **and** intervention rates rise. In measured deployments, auto-approval roughly doubled while interrupt rates nearly doubled alongside it. Rising interventions with expanding autonomy is the system working. Falling interventions with expanding autonomy is the thing to investigate.
+* **Span of control.** Span of control is how many agents one person can supervise. It depends on three times. Neglect time is how long an agent can safely run alone. Interaction time is how long a person needs for each intervention. Wait time is how long items sit in the queue. Leaving out the wait time overstates capacity by up to 67 percent. The calculation is on the [operating model and supervision layer (R13)](https://www.agenticarchitectureskills.com/layers/r13-operating-model).
+* **Plan for bursts.** Set supervision budgets as a burst rate: items per ten minutes at the busiest time. Never use a daily average. Alarm-management standards dropped their per-day measure for this reason. A daily target can look fine on the dashboard and still fail in every burst.
+* **Expect more interventions, not fewer.** With experience, people give agents broader standing permission. They also step in more often. In measured deployments, auto-approval roughly doubled, and interruptions nearly doubled with it \[vendor]. That is calibrated oversight, and it means the system is working. Fewer interventions as autonomy grows is the thing to investigate.
 
-Measure these, as [R13](https://www.agenticarchitectureskills.com/layers/r13-operating-model), the operating model layer, sets out. Track the intervention rate and its trend, the mix of escalations by trigger, wait time per item, and verification cost per review. Add periodic blind checks against self-reported figures.
+Track the intervention rate and its trend, escalations by cause, wait time per item, and the cost of each review. Add blind checks now and then against self-reported figures.
 
-**Next step:** score the agent's risk on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile).
+## One agent, one contract
+
+A power distributor runs the [vegetation inspection agent](https://www.agenticarchitectureskills.com/use-cases/vegetation-inspection). It flags trees and plants growing too close to power lines in aerial images. It also creates inspection requests. Its sponsor asks whether it can create requests without a field crew confirming each one. That would be supervised autonomy (A3).
+
+The distributor scores its readiness. Data, integration, testing and people score 2. Identity, controls and cost score 1. The A3 row needs identity and controls at 2, so the ceiling is delegated tasks (A2). The contract permits A2, with curated learning (L1). People choose the images and past cases it learns from. The build allows A3, so the record shows designed A3 and permitted A2. The sponsor checks the logs for any request sent without a crew's confirmation. That would be exercised above permitted, which is an incident.
+
+To step up, the distributor brings identity and controls to 2. Then the evaluations and the risk profile run again. The agent creates requests that change work plans, so it is already Tier 2 (enhanced). A3 needs at least Tier 2, so the tier stays the same.
+
+## Evidence and limits
+
+The autonomy levels follow published scales, but no cross-industry standard exists. Feng, McDonald and Zhang give five levels, set by the user's role (June 2025). The AWS scoping matrix gives four scopes (21 November 2025). The crosswalk on the risk profile maps both to the six levels here.
+
+The learning scale is this guide's own. No vendor publishes a levelled scale. AWS and Google describe an improvement loop instead, and reviewed learning (L2) matches that loop.
+
+The ceiling table and the step rules are expert judgement. They have not been tested against incident data.
+
+No credible ratio of people to agents has been published. The vendor that coined the measure has published no number in two annual editions. The capacity figures on this page come from published queueing studies and alarm-management standards, gathered in the operating model research. The trend in auto-approvals and interruptions comes from vendor platform data.
+
+## Next step
+
+Score the agent's risk on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile). Then check the organisation's scores with [the readiness assessment](https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments).
 
 **Explore this topic**
 
-* [The maturity model](https://www.agenticarchitectureskills.com/library/architecture/maturity-model)
+* [The autonomy and learning scales, with the supervision gate](https://www.agenticarchitectureskills.com/library/architecture/maturity-model)
 * [Readiness assessments](https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments)
 * [Operating model findings](https://www.agenticarchitectureskills.com/library/layers/r13-operating-model/findings)
+
+**Clean runs.** Nineteen passes in twenty runs fits a true pass rate as low as 78 percent, at one-sided 95 percent confidence. A gate set on a count of clean runs can also revoke an agent that is working well.
+
+**The span-of-control relation.** Span of control equals neglect time divided by the sum of interaction time and wait time, plus one. The plus one is the agent being handled at that moment. This is the form the operating model research uses. Leaving wait time out overstates capacity by up to 67 percent, and by 36 percent even where agents only raise exceptions.
+
+Sources:
+
+* [MIT AI Agent Index](https://aiagentindex.mit.edu/), 2025 edition
+* [Feng, McDonald and Zhang, levels of autonomy for AI agents, arXiv 2506.12469](https://arxiv.org/abs/2506.12469), June 2025, revised 28 July 2025
+* [AWS Security Blog, the agentic AI security scoping matrix](https://aws.amazon.com/blogs/security/the-agentic-ai-security-scoping-matrix-a-framework-for-securing-autonomous-ai-systems/), 21 November 2025 \[vendor]
+* [Amazon Bedrock AgentCore release notes](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/release-notes.html), the observe, evaluate, optimise and deploy loop, May 2026 \[vendor]
+* [Gemini Enterprise Agent Platform overview](https://docs.cloud.google.com/gemini-enterprise-agent-platform/overview), the Optimize pillar, updated 13 October 2026 \[vendor]
+* [Anthropic, measuring AI agent autonomy in practice](https://www.anthropic.com/research/measuring-agent-autonomy), 18 February 2026 \[vendor]

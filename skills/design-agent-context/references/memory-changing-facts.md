@@ -4,7 +4,7 @@ Separate event time, arrival time, and the period a fact applies to.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/changing-facts (Markdown: https://www.agenticarchitectureskills.com/memory/changing-facts.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 On Monday, an inspection is due. It is completed on Tuesday, but its report arrives on Friday. A question about Monday and a question about today need different answers. Simply choosing the last document received does not solve either question reliably.

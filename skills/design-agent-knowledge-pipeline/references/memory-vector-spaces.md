@@ -4,14 +4,14 @@ A visual tour of text, image, video, audio, geospatial, and time-series represen
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/vector-spaces (Markdown: https://www.agenticarchitectureskills.com/memory/vector-spaces.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 You have chosen what the agent should remember. Now choose what a search should treat as similar. These pictures explain the intuition; they are optional deeper reading after the memory foundations.
 
 ## Different information needs different representations
 
-An enterprise holds words, photographs, recordings, maps, and readings over time. Turning all of them into short text summaries is convenient, but can lose precisely what a later question needs: a visual feature, a sequence of events, a surface pattern, or a changing signal.
+An enterprise holds words, photographs, recordings, maps, and readings over time. Turning all of them into short text summaries is convenient. But a summary can lose what a later question needs. That may be a visual feature, a sequence of events, a surface pattern, or a changing signal.
 
 The illustrations are **conceptual maps, not measured embeddings**. Start with text, then look at what changes for other forms of information.
 
@@ -23,11 +23,11 @@ The illustrations are **conceptual maps, not measured embeddings**. Start with t
 
 Image: https\://www\.agenticarchitectureskills.com/images/memory/text-space-v1.webp
 
-An embedding represents selected features as numbers so a search can find useful similarities. Picture a space in which related examples lie near each other. What counts as related depends on the model and its training. Actual spaces have many dimensions; a two-dimensional illustration cannot show every relationship.
+An embedding represents selected features as numbers so a search can find useful similarities. Picture a space in which related examples lie near each other. What counts as related depends on the model and its training. Real spaces use many numbers for each item. A flat picture cannot show every relationship.
 
 A representation is not the whole memory. Keep the original sources, exact records, dates, and access rules alongside it. Start with the kind of question the agent will ask.
 
-“Pump pressure is falling” and “low discharge pressure” may belong near each other even though their words differ. This helps find relevant procedures or earlier incidents. An exact asset number, policy version, or quantity still needs an exact check.
+"Pump pressure is falling" and "low discharge pressure" may belong near each other even though their words differ. This helps find relevant procedures or earlier incidents. An exact asset number, policy version, or quantity still needs an exact check.
 
 [Explore this memory type](https://www.agenticarchitectureskills.com/memory/text-embeddings).
 
@@ -39,7 +39,7 @@ A representation is not the whole memory. Keep the original sources, exact recor
 
 Image: https\://www\.agenticarchitectureskills.com/images/memory/image-space-v1.webp
 
-A model can place visually related inspection images near each other, making it possible to look for earlier examples of corrosion or damage. With a suitably aligned text-image model, a written query can also find images. What counts as similar depends on training.
+A model can place visually related inspection images near each other. Then you can look for earlier examples of corrosion or damage. With a suitably aligned text-image model, a written query can also find images. What counts as similar depends on training.
 
 [Explore this memory type](https://www.agenticarchitectureskills.com/memory/image-embeddings).
 
@@ -87,7 +87,7 @@ A place can be represented by learned surface characteristics and, in some model
 
 Image: https\://www\.agenticarchitectureskills.com/images/memory/time-series-space-v1.webp
 
-The useful resemblance may be a developing oscillation, a spike, or a sequence of changes across pressure and vibration. This lets an agent ask, “What behaved like this before?” Decide whether shape, magnitude, duration, or operating state should matter.
+The useful resemblance may be a developing oscillation, a spike, or a sequence of changes across pressure and vibration. This lets an agent ask, "What behaved like this before?" Decide whether shape, magnitude, duration, or operating state should matter.
 
 [Explore this memory type](https://www.agenticarchitectureskills.com/memory/time-series).
 

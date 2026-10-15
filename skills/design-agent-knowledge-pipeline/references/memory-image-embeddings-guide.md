@@ -4,7 +4,7 @@ Find related inspection images while keeping the original observation available.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/image-embeddings (Markdown: https://www.agenticarchitectureskills.com/memory/image-embeddings.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 A model can place visually related inspection images near each other, making it possible to look for earlier examples of corrosion or damage. With a suitably aligned text-image model, a written query can also find images. What counts as similar depends on training.

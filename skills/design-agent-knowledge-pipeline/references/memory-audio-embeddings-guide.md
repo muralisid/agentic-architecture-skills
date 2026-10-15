@@ -4,7 +4,7 @@ Keep sound evidence separate from the words a transcript captures.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/audio-embeddings (Markdown: https://www.agenticarchitectureskills.com/memory/audio-embeddings.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 A pump rattle and a spoken maintenance instruction need different kinds of information. Sound representations can help find acoustic resemblance; a transcript can help find words. Choose the form that preserves what the question asks about.

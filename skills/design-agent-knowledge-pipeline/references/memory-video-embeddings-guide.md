@@ -4,7 +4,7 @@ Represent a useful interval while retaining timing and surrounding context.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/memory/video-embeddings (Markdown: https://www.agenticarchitectureskills.com/memory/video-embeddings.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 A video contains change: a person approaches a loading zone, a vehicle moves, or an inspection unfolds. A suitable representation can help search for similar clips or events. Finding a related video is different from locating the exact interval that supports a claim.

@@ -1,106 +1,109 @@
 # Architecture of the agentic enterprise
 
-See how intelligence, memory, tools, people, and controls work together, then explore the fourteen enterprise layers.
+How model intelligence becomes useful enterprise work: the layers you own, the lifecycle every agent runs through, the capabilities you add, and the controls set along the way.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture (Markdown: https://www.agenticarchitectureskills.com/architecture.md)
-Updated: 2026-09-18
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-For the whole route in order, read [Start here](https://www.agenticarchitectureskills.com/start) first.
-
-How do you turn model intelligence into useful enterprise work? Start with a task, such as investigating a possible safety issue and arranging an inspection. The architecture must connect the agent to evidence, give it appropriate tools, limit what it can do, and confirm what actually happened.
-
-Connecting a model to documents can help it answer a question. Completing the work requires more: current information, permission to act, reliable business systems, and someone responsible when the task cannot be completed.
+How do you turn model intelligence into useful enterprise work? Start with a task, such as checking a possible safety issue and arranging an inspection. A model and some documents can answer a question about it. Finishing the work needs more. The agent needs current information, permission to act, reliable business systems, and a person who answers for the result. This guide builds that in three parts: [the layers you own](https://www.agenticarchitectureskills.com/layers), [the lifecycle you run](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle) and [the capabilities you add](https://www.agenticarchitectureskills.com/architecture/system-view). Controls are set as each agent passes through its lifecycle. For the whole route in order, read [Start here](https://www.agenticarchitectureskills.com/start).
 
 ## See the whole system first
 
-**Figure: From a business goal to a confirmed result.** Start with the outcome. Intelligence and memory help the agent work toward it; tools, controls, and people make that work possible.
+**Figure: From a business goal to a confirmed result.** Start with the outcome. Intelligence and memory help the agent work toward it. Tools, controls and people make that work possible.
 
-**What the image shows:** A business owner defines a goal. An agent uses intelligence and memory, passes an independent permission check, and uses enterprise systems. The system returns a result for the agent to check. People oversee the work and independent records capture what happened.
+**What the image shows:** A business owner defines a goal. An agent uses intelligence and memory. It passes an independent permission check, then uses enterprise systems. The system returns a result for the agent to check. People oversee the work. Independent records show what happened.
 
 Image: https\://www\.agenticarchitectureskills.com/images/architecture/enterprise-overview-v1.webp
 
-For example, an agent reviewing vegetation near power lines needs images, the correct asset location, and the inspection policy. It may request a closer look or propose an inspection. A separate permission check determines whether it can create the work order. The task ends with a confirmed result or a clear handover to a person.
+Take an agent that reviews vegetation near power lines. It needs images, the correct asset location and the inspection policy. It may ask for a closer look or propose an inspection. A separate permission check decides whether it can create the work order. The task ends with a confirmed result or a clear handover to a person.
 
-This is a proposed design example, not a claim that an image alone establishes a safety risk. The [task walkthrough](https://www.agenticarchitectureskills.com/architecture/task-walkthrough) follows an inspection in more detail.
+This is a proposed design example. An image alone does not prove a safety risk. [The task walkthrough](https://www.agenticarchitectureskills.com/architecture/task-walkthrough) follows an inspection in more detail.
 
-## Break the system into responsibilities
+## The layers you own
 
-The reference design uses seven **planes** to group responsibilities. These are a way to reason about the system, not seven products to buy.
+Every agent works inside systems the company already runs. This guide groups them into fourteen layers. They run from infrastructure and compute (R01) to agent data engineering (R14). The layers hold the data, the records, the integration, the security and the people. Agents do not replace them. Agents add new demands on each one.
 
-**Figure: Seven planes across fourteen layers.** The layers are what you own. The planes are what you build across them. The two rules apply in your own estate and in the licensed estate.
-
-**What the image shows:** A fourteen-floor building shows the layers you own, from R01 Infrastructure at the bottom to R14 Agent data engineering at the top. Seven planes cross it: execution, action, knowledge, control, improvement, evidence and human. A mark shows each layer a plane is mainly built from. Two rules bind them: enforcement lives outside execution, and evidence is collected where the agent cannot write. A dashed outline shows the licensed estate, where agents run on a vendor control plane your gateway does not see.
-
-Image: https\://www\.agenticarchitectureskills.com/figures/architecture/planes-across-layers.svg
-
-Read the diagram around one task: a person sets the goal; execution runs the agent; knowledge supplies context; action connects it to tools. Control limits what is allowed. Evidence records what happened. Improvement tests proposed changes before they enter use.
-
-Two boundaries matter throughout this design. **The model does not enforce its own permissions.** Enforcement belongs outside its reasoning. **The agent is not the sole author of its audit trail.** Trusted collection must capture calls, approvals, and outcomes independently. Read the [complete system view](https://www.agenticarchitectureskills.com/architecture/system-view) for the boundaries and their implementation options.
-
-## Connect intelligence and memory
-
-Intelligence and memory are two important parts of this architecture. Their design starts with different questions: how capable must the agent be for this task, and what information must it have to make a supported decision?
-
-**Figure: How intelligence and memory work together.** Memory supplies context and referenceable evidence. Intelligence chooses the next step. The actual result determines whether to continue, stop, or ask for help.
-
-**What the image shows:** Memory supplies the current task, past experience, and reference evidence to intelligence. Intelligence chooses the next check. A separate permission gate precedes tool use. The result returns for checking and the agent continues or finishes. Task progress is saved; updates to shared memory require review.
-
-Image: https\://www\.agenticarchitectureskills.com/images/architecture/intelligence-memory-loop-v1.webp
-
-In the inspection example, thread memory keeps track of the location being investigated and checks already completed. Longer-lived memory may supply an earlier inspection, an approved procedure, or a relevant past case. The agent uses that context to decide whether it has enough information or needs another observation.
-
-Keep two kinds of evidence distinct. **Reference evidence** supports the decision: which image, record, or procedure was used, and when it applied. **Execution evidence** establishes what happened: which tool was called, who approved it, and what the business system returned. A summary written by the agent cannot replace those records.
-
-Saving task progress is also different from changing shared knowledge or improving a model. Review proposed durable updates for accuracy, access, and freshness. Test changes to models, prompts, and policies through the improvement process before release.
-
-**Design the intelligence (/ladder)**Choose the level of reasoning, tool use, and coordination the task needs. Consider quality, time, cost, and supervision together.
-**Design the memory (/memory)**Start with current context, thread memory, and longer-lived knowledge. Then organize sources, representations, retrieval, and lifecycle.
-
-## Find these responsibilities in the fourteen layers
-
-The seven planes describe responsibilities across the system. The fourteen layers below locate the enterprise capabilities that provide them. They are two views of the same architecture, not twenty-one separate components.
-
-For intelligence, start with **Intelligence & learning** and **Agent platform**, supported by **Infrastructure & compute**. For memory, start with **Data platform** and **Data engineering for agents**, connected to the agent platform. Both depend on security, governance, monitoring, and the people operating the service.
+For intelligence, start with the [intelligence and learning layer (R06)](https://www.agenticarchitectureskills.com/layers/r06-intelligence-and-learning) and the [agent platform layer (R07)](https://www.agenticarchitectureskills.com/layers/r07-agent-platform). Both rest on [infrastructure and compute (R01)](https://www.agenticarchitectureskills.com/layers/r01-infrastructure). For memory, start with the [data platform layer (R02)](https://www.agenticarchitectureskills.com/layers/r02-data-platform) and the [agent data engineering layer (R14)](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering). All of them depend on security, governance, monitoring and the people who run the service.
 
 Explore all fourteen enterprise architecture layers at https\://www\.agenticarchitectureskills.com/layers. The layers cover infrastructure, data, integration, official records, industrial systems, models, agent platforms, collaboration, channels, security, governance, monitoring, operating practices, and agent data engineering.
 
-Open a layer to see its role, then follow its detailed design. The [plane-to-layer crosswalk](https://www.agenticarchitectureskills.com/architecture/system-view#the-crosswalk) connects the two views explicitly.
+Open a layer to see its role, then follow its detailed design.
 
-## Add detail when you need it
+## The lifecycle you run
 
-Once the main flow is clear, work through the boundaries for your task:
+Every agent passes through nine stages: register, sponsor and owner, entitle, evaluate, approve, operate, change, periodic review and retire. Building and piloting come before stage 1. The registry record holds the agent's state: active, under review, deprecated or retired. AWS and Microsoft guidance both frame agent management as a lifecycle like this one.
 
-* [Describe the agent with four questions](https://www.agenticarchitectureskills.com/architecture/agent-types): what it does, what its credentials allow, how freely it acts, and what it can damage.
-* [Choose autonomy for the task](https://www.agenticarchitectureskills.com/architecture/autonomy-contract), with enough supervision capacity to support it.
-* [Plain words](https://www.agenticarchitectureskills.com/architecture/plain-words): every term on these pages, explained for any reader.
-* [Score its risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile). The tier it sets decides the controls.
-* [Protect consequential actions](https://www.agenticarchitectureskills.com/architecture/deterministic-zones): access, money, safety actuation, and formal regulatory records.
-* [Identify the agent and its sponsor](https://www.agenticarchitectureskills.com/architecture/identity-chain), [manage it from registration to retirement](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle), then [enforce permission outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement).
-* [Test proposed improvements](https://www.agenticarchitectureskills.com/architecture/learning-flywheel), [check all ten cross-cutting concerns](https://www.agenticarchitectureskills.com/architecture/concern-matrix), and [examine security threats](https://www.agenticarchitectureskills.com/security).
+The inspection agent is registered with a named sponsor before it touches a record. It is entitled to read imagery and draft work orders, and nothing more. It is evaluated on past inspections before anyone approves it. Once live, a change to its model sends it back to evaluate.
 
-**Make software usable by agents (/architecture/software-for-agents)**Design interfaces, delegated access, reliable transactions, and human handover.
-**Compare technology choices (/decisions)**Explore twenty-five decisions with alternatives, evidence, and conditions that change the answer.
+## The capabilities you add
 
-## Adapt the design to your enterprise
+Seven capabilities let agents run safely across the layers. Three let agents work: a runtime, a tool gateway, and [knowledge and memory](https://www.agenticarchitectureskills.com/memory). Four keep them in bounds: identity and policy, evaluation and release, observability and an audit trail, and human oversight. Each lifecycle stage calls on some of them.
 
-A company using agents inside purchased software has different control interfaces from a team operating its own agent platform. Check what each system exposes rather than assuming one gateway observes every action. The [enterprise reference designs](https://www.agenticarchitectureskills.com/library/architecture/master-target-state) compare starting points.
+**Figure: Layers you own, a lifecycle you run, capabilities you add.** The layers are what you own. The capabilities are what you add across them. Each lifecycle stage calls on the capabilities it needs.
 
-Start from a [business use case](https://www.agenticarchitectureskills.com/use-cases), explore [all fourteen detailed layers](https://www.agenticarchitectureskills.com/layers), or apply an [architecture review skill](https://www.agenticarchitectureskills.com/skills) to a concrete design.
+**What the image shows:** On the left, a building of fourteen floors shows the layers you own. They run from infrastructure and compute (R01) at the bottom to agent data engineering (R14) at the top. In the centre, seven bands show the capabilities you add. Each band names the industry products and the layers that build it. The runtime is built from R01 and R07. The tool gateway is built from R03, R04 and R05. Knowledge and memory is built from R02 and R14. Identity and policy is built from R10, R11 and R07. Evaluation and release is built from R06 and R12. Observability and audit trail is built from R12 and R11. Human oversight is built from R13, R08 and R09. On the right, the nine lifecycle stages run in order, and each change loops back to evaluate. Lines link each stage to the capabilities it calls on. Register, entitle and retire call on identity and policy. Sponsor and owner calls on human oversight. Evaluate and change call on evaluation and release. Approve calls on human oversight and on identity and policy. Operate calls on the runtime, the tool gateway, knowledge and memory, and observability. Periodic review calls on observability and on human oversight. A strip at the bottom gives the two rules. Policy is enforced outside the model. The audit trail is written where the agent cannot touch it.
 
-**Detailed system explanations**
+Image: https\://www\.agenticarchitectureskills.com/figures/architecture/layers-lifecycle-capabilities.svg
 
-[Why this architecture exists](https://www.agenticarchitectureskills.com/architecture/system-view#why-this-architecture-exists)
+Read the diagram around one task. A person sets the goal. The runtime runs the agent. Knowledge and memory supply the context. The tool gateway connects the agent to tools. Identity and policy limit what is allowed. Observability and audit trail record what happened. Evaluation and release test each change before it enters use.
 
-[The whole thing, on one page](https://www.agenticarchitectureskills.com/architecture/system-view#the-whole-thing-on-one-page)
+Two rules hold the design together.
 
-[The shape](https://www.agenticarchitectureskills.com/architecture/system-view#the-shape)
+* **[Policy is enforced outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement).** The model never checks its own permissions. The gateway and the policy decision point do.
+* **The audit trail is written where the agent cannot touch it.** A separate channel records calls, approvals and outcomes.
 
-[The crosswalk](https://www.agenticarchitectureskills.com/architecture/system-view#the-crosswalk)
+[What an agent platform provides](https://www.agenticarchitectureskills.com/architecture/system-view) sets out each capability and the products behind it.
 
-[The two-estate reality](https://www.agenticarchitectureskills.com/architecture/system-view#the-two-estate-reality)
+## Connect intelligence and memory
 
-[Three builds of the same planes](https://www.agenticarchitectureskills.com/architecture/system-view#three-builds-of-the-same-planes)
+Intelligence and memory need their own questions. How capable must the agent be for this task? What information must it have to make a supported decision?
 
-[Where to go deep](https://www.agenticarchitectureskills.com/architecture/system-view#where-to-go-deep)
+**Figure: How intelligence and memory work together.** Memory supplies context and evidence you can point to. Intelligence chooses the next step. The actual result decides whether to continue, stop or ask for help.
+
+**What the image shows:** Memory supplies the current task, past experience and reference evidence to intelligence. Intelligence chooses the next check. A separate permission gate comes before tool use. The result returns for checking. The agent then continues or finishes. Task progress is saved. Updates to shared memory need review.
+
+Image: https\://www\.agenticarchitectureskills.com/images/architecture/intelligence-memory-loop-v1.webp
+
+In the inspection example, thread memory tracks the location under review and the checks already done. Longer-lived memory may supply an earlier inspection, an approved procedure or a past case. The agent uses that context to decide whether it needs another observation.
+
+Keep two kinds of evidence apart. **Reference evidence** supports the decision: which image, record or procedure was used, and when it applied. **Execution evidence** shows what happened: which tool was called, who approved it, and what the system returned. A summary written by the agent cannot replace those records.
+
+Saving task progress is not the same as changing shared knowledge. Review proposed lasting updates for accuracy, access and freshness. Test changes to models, prompts and policies before release.
+
+**Design the intelligence (/ladder)**Choose the level of reasoning, tool use and coordination the task needs. Weigh quality, time, cost and supervision together.
+**Design the memory (/memory)**Start with current context, thread memory and longer-lived knowledge. Then organise sources, retrieval and how long each item is kept.
+
+## The controls, in order
+
+Once the main flow is clear, set the controls for your task. Most are set at the evaluate and approve stages.
+
+1. [The four questions](https://www.agenticarchitectureskills.com/architecture/agent-types): what the agent does, what its credentials allow, how freely it acts, and what it can damage.
+2. [The autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract): how freely it may act, and how far its behaviour may learn.
+3. [The risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile): score the agent to set its risk tier. The tier decides the controls.
+4. [The deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones): access, money, safety actuation and formal regulatory records. A model never approves in these.
+5. [The delegation chain](https://www.agenticarchitectureskills.com/architecture/delegation-chain): trace every action back to the person who asked.
+6. [Enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement): where each check sits and who runs it.
+7. [The learning flywheel](https://www.agenticarchitectureskills.com/architecture/learning-flywheel): how a proposed improvement is tested before it ships.
+
+## Where to go next
+
+**Make software usable by agents (/architecture/software-for-agents)**Design interfaces, delegated access, reliable transactions and handover to a person.
+**Compare technology choices (/decisions)**Twenty-five decisions, each with alternatives, evidence and the conditions that change the answer.
+
+A company using agents inside purchased software has different control points from a team running its own agent platform. Check what each system exposes. Do not assume one gateway sees every action. The [enterprise reference designs](https://www.agenticarchitectureskills.com/library/architecture/master-target-state) compare starting points.
+
+Start from a [business use case](https://www.agenticarchitectureskills.com/use-cases), or check all ten cross-cutting concerns in [the concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix). Look up any term in [plain words](https://www.agenticarchitectureskills.com/architecture/plain-words). Read about [security threats](https://www.agenticarchitectureskills.com/security), or apply an [architecture review skill](https://www.agenticarchitectureskills.com/skills) to a real design.
+
+## Evidence and limits
+
+This is a reference design, not a product to buy. The three-part frame is this guide's own. The lifecycle stages follow AWS and Microsoft guidance closely. The capability names follow AWS, Microsoft and Google products, dated on [What an agent platform provides](https://www.agenticarchitectureskills.com/architecture/system-view). The inspection example is a proposed design. It is not a measured deployment.
+
+**Next step:** see the seven capabilities in detail on [What an agent platform provides](https://www.agenticarchitectureskills.com/architecture/system-view).
+
+**Explore this topic**
+
+* [Master target-state architecture](https://www.agenticarchitectureskills.com/library/architecture/master-target-state)
+* [Vision and target state](https://www.agenticarchitectureskills.com/library/architecture/vision-and-target-state)
+* [The concerns-by-layers matrix](https://www.agenticarchitectureskills.com/library/architecture/concerns-by-layers-matrix)

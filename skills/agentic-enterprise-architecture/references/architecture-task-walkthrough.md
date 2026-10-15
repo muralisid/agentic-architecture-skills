@@ -1,13 +1,15 @@
 # Follow one inspection task
 
-See how evidence, reasoning, permission, action, and confirmation fit together.
+See how evidence, reasoning, permission, action and confirmation fit together in one agent task.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/task-walkthrough (Markdown: https://www.agenticarchitectureskills.com/architecture/task-walkthrough.md)
-Updated: 2026-09-17
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-**Figure: One inspection task, end to end.** Permission is checked before an action; evidence and human responsibility span the task.
+What does one agent task look like, from request to confirmed result? Follow a utility agent that checks vegetation risk on a power line circuit. The task has an owner and a boundary. The agent gathers evidence and fills the gaps. It proposes one allowed action, and a separate service checks it. Then it confirms what really happened, and stops.
+
+**Figure: One inspection task, end to end.** Permission is checked before an action. Evidence and human responsibility span the task.
 
 **What the image shows:** Request: Inspect this asset. Evidence: Read records and images. Investigation: Check what is missing. Allowed action: Create an inspection. Confirmation: Record the result
 
@@ -15,34 +17,40 @@ Image: https\://www\.agenticarchitectureskills.com/figures/architecture/agent-ta
 
 ## 1. Give the task an owner and a boundary
 
-“Investigate possible vegetation risk on this circuit and prepare inspection requests.” Record the circuit, deadline, allowable systems, and the person responsible. The task permits an inspection request, not equipment switching or tree removal.
+The request reads: "Investigate possible vegetation risk on this circuit and prepare inspection requests." Record the circuit, the deadline, the allowed systems and the person responsible. The task permits an inspection request, not equipment switching or tree removal. Switching equipment is safety actuation, one of [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones), so it stays out of reach. What kind of agent this is follows from [the four questions](https://www.agenticarchitectureskills.com/architecture/agent-types): its role, its permissions, its autonomy and its impact.
 
 ## 2. Gather evidence
 
-Read asset coordinates, image dates, previous inspections, and current work orders. Keep the original image reference and the date of each observation. A location match is a candidate association until checked against the asset record.
+Read asset coordinates, image dates, previous inspections and current work orders. Keep the original image reference and the date of each observation. A location match is only a possible link until it is checked against the asset record. Each source keeps its trail, as in [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory).
 
 ## 3. Resolve the missing information
 
-If the imagery is too coarse or too old, seek better observations or propose a field inspection. If a work order already exists, link the finding to it. A repeated investigation should ask a specific question each time, not collect data without a stopping rule.
+If the imagery is too coarse or too old, seek better observations or propose a field inspection. If a work order already exists, link the finding to it. A repeated investigation should ask a specific question each time. It should not collect data without a rule for when to stop.
 
 ## 4. Request the permitted action
 
-The model proposes a structured inspection request. The work-order service checks permissions, required fields, duplication, and any review requirement. The agent cannot grant itself more authority by changing its prompt.
+The model proposes a structured inspection request. The work-order service checks permissions, required fields, duplicates and any review requirement. The agent cannot grant itself more authority by changing its prompt. These checks sit outside the model, as set out in [enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement). The request carries the identity of the person who asked, through [the delegation chain](https://www.agenticarchitectureskills.com/architecture/delegation-chain).
 
 ## 5. Confirm and report
 
-Read the accepted work-order identifier and status. A successful API request is not proof that a field inspection occurred. Report what was created, what still needs review, and what evidence supports the priority. An independent action record supports later investigation.
+Read the accepted work-order identifier and status. A successful API request is not proof that a field inspection happened. Report what was created, what still needs review, and what evidence supports the priority. An audit trail the agent cannot change supports any later investigation.
 
 ## When to stop
 
-Stop when an inspection request is confirmed, a duplicate is resolved, the evidence is insufficient, the time or cost limit is reached, or a responsible person must decide. Preserve enough state to resume without repeating a completed action.
+Stop when any of these happens: an inspection request is confirmed, a duplicate is resolved, or the evidence is insufficient. Also stop when the time or cost limit is reached, or when a responsible person must decide. Keep enough state to resume without repeating a completed action.
 
 ## Apply the design
 
-Explore [vegetation inspection](https://www.agenticarchitectureskills.com/use-cases/vegetation-inspection), [integration and tools](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric), and [systems of record](https://www.agenticarchitectureskills.com/layers/r04-systems-of-record). The repeated investigation is an application of the reasoning-and-action pattern described in ReAct; the specific operational design here is a proposal.
+Explore [vegetation inspection](https://www.agenticarchitectureskills.com/use-cases/vegetation-inspection), the [integration fabric layer (R03)](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric) and the [systems of record layer (R04)](https://www.agenticarchitectureskills.com/layers/r04-systems-of-record).
 
-**Next step:** name what kind of agent did that work on [agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
+## Evidence and limits
 
-## External sources
+This is a proposed design, not a deployed agent. The repeated investigation follows the reason-and-act pattern described in ReAct (2022). The specific operational design here is a proposal.
+
+## Next step
+
+Name what kind of agent did that work with [the four questions](https://www.agenticarchitectureskills.com/architecture/agent-types).
+
+**Explore this topic**
 
 * [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629). Accessed 17 September 2026.

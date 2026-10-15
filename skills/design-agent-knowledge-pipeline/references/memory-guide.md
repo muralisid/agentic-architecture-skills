@@ -37,6 +37,6 @@ The advanced pages compare storage designs, long context, large histories, and r
 
 **Token efficiency: spend tokens on outcomes (/memory/token-efficiency)**Why agents use many times the tokens of chat, what to meter for each agent, and which savings have been measured.
 
-Memory supplies evidence within the [enterprise architecture](https://www.agenticarchitectureskills.com/architecture). The [Intelligence ladder](https://www.agenticarchitectureskills.com/ladder) explains how an agent uses that evidence to do useful work at an acceptable cost.
+Memory supplies evidence within the [enterprise architecture](https://www.agenticarchitectureskills.com/architecture). The memory story follows [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory) and belongs to the [build step on the Start page](https://www.agenticarchitectureskills.com/start#5-build). The [Intelligence ladder](https://www.agenticarchitectureskills.com/ladder) explains how an agent uses that evidence to do useful work at an acceptable cost.
 
 **Next step:** start the story with [what an agent should remember](https://www.agenticarchitectureskills.com/memory/memory-types).
