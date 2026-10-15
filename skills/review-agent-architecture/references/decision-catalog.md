@@ -4,7 +4,7 @@ Twenty-five technology choices usually made by habit, each with a verdict, the c
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/decisions (Markdown: https://www.agenticarchitectureskills.com/decisions.md)
-Updated: 2026-08-23
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -143,7 +143,7 @@ Each entry is a challenged default: a hyped or habitual technology choice the re
 
 **In short:** Use the vendor's built-in agent when work stays inside one product; use your own agents when work spans systems.
 
-**Verdict: decided by authority boundary, and nobody has measured the head-to-head.** Inside one system, both paths now enforce identical permissions (stated parity), so choose on model control, the cost meter, and the customisation ceiling. Across systems, no vendor's permission plane is authoritative and entity resolution binds, so external orchestration is a requirement rather than a preference. Generic benchmarks show up to fiftyfold cost variation at similar accuracy; the harness matters more than the badge. Status: reframed. Owner: [R04](https://www.agenticarchitectureskills.com/layers/r04-systems-of-record).
+**Verdict: decided by authority boundary, and nobody has measured the head-to-head.** Inside one system, both paths now enforce identical permissions (stated parity), so choose on model control, the cost meter, and the customisation ceiling. Across systems, no vendor's permission plane is authoritative and entity resolution binds, so external orchestration is a requirement rather than a preference. Generic benchmarks show up to fiftyfold cost variation at similar accuracy; the harness matters more than the badge. For packaged software, see [agents and packaged applications](https://www.agenticarchitectureskills.com/use-cases/packaged-applications). Status: reframed. Owner: [R04](https://www.agenticarchitectureskills.com/layers/r04-systems-of-record).
 
 ### CD-18. Brokered OT read paths vs unidirectional architectures
 

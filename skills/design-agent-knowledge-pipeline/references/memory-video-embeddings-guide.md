@@ -36,3 +36,5 @@ See [safety coaching](https://www.agenticarchitectureskills.com/use-cases/safety
 ## External source
 
 [InternVideo2](https://arxiv.org/abs/2403.15377), 2024. Reviewed 18 September 2026.
+
+**Continue the story:** [Search audio for similar sounds](https://www.agenticarchitectureskills.com/memory/audio-embeddings).

@@ -4,7 +4,7 @@ Ten cross-cutting concerns against fourteen layers: who owns each, who enforces 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/concern-matrix (Markdown: https://www.agenticarchitectureskills.com/architecture/concern-matrix.md)
-Updated: 2026-08-24
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -76,6 +76,8 @@ The gaps below are published as unsolved. A matrix without holes would be the le
 | Error budgets for agent quality                                           | R12   | No published enterprise analog; an open pattern, not a practice                                           |
 | Human-to-agent supervision ratio                                          | R13   | No credible published figure from any source                                                              |
 | Embedded versus external agent outcomes                                   | R04   | No published head-to-head measurement on identical tasks                                                  |
+
+**Next step:** run the agent day to day, starting with [observability and FinOps](https://www.agenticarchitectureskills.com/layers/r12-observability-and-finops).
 
 **Explore this topic**
 

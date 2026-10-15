@@ -4,7 +4,7 @@ Reorganized memory around working context, thread state, and long-term episodes,
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/changelog (Markdown: https://www.agenticarchitectureskills.com/library/changelog.md)
-Updated: 2026-10-14
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## 2026-09-18: memory foundations before implementation

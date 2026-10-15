@@ -4,7 +4,7 @@ Bring telemetry, asset history, and field evidence into one bounded investigatio
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/use-cases/water-operations (Markdown: https://www.agenticarchitectureskills.com/use-cases/water-operations.md)
-Updated: 2026-09-18
+Updated: 2026-10-14
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 An alarm identifies unusual behavior, but an operator must still distinguish a faulty sensor, planned work, and a possible network issue. The proposed agent gathers the evidence needed for that decision.
@@ -21,6 +21,15 @@ Image: https\://www\.agenticarchitectureskills.com/images/use-cases/water-operat
 
 This is a proposed application informed by utility integration experience. It is not presented as a personally delivered autonomous water-operations system.
 
+## Who does this today
+
+Water AI at named utilities reads sensor data and advises. In every case found, people decide what to do.
+
+* **Watercare, Auckland.** Watercare is installing 5,000 sensors in its wastewater network after a 135-sensor trial. An AI layer learns normal behaviour. It alerts staff to inflow, blockages and pump-station problems. Staff decide on maintenance and renewals. Watercare reported this on 18 August 2025. Stage: production rollout.
+* **Sydney Water with UTS.** Acoustic sensors in water mains feed an AI that ranks the risk of leaks and breaks. Its developers report 80 percent accuracy at locating likely failures within 200 metres. Trenchless Australasia reported this in February 2023. Stage: production.
+
+No language-model triage of SCADA alarms was found at any utility. SCADA is the control-room system that monitors and operates pumps and valves. The language-model investigation on this page is a proposal with no named precedent.
+
 ## Start with evidence
 
 Begin with a defined zone, observation period, sensor quality, and operating conditions. Keep units, sampling interval, missing values, maintenance events, and planned operations with the readings. Compare against an appropriate operating baseline.
@@ -35,11 +44,21 @@ Consider competing explanations such as a bad sensor, a planned operating change
 
 ## Measure the business result
 
-Measure confirmed issues, false alarms, missed-event samples, investigation time, and full cost. Compare with existing alarms and an operator’s current workflow before adding a more complex model.
+Measure confirmed issues, false alarms, missed-event samples, investigation time, and full cost. Compare with existing alarms and an operator's current workflow before adding a more complex model.
 
 ## Responsibility and failure handling
 
-The agent does not change treatment parameters, operate valves, or issue public safety advice. Those actions remain in the utility’s approved engineering and operating processes. A missing reading is not silently converted into a normal state.
+The agent does not change treatment parameters, operate valves, or issue public safety advice. Those actions remain in the utility's approved engineering and operating processes. A missing reading is not silently converted into a normal state.
+
+## Where this sits
+
+The four questions on [agent types](https://www.agenticarchitectureskills.com/architecture/agent-types) and the [risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile) place this agent as follows. The placements are this guide's position.
+
+* **Advises or acts:** advises. It prepares a work request or names an evidence gap.
+* **Placement:** A2, L1 on the [autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). It does a set task and a person decides. People choose the past cases it learns from.
+* **Zone:** none. The agent never writes to SCADA or any other control system. That keeps it out of the [safety actuation zone](https://www.agenticarchitectureskills.com/architecture/deterministic-zones#safety-actuation).
+* **Control:** no write path from the agent to operational technology. It reads telemetry from a copy, such as the historian, not from the control system itself.
+* **Tier:** Tier 2. It writes work requests into a production system. It is Tier 3 if your data classification treats the telemetry as control-system data.
 
 ## Start with a bounded trial
 
@@ -56,5 +75,9 @@ Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/m
 ## External sources
 
 * [TS2Vec: representation learning for time series](https://arxiv.org/abs/2106.10466). Accessed 17 September 2026.
+* [Watercare's wastewater network smartens up with rollout of 5,000 sensors](https://www.watercare.co.nz/home/about-us/latest-news-and-media/watercare-s-wastewater-network-smartens-up-with-rollout-of-5000-sensors), Watercare, 18 August 2025. Operator-reported. Accessed 14 October 2026.
+* [Sydney Water takes on more tech](https://www.trenchless-australasia.com/2023/02/22/sydney-water-takes-on-more-tech/), Trenchless Australasia, 22 February 2023. Developer-reported figures, read through a search summary on 14 October 2026.
 
-Return to [Utilities](https://www.agenticarchitectureskills.com/use-cases/utilities) or [explore the agent roles](https://www.agenticarchitectureskills.com/use-cases/agent-roles).
+Return to [Utilities](https://www.agenticarchitectureskills.com/use-cases/utilities) or [explore the agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
+
+**Next step:** score this agent on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), then design its controls on [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones).

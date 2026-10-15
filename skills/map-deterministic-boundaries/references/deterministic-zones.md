@@ -4,7 +4,7 @@ The four areas where an AI model may never approve (access, money, safety actuat
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/deterministic-zones (Markdown: https://www.agenticarchitectureskills.com/architecture/deterministic-zones.md)
-Updated: 2026-10-14
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -17,7 +17,11 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **WHAT:** Draw four deterministic zones around **access and entitlements, movement of money, safety actuation, and formal regulatory records**. Inside each zone the agent may analyse, draft, recommend, flag and block. Fixed policy, a certified system, a payment rail or a named person decides, and the agent cannot bypass it. Beside the zones sit **a destruction rule** and **a people-decisions floor**.
 
-![Visual summary of the four deterministic zones](/figures/architecture/deterministic-zones.jpg)
+**Figure: Models may take permission away, never grant it.** Inside the zones a fixed rule or a named person decides. The model may advise or block.
+
+**What the image shows:** A model sits in the centre. It may analyse, draft, recommend, flag and block. Four walls surround it: access and entitlements, movement of money, safety actuation, and formal regulatory records. Each wall shows who decides, what advises, and the agent's job. Arrows show the model may deny, escalate or quarantine. A crossed-out arrow shows it may never grant. Two panels sit beside the zones. The destruction rule needs a plan, a named approval, two signers and protected backups. The people-decisions floor needs a named person to decide, notice and a log. A strip of six yes or no questions finds the zones in an enterprise.
+
+Image: https\://www\.agenticarchitectureskills.com/figures/architecture/deterministic-zones-walls.svg
 
 ## The principle
 
@@ -85,9 +89,9 @@ What sits inside: authorization decisions, entitlement grants and changes, role 
 
 ### How to implement it
 
-**Put the decision in the path, not in the prompt.** List the tool calls that touch access, security configuration or personal data flows. The policy decision point sits behind [the gateway](https://www.agenticarchitectureskills.com/architecture/enforcement#tier-1-the-gateway), so none is reachable without a decision. A prompt instruction is advice.
+**Put the decision in the path, not in the prompt.** List the tool calls that touch access, security configuration or personal data flows. The policy decision point sits behind [the gateway](https://www.agenticarchitectureskills.com/architecture/enforcement#enforcement-point-1-the-gateway), so none is reachable without a decision. A prompt instruction is advice.
 
-**Write policy as code, data flows included.** Cedar-class engines answer in under a millisecond; Open Policy Agent handles rules that join data from several sources. Policy-as-code is versioned and reviewed like any production change ([the policy decision point](https://www.agenticarchitectureskills.com/architecture/enforcement#tier-2-the-policy-decision-point)).
+**Write policy as code, data flows included.** Cedar-class engines answer in under a millisecond; Open Policy Agent handles rules that join data from several sources. Policy-as-code is versioned and reviewed like any production change ([the policy decision point](https://www.agenticarchitectureskills.com/architecture/enforcement#enforcement-point-2-the-policy-decision-point)).
 
 **Fail closed, log, and test the bypass.** If the policy engine goes down, consequential actions stop. Each decision lands in [the evidence record](https://www.agenticarchitectureskills.com/layers/r11-governance-risk-sovereignty#the-two-tier-evidence-posture). A red team tries to reach a tool without a decision. How an agent proves who it is lives on [the identity chain](https://www.agenticarchitectureskills.com/architecture/identity-chain).
 
@@ -267,6 +271,8 @@ Classify every tool in the gateway's registry against the six questions. Write t
 
 * The signed register lets your regulator and your board say yes to everything outside it.
 * A use case that needs a model to approve inside a zone is reshaped (the model proposes, the rule decides) or rejected.
+
+**Next step:** trace every action back to the person who asked on [the identity and delegation chain](https://www.agenticarchitectureskills.com/architecture/identity-chain).
 
 ## Evidence and limits
 

@@ -4,7 +4,7 @@ Turn image-based risk candidates into evidence-backed field work.
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/use-cases/vegetation-inspection (Markdown: https://www.agenticarchitectureskills.com/use-cases/vegetation-inspection.md)
-Updated: 2026-09-18
+Updated: 2026-10-14
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 An image can flag a place to look, but a planner still needs the right asset, recent evidence, and a check for existing work. The proposed agent carries those checks into a justified inspection request.
@@ -19,7 +19,16 @@ Image: https\://www\.agenticarchitectureskills.com/images/use-cases/vegetation-i
 
 **Experience behind this example**
 
-This is a proposed utility workflow informed by the author’s electricity-distribution experience. Satellite-assisted vegetation management has vendor-reported precedents; the adaptive investigation and work-order design here must be evaluated separately.
+This is a proposed utility workflow informed by the author's electricity-distribution experience. Satellite-assisted vegetation management has vendor-reported precedents; the adaptive investigation and work-order design here must be evaluated separately.
+
+## Who does this today
+
+Among grid uses of AI, image-based inspection is the most mature. In every case found, the AI advises. People decide and send the crews.
+
+* **Vector, New Zealand.** Vector works with Tapestry, from Alphabet, on aerial images and its own inspection records. A roadside pole check fell from 30 to 45 minutes to 5 to 7 minutes. One island survey fell from about 320 hours to about 12. Tapestry reported these figures from Vector's data on 20 August 2025 \[vendor]. Stage: production for inspection. No outage results were reported.
+* **PG\&E, California.** PG\&E reports AI-enabled wildfire cameras and AI analysis of its drone inspection images. These are the operator's own claims. No measured result from the current programmes was found.
+
+Most measured results in this area are inspection time per asset. Claims that outages fell come mostly from vendors. No independent evidence for them was found.
 
 ## Start with evidence
 
@@ -35,11 +44,23 @@ The repeated investigation asks whether the candidate is near the correct asset,
 
 ## Measure the business result
 
-Measure confirmed findings per inspection, missed-risk samples, duplicate work, time from candidate to inspection, and total assessment cost. Compare with the existing patrol and planning process. Do not transfer a vendor’s reported benefit to a different network.
+Measure confirmed findings per inspection, missed-risk samples, duplicate work, time from candidate to inspection, and total assessment cost. Compare with the existing patrol and planning process. Do not transfer a vendor's reported benefit to a different network.
 
 ## Responsibility and failure handling
 
 The agent proposes or creates an inspection within its authority. It does not approve vegetation removal or switch equipment. Network constraints, environmental requirements, and field safety remain with the responsible operating process.
+
+## Where this sits
+
+The four questions on [agent types](https://www.agenticarchitectureskills.com/architecture/agent-types) and the [risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile) place this agent as follows.
+
+* **Advises or acts:** advises. It flags a place to look.
+* **Placement:** A2, L1. It does a set task and a person decides. People choose the images and past cases it learns from.
+* **Zone:** none. It touches no deterministic zone.
+* **Control:** a detection triggers an inspection. The field confirms it. Nothing is cut or switched because of an image alone.
+* **Tier:** Tier 1 if it only flags. This version creates inspection requests in the work-management system. That write makes it Tier 2.
+
+**The open gap is the link to work management.** No source found names the work-management or asset system these tools feed at any named utility. Writing work orders into the asset system raises the risk tier to Tier 2. This guide's position is to test that write path on its own before any live use.
 
 ## Start with a bounded trial
 
@@ -55,7 +76,11 @@ Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/m
 
 ## External sources
 
-* [AiDASH vegetation management at National Grid, vendor case study](https://www.aidash.com/resource/aidash-transforming-vegetation-management-for-national-grid-using-satellite-analytics-and-ai/). Accessed 17 September 2026.
+* [AiDASH vegetation management at National Grid, vendor case study](https://www.aidash.com/resource/aidash-transforming-vegetation-management-for-national-grid-using-satellite-analytics-and-ai/) \[vendor]. Accessed 17 September 2026.
 * [Google Satellite Embedding dataset documentation](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_SATELLITE_EMBEDDING_V1_ANNUAL). Accessed 17 September 2026.
+* [Tapestry, working with Vector](https://x.company/blog/posts/tapestry-vector/), 20 August 2025. Figures from Vector's data, reported by Tapestry \[vendor].
+* [Renewable Energy World, PG\&E's wildfire season preparation with AI, automation and drones](https://www.renewableenergyworld.com/power-grid/grid-modernization/california-utility-preparing-for-peak-wildfire-season-with-ai-automation-and-drones), undated. PG\&E's own claims, read through a search summary.
 
-Return to [Utilities](https://www.agenticarchitectureskills.com/use-cases/utilities) or [explore the agent roles](https://www.agenticarchitectureskills.com/use-cases/agent-roles).
+Return to [Utilities](https://www.agenticarchitectureskills.com/use-cases/utilities) or [explore the agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
+
+**Next step:** score this agent on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), then design its controls on [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones).

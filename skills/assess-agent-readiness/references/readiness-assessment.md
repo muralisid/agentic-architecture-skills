@@ -2,10 +2,10 @@
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments (Markdown: https://www.agenticarchitectureskills.com/library/frameworks/readiness-assessments.md)
-Updated: 2026-08-20
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
-As of August 2026. Phase 2 deliverable; feeds the Phase 5 roadmap checklist as its readiness input.
+As of August 2026. Phase 2 deliverable.
 
 ***
 
@@ -46,6 +46,8 @@ The assessment connects directly to the A x L maturity model: readiness caps the
 | Data, integration, identity, ops at 2+      | A3 (supervised autonomy)                             |
 | All six at 2+, ops and governance at 3      | A4 (managed autonomy); L2 governed learning required |
 | All six at 3, plus regulator-ready evidence | A5 candidacy, per domain only                        |
+
+![Six bars score Northstar's readiness areas from 0 to 3: 2, 2, 1, 1, 2, 1. A dashed line runs from the lowest score, 1, to the ceiling table, where the row for data and integration at 2 or more, others at 1 or more, gives A2.](/figures/architecture/readiness-profile-to-ceiling.svg)
 
 ## Light mode (mid-market)
 
@@ -139,7 +141,7 @@ The output is the profile **2, 2, 1, 1, 2, 1**, not a total of 9. From the auton
 
 ## What this assessment deliberately is not
 
-Not an AI strategy scorecard (Cisco, ServiceNow, and Accenture/SEI already score strategy, talent, and culture well); not a vendor evaluation (Phase 7); not a substitute for the use-case portfolio decision (Phase 5), which determines whether readiness investment is even pointed at the right workload.
+Not an AI strategy scorecard (Cisco, ServiceNow, and Accenture/SEI already score strategy, talent, and culture well); not a vendor evaluation; not a substitute for the use-case portfolio decision (Phase 5), which determines whether readiness investment is even pointed at the right workload.
 
 ## Sources
 

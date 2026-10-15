@@ -4,7 +4,7 @@ Why the rules that bind an agent are enforced outside the AI model, where those 
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/enforcement (Markdown: https://www.agenticarchitectureskills.com/architecture/enforcement.md)
-Updated: 2026-10-14
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -15,23 +15,27 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **WHY:** The model receives instructions and untrusted content through the same language channel, so its behaviour can be manipulated by what it reads. A prompt can express intent, but it cannot guarantee authorization. AI guardrails remain useful detectors, but measured bypass rates and their latency make them the wrong final decision-maker for consequential actions.
 
-**WHAT:** Enforce in three external tiers. **Tier 1: the gateway** controls tool reachability, identity exchange, credentials, rate limits and logging. **Tier 2: a deterministic policy decision point** says yes or no to consequential actions. **Tier 3: learned rules become real only after testing, human approval and promotion into policy-as-code outside the model.** Keep guardrails as advisory detection and content-policy components.
+**WHAT:** Enforce at three points outside the model. **Enforcement point 1: the gateway** controls tool reachability, identity exchange, credentials, rate limits and logging. **Enforcement point 2: a deterministic policy decision point** says yes or no to consequential actions. **Enforcement point 3: learned rules become real only after testing, human approval and promotion into policy-as-code outside the model.** Keep guardrails as advisory detection and content-policy components.
 
-![Visual summary of enforcement outside the model](/figures/architecture/enforcement.jpg)
+**Figure: Enforcement points and guardrails.** The three enforcement points are places on the path, not risk tiers. A model-based check may warn or block. It never stands alone between an agent and an irreversible effect.
+
+**What the image shows:** A tool call passes from the agent through the gateway, enforcement point 1, and the policy decision point, enforcement point 2, to the tool. Enforcement point 3 is a learned rule that lands as policy-as-code after tests and human approval. A ring shows the ten guardrail categories marked D, M or H. Seven are deterministic. Input, output and monitoring also use model checks. A strip shows what Tier 1, Tier 2 and Tier 3 add, and which capabilities switch categories on.
+
+Image: https\://www\.agenticarchitectureskills.com/figures/architecture/enforcement-points-and-guardrails.svg
 
 ## The premise
 
 **In short:** The model's behaviour can be manipulated through what it reads, so behaviour cannot be the foundation of a control.
 
-An agent's behaviour is the output of a model, and the model's inputs can manipulate it. That makes behaviour the wrong foundation for a control. A model processes commands and content as one undifferentiated stream of text (token-uniform processing), so training alone cannot teach it to keep the two apart. Without a control that sits outside the model, authorization turns into a hunt for the next exploit. EchoLeak proved the class. It is catalogued as CVE-2025-32711 (Common Vulnerabilities and Exposures) and scored 9.3 on the 10-point Common Vulnerability Scoring System (CVSS). It exfiltrated data, pulling it out of the organisation through a retrieval agent without the user clicking anything, working entirely in natural language. So enforcement lives outside the model, in three tiers.
+An agent's behaviour is the output of a model, and the model's inputs can manipulate it. That makes behaviour the wrong foundation for a control. A model processes commands and content as one undifferentiated stream of text (token-uniform processing), so training alone cannot teach it to keep the two apart. Without a control that sits outside the model, authorization turns into a hunt for the next exploit. EchoLeak proved the class. It is catalogued as CVE-2025-32711 (Common Vulnerabilities and Exposures) and scored 9.3 on the 10-point Common Vulnerability Scoring System (CVSS). It exfiltrated data, pulling it out of the organisation through a retrieval agent without the user clicking anything, working entirely in natural language. So enforcement lives outside the model, at three enforcement points.
 
-## Tier 1: the gateway
+## Enforcement point 1: the gateway
 
 **In short:** Every request an agent makes to a tool goes through one door, and that door does the checking.
 
 Every tool call passes through the gateway, the single door between agents and the systems they touch. The gateway applies an allowlist of permitted tools, exchanges the caller's identity (token exchange), and injects credentials. It also checks that each tool's description has not changed, applies rate limits, and records every call for audit. Approval rules may be held in the harness, the engineering shell around the model, because only the harness sees the whole loop. They are enforced at the gateway, because only the gateway cannot be talked out of them. Full detail is on [the R03 page](https://www.agenticarchitectureskills.com/layers/r03-integration-fabric), which covers the integration fabric.
 
-## Tier 2: the policy decision point
+## Enforcement point 2: the policy decision point
 
 **In short:** A fixed-rules component says yes or no to every consequential action, about a thousand times faster than an AI filter.
 
@@ -39,11 +43,11 @@ A deterministic policy decision point (PDP) sits in the tool-call path. It is th
 
 The cost argument is decisive on its own. A policy-engine evaluation takes under a millisecond to a few milliseconds. A guardrail call that uses a large language model (LLM) takes around 1.5 seconds. That is a difference of roughly a thousand times (three orders of magnitude), paid on every action, forever.
 
-## Tier 3: promoted rules, landed outside the model
+## Enforcement point 3: promoted rules, landed outside the model
 
 **In short:** A rule an agent learns only counts once it has passed testing and been written into policy outside the model.
 
-Learned behaviour graduates into enforcement only through the learning flywheel gate. The rule must survive counterexamples (test cases built from real failures), pass eval regression (the standing test suite), and receive human approval. The promoted artifact then lands in policy-as-code, versioned and deployed independently of the model. A rule the model merely reads is still a soft rule. The ceiling on such rules is measured. A statement-by-statement analysis of real agent instruction files found roughly a quarter of statements enforceable by a fixed check as written. It found 74 percent depending on context that cannot be defined in advance. Formal work adds a second limit. Deterministic gates can enforce strictly less than edit automata, a more powerful class of enforcement monitor, so some rules about behaviour over time (renewal properties) stay out of reach. That ceiling is why tiers 1 and 2 exist.
+Learned behaviour graduates into enforcement only through the learning flywheel gate. The rule must survive counterexamples (test cases built from real failures), pass eval regression (the standing test suite), and receive human approval. The promoted artifact then lands in policy-as-code, versioned and deployed independently of the model. A rule the model merely reads is still a soft rule. The ceiling on such rules is measured. A statement-by-statement analysis of real agent instruction files found roughly a quarter of statements enforceable by a fixed check as written. It found 74 percent depending on context that cannot be defined in advance. Formal work adds a second limit. Deterministic gates can enforce strictly less than edit automata, a more powerful class of enforcement monitor, so some rules about behaviour over time (renewal properties) stay out of reach. That ceiling is why enforcement points 1 and 2 exist.
 
 ## What guardrails are for
 
@@ -110,6 +114,8 @@ This matrix is this guide's position. It is expert judgement: no study links any
 | Promoted behavioural rules             | Policy-as-code, out of model                                               | Instruction files the model reads |
 | Iteration count, cost, wall-clock time | Harness caps plus platform hard caps (429 too-many-requests on exhaustion) | Model self-restraint              |
 | Content policy, PII screening          | Guardrails, advisory                                                       | Anything consequential            |
+
+**Next step:** follow company data into a cited answer on [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory).
 
 **Explore this topic**
 

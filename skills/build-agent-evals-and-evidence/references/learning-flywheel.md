@@ -4,7 +4,7 @@ How agent behaviour improves over time without anyone losing control of it: test
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/learning-flywheel (Markdown: https://www.agenticarchitectureskills.com/architecture/learning-flywheel.md)
-Updated: 2026-08-24
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -55,6 +55,14 @@ Measurements from 2026 force three edits to the intuitive design:
 
 The one fully specified published lifecycle runs DRAFT, APPROVED, PUBLISHED, DEPRECATED, RETIRED. It names a threshold for each gate: faithfulness at least 0.80, correctness 0.90, tool accuracy 0.90, helpfulness 0.70, latency (response time) at most 15 seconds, harm at most 5 percent. A seven-day staleness policy triggers automated re-evaluation. Its enforcement is architecturally elegant: **discovery returns only PUBLISHED agents**. An agent whose quality degrades therefore becomes harder to reach, without a policy engine intervening. Rollouts run in shadow mode first, alongside production and affecting nothing. Next comes a canary release, where 1 to 5 percent of traffic uses the change, gated on session success, satisfaction, and escalation. Then it goes to everyone, with feature flags separating activation from deployment.
 
+These five states are release states, gated on quality scores. They are not the full agent lifecycle this guide uses. That has nine stages, from registration to retirement, on [the agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle).
+
+**Figure: Build and release an agent.** The evals pass and the approvals are signed before anyone relies on the agent. Every change takes the same path again.
+
+**What the image shows:** Eight steps in two rows. First, domain experts write 20 to 50 pass-or-fail tasks from real failures, and these are the acceptance criteria. The agent is built, then passes an eval gate where counterexamples survive and no eval regresses, then security tests set by its tier floor: a security scan at A1 and A2, red-team results at A3, and independent validation at A4 and A5. A fail at either check goes back to build. Sign-off follows the risk tier. The release goes through your existing pipeline, then runs in shadow, then as a canary on 1 to 5 percent of traffic, then for everyone. A regression rolls back to the last proven version. Promoted rules land as policy-as-code outside the model, and every listed change re-runs the evals and the risk profile.
+
+Image: https\://www\.agenticarchitectureskills.com/figures/architecture/build-and-release.svg
+
 **Figure: From trace to rollout, gated at every step.** A learning reaches production only through evaluation, versioning, and staged release, and it can always come back out.
 
 The promotion pipeline: evidence in, counterexample-gated, versioned outside the model, released in stages, demotable on staleness.
@@ -74,6 +82,8 @@ Judge systems, models that grade other models' answers, agree with themselves mo
 **In short:** The test set-up itself can be gamed, so it is locked down like a production system.
 
 The evaluation harness, the shell that runs an agent through its tests, can itself be attacked. An agent with no real capability has scored perfectly on several major public benchmarks by editing the evaluation configuration rather than solving anything. The recurring weakness was the absence of isolation between the agent and its evaluator. Eval infrastructure therefore gets the same isolation discipline as production.
+
+**Next step:** check who owns and who enforces each concern on [the concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix).
 
 **Explore this topic**
 

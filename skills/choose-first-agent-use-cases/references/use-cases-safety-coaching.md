@@ -57,4 +57,6 @@ Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/m
 
 * [NVIDIA video search and summarization blueprint, vendor documentation](https://build.nvidia.com/nvidia/video-search-and-summarization/blueprintcard). Accessed 17 September 2026.
 
-Return to [Energy](https://www.agenticarchitectureskills.com/use-cases/energy) or [explore the agent roles](https://www.agenticarchitectureskills.com/use-cases/agent-roles).
+Return to [Energy](https://www.agenticarchitectureskills.com/use-cases/energy) or [explore the agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
+
+**Next step:** score this agent on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), then design its controls on [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones).

@@ -4,7 +4,7 @@ One page for each of the fourteen parts of the enterprise estate that agents tou
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/layers (Markdown: https://www.agenticarchitectureskills.com/layers.md)
-Updated: 2026-08-31
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -75,7 +75,7 @@ Diagram: https\://www\.agenticarchitectureskills.com/figures/layers-planes-cross
 | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | [R08 Productivity and collaboration](https://www.agenticarchitectureskills.com/layers/r08-productivity-and-collaboration) | Access identity as the universal default, presence granted per capability surface and rarely      |
 | [R09 Experience and channels](https://www.agenticarchitectureskills.com/layers/r09-experience-and-channels)               | A separate customer-facing edge on a shared control plane, justified by legal exposure            |
-| [R13 Supervision and oversight](https://www.agenticarchitectureskills.com/layers/r13-operating-model)                     | Supervision as a queueing system: capacity with wait time included, load budgeted as a burst rate |
+| [R13 Operating model and supervision](https://www.agenticarchitectureskills.com/layers/r13-operating-model)               | Supervision as a queueing system: capacity with wait time included, load budgeted as a burst rate |
 
 ## How the pages are built
 

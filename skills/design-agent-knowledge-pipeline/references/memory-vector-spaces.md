@@ -97,4 +97,4 @@ Two models can produce vectors of the same length without giving those coordinat
 
 These six types describe the **form of information**. A different question is how long an agent should retain it and how it should be stored. Task context, past events, approved procedures, source records, summaries, and relationships can each use different representations. The [six memory designs](https://www.agenticarchitectureskills.com/memory/six-architectures) examine those storage choices.
 
-**Continue the story:** [Turn media matches into inspectable events](https://www.agenticarchitectureskills.com/memory/images-video-and-audio).
+**Continue the story:** [Search text by meaning](https://www.agenticarchitectureskills.com/memory/text-embeddings).

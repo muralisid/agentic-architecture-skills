@@ -57,4 +57,6 @@ Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/m
 
 * [ReAct: reasoning and acting with language models](https://arxiv.org/abs/2210.03629). Accessed 17 September 2026.
 
-Return to [Utilities](https://www.agenticarchitectureskills.com/use-cases/utilities) or [explore the agent roles](https://www.agenticarchitectureskills.com/use-cases/agent-roles).
+Return to [Utilities](https://www.agenticarchitectureskills.com/use-cases/utilities) or [explore the agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
+
+**Next step:** score this agent on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), then design its controls on [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones).

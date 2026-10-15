@@ -57,4 +57,6 @@ Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/m
 
 * [Roboflow Workflows documentation](https://docs.roboflow.com/workflows). Accessed 17 September 2026.
 
-Explore [mining and resources](https://www.agenticarchitectureskills.com/library/blueprints/verticals/mining-and-resources) or [explore the agent roles](https://www.agenticarchitectureskills.com/use-cases/agent-roles).
+Explore [mining and resources](https://www.agenticarchitectureskills.com/library/blueprints/verticals/mining-and-resources) or [explore the agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
+
+**Next step:** score this agent on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), then design its controls on [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones).

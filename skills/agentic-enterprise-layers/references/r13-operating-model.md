@@ -1,4 +1,4 @@
-# Supervision load and oversight instrumentation
+# Operating model and supervision
 
 How much human supervision agents really need, worked out from waiting times and peak load rather than headcount, and the measurements that prove oversight is happening.
 
@@ -46,6 +46,12 @@ Image: https\://www\.agenticarchitectureskills.com/images/layers/r13-supervision
 **In short:** Capacity depends on how long items wait; ignoring wait time overstates it badly.
 
 Supervisory capacity follows the fan-out relation: neglect time divided by the sum of interaction time **and wait time**, plus one. The relation was measured across 2, 4, 6, and 8 supervised units. Interaction time stayed nearly flat (18.19 seconds to 15.74 seconds). Wait time grew roughly eightfold (8.71 seconds to 67.58 seconds). There was a statistically significant performance drop between four and six units, and at eight units each unit spent about half its time waiting. **Ignoring wait time overstates capacity by up to 67 percent, and by 36 percent even in exception-based designs.** Deliberate slack beats maximum fan-out: two operators each supervising five units outperformed one operator supervising ten, even carrying a 20 percent communication overhead.
+
+**Figure: Supervision capacity at burst.** Budget oversight per ten minutes, never as a daily average. No credible supervision ratio is published, so use your own measured wait times.
+
+**What the image shows:** Fan-out equals neglect time divided by interaction time plus wait time, plus one. Leaving wait time out overstates capacity by up to 67 percent. A timeline shows routine exceptions, then a burst that crosses the capacity line in the busiest ten minutes. The system degrades safely, then recovers. The daily average stays under the capacity line the whole time.
+
+Image: https\://www\.agenticarchitectureskills.com/figures/architecture/supervision-burst-capacity.svg
 
 ### Load is budgeted as a burst rate, never a daily average
 
@@ -96,6 +102,8 @@ This is calibrated oversight: trust does not reduce supervision; it redistribute
 | C8  | Safety and oversight   | The whole layer: prevention and legibility, verification cheap by construction, rotation against erosion               |
 | C9  | Cost                   | Supervision labour counted in the unit economics; oversight workload is not free                                       |
 | C10 | Resilience             | Skill maintenance including deliberate unassisted practice; succession for sponsors                                    |
+
+**Next step:** see the operate, change and review stages on [the agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle#the-nine-stages). Reading the layers in order? The next one is [R14 Agent data engineering](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering).
 
 ## Evidence and limits
 

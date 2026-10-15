@@ -4,7 +4,7 @@ The nine-stage path from company data to a cited answer, with the source trail i
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/data-to-memory (Markdown: https://www.agenticarchitectureskills.com/architecture/data-to-memory.md)
-Updated: 2026-08-24
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -64,6 +64,8 @@ The M1–M5 namespace keeps memory distinct from learning maturity.
 **What the diagram shows:** Five-tier memory stack from thread and retrieved knowledge through session, entity, and cross-domain memory, with obligations increasing as persistence rises. The sequence contains 5 stages: 1, M1 Thread: The current conversation or run.; 2, M2 Retrieved knowledge: Permission-aware evidence for the current turn., followed by the Provenance on every span gate; 3, M3 Session: Bounded continuity across hours or days., followed by the Residency and retention gate; 4, M4 Entity memory: Durable profiles of customers, assets, cases, or employees., followed by the Consent, ownership, and erasure gate; 5, M5 Cross-domain: Shared memory with the broadest blast radius., followed by the Strictest governance gate.
 
 Diagram: https\://www\.agenticarchitectureskills.com/figures/memory-obligation-tiers.svg
+
+**Next step:** see how agent behaviour improves without losing control on [the learning flywheel](https://www.agenticarchitectureskills.com/architecture/learning-flywheel).
 
 **Explore this topic**
 

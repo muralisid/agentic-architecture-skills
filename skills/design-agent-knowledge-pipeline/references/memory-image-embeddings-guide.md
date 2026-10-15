@@ -36,3 +36,5 @@ Use resemblance to find useful comparisons. Have the decision rely on the inspec
 ## External source
 
 [CLIP: connecting text and images](https://openai.com/index/clip/), 2021. Reviewed 18 September 2026.
+
+**Continue the story:** [Search video for events](https://www.agenticarchitectureskills.com/memory/video-embeddings).

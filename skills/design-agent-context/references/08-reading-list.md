@@ -79,6 +79,8 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 | Weller et al., LIMIT dataset, 2025 (above)                                                                                                                                                 | The single-vector stress test                                   | The capacity method, and the site of the programme's largest correction                                                             |
 | Es et al., RAGAS, EACL 2024. [https://arxiv.org/abs/2309.15217](https://arxiv.org/abs/2309.15217) ; RAGChecker, 2024. [https://arxiv.org/abs/2408.08067](https://arxiv.org/abs/2408.08067) | Reference-free and fine-grained evaluation of generated answers | The unsupported-content measure in the consumer study follows the same principle with a direct word-level check rather than a judge |
 
+**Next step:** apply these ideas to an agent on [step 2: context](https://www.agenticarchitectureskills.com/ladder/context), or return to [Start here](https://www.agenticarchitectureskills.com/start).
+
 **How this list was assembled**
 
 The literature sweep ran in two passes: a retrieval-literature sprint on 2026-08-19 covering multi-view indexing, diversity, taxonomy economics and graph-versus-vector evidence, and a prior-art review on 2026-08-20 that added the instruction-conditioning and generative-index-design lines. Every arXiv entry in the literature bibliography was checked programmatically against its abstract page on 2026-08-20 (title, first author, submission date). Vendor-published results are labelled; conference venues are as published and are re-checked before any submission.

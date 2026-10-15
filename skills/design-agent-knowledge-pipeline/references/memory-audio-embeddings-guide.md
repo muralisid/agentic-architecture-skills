@@ -31,8 +31,10 @@ An agent using transcripts alone cannot investigate a pump rattle that nobody de
 
 Retrieve a relevant audio interval, listen to it, and compare it with operating conditions and confirmed maintenance findings. Acoustic resemblance does not prove an identical fault. If the recording is a conversation, speaker identity and permission require their own checks.
 
-Continue with [media evidence](https://www.agenticarchitectureskills.com/memory/images-video-and-audio) or [combining evidence](https://www.agenticarchitectureskills.com/memory/combining-evidence).
+See [media evidence](https://www.agenticarchitectureskills.com/memory/images-video-and-audio) and [combining evidence](https://www.agenticarchitectureskills.com/memory/combining-evidence).
 
 ## External source
 
 [CLAP](https://arxiv.org/abs/2206.04769), 2022. Reviewed 18 September 2026.
+
+**Continue the story:** [Represent places and changes over time](https://www.agenticarchitectureskills.com/memory/location-and-satellite-data).

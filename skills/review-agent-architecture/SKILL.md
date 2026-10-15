@@ -15,7 +15,7 @@ compatibility: Reference material only. No tools, network access, or scripts
 metadata:
   track: both
   kind: task
-  version: 2026.09.17
+  version: 2026.10.15
   source: https://www.agenticarchitectureskills.com/skills
   bundled: "7"
 ---
@@ -35,7 +35,7 @@ Both rules are violated more often than any other part of the reference. Check e
 
 ## Pass 2: the four deterministic zones
 
-For every action the design lets an agent take, ask whether it lands in a zone where a model may advise but never decide: access and entitlements, movement of money, safety actuation, formal regulatory records. A model output inside a zone must be an input to a deterministic rule, never the decision. `references/deterministic-zones.md` has the zone-by-zone detail and the implementation pattern.
+For every action the design lets an agent take, ask whether it lands in a zone where a model may not approve at all: access and entitlements, movement of money, safety actuation, formal regulatory records. The rule is that models may take permission away, never grant it. A model output inside a zone must be an input to a deterministic rule, never the decision. `references/deterministic-zones.md` has the zone-by-zone detail and the implementation pattern.
 
 Findings here are blocking. Everything else is a matter of degree.
 

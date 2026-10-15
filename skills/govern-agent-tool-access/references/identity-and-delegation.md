@@ -4,7 +4,7 @@ How every action an agent takes stays traceable to the person who asked, at each
 
 Author: Murali Sid (https://linkedin.com/in/muralisid)
 Source: https://www.agenticarchitectureskills.com/architecture/identity-chain (Markdown: https://www.agenticarchitectureskills.com/architecture/identity-chain.md)
-Updated: 2026-10-14
+Updated: 2026-10-15
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 > **In plain terms.**
@@ -15,7 +15,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 **WHY:** An agent can cross several systems in one task. If identity is lost or replaced with a shared credential at any hop, you can no longer prove who requested the action, apply the user's real permissions, or revoke the agent cleanly. Accountability without enforceable identity is only a label.
 
-**WHAT:** Preserve one delegation chain end to end: **the agent has its own registered identity → the gateway exchanges the requesting user's identity → the system of record executes run-as-user → edge and sub-agent identities can only narrow the scope**. Keep a named sponsor on the agent identity, inject short-lived credentials at execution time, and maintain kill switches at several points.
+**WHAT:** Preserve one delegation chain end to end: **the agent has its own registered identity -> the gateway exchanges the requesting user's identity -> the system of record executes run-as-user -> edge and sub-agent identities can only narrow the scope**. Keep a named sponsor on the agent identity, inject short-lived credentials at execution time, and maintain kill switches at several points.
 
 ![Visual summary of the identity and delegation chain](/figures/architecture/identity-chain.jpg)
 
@@ -61,7 +61,15 @@ Accountability is also not enforcement. A named sponsor answers for purpose and 
 
 **In short:** You must be able to switch any agent off fast, from more than one place, and know from drills how long it takes.
 
+**Figure: Identity, request to retirement.** An agent should never do more than its requesting user could. Revoke time is drilled and measured.
+
+**What the image shows:** The top lane follows one request. The requesting user and the sponsor lead to the agent with its own ID2 identity. Next it passes the gateway for token exchange, then the policy decision point, the system of record acting run-as-user, and the evidence record. A sub-agent branches off the agent, and its scope only narrows. Kill switches sit at the identity, runtime, harness and gateway, and the revoke time is drilled. The bottom lane follows the agent's life: register, entitle with a grant that expires, operate, change, review and retire.
+
+Image: https\://www\.agenticarchitectureskills.com/figures/architecture/identity-request-to-retirement.svg
+
 The time it takes to revoke one agent's credentials is a drilled, measured number. Kill switches exist in the identity system as well as in the runtime, the gateway, and the harness (the engineering shell around the model). Each covers what the others cannot. Policy engines fail closed: if the engine fails, the answer is no. Only a minority of enterprises have a formal agent identity strategy. The chain above is what one looks like.
+
+**Next step:** give the agent a sponsor and a path from registration to retirement on [the agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle).
 
 **Explore this topic**
 

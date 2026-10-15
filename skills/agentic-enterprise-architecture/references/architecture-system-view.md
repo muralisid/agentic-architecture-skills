@@ -21,7 +21,7 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## The whole thing, on one page
 
-Everything below is in this diagram. It shows the fourteen layers, each with its control point, key mechanisms, and market products. It shows the seven planes that group them. It shows the ten cross-cutting concerns as columns, marking who owns and who enforces each, plus the products that serve them. Underneath sit the four deterministic zones, where a model may advise but never decide. Products are named for orientation as of August 2026; they are representative rather than exhaustive, and they are not endorsements. If you read one artifact from this guide, read this one.
+Everything below is in this diagram. It shows the fourteen layers, each with its control point, key mechanisms, and market products. It shows the seven planes that group them. It shows the ten cross-cutting concerns as columns, marking who owns and who enforces each, plus the products that serve them. Underneath sit the four deterministic zones. The rule is that models may take permission away, never grant it. Inside the zones a model may not approve at all. Products are named for orientation as of August 2026; they are representative rather than exhaustive, and they are not endorsements. If you read one artifact from this guide, read this one.
 
 **Figure: The agentic enterprise, on one page.** Fourteen layers with their control point, key mechanisms, and the products that serve them, grouped into the seven planes, with the ten cross-cutting concerns as columns and the four deterministic zones underneath.
 
@@ -45,6 +45,12 @@ Two rules bind the planes, and they are the two most often violated:
 
 1. **Enforcement lives in the control plane, never in the execution plane.** An instruction in a prompt is a preference. The same rule becomes a control when a gateway or a policy decision point checks it. A gateway is the single door every agent request passes through; a policy decision point is the component that says yes or no to each action. Every layer page names where its enforcement actually sits.
 2. **The evidence plane is fed by collection the agent cannot influence.** Anything an agent reports about itself is testimony, not evidence. Traces (the step-by-step log of each run), decisions, and provenance (where each piece of information came from) are collected by a separate channel the agent cannot touch.
+
+**Figure: Seven planes across fourteen layers.** The layers are what you own. The planes are what you build across them. The two rules apply in your own estate and in the licensed estate.
+
+**What the image shows:** A fourteen-floor building shows the layers you own, from R01 Infrastructure at the bottom to R14 Agent data engineering at the top. Seven planes cross it: execution, action, knowledge, control, improvement, evidence and human. A mark shows each layer a plane is mainly built from. Two rules bind them: enforcement lives outside execution, and evidence is collected where the agent cannot write. A dashed outline shows the licensed estate, where agents run on a vendor control plane your gateway does not see.
+
+Image: https\://www\.agenticarchitectureskills.com/figures/architecture/planes-across-layers.svg
 
 ## The crosswalk
 
@@ -96,7 +102,9 @@ A globally regulated enterprise runs both estates and doubles nothing else: same
 
 ## Where to go deep
 
-The cross-layer mechanics live in six spine pages. They are [the four deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones), [the identity and delegation chain](https://www.agenticarchitectureskills.com/architecture/identity-chain), [enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement), [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory), [the learning flywheel](https://www.agenticarchitectureskills.com/architecture/learning-flywheel), and [the autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract). The full [concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix) shows all ten cross-cutting concerns against all fourteen layers. Every contested technology choice has a verdict in [the decision catalog](https://www.agenticarchitectureskills.com/decisions). Where a platform is offered as the whole answer, [what an Agentic OS is, and what it does not solve](https://www.agenticarchitectureskills.com/agentic-os) sets out what the term means and what it leaves you to build.
+The cross-layer mechanics live in eight spine pages. They are [the autonomy contract](https://www.agenticarchitectureskills.com/architecture/autonomy-contract), [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), [the four deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones), [the identity and delegation chain](https://www.agenticarchitectureskills.com/architecture/identity-chain), [the agent lifecycle](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle), [enforcement outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement), [the data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory), and [the learning flywheel](https://www.agenticarchitectureskills.com/architecture/learning-flywheel). The full [concern matrix](https://www.agenticarchitectureskills.com/architecture/concern-matrix) shows all ten cross-cutting concerns against all fourteen layers. Every contested technology choice has a verdict in [the decision catalog](https://www.agenticarchitectureskills.com/decisions). Where a platform is offered as the whole answer, [what an Agentic OS is, and what it does not solve](https://www.agenticarchitectureskills.com/agentic-os) sets out what the term means and what it leaves you to build.
+
+**Next step:** follow one task through the whole design on [the task walkthrough](https://www.agenticarchitectureskills.com/architecture/task-walkthrough).
 
 **Explore this topic**
 

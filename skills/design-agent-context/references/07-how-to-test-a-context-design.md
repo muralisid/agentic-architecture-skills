@@ -75,6 +75,8 @@ With both fixes, the pure encoder and retrieval experiments reproduced byte-for-
 * *The harvest is on the efficient frontier.* A corpus with natural sub-topic labels where MMR or a DPP reaches the harvest's coverage at equal or lower relevance cost.
 * *Harvesting reduces unsupported content.* A replication with a different generator where the effect disappears.
 
+**Next step:** see which predictions held and which did not on [what we got wrong](https://www.agenticarchitectureskills.com/patterns/what-we-got-wrong).
+
 **Explore this topic**
 
 * The programme's findings summary and worklog entries of 2026-08-20 to 2026-08-22, including the second-machine replication record.

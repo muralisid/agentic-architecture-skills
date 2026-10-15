@@ -39,7 +39,7 @@ Measure requirement coverage, invalid or stale evidence, reviewer agreement, dup
 
 ## Responsibility and failure handling
 
-The responsible control owner reviews conclusions. Preserve links from the report to evidence and from every check to the relevant clauses. Consolidating checks must not erase differences between standards. Formal assurance and official records remain controlled actions.
+The responsible control owner reviews conclusions. Preserve links from the report to evidence and from every check to the relevant clauses. Consolidating checks must not erase differences between standards. Formal assurance and formal regulatory records remain controlled actions.
 
 ## Start with a bounded trial
 
@@ -58,4 +58,6 @@ Continue with [knowledge and memory](https://www.agenticarchitectureskills.com/m
 * [LandingAI document grounding, vendor documentation](https://landing.ai/llms/visual-grounding-and-auditability-how-landingai-ade-makes-every-extraction-defensible). Accessed 17 September 2026.
 * [NIST AI Risk Management Framework Playbook](https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook). Accessed 17 September 2026.
 
-Return to [Utilities](https://www.agenticarchitectureskills.com/use-cases/utilities) or [explore the agent roles](https://www.agenticarchitectureskills.com/use-cases/agent-roles).
+Return to [Utilities](https://www.agenticarchitectureskills.com/use-cases/utilities) or [explore the agent types](https://www.agenticarchitectureskills.com/architecture/agent-types).
+
+**Next step:** score this agent on [the risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile), then design its controls on [the deterministic zones](https://www.agenticarchitectureskills.com/architecture/deterministic-zones).

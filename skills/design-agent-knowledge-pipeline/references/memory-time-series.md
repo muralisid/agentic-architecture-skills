@@ -44,3 +44,5 @@ Follow the proposed [water-operations investigation](https://www.agenticarchitec
 ## External sources
 
 * [TS2Vec: representation learning for time series](https://arxiv.org/abs/2106.10466). Accessed 17 September 2026.
+
+**Continue the story:** [Compare storage choices](https://www.agenticarchitectureskills.com/memory/six-architectures).

@@ -6,8 +6,8 @@ Each skill is a `SKILL.md` plus the pages it needs as `references/`. They carry 
 
 | Skill | Kind | Track | Updated |
 |---|---|---|---|
-| `review-agent-architecture` | task | both | 2026.09.17 |
-| `map-deterministic-boundaries` | task | both | 2026.10.14 |
+| `review-agent-architecture` | task | both | 2026.10.15 |
+| `map-deterministic-boundaries` | task | both | 2026.10.15 |
 | `assess-agent-readiness` | task | enterprise | 2026.09.17 |
 | `choose-first-agent-use-cases` | task | enterprise | 2026.09.17 |
 | `govern-agent-tool-access` | task | enterprise | 2026.09.17 |
@@ -15,7 +15,7 @@ Each skill is a `SKILL.md` plus the pages it needs as `references/`. They carry 
 | `design-agent-context` | task | both | 2026.09.17 |
 | `build-agent-evals-and-evidence` | task | both | 2026.09.17 |
 | `size-agent-supervision-and-cost` | task | enterprise | 2026.09.18 |
-| `agentic-enterprise-architecture` | reference | enterprise | 2026.09.17 |
+| `agentic-enterprise-architecture` | reference | enterprise | 2026.10.15 |
 | `agentic-enterprise-layers` | reference | enterprise | 2026.09.17 |
 | `agentic-architecture-decisions` | reference | both | 2026.09.17 |
 

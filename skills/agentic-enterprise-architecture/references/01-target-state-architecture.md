@@ -7,6 +7,8 @@ Source: https://www.agenticarchitectureskills.com/architecture (Markdown: https:
 Updated: 2026-09-18
 Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
+For the whole route in order, read [Start here](https://www.agenticarchitectureskills.com/start) first.
+
 How do you turn model intelligence into useful enterprise work? Start with a task, such as investigating a possible safety issue and arranging an inspection. The architecture must connect the agent to evidence, give it appropriate tools, limit what it can do, and confirm what actually happened.
 
 Connecting a model to documents can help it answer a question. Completing the work requires more: current information, permission to act, reliable business systems, and someone responsible when the task cannot be completed.
@@ -27,11 +29,11 @@ This is a proposed design example, not a claim that an image alone establishes a
 
 The reference design uses seven **planes** to group responsibilities. These are a way to reason about the system, not seven products to buy.
 
-**Figure: Seven responsibilities in one system.** Every responsibility needs an owner and an implementation. Several may be supported by systems the enterprise already operates.
+**Figure: Seven planes across fourteen layers.** The layers are what you own. The planes are what you build across them. The two rules apply in your own estate and in the licensed estate.
 
-**What the image shows:** Human: set goals and handle exceptions. Execution: run the agent and workflow. Knowledge: supply information and memory. Action: connect tools and business systems. Control: enforce permissions and limits. Evidence: independently record what happened. Improvement: evaluate changes before release.
+**What the image shows:** A fourteen-floor building shows the layers you own, from R01 Infrastructure at the bottom to R14 Agent data engineering at the top. Seven planes cross it: execution, action, knowledge, control, improvement, evidence and human. A mark shows each layer a plane is mainly built from. Two rules bind them: enforcement lives outside execution, and evidence is collected where the agent cannot write. A dashed outline shows the licensed estate, where agents run on a vendor control plane your gateway does not see.
 
-Image: https\://www\.agenticarchitectureskills.com/images/architecture/architecture-responsibilities-v1.webp
+Image: https\://www\.agenticarchitectureskills.com/figures/architecture/planes-across-layers.svg
 
 Read the diagram around one task: a person sets the goal; execution runs the agent; knowledge supplies context; action connects it to tools. Control limits what is allowed. Evidence records what happened. Improvement tests proposed changes before they enter use.
 
@@ -70,9 +72,12 @@ Open a layer to see its role, then follow its detailed design. The [plane-to-lay
 
 Once the main flow is clear, work through the boundaries for your task:
 
-* [Protect consequential actions](https://www.agenticarchitectureskills.com/architecture/deterministic-zones): access, money, safety actuation, and official regulatory records.
-* [Identify the agent and its sponsor](https://www.agenticarchitectureskills.com/architecture/identity-chain), then [enforce permission outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement).
+* [Describe the agent with four questions](https://www.agenticarchitectureskills.com/architecture/agent-types): what it does, what its credentials allow, how freely it acts, and what it can damage.
 * [Choose autonomy for the task](https://www.agenticarchitectureskills.com/architecture/autonomy-contract), with enough supervision capacity to support it.
+* [Plain words](https://www.agenticarchitectureskills.com/architecture/plain-words): every term on these pages, explained for any reader.
+* [Score its risk profile](https://www.agenticarchitectureskills.com/architecture/risk-profile). The tier it sets decides the controls.
+* [Protect consequential actions](https://www.agenticarchitectureskills.com/architecture/deterministic-zones): access, money, safety actuation, and formal regulatory records.
+* [Identify the agent and its sponsor](https://www.agenticarchitectureskills.com/architecture/identity-chain), [manage it from registration to retirement](https://www.agenticarchitectureskills.com/architecture/agent-lifecycle), then [enforce permission outside the model](https://www.agenticarchitectureskills.com/architecture/enforcement).
 * [Test proposed improvements](https://www.agenticarchitectureskills.com/architecture/learning-flywheel), [check all ten cross-cutting concerns](https://www.agenticarchitectureskills.com/architecture/concern-matrix), and [examine security threats](https://www.agenticarchitectureskills.com/security).
 
 **Make software usable by agents (/architecture/software-for-agents)**Design interfaces, delegated access, reliable transactions, and human handover.

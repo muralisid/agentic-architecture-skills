@@ -29,7 +29,7 @@ Compare three kinds of work. These are design choices to test, not a mandatory p
 
 **Figure: Match intelligence to the work and its full cost.** These are task choices, not universal maturity levels or measured cost rankings.
 
-**What the image shows:** Compare known steps handled by a workflow, choosing the next check in a bounded investigation, and specialist judgment that may justify adaptation. Count models, tools, data, review, and errors, then evaluate cost per successful task.
+**What the image shows:** Compare known steps handled by a workflow, choosing the next check in a bounded investigation, and specialist judgment that may justify adaptation. Count models, tools, data, review, and errors, then evaluate cost per successful task (the guide's cost per resolved outcome).
 
 Image: https\://www\.agenticarchitectureskills.com/images/ladder/intelligence-budget-v1.webp
 
@@ -55,7 +55,7 @@ If those are sufficient, stop there. If a measured limitation remains, the model
 
 Judge cost against the business outcome, not just one model call. An investigation can involve many calls, data retrieval, external tools, retries, and expert review. A cheaper answer that creates more rework may be the more expensive way to finish the job.
 
-For a trial, record the total cost of the evaluated cases, including unsuccessful attempts, and divide it by the number of outcomes accepted as successful under the agreed quality standard. Also report the failure rate and serious errors separately, so a favorable average cannot hide them.
+For a trial, record the total cost of the evaluated cases, including unsuccessful attempts, add the supervision time at a loaded rate and the cost of fixing wrong outcomes, and divide the sum by the number of outcomes accepted as resolved under the agreed quality standard (the guide's cost per resolved outcome). Also report the failure rate and serious errors separately, so a favorable average cannot hide them.
 
 Compare configurations on the same representative cases. For example, test a rules-based workflow, a smaller model with retrieval, and a more capable model allowed to investigate. Route difficult cases to additional capability only if you can reliably recognize those cases and measure the improvement. Count the cost of building and maintaining that routing too.
 
@@ -78,3 +78,5 @@ Model distillation is one specific training technique. The broader goal of disti
 An agent's judgment is useful only if we can examine what supported it. [Knowledge and memory](https://www.agenticarchitectureskills.com/memory) starts with what an agent should remember during a task and across future tasks. It then explains how to represent enterprise information, keep it current, and recover referenceable evidence for decisions.
 
 For implementation choices, [diagnose a failed task](https://www.agenticarchitectureskills.com/ladder/choosing-an-approach), compare [one agent with several](https://www.agenticarchitectureskills.com/ladder/single-and-multiple-agents), or explore [combining specialist models](https://www.agenticarchitectureskills.com/ladder/combining-models).
+
+**Next step:** diagnose a failed task before changing anything on [choose what to change](https://www.agenticarchitectureskills.com/ladder/choosing-an-approach).

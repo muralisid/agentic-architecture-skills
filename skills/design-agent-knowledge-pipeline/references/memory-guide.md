@@ -36,3 +36,5 @@ The sidebar separates the main story from optional visual tours and advanced des
 The advanced pages compare storage designs, long context, large histories, and research findings. They are choices to investigate, not a list of components every enterprise needs.
 
 Memory supplies evidence within the [enterprise architecture](https://www.agenticarchitectureskills.com/architecture). The [Intelligence ladder](https://www.agenticarchitectureskills.com/ladder) explains how an agent uses that evidence to do useful work at an acceptable cost.
+
+**Next step:** start the story with [what an agent should remember](https://www.agenticarchitectureskills.com/memory/memory-types).
