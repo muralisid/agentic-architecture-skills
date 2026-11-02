@@ -15,7 +15,7 @@ Each skill is a `SKILL.md` plus the pages it needs as `references/`. They carry 
 | `design-agent-context` | task | both | 2026.10.15 |
 | `build-agent-evals-and-evidence` | task | both | 2026.10.15 |
 | `size-agent-supervision-and-cost` | task | enterprise | 2026.10.15 |
-| `agentic-enterprise-architecture` | reference | enterprise | 2026.10.15 |
+| `agentic-enterprise-architecture` | reference | enterprise | 2026.11.02 |
 | `agentic-enterprise-layers` | reference | enterprise | 2026.10.15 |
 | `agentic-architecture-decisions` | reference | both | 2026.10.15 |
 

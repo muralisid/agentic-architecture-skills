@@ -17,14 +17,14 @@ compatibility: Reference material only. No tools, network access, or scripts
 metadata:
   track: enterprise
   kind: reference
-  version: 2026.10.15
+  version: 2026.11.02
   source: https://www.agenticarchitectureskills.com/skills
   bundled: "14"
 ---
 
 # The agentic enterprise, cross-layer
 
-Twelve pages, ordered so that reading them in sequence builds the argument. Load only what the question needs.
+Fourteen pages, ordered so that reading them in sequence builds the argument. Load only what the question needs.
 
 | File | What it answers |
 |---|---|
@@ -40,6 +40,8 @@ Twelve pages, ordered so that reading them in sequence builds the argument. Load
 | `references/10-master-target-state.md` | The three complete architectures, keyed to size and regulatory intensity |
 | `references/11-maturity-model.md` | The autonomy and learning axes in full, with the gates between levels |
 | `references/12-vision.md` | What an agentic enterprise is, and the shape of the residual human work |
+| `references/architecture-system-view.md` | The agent platform as a system, including the responsibilities and interfaces around it |
+| `references/architecture-task-walkthrough.md` | One task traced through the architecture from request to evidence |
 
 ## Finding things quickly
 

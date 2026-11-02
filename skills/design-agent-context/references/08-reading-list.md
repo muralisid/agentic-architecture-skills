@@ -9,6 +9,8 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 The context patterns rest on our own tests and on published work. We asked which papers support each pattern, which contradict it, and which set its limits. This page lists that work by the question it answers. Each row says what the paper showed in plain words. It then says how our results relate. No pattern rests on our experiments alone. Each has independent published support. Vendor results are marked \[vendor].
 
+**Figure: Evidence becomes guidance through a controlled path.** Questions lead to dated sources and reproducible tests. Results change guidance only when their limits are explicit.
+
 For how these ideas fit an agent, see [step 2 of the intelligence ladder: context](https://www.agenticarchitectureskills.com/ladder/context) and [knowledge and memory](https://www.agenticarchitectureskills.com/memory). The engineering is on the [data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory) and the [agent data engineering layer (R14)](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering). The patterns themselves are on [context patterns for agents](https://www.agenticarchitectureskills.com/patterns).
 
 ## Several vectors per document, and the size of each piece

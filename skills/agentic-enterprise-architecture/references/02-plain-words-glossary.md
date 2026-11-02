@@ -9,6 +9,8 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 This guide is written for everyone who will work with agents, not only the people who build them. That includes leaders, managers, and specialists in finance, risk, legal and operations. Every technical word in the guide has a plain meaning. This page is the glossary. It gives each term in one plain sentence.
 
+**Figure: Three spines, one body of knowledge.** The transformation method decides why and when, the reference architecture defines what, and the Software Factory delivers and operates it. Trust and evidence apply across all three.
+
 ## How terms work on the pages
 
 A word with a dotted underline has a glossary entry. Hover over it, or tap it on a phone, to see its plain meaning. Where a term has its own page, the tooltip links to that page.

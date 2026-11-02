@@ -9,6 +9,8 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 Experiments that confirm what their authors hoped for are easy to produce and unsafe to rely on. We wanted to know how to make a search result hard to fool. Five of our own headline results reversed at least once. Two causes explain all five. Either the control did not get the same budget as the method, or the measurement could not come out negative. So give the plain method the same budget, and make sure the test can fail. The steps below show how we did both, and what they caught.
 
+**Figure: Evidence becomes guidance through a controlled path.** Questions lead to dated sources and reproducible tests. Results change guidance only when their limits are explicit.
+
 Use this method before you change how documents are prepared for [knowledge and memory](https://www.agenticarchitectureskills.com/memory). It covers the chunk, embed and retrieve stages of the [data-to-memory pipeline](https://www.agenticarchitectureskills.com/architecture/data-to-memory). That work belongs to the [agent data engineering layer (R14)](https://www.agenticarchitectureskills.com/layers/r14-agent-data-engineering). It is the evidence for pattern 9 of the [context patterns](https://www.agenticarchitectureskills.com/patterns). The general approach behind it is on [how we evaluate evidence](https://www.agenticarchitectureskills.com/research/method).
 
 ## Step 1: give the control the same budget

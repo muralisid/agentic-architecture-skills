@@ -9,6 +9,8 @@ Licence: CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
 
 Many technology choices for agents are made by habit, or because everyone else made them. A graph database for knowledge. A dedicated gateway for tools. Several agents where one would do. This catalog tests twenty-five of those choices against the simplest credible alternative, on evidence and cost. Each record gives a verdict. It also gives the one test that decides your own case, because the common answer may not fit it.
 
+**Figure: A reusable architecture decision.** Context and alternatives lead to a discriminator, decision, supporting evidence and an explicit revisit trigger.
+
 ## How to read a record
 
 Each record has the same five parts, in the same order.
